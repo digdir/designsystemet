@@ -5,6 +5,7 @@ import {
   attrOrCSS,
   customElements,
   DSElement,
+  getText,
   onMutation,
   warn,
 } from '../utils/utils';
@@ -65,7 +66,7 @@ export class DSPaginationElement extends DSElement {
 }
 
 const isNamedByAriaLabel = (el: Element) =>
-  !el.textContent?.trim() && !attr(el, ARIA_LABELLEDBY);
+  !getText(el) && !attr(el, ARIA_LABELLEDBY);
 
 const render = (self: DSPaginationElement) => {
   const current = Number(attr(self, ATTR_CURRENT));

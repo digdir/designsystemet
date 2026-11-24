@@ -1,7 +1,6 @@
 import {
   Button,
   ErrorSummary,
-  Heading,
   Link,
   List,
   Textfield,
@@ -11,7 +10,9 @@ import { useState } from 'react';
 export const Preview = () => {
   return (
     <ErrorSummary>
-      <Heading>For å gå videre må du rette opp følgende feil:</Heading>
+      <ErrorSummary.Heading>
+        For å gå videre må du rette opp følgende feil:
+      </ErrorSummary.Heading>
       <List.Unordered>
         <List.Item>
           <Link href='#'>Fødselsdato kan ikke være etter år 2005</Link>
@@ -30,7 +31,9 @@ export const Preview = () => {
 export const PreviewEn = () => {
   return (
     <ErrorSummary>
-      <Heading>To proceed, you must correct the following errors:</Heading>
+      <ErrorSummary.Heading>
+        To proceed, you must correct the following errors:
+      </ErrorSummary.Heading>
       <List.Unordered>
         <List.Item>
           <Link href='#'>Birthdate cannot be after the year 2005</Link>
@@ -63,7 +66,9 @@ export const WithForm = () => {
       />
 
       <ErrorSummary>
-        <Heading>For å gå videre må du rette opp følgende feil:</Heading>
+        <ErrorSummary.Heading>
+          For å gå videre må du rette opp følgende feil:
+        </ErrorSummary.Heading>
         <List.Unordered>
           <List.Item>
             <Link href='#fornavn'>Fornavn må være minst 2 tegn</Link>
@@ -94,7 +99,9 @@ export const WithFormEn = () => {
       />
 
       <ErrorSummary>
-        <Heading>To proceed, you must correct the following errors:</Heading>
+        <ErrorSummary.Heading>
+          To proceed, you must correct the following errors:
+        </ErrorSummary.Heading>
         <List.Unordered>
           <List.Item>
             <Link href='#first-name'>
@@ -128,7 +135,9 @@ export const ShowHide = () => {
       </div>
       {show && (
         <ErrorSummary>
-          <Heading>For å gå videre må du rette opp følgende feil:</Heading>
+          <ErrorSummary.Heading>
+            For å gå videre må du rette opp følgende feil:
+          </ErrorSummary.Heading>
           <List.Unordered>
             <List.Item>
               <Link href='#fornavn'>Fornavn må være minst 2 tegn</Link>
@@ -163,7 +172,9 @@ export const ShowHideEn = () => {
       </div>
       {show && (
         <ErrorSummary>
-          <Heading>To proceed, you must correct the following errors:</Heading>
+          <ErrorSummary.Heading>
+            To proceed, you must correct the following errors:
+          </ErrorSummary.Heading>
           <List.Unordered>
             <List.Item>
               <Link href='#first-name'>

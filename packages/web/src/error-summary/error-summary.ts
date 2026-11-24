@@ -4,13 +4,40 @@ import {
   attr,
   customElements,
   DSElement,
-  off,
+  getCSSProp,
+  getText,
   on,
-  onMutation,
+  onHotReload,
   QUICK_EVENT,
-  useId,
   warn,
 } from '../utils/utils';
+
+const CSS_PROP = '--_ds-errorsummary';
+const WARN_NAME = `\nAdd a <legend>, or set ${ARIA_LABEL} or ${ARIA_LABELLEDBY} to provide an accessible name for screen readers.`;
+
+const setFocus = (el: HTMLElement | null) => {
+  if (el?.nodeName !== 'FIELDSET' || !getCSSProp(el, CSS_PROP)) return false; // Only error summaries have the CSS property
+  el.hasAttribute('tabindex') || attr(el, 'tabindex', '-1'); // Respect tabindex set by consumer
+  el.focus();
+
+  const name =
+    attr(el, ARIA_LABEL)?.trim() ||
+    attr(el, ARIA_LABELLEDBY)?.trim() ||
+    getText(el.querySelector(':scope > legend'));
+
+  if (!name) warn('Missing accessible name on:', el, WARN_NAME);
+  return true;
+};
+
+const handleAppear = (e: Event) => setFocus(e.target as HTMLElement);
+
+onHotReload('error-summary', () => {
+  for (const el of document.getElementsByTagName('fieldset'))
+    if (el.getClientRects().length && setFocus(el)) break; // Focus first visible error summary if animationend fired before this script was loaded
+  return [on(document, 'animationend', handleAppear, QUICK_EVENT)]; // Note: animationend event is not composed, so this only works in LightDOM
+});
+
+// @deprecated, only kept for backwards compatibility
 
 declare global {
   interface HTMLElementTagNameMap {
@@ -18,43 +45,14 @@ declare global {
   }
 }
 
+/**
+ * @deprecated Use `<fieldset>` with a `<legend>` and the `ds-error-summary` class instead
+ */
 export class DSErrorSummaryElement extends DSElement {
-  _unmutate?: () => void; // Using underscore instead of private fields for backwards compatibility
-
   connectedCallback() {
-    on(this, 'animationend', this, QUICK_EVENT); // Using animationend to detect when element is visible
-    attr(this, 'role', 'group');
-    attr(this, 'tabindex', '-1');
-    this._unmutate = onMutation(this, render, {
-      childList: true,
-      subtree: true,
-    });
-    this.focus();
-  }
-  handleEvent({ target }: Event) {
-    if (target === this) this.focus(); // Ignore if animation event was triggered by child
-  }
-  disconnectedCallback() {
-    off(this, 'animationend', this, QUICK_EVENT);
-    this._unmutate?.();
-    this._unmutate = undefined;
+    const tag = this.nodeName.toLowerCase(); // Consumer might rename tag, so use dynamic value
+    warn(`<${tag}> is deprecated, please use <fieldset> with <legend> instead`);
   }
 }
-
-const render = (self: DSErrorSummaryElement) => {
-  const label = attr(self, ARIA_LABEL)?.trim();
-  const labelledBy = attr(self, ARIA_LABELLEDBY)?.trim();
-  const heading = self.querySelector('h2,h3,h4,h5,h6');
-  if (heading && !label && !labelledBy) {
-    attr(self, ARIA_LABELLEDBY, useId(heading));
-  }
-  if (!heading && !label && !labelledBy) {
-    warn(
-      'Missing accessible name on:',
-      self,
-      `\nAdd a heading (h2-h6), or set ${ARIA_LABEL} or ${ARIA_LABELLEDBY} to provide an accessible name for screen readers.`,
-    );
-  }
-};
 
 customElements.define('ds-error-summary', DSErrorSummaryElement);

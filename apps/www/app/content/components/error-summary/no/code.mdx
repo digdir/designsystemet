@@ -2,11 +2,12 @@
 
 ## Bruk
 
-Klassenavnet `ds-error-summary` brukes på `<ds-error-summary>`-elementet.
-Webkomponenten håndterer fokus når den blir synlig og `aria-labelledby` automatisk.
+Klassenavnet `ds-error-summary` brukes på et `<fieldset>`-element.
+Fokus flyttes automatisk til error summary når den blir synlig.
 
-Start med en overskrift (`h2`–`h6`) med klassen `ds-heading`, som blir det tilgjengelige navnet til error summary.
-Vi legger en `<ul class="ds-list">` etter heading som inneholder en liste med feil.
+Start med en `<legend>`, som blir det tilgjengelige navnet til error summary.
+Du kan bruke `aria-label` eller `aria-labelledby` i stedet, men error summary må ha et tilgjengelig navn.
+Vi legger en `<ul class="ds-list">` etter legend som inneholder en liste med feil.
 Hver feil er en `<li>` med en lenke (`<a>`) som har klassen `ds-link` og et `href` til det aktuelle feltet med feil.
 
 For at lenkene skal navigere til feltene med feil, må feltene ha en unik `id` som samsvarer med `href` i lenken.
@@ -29,16 +30,16 @@ Under er et eksempel som viser hvordan fokus automatisk flyttes til error summar
 
 ## React
 
-Bruk `Heading`, `List` og `Link` inne i `ErrorSummary`:
-- `Heading` definerer overskriften. Bruk nivå 2–6, siden `ErrorSummary` bruker første `h2`–`h6` som tilgjengelig navn.
+`ErrorSummary` rendrer et `<fieldset>`. Bruk `ErrorSummary.Heading`, `List` og `Link` inne i den:
+- `ErrorSummary.Heading` rendrer en `<legend>`, og blir det tilgjengelige navnet til `ErrorSummary`.
 - `List.Unordered` inneholder listen med feil, med én `List.Item` per feil.
 - Hver feil har en `Link` med `href` til den unike identifikatoren for et skjemafelt, slik at brukeren kan navigere til riktig sted i skjemaet.
 
 ```tsx
-import { ErrorSummary, Heading, Link, List } from '@digdir/designsystemet-react';
+import { ErrorSummary, Link, List } from '@digdir/designsystemet-react';
 
 <ErrorSummary>
-  <Heading>Heading</Heading>
+  <ErrorSummary.Heading>Heading</ErrorSummary.Heading>
   <List.Unordered>
     <List.Item>
       <Link href='#some-field-id'>Item</Link>
@@ -47,6 +48,6 @@ import { ErrorSummary, Heading, Link, List } from '@digdir/designsystemet-react'
 </ErrorSummary>
 ```
 
-Delkomponentene `ErrorSummary.Heading`, `ErrorSummary.List`, `ErrorSummary.Item` og `ErrorSummary.Link` er fortsatt tilgjengelige, og rendrer de samme komponentene.
+Delkomponentene `ErrorSummary.List`, `ErrorSummary.Item` og `ErrorSummary.Link` er fortsatt tilgjengelige, og rendrer henholdsvis `List.Unordered`, `List.Item` og `Link`.
 
 <ReactComponentDocs />

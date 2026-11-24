@@ -6,8 +6,7 @@ import { ErrorSummaryList } from './error-summary-list';
 
 type ErrorSummary = typeof ErrorSummaryParent & {
   /**
-   * ErrorSummary heading component, used to display a heading for the error summary.
-   * Renders a `Heading`, which you can also use directly.
+   * ErrorSummary heading component, renders a legend for the error summary.
    *
    * @example
    * <ErrorSummary>
@@ -63,7 +62,7 @@ type ErrorSummary = typeof ErrorSummaryParent & {
  *
  * @example
  * <ErrorSummary>
- *   <Heading>Heading</Heading>
+ *   <ErrorSummary.Heading>Heading</ErrorSummary.Heading>
  *   <List.Unordered>
  *     <List.Item>
  *       <Link href='#'>Error 1</Link>

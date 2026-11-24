@@ -1,11 +1,17 @@
-import { forwardRef } from 'react';
-import { Heading, type HeadingProps } from '../heading/heading';
+import { forwardRef, type HTMLAttributes } from 'react';
+import type { DefaultProps } from '../../types';
 
-export type ErrorSummaryHeadingProps = HeadingProps;
+export type ErrorSummaryHeadingProps = HTMLAttributes<HTMLLegendElement> &
+  DefaultProps & {
+    /**
+     * @deprecated This is not supported anymore, as the heading is rendered as a `legend`
+     */
+    level?: 1 | 2 | 3 | 4 | 5 | 6;
+  };
 
 /**
  * ErrorSummary heading component, used to display a heading for the error summary.
- * Renders a `Heading`, which you can also use directly.
+ * Renders a `<legend>`
  *
  * @example
  * <ErrorSummary>
@@ -13,8 +19,17 @@ export type ErrorSummaryHeadingProps = HeadingProps;
  * </ErrorSummary>
  */
 export const ErrorSummaryHeading = forwardRef<
-  HTMLHeadingElement,
+  HTMLLegendElement,
   ErrorSummaryHeadingProps
->(function ErrorSummaryHeading(rest: ErrorSummaryHeadingProps, ref) {
-  return <Heading ref={ref} {...rest} />;
+>(function ErrorSummaryHeading(
+  { level: _level, ...rest }: ErrorSummaryHeadingProps,
+  ref,
+) {
+  return (
+    <legend
+      suppressHydrationWarning // Since @digdir/designsystemet-web adds attributes
+      ref={ref}
+      {...rest}
+    />
+  );
 });

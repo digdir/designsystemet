@@ -7,6 +7,7 @@ import {
   attrOrCSS,
   getComposedTarget,
   getRoot,
+  getText,
   isBrowser,
   on,
   onHotReload,
@@ -75,10 +76,10 @@ const setupText = (el: Element, canAnnounce = true) => {
   // Note: Only checks on initial mutation, as we do not want to keep checking if the source element is removed or changed,
   // since this would be a performance issue. If the source element is removed, the tooltip will be empty and not shown.
   if (text[0] === '#')
-    text = getRoot(el).getElementById(text.slice(1))?.textContent?.trim() || '';
+    text = getText(getRoot(el).getElementById(text.slice(1)));
 
   if (text !== (el.getAttribute(ARIA_LABEL) || el.getAttribute(ARIA_DESC))) {
-    const hasText = attr(el, 'role') !== 'img' && el.textContent?.trim(); // If role="img", ignore text
+    const hasText = attr(el, 'role') !== 'img' && getText(el); // If role="img", ignore text
     attr(el, ATTR_TOOLTIP, text); // Set data-tooltip attribute to speed up future mutations
     attr(el, ARIA_LABEL, hasText ? null : text); // Set aria-label if element does not have text
     attr(el, ARIA_DESC, hasText ? text : null); // Set aria-description if element has text
@@ -90,7 +91,7 @@ const setupText = (el: Element, canAnnounce = true) => {
     )
       warn('Missing tabindex="0" attribute on: ', el);
   }
-  if (el === OPEN && TIP?.textContent !== text) {
+  if (el === OPEN && getText(TIP) !== text) {
     if (TIP) TIP.textContent = text; // Update tooltip text if it is already open
     if (text && canAnnounce && document.activeElement === el) announce(text); // Only announce if focus is on the source
   }

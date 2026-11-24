@@ -4,6 +4,7 @@
   --dsc-field-counter-under: '%d tegn igjen';
   --dsc-field-description-color: inherit;
   --dsc-field-description-font-size--toggle: var(--ds-font-size-minus-1);
+  --dsc-field-label-font-weight: var(--ds-font-weight-semibold);
 
   @composes ds-print-preserve from './base.css';
 
@@ -37,6 +38,10 @@
   }
   & [data-field='counter']::after {
     content: attr(data-label); /* Render counter text through attribute to avoid hydration errors */
+  }
+
+  & label {
+    font-weight: var(--dsc-field-label-font-weight);
   }
 
   /* Using pure HTML elements in selector to make this work if consumer changes name of .ds-input */

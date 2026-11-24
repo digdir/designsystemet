@@ -1,5 +1,6 @@
 .ds-fieldset {
   --dsc-fieldset-gap: var(--ds-size-4);
+  --dsc-fieldset-legend-font-weight: var(--ds-font-weight-semibold);
   --dsc-fieldset-description-color: inherit;
 
   border: 0;
@@ -8,6 +9,7 @@
   padding: 0;
 
   & > legend {
+    font-weight: var(--dsc-fieldset-legend-font-weight);
     padding: 0; /* Reset browser default padding */
   }
 

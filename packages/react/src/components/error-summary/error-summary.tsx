@@ -1,4 +1,3 @@
-import type { DSErrorSummaryElement } from '@digdir/designsystemet-web';
 import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import type { HTMLAttributes, ReactNode } from 'react';
@@ -7,10 +6,10 @@ import type { DefaultProps } from '../../types';
 
 export type ErrorSummaryProps = {
   /**
-   * @deprecated This is not supported anymore, as the element needs to be `ds-error-summary`
+   * @deprecated This is not supported anymore, as the element needs to be `fieldset`
    */
   asChild?: ReactNode;
-} & HTMLAttributes<DSErrorSummaryElement> &
+} & HTMLAttributes<HTMLFieldSetElement> &
   DefaultProps;
 
 /**
@@ -18,7 +17,7 @@ export type ErrorSummaryProps = {
  *
  * @example
  * <ErrorSummary>
- *   <Heading>Heading</Heading>
+ *   <ErrorSummary.Heading>Heading</ErrorSummary.Heading>
  *   <List.Unordered>
  *     <List.Item>
  *       <Link href='#'>Error 1</Link>
@@ -29,20 +28,17 @@ export type ErrorSummaryProps = {
  *   </List.Unordered>
  * </ErrorSummary>
  */
-export const ErrorSummary = forwardRef<
-  DSErrorSummaryElement,
-  ErrorSummaryProps
->(function ErrorSummary({ asChild, className, ...rest }, ref) {
-  const Component = asChild ? Slot : 'ds-error-summary';
+export const ErrorSummary = forwardRef<HTMLFieldSetElement, ErrorSummaryProps>(
+  function ErrorSummary({ asChild, className, ...rest }, ref) {
+    const Component = asChild ? Slot : 'fieldset';
 
-  return (
-    <Component
-      {...(asChild
-        ? { className: cl('ds-error-summary', className) }
-        : { class: cl('ds-error-summary', className) })}
-      ref={ref}
-      suppressHydrationWarning
-      {...rest}
-    />
-  );
-});
+    return (
+      <Component
+        className={cl('ds-error-summary', className)}
+        ref={ref}
+        suppressHydrationWarning
+        {...rest}
+      />
+    );
+  },
+);
