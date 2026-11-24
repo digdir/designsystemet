@@ -21,7 +21,7 @@ export type ButtonProps = MergeRight<
     variant?: 'primary' | 'secondary' | 'tertiary';
     /**
      * Toggle icon only styling, pass icon as children
-     * When combined with loading, the loading-icon will be shown instead of the icon.
+     * When combined with `aria-busy`, the loading-icon replaces the icon and the children are visually hidden.
      * @default false
      */
     icon?: boolean;

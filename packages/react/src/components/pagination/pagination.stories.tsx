@@ -54,10 +54,8 @@ export const WithAnchor = meta.story({
       <Pagination aria-label='Sidenavigering'>
         <Pagination.List>
           <Pagination.Item>
-            <Pagination.Button asChild>
-              <a inert={prev.inert} href={`#side-${prev.value}`}>
-                Forrige
-              </a>
+            <Pagination.Button asChild inert={prev.inert}>
+              <a href={`#side-${prev.value}`}>Forrige</a>
             </Pagination.Button>
           </Pagination.Item>
           {pages.map(({ value, ...props }, index) => (
@@ -68,10 +66,8 @@ export const WithAnchor = meta.story({
             </Pagination.Item>
           ))}
           <Pagination.Item>
-            <Pagination.Button asChild>
-              <a inert={next.inert} href={`#side-${next.value}`}>
-                Neste
-              </a>
+            <Pagination.Button asChild inert={next.inert}>
+              <a href={`#side-${next.value}`}>Neste</a>
             </Pagination.Button>
           </Pagination.Item>
         </Pagination.List>

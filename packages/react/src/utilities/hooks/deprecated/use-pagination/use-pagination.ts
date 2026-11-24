@@ -1,6 +1,6 @@
 import { pagination } from '@digdir/designsystemet-web';
 import type { MouseEvent } from 'react';
-import { useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
 
 export type UsePaginationProps = {
   /**
@@ -65,15 +65,18 @@ export const usePagination = ({
   onChange,
   totalPages: total = 1,
   showPages: show = 7,
-}: UsePaginationProps) =>
-  useMemo(() => {
+}: UsePaginationProps) => {
+  const handleClick = useCallback(
+    (page: number, inert?: boolean) => (event: MouseEvent<HTMLElement>) => {
+      if (inert) return event.preventDefault(); // Prevent out of bounds navigation
+      onChange?.(event, page);
+      if (!event.defaultPrevented) setCurrentPage?.(page); // Allow stopping change by calling event.preventDefault() in onChange
+    },
+    [onChange, setCurrentPage],
+  );
+
+  return useMemo(() => {
     const { next, prev, pages } = pagination({ current, total, show });
-    const handleClick =
-      (page: number, inert?: boolean) => (event: MouseEvent<HTMLElement>) => {
-        if (inert) return event.preventDefault(); // Prevent out of bounds navigation
-        onChange?.(event, page);
-        if (!event.defaultPrevented) setCurrentPage?.(page); // Allow stopping change by calling event.preventDefault() in onChange
-      };
 
     return {
       /** Number of steps */
@@ -111,4 +114,5 @@ export const usePagination = ({
       /** Indication if next page action should be shown or not */
       hasNext: !next.inert,
     };
-  }, [current, total, show]);
+  }, [current, total, show, handleClick]);
+};
