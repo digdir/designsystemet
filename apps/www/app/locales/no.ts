@@ -72,7 +72,7 @@ export default {
     tag: 'Bloggen',
     title: 'Bloggen',
     description:
-      'Her finner du historier, erfaringer og oppdateringer fra Designsystemet. Du kan abonnere på bloggen gjennom <0>RSS</0> eller <1>Atom</1>',
+      'Her finner du oppdateringer fra Designsystemet og erfaringsdeling fra andre. Du kan abonnere på bloggen gjennom <0>RSS</0> eller <1>Atom</1>',
     filter: {
       legend: 'Filtrer blogginnlegg etter kategori',
     },

@@ -73,7 +73,7 @@ export default {
     tag: 'Blog',
     title: 'Blog',
     description:
-      'Here you will find stories, experiences, and updates from Designsystemet. You can subscribe to this blog through <0>RSS</0> or <1>Atom</1>',
+      'Here you will find updates from Designsystemet and experiences shared by others. You can subscribe to this blog through <0>RSS</0> or <1>Atom</1>',
     filter: {
       legend: 'Filter blog posts by category',
     },
