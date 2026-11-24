@@ -38,6 +38,10 @@ export type PaintTarget = VariableRef | 'remove' | null;
 
 export type RebindRules = {
   paint: (context: PaintContext) => PaintTarget;
+  /** The variable to bind a solid paint without one to, e.g. a hard-coded hex, or null to leave it. */
+  unboundPaint?: (
+    context: LayerContext & { property: PaintProperty; hex: string },
+  ) => VariableRef | null;
   /** Whether to clear a layer's explicit mode for a collection, e.g. a mode that made it neutral. */
   clearMode?: (
     context: LayerContext & { collection: string; mode: string },
@@ -83,6 +87,27 @@ export async function rebindComponents(
     for (const paint of paints) {
       const id =
         paint.type === 'SOLID' ? paint.boundVariables?.color?.id : undefined;
+      if (paint.type === 'SOLID' && !id && rules.unboundPaint) {
+        const hex = toHex(paint.color);
+        const target = rules.unboundPaint({ ...layer, property, hex });
+        const replacement = target && variables.find(target);
+        if (target && !replacement) {
+          warn(
+            `${refName(target)} is missing, so layers using ${hex} were left as they are.`,
+          );
+        }
+        if (target && replacement) {
+          changes.push({ property, from: hex, to: describeVariable(target) });
+          result.push(
+            figma.variables.setBoundVariableForPaint(
+              paint,
+              'color',
+              replacement,
+            ),
+          );
+          continue;
+        }
+      }
       const variable = id ? await variables.resolve(id) : null;
       const target = variable
         ? rules.paint({ ...layer, property, variable })
@@ -429,9 +454,20 @@ function createWarn(log: MigrationLog): (warning: string) => void {
   };
 }
 
+/** A paint's color as hex, e.g. `#262626`. */
+function toHex({ r, g, b }: RGB): string {
+  return `#${[r, g, b]
+    .map((channel) =>
+      Math.round(channel * 255)
+        .toString(16)
+        .padStart(2, '0'),
+    )
+    .join('')}`;
+}
+
 /**
- * The IDs of the variables a layer's fills or strokes are bound to, or '' if none. Two layers with the same
- * signature use the same variables.
+ * The IDs of the variables a layer's fills or strokes are bound to, and the hex of solid paints without one, or
+ * '' if it has neither. Two layers with the same signature have the same paints, as far as a migration can tell.
  */
 function paintSignature(node: SceneNode, property: 'fill' | 'stroke'): string {
   let paints: readonly Paint[] = [];
@@ -447,8 +483,11 @@ function paintSignature(node: SceneNode, property: 'fill' | 'stroke'): string {
               .flatMap((segment) => segment.fills)
           : [];
   }
+  // Variable IDs, or the hex of a solid paint without one, which a rule can bind.
   const ids = paints.map((paint) =>
-    paint.type === 'SOLID' ? (paint.boundVariables?.color?.id ?? '') : '',
+    paint.type === 'SOLID'
+      ? (paint.boundVariables?.color?.id ?? toHex(paint.color))
+      : '',
   );
   return ids.some(Boolean) ? ids.join(',') : '';
 }

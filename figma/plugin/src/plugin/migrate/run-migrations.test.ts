@@ -15,7 +15,7 @@ describe('MIGRATIONS', () => {
 });
 
 describe('summarize', () => {
-  it('groups the changes by component and totals them', () => {
+  it('groups the changes by component, sorts the components by name and totals them', () => {
     const log: MigrationLog = { changes: new Map(), warnings: [] };
     const add = (page: string, what: string, count: number) =>
       log.changes.set(`${page}|${what}`, {
@@ -25,8 +25,8 @@ describe('summarize', () => {
         to: 'b',
         count,
       });
-    add('Dialog', 'Fill', 2);
     add('Divider', 'Border', 1);
+    add('Dialog', 'Fill', 2);
     add('Dialog', 'Border', 3);
 
     expect(summarize(log)).toEqual({

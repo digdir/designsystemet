@@ -114,7 +114,7 @@ async function runMigration(
   return summary();
 }
 
-/** Groups the changes by component, i.e. by page in the UI kit, keeping the order they were found in. */
+/** Groups the changes by component, i.e. by page in the UI kit, sorted by name. Changes keep the order they were found in. */
 export function summarize(
   log: MigrationLog,
 ): Pick<MigrationSummary, 'components' | 'total'> {
@@ -129,5 +129,6 @@ export function summarize(
     entry.changes.push(change);
     total += change.count;
   }
+  components.sort((a, b) => a.name.localeCompare(b.name));
   return { components, total };
 }

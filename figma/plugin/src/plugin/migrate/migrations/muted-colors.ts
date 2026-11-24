@@ -5,6 +5,7 @@
 
 import {
   type ComponentTarget,
+  type LayerContext,
   type PaintContext,
   type PaintTarget,
   rebindComponents,
@@ -12,6 +13,34 @@ import {
 import type { Migration, VariableRef } from '../types';
 
 const color = (name: string): VariableRef => ({ collection: 'Color', name });
+
+/**
+ * Components without neutral in their own CSS. Their text comes from base.css, which set `body` to neutral
+ * `text-default` and `background-default`, and now uses the default color, so the UI kit bound them to neutral.
+ * They move to the same step of the component's own color, without the muted steps, e.g. Card keeps
+ * `border-subtle`. Subtle text becomes `text-default`, as base.css gives it.
+ */
+const PLAIN_COLOR_COMPONENTS: ComponentTarget[] = [
+  ...['_Container', '_Header', '_Content', '_Footer', '_Card_title'].map(
+    (name) => ({ page: 'Card', name }),
+  ),
+  ...[
+    '_Details - Show/hide',
+    '_Accordion.Content',
+    '.Details.Header',
+    'Details',
+  ].map((name) => ({ page: 'Details', name })),
+  ...['Paragraph', 'Heading'].map((name) => ({ page: 'Typography', name })),
+  ...['.listElement', '.nested list element', '.dot container', 'List'].map(
+    (name) => ({ page: 'List', name }),
+  ),
+  { page: 'Pagination', name: 'Pagination' },
+  { page: 'Avatar', name: '.table-avatar' },
+  { page: 'Avatar stack', name: 'Avatar stack' },
+  { page: 'Chip', name: 'Chip' },
+  { page: 'Popover', name: 'Popover.Trigger' },
+];
+const PLAIN_COLOR_PAGES = new Set(PLAIN_COLOR_COMPONENTS.map((c) => c.page));
 
 /** The components in the UI kit whose colors changed, by page. */
 export const MUTED_COLOR_COMPONENTS: ComponentTarget[] = [
@@ -56,6 +85,8 @@ export const MUTED_COLOR_COMPONENTS: ComponentTarget[] = [
     page: 'Switch',
     name,
   })),
+  ...PLAIN_COLOR_COMPONENTS,
+  { page: 'Base components', name: '.Slot component' },
 ];
 
 /** The step of a neutral variable in the Semantic collection, e.g. `border-subtle`, or null for other variables. */
@@ -101,6 +132,22 @@ export function mutedColorRule(context: PaintContext): PaintTarget {
   const step = neutralStep(variable);
   if (!step) return null;
 
+  // The placeholder in Card, Details, Dialog and others. Matched by path too, so its instances get the same
+  // rule as the main component and keep following it.
+  if (
+    component === '.Slot component' ||
+    /\/\.Slot component(\/|$)/.test(path)
+  ) {
+    if (step.startsWith('border-')) return color('border-muted');
+    if (step === 'text-subtle') return color('text-muted');
+    return color(step);
+  }
+
+  if (PLAIN_COLOR_PAGES.has(context.page)) {
+    // Text in these components comes from base.css, which gives it `text-default`.
+    return color(step === 'text-subtle' ? 'text-default' : step);
+  }
+
   if (component === 'Error summary' && step === 'text-default') {
     return { collection: 'Semantic', name: 'color/danger/text-default' };
   }
@@ -139,6 +186,19 @@ export function mutedColorRule(context: PaintContext): PaintTarget {
   }
 }
 
+/**
+ * Dialog's close button icon has a hard-coded `#262626` inside its shape, next to neutral `text-default` on the
+ * shape itself. It gets `text-default` too, so the button follows the dialog's color.
+ */
+export function closeButtonIconRule({
+  page,
+  path,
+}: LayerContext): VariableRef | null {
+  return page === 'Dialog' && /\/close button\/Icon button\/Icon\//.test(path)
+    ? color('text-default')
+    : null;
+}
+
 export const mutedColors: Migration = {
   id: 'muted-colors',
   title: 'Muted colors',
@@ -154,16 +214,15 @@ export const mutedColors: Migration = {
       MUTED_COLOR_COMPONENTS,
       {
         paint: mutedColorRule,
+        unboundPaint: closeButtonIconRule,
         // The close button in Dialog's header was neutral.
         clearMode: ({ component, path, collection, mode }) =>
           component === '_Header' &&
           /\/Icon button$/.test(path) &&
           collection === 'Color' &&
           mode === 'neutral',
-        // Placeholder content, and Spinner, which is its own component.
-        skip: (node) =>
-          node.name === '.Slot component' ||
-          (node.type === 'INSTANCE' && node.name === 'Spinner'),
+        // Spinner, which is its own component.
+        skip: (node) => node.type === 'INSTANCE' && node.name === 'Spinner',
       },
       context,
     ),

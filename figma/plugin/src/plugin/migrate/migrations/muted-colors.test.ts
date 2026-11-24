@@ -1,6 +1,10 @@
 import { describe, expect, it } from 'vitest';
 import type { PaintContext } from '../rebind';
-import { MUTED_COLOR_COMPONENTS, mutedColorRule } from './muted-colors';
+import {
+  closeButtonIconRule,
+  MUTED_COLOR_COMPONENTS,
+  mutedColorRule,
+} from './muted-colors';
 
 const neutral = (step: string) => ({
   collection: 'Semantic',
@@ -213,6 +217,66 @@ describe('mutedColorRule', () => {
     ).toEqual({ collection: 'Semantic', name: 'color/danger/text-default' });
   });
 
+  it('uses the same step, not the muted ones, in components that only got neutral from base.css', () => {
+    for (const [page, component, step] of [
+      ['Card', '_Header', 'border-subtle'],
+      ['Card', '_Content', 'border-default'],
+      ['Details', '.Details.Header', 'surface-default'],
+      ['Typography', 'Paragraph', 'text-default'],
+    ]) {
+      expect(
+        mutedColorRule(paint({ page, component, variable: neutral(step) })),
+      ).toEqual(color(step));
+    }
+    // Subtle text gets the text color, as base.css gives it.
+    for (const [page, component] of [
+      ['Card', '_Header'],
+      ['Avatar stack', 'Avatar stack'],
+    ]) {
+      expect(
+        mutedColorRule(
+          paint({ page, component, variable: neutral('text-subtle') }),
+        ),
+      ).toEqual(color('text-default'));
+    }
+    // The same base component name on the Dialog page still gets the muted steps.
+    expect(
+      mutedColorRule(
+        paint({
+          page: 'Dialog',
+          component: '_Header',
+          variable: neutral('border-subtle'),
+        }),
+      ),
+    ).toEqual(color('border-muted'));
+  });
+
+  it('uses the muted steps for the slot placeholder, also in instances of it', () => {
+    const slot = [
+      { page: 'Base components', component: '.Slot component', path: '' },
+      {
+        page: 'Card',
+        component: '_Content',
+        path: '/.Slot component/container/Erstatt med eget innhold',
+      },
+    ];
+    for (const where of slot) {
+      expect(
+        mutedColorRule(
+          paint({ ...where, variable: neutral('border-default') }),
+        ),
+      ).toEqual(color('border-muted'));
+      expect(
+        mutedColorRule(paint({ ...where, variable: neutral('text-subtle') })),
+      ).toEqual(color('text-muted'));
+      expect(
+        mutedColorRule(
+          paint({ ...where, variable: neutral('surface-default') }),
+        ),
+      ).toEqual(color('surface-default'));
+    }
+  });
+
   it('leaves variables that aren’t neutral alone', () => {
     expect(
       mutedColorRule(paint({ variable: color('surface-default') })),
@@ -334,6 +398,18 @@ describe('mutedColorRule variant names', () => {
     expect(
       mutedColorRule(paint({ ...inputText, variant: 'state=already-open' })),
     ).toEqual(color('text-default'));
+  });
+});
+
+describe('closeButtonIconRule', () => {
+  it('binds the hard-coded color in Dialog’s close button icon to text-default', () => {
+    const at = (page: string, path: string) =>
+      closeButtonIconRule({ page, component: '_Header', variant: '', path });
+    expect(at('Dialog', '/close button/Icon button/Icon/shape/shape')).toEqual(
+      color('text-default'),
+    );
+    expect(at('Dialog', '/content/Heading')).toBeNull();
+    expect(at('Card', '/close button/Icon button/Icon/shape/shape')).toBeNull();
   });
 });
 

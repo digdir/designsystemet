@@ -186,6 +186,39 @@ describe('rebindComponents', () => {
     expect(boundId(overridden.fills as never)).toEqual(['text-default']);
   });
 
+  it('binds a solid paint without a variable when a rule asks, and leaves the others', async () => {
+    const { border } = setup();
+    const raw = (value: number) => ({
+      type: 'SOLID',
+      color: { r: value / 255, g: value / 255, b: value / 255 },
+    });
+    border.fills = [raw(38), raw(255)];
+    const log = newLog();
+
+    await rebindComponents(
+      [{ page: 'Dialog', name: 'Dialog' }],
+      {
+        ...rules,
+        unboundPaint: ({ path, hex }) =>
+          path === '/Border' && hex === '#262626'
+            ? { collection: 'Color', name: 'text-default' }
+            : null,
+      },
+      { dryRun: false, log, pause: noPause },
+    );
+
+    const [first, second] = border.fills as Array<ReturnType<typeof bound>>;
+    expect(first.boundVariables.color.id).toBe('text-default');
+    expect(second.boundVariables).toBeUndefined();
+    expect([...log.changes.values()]).toContainEqual({
+      page: 'Dialog',
+      what: 'Fill',
+      from: '#262626',
+      to: 'text-default',
+      count: 1,
+    });
+  });
+
   it('removes paints when the rules say so', async () => {
     const { border } = setup();
 

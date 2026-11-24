@@ -126,7 +126,7 @@ export type MigrationChangeSummary = {
 export type MigrationSummary = {
   id: string;
   title: string;
-  /** The changes, by component, in the order they were found. Each page in the UI kit is one component. */
+  /** The changes, by component, sorted by name. Each page in the UI kit is one component. */
   components: Array<{ name: string; changes: MigrationChangeSummary[] }>;
   /** The number of changes made, or that would be. A layer whose fill and border both change counts twice. */
   total: number;
