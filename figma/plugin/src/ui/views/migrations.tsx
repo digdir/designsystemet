@@ -80,16 +80,24 @@ export function MigrationsView({
   return (
     <div className='migrations-view'>
       <Paragraph>
-        When a release changes which variables the components in the UI kit use,
-        a migration updates the components in your copy of it. Import the new
-        config first, so the variables are there. Choose a migration to see what
-        it changes before anything is changed.
+        Migrations update your copy of the UI kit to a new release. Import the
+        new config first.
+      </Paragraph>
+      <Paragraph>
+        Only the UI kit's own components are changed, including layers you added
+        inside them. Your own components and layers are left as they are.
+        Instances of the UI kit's components follow the change, unless you
+        changed their colors yourself.
       </Paragraph>
       {error && <Alert data-color='danger'>{error}</Alert>}
+      <Heading level={2} data-size='xs'>
+        Choose a migration
+      </Heading>
+      <Paragraph>You can see what changes before you apply it.</Paragraph>
       {available.map((migration) => (
         <Card key={migration.id} data-color='neutral' asChild>
           <button type='button' onClick={() => onChoose(migration.id)}>
-            <Heading level={2} data-size='xs'>
+            <Heading level={3} data-size='xs'>
               {migration.title}
             </Heading>
             <Paragraph>{migration.description}</Paragraph>

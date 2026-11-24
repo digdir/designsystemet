@@ -27,11 +27,20 @@ When a release changes which variables the UI kit's components use, users with t
 
 A migration finds the UI kit's components by page and name, and rebinds the color variables on their layers by rules (see [rebind.ts](./src/plugin/migrate/rebind.ts)). It changes main components first. Layers in instances of those components follow them, so only their overrides are changed there. Layers in instances of other components, e.g. text from Typography in Dialog, are changed in place, which overrides them in that component.
 
+What a migration leaves alone, which the plugin and the changeset tell users:
+
+- Components and layers the user made outside the UI kit's components, even if they use the same variables.
+- Colors the user overrode on instances of the UI kit's components, in their own designs.
+- UI kit components that are renamed or moved to another page. They aren't found, and the summary says so.
+
+Layers the user added inside a UI kit component are changed, as the rules apply to every layer in it.
+
 To add a migration:
 
 1. Write it in [src/plugin/migrate/migrations](./src/plugin/migrate/migrations), like [muted-colors.ts](./src/plugin/migrate/migrations/muted-colors.ts): the components to change, the rules, and the variables a config must have added first (`requires`). Give it an `id` that never changes.
 2. Add it at the end of `MIGRATIONS` in [run-migrations.ts](./src/plugin/migrate/run-migrations.ts).
 3. Test the rules, and run it on a copy of the UI kit from before the change. Compare the result with the updated UI kit.
+4. Run it on a file with the user's own work too: a component of their own, a layer they added inside a UI kit component, and an instance with a color they changed. Check that only the second one changes.
 
 | Migration | What it does |
 | --- | --- |

@@ -285,6 +285,11 @@ textarea {
   overflow-y: auto;
 }
 
+/* Sets the list of migrations apart from the introduction above it */
+.migrations-view > h2 {
+  margin-block-start: var(--ds-size-4);
+}
+
 .migration-summary {
   display: flex;
   flex-direction: column;
