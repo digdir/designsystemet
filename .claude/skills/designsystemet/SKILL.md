@@ -23,7 +23,7 @@ description: Repo-wide conventions for designsystemet.no — the project name in
 - Never list an ignored package (`@web/themebuilder`, `@web/storybook`, `@internal/*`); it breaks the release.
 - Don't add a link to the pull request; the changelog generator adds it.
 - Write the summary as one line, without line breaks in it. The link to the pull request is added to the end of the first line, so a sentence that continues on the next line ends up after the link. Details such as a table or a longer explanation go below it, after a blank line.
-- The text ends up in an MDX page on designsystemet.no. Write code such as `<Button>` or `{value}` in backticks; outside them, `<`, `{` and `}` are read as MDX and can break the build.
+- The text ends up in an MDX page on designsystemet.no. Write code such as `<Button>` or `{value}` in backticks. Outside them, a tag like `<Button>` fails when the page is compiled, and `{value}` is run as JavaScript.
 - When the same text fits several packages, list them all in one changeset. Changes with identical text are shown once in the changelog, with their packages. A second changeset in other words is shown as a separate change.
 - A new change goes in a changeset, not straight into the root `CHANGELOG.md`. `scripts/group-changelogs.js` adds each new version to it from the package changelogs at release.
 - The root `CHANGELOG.md` can be edited by hand, and versions already in it are not rebuilt. Use that to reword a change, merge duplicates, or write notes about a release, usually in the release pull request; see `RELEASES.md`.
