@@ -1,15 +1,192 @@
 ---
 title: Språkvalg
-description: Det skal være forutsigbart for brukerne å finne og bytte språk.
-category: Kommende mønstre
+description: Slik hjelper du brukerne å finne og bytte språk.
+category: Grunnleggende mønstre
 partners: Digdir, Nav, Skatteetaten ++
-search_terms: språkvelger
-date: 2026-08-10
+search_terms: språkvelger, målform, bokmål, nynorsk, samisk, oversettelse, flagg, hreflang, lang
+date: 2026-11-24
 order: 100
 ---
 
-I dag løses språkvalg ulikt på offentlige nettsteder. Både plassering og bruk av ikoner varierer. Språkvalg kan for eksempel vises med flagg, en globus eller være vanskelig å finne på forsiden. Det gjør det mindre forutsigbart for brukerne å finne og bytte språk.
+import { LanguageIcon } from '@navikt/aksel-icons';
 
-Høsten 2026 jobber en tverretatlig arbeidsgruppe med å utforske et felles mønster for språkvalg. Arbeidsgruppen ser blant annet på plassering og bruk av tekst og ikoner.
+## Innledning
+Gjør det enkelt for brukerne å finne ut hvilke språk de kan bytte mellom. Hvordan språkvalget bør fungere, avhenger blant annet av om hele eller bare deler av nettstedet er oversatt.
 
-Har du erfaringer, brukertesting eller andre relevante funn om språkvalg? Del dem gjerne i [GitHub-diskusjonen (github.com)](https://github.com/digdir/designsystemet/discussions/1682). Innspillene blir en del av kunnskapsgrunnlaget for arbeidet.
+Grunnleggende råd:
+
+- Gjør språkvalget lett å finne, også for brukere som ikke forstår språket på siden.
+- Skriv navnet på hvert språk på det språket det gjelder, slik at brukerne kan kjenne igjen sitt eget språk.
+- Bruk informasjon om brukerens språkpreferanser til å foreslå språk, men la brukerne velge selv.
+- Vis tilgjengelige språk som lenker, ikke som knapper.
+- Vis tydelig med tekst hvor brukerne kan endre språk.
+- Bruk språkikonet sammen med teksten.
+- Vis tydelig hvilket innhold språkvalget gjelder for.
+
+## Design og opplevelse
+
+### Gjør språkvalget lett å finne
+Plasser språkvalget i toppområdet (`<header>`) når det gjelder hele nettstedet. Ved plassmangel på små skjermer kan språkvalget legges i hovedmenyen. Vurder imidlertid hvor viktig det er for målgruppen å finne språkvalget raskt. Dersom brukerne er avhengige av å bytte språk for å forstå innholdet eller bruke tjenesten, bør språkvalget være synlig også på små skjermer.
+
+<Story story="LanguageChoiceInHeader" layout="page" />
+
+Velg en løsning som passer antall språk. Hvis det er mange språk å velge mellom, kan en dialog eller en egen side passe bedre enn en nedtrekksliste.
+
+### Når ikke alt innhold er oversatt
+Du kan tilby et språk før hele nettstedet er ferdig oversatt, hvis språkvalget allerede gir brukerne reell verdi og mer innhold skal oversettes etter hvert. Merk gjerne i språkvelgeren om et språk ikke har full dekning ennå.
+
+<Image
+  src="/img/patterns/language-choice/placeholder.svg"
+  alt="Plassholder: Eksempel der det vises i språkvelgeren at ikke alt er oversatt"
+  boxShadow={false}
+/>
+
+Ikke skjul innhold som mangler oversettelse. Vis innholdet på nettstedets standardspråk, men gjør det tydelig øverst på siden at den ikke er oversatt. Da forstår brukerne hvorfor innholdet plutselig vises på et annet språk.
+
+<Image
+  src="/img/patterns/language-choice/placeholder.svg"
+  alt="Plassholder: Eksempel på side med meldingen «This content is not yet translated and therefore shown in bokmål (Norwegian).»"
+  boxShadow={false}
+/>
+
+### Når bare en avgrenset del av nettstedet finnes på andre språk
+Hvis bare en enkeltside eller en tjeneste finnes på andre språk, må det være tydelig hvilket innhold språkvalget gjelder for.
+
+### Når noen språk er særlig viktige
+Når innhold er særlig viktig for en bestemt språkgruppe, bør du gjøre språkvalget ekstra synlig der det er relevant. For eksempel kan informasjon til ukrainske flyktninger ha direkte lenker til ukrainsk øverst på siden, slik at brukerne raskt finner informasjon på et språk de forstår.
+
+<Image
+  src="/img/patterns/language-choice/placeholder.svg"
+  alt="Plassholder: Eksempel på direkte lenke til ukrainsk øverst på en side"
+  boxShadow={false}
+/>
+
+### Ikoner og symbolikk
+Vi anbefaler å bruke et ikon sammen med teksten. Det gjør innholdet mer oversiktlig, og brukere som skumleser siden, kan raskt kjenne igjen språkvalget både på teksten og på symbolet.
+
+<Card data-color='brand3' variant="tinted">
+  **Bruk ikoner sammen med tekst**
+
+  Vær forsiktig med å bruke ikoner alene. Det finnes få ikoner som alle forstår likt, og mange kan tolkes forskjellig uten nok kontekst. Kombiner derfor ikoner med tekst der det er mulig. Når et ikon må brukes uten synlig tekst, må det ha et beskrivende, tilgjengelig navn. Navnet må være tilgjengelig for brukere av både skjermleser, tastatur og mus.
+</Card>
+
+#### Språk- og oversettelsesikonet
+<LanguageIcon aria-hidden fontSize="3rem" />
+
+Ikonet 文A er mye brukt for språk og oversettelse, blant annet i etablerte internasjonale ikonbiblioteker og på flere store internasjonale nettsteder. Hvis du bruker ikonet, bør det helst stå sammen med teksten «Language» eller «Språk/Language».
+
+Ikonet kombinerer det kinesiske tegnet 文 (Unicode U+6587), som blant annet forbindes med skrift og tekst, med bokstaven A (Unicode U+0041) fra det latinske alfabetet. Sammen brukes tegnene ofte som symbol for språk eller oversettelse.
+
+Ikonet finnes i [Aksel Icons](/no/fundamentals/theme/icons), som Designsystemet bruker, med navnet «Language».
+
+#### Ikke bruk flagg som symbol for språk
+Flagg i språkvelgeren kan skape forvirring. Flagg representerer land eller regioner, ikke språk. Ett språk kan brukes i flere land, og ett land kan ha flere språk.
+
+Flagg kan være relevante når brukerne skal velge land eller region, for eksempel for å få en landtilpasset versjon av en tjeneste. Vis i så fall flagget sammen med navnet på landet eller regionen, og gjør det tydelig hva valget gjelder.
+
+<Image
+  src="/img/patterns/language-choice/placeholder.svg"
+  alt="Plassholder: Do/don't – eksempel på når flagg kan og ikke kan brukes"
+  boxShadow={false}
+/>
+
+### La brukerne velge
+Det finnes flere kilder du kan bruke for å foreslå en språkversjon for brukeren, og noen er bedre egnet enn andre. Det beste grunnlaget for å bestemme hvilket språk brukeren får, er likevel brukerens eget valg.
+
+#### Bruk nettleserens språkinnstilling som et hint, ikke som en fasit
+Du kan bruke språkpreferansen fra nettleseren til å foreslå en tilgjengelig språkversjon. Innstillingen stemmer likevel ikke alltid med språket brukeren ønsker å bruke. Sørg derfor for at språkvelgeren er lett å finne og endre. Når brukerne selv har valgt et tilgjengelig språk, skal du respektere valget og ikke overstyre det.
+
+#### Ikke velg språk automatisk ut fra lokasjonsdata alene
+IP-adresse eller andre lokasjonsdata egner seg dårlig til å avgjøre hvilket språk brukerne foretrekker. Brukerne kan være på reise, bruke VPN, være på et nettverk med delt lokasjon på tvers av land eller befinne seg i et område der flere språk er i bruk.
+
+Lokasjonsdata kan være relevante når brukeren skal få en tjeneste eller innhold som er tilpasset land eller region, men de bør ikke alene avgjøre hvilket språk innholdet vises på. La brukerne enkelt overstyre et automatisk forslag.
+
+## Språk
+
+### Bruk en ledetekst som flere kan forstå
+Bruk engelsk ledetekst for språkvalget, også når siden er på norsk, slik at brukere som ikke forstår norsk, finner det. Et alternativ er å kombinere norsk og engelsk ledetekst. Da er det enklere for norskspråklige brukere å se hvor de kan bytte målform, og for ikke-norskspråklige brukere å se hvor de kan bytte språk.
+
+<div className="dodont-row" data-stacked>
+  <DoDont story="DoLabel">
+Bruk ledeteksten «Language» eller «Målform», avhengig av hvilke valg brukerne har.
+  </DoDont>
+  <DoDont story="DontLabel">
+Disse ledetekstene gjør språkvelgeren vanskeligere å finne eller forstå.
+  </DoDont>
+</div>
+
+### Skriv språknavn på språket de gjelder
+Skriv navnet på hvert språk, eventuelt med målformen, på det språket det gjelder, slik at de som snakker språket, kjenner det igjen.
+
+<div className="dodont-row" data-stacked>
+  <DoDont story="DoLanguageNames">
+Skriv språknavnet på språket det gjelder, gjerne sammen med målformen.
+  </DoDont>
+  <DoDont story="DontLanguageNames">
+Ikke oversett språknavnene, og ikke vis målform uten språknavn sammen med andre språk.
+  </DoDont>
+</div>
+
+Det kan også være nyttig for noen brukere at språket har et tilgjengelig navn på sidens aktive språk, slik at skjermlesere leser det opp, og brukere som holder musepekeren over, kan se hva språket heter.
+
+<Image
+  src="/img/patterns/language-choice/placeholder.svg"
+  alt="Plassholder: Eksempel med tooltip for italiensk (på norsk)"
+  boxShadow={false}
+/>
+
+## Kode
+
+### Angi riktig språk på siden
+Bruk `lang` på `<html>`-elementet for å angi hovedspråket på siden. For en side på norsk bokmål:
+
+```html
+<html lang="nb">
+```
+
+Hvis deler av siden er på et annet språk, angir du språket på det aktuelle elementet, for eksempel `<span lang="en">English text</span>`. Da kan hjelpemidler tolke og uttale innholdet riktig.
+
+Bruk gyldige språkkoder, og sørg for at også sidetittel, metadata, tilgjengelige navn og andre tekster som hjelpemidler bruker, er på riktig språk.
+
+### Bruk lenker for å bytte språk
+Bruk lenker for å navigere mellom språkversjoner av innholdet, også når språkvalgene vises i en nedtrekksliste, en dialog eller en annen type språkvelger. En knapp kan brukes til å åpne og lukke selve språkvelgeren, men språkvalgene skal være lenker når de fører til andre sider.
+
+Bruk `hreflang` på lenkene for å angi språket på siden de peker til. Bruk også `lang` når lenketeksten er på et annet språk enn hovedspråket på siden:
+
+```html
+<a href="/en/" lang="en" hreflang="en">English</a>
+```
+
+Når det samme innholdet finnes på flere språk, bør du i tillegg angi alternative språkversjoner med `rel="alternate"` og `hreflang` i dokumentets metadata, eller med andre metoder som søkemotorer støtter.
+
+### Gi språkversjonene egne URL-er
+Hver språkversjon av innholdet bør ha sin egen, stabile URL. Når brukerne bytter språk, bør lenken føre til den tilsvarende siden på det valgte språket, hvis den finnes.
+
+Unngå at et språkbytte sender brukerne tilbake til forsiden eller et annet sted på nettstedet uten at de forventer det.
+
+<Image
+  src="/img/patterns/language-choice/placeholder.svg"
+  alt="Plassholder: Kodeeksempel/story med full språkvelger med valg for bokmål, nynorsk, engelsk og nordsamisk"
+  boxShadow={false}
+/>
+
+## Kilder og relevant informasjon
+
+### Standarder og krav
+- [Andre språk hos Språkrådet](https://sprakradet.no/spraklova/andre-sprak/)
+- [Språklova § 13 om veksling mellom bokmål og nynorsk i allment tilgjengelege dokument hos Lovdata](https://lovdata.no/lov/2021-05-21-42/§13)
+- [WCAG 3.1.1 Språk på siden hos Tilsynet for universell utforming av IKT](https://www.uutilsynet.no/wcag-standarden/311-sprak-pa-siden-niva/110)
+- [WCAG 3.1.1 Language of Page hos W3C](https://www.w3.org/WAI/WCAG22/Understanding/language-of-page)
+- [WCAG 3.1.2 Språk på deler av innhold hos Tilsynet for universell utforming av IKT](https://www.uutilsynet.no/wcag-standarden/312-sprak-pa-deler-av-innhold-niva-aa/111)
+- [WCAG 3.1.2 Language of Parts hos W3C](https://www.w3.org/WAI/WCAG22/Understanding/language-of-parts)
+- EN 301 549 v4.1.1, 9.7 User preferences for web pages (2026). Den europeiske standarden for tilgjengelighet i IKT-produkter og -tjenester krever at løsninger respekterer brukerpreferanser og ikke hindrer bruk av dem.
+
+### Innsikt og kunnskapsgrunnlag
+- [Icon Usability hos Nielsen Norman Group (2014)](https://www.nngroup.com/articles/icon-usability/). Ikoner som alle kjenner igjen, er svært sjeldne. De fleste ikoner trenger derfor en tekst for at brukerne skal forstå dem.
+- How to Test Digital Icons hos Nielsen Norman Group (2024). Når du tester og vurderer et ikon, bør du blant annet se på gjenkjennelighet, tolkning, relevans og hvor lett det er å finne. Test ikonet både i og utenfor kontekst.
+
+<br/>
+
+<Card data-color='brand3' variant="tinted">
+  Mønsteret er utarbeidet i en tverretatlig arbeidsgruppe. Har du erfaringer, brukertesting eller andre relevante funn om språkvalg? Del dem gjerne i [GitHub-diskusjonen om språkvalg (github.com)](https://github.com/digdir/designsystemet/discussions/1682).
+</Card>

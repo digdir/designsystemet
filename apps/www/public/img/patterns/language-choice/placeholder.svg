@@ -1,0 +1,28 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="1600"
+  height="900"
+  viewBox="0 0 1600 900"
+>
+  <rect width="1600" height="900" fill="#e6e9ee" />
+  <rect
+    x="8"
+    y="8"
+    width="1584"
+    height="884"
+    fill="none"
+    stroke="#9aa3b0"
+    stroke-width="4"
+    stroke-dasharray="24 16"
+  />
+  <text
+    x="800"
+    y="470"
+    fill="#5b6573"
+    font-family="sans-serif"
+    font-size="64"
+    text-anchor="middle"
+  >
+    Bilde kommer
+  </text>
+</svg>

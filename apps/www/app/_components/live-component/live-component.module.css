@@ -21,6 +21,12 @@
     [data-layout='block'] & {
       display: block;
     }
+    /* Examples of a whole page, e.g. a header, need more of the available width */
+    [data-layout='page'] & {
+      display: block;
+      padding: var(--ds-size-4);
+      background-color: var(--ds-color-neutral-background-default);
+    }
     [data-layout='centered'] & {
       justify-content: center;
       align-items: center;
