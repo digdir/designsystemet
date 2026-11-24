@@ -98,7 +98,7 @@
 }
 
 .ds-textfield__description {
-  color: var(--ds-color-text-subtle);
+  color: var(--ds-color-text-muted);
   margin-top: calc(var(--ds-size-2) * -1);
 }
 
@@ -281,7 +281,7 @@
 }
 
 .ds-combobox__description {
-  color: var(--ds-color-text-subtle);
+  color: var(--ds-color-text-muted);
   margin-top: calc(var(--ds-size-2) * -1);
 }
 
@@ -472,6 +472,6 @@
   flex-direction: column;
   flex-wrap: wrap;
   gap: var(--ds-size-1);
-  color: var(--ds-color-text-subtle);
+  color: var(--ds-color-text-muted);
   font-weight: 400;
 }
