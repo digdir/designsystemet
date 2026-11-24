@@ -25,6 +25,7 @@
   box-sizing: border-box;
   min-width: 15em;
   padding: var(--dsc-dropdown-padding);
+  color: var(--ds-color-text-default);
 
   & > :is(h2, h3, h4, h5, h6) {
     align-items: center;
