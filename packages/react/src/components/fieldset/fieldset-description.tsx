@@ -17,6 +17,7 @@ export const FieldsetDescription = forwardRef<
 >(function FieldsetDescription(rest, ref) {
   return (
     <Paragraph
+      data-field='description'
       suppressHydrationWarning // Since @digdir/designsystemet-web adds attributes
       ref={ref}
       {...rest}

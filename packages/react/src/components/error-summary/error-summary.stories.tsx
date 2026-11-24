@@ -1,8 +1,7 @@
-import type { DSErrorSummaryElement } from '@digdir/designsystemet-web';
 import { useEffect, useRef, useState } from 'react';
 import { expect, userEvent, within } from 'storybook/test';
 import preview from '../../../../../apps/storybook/.storybook/preview';
-import { Button, Heading, Link, List, Textfield } from '../';
+import { Button, Link, List, Textfield } from '../';
 import { ErrorSummary } from './';
 
 const meta = preview.meta({
@@ -13,7 +12,9 @@ const meta = preview.meta({
 export const Preview = meta.story({
   render: (args) => (
     <ErrorSummary {...args}>
-      <Heading>For å gå videre må du rette opp følgende feil:</Heading>
+      <ErrorSummary.Heading>
+        For å gå videre må du rette opp følgende feil:
+      </ErrorSummary.Heading>
       <List.Unordered>
         <List.Item>
           <Link href='#'>Fødselsdato kan ikke være etter år 2005</Link>
@@ -71,7 +72,9 @@ export const WithForm = meta.story({
       />
 
       <ErrorSummary>
-        <Heading>For å gå videre må du rette opp følgende feil:</Heading>
+        <ErrorSummary.Heading>
+          For å gå videre må du rette opp følgende feil:
+        </ErrorSummary.Heading>
         <List.Unordered>
           <List.Item>
             <Link href='#fornavn'>Fornavn må være minst 2 tegn</Link>
@@ -102,7 +105,7 @@ export const WithForm = meta.story({
 export const ShowHideReact = meta.story({
   render: () => {
     const [show, setShow] = useState(false);
-    const summaryRef = useRef<DSErrorSummaryElement>(null);
+    const summaryRef = useRef<HTMLFieldSetElement>(null);
     useEffect(() => {
       if (show) {
         summaryRef.current?.focus();
@@ -124,7 +127,9 @@ export const ShowHideReact = meta.story({
         </div>
         {show && (
           <ErrorSummary data-testid='show-hide' ref={summaryRef}>
-            <Heading>For å gå videre må du rette opp følgende feil:</Heading>
+            <ErrorSummary.Heading>
+              For å gå videre må du rette opp følgende feil:
+            </ErrorSummary.Heading>
             <List.Unordered>
               <List.Item>
                 <Link href='#fornavn'>Fornavn må være minst 2 tegn</Link>

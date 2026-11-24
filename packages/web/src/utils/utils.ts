@@ -208,6 +208,14 @@ export const onMutation = <T extends Node>(
 };
 
 /**
+ * getText
+ * @description Get text content of a node, trimmed and with fallback to empty string
+ * @param {Node | null | undefined} el Element to get text from
+ * @return {string} Trimmed text content or empty string
+ */
+export const getText = (el?: Node | null) => el?.textContent?.trim() || '';
+
+/**
  * tag
  * @description creates element and assigns properties
  * @param tagName The tagname of element to create

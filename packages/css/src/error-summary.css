@@ -6,12 +6,17 @@
   --dsc-errorsummary-link-color: currentcolor; /* @deprecated  */
   --dsc-errorsummary-heading-color: currentcolor; /* @deprecated */
 
-  color: var(--dsc-errorsummary-color);
+  --_ds-errorsummary: 1; /* CSS modules can change animation-name, so using CSS custom property to identify element in JS */
+
+  animation: _is-visible 0ms; /* Using an animation for fast JS visibility detection */
   background: var(--dsc-errorsummary-background);
   border-radius: var(--dsc-errorsummary-border-radius);
+  border: 0; /* Reset <fieldset> */
   box-sizing: border-box;
+  color: var(--dsc-errorsummary-color);
+  margin: 0; /* Reset <fieldset> */
+  min-width: 0; /* Reset Webkit <fieldset> min-width: -webkit-min-content */
   padding: var(--dsc-errorsummary-padding);
-  animation: _is-visible 0ms; /* Used in JS to detect visibility */
 
   @composes ds-focus from './utils.css';
 
@@ -19,10 +24,20 @@
     display: block;
   }
 
+  & > legend,
   & :is(h1, h2, h3, h4, h5, h6) {
     color: var(--dsc-errorsummary-heading-color); /* @deprecated */
     font-size: var(--ds-font-size-plus-1);
+    font-weight: var(--ds-heading-md-font-weight);
+    letter-spacing: var(--ds-heading-md-letter-spacing);
+    line-height: var(--ds-heading-md-line-height);
     margin-bottom: var(--ds-size-2);
+  }
+  & > legend {
+    box-sizing: border-box;
+    float: left; /* Needed to place <legend> inside <fieldset> */
+    padding: 0; /* Normalizes <legend> */
+    width: 100%; /* Needed to ensure float: left does not allow elements next to it */
   }
 
   & a {

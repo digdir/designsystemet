@@ -1,4 +1,5 @@
 import {
+  ARIA_LABEL,
   ARIA_LABELLEDBY,
   attr,
   isBrowser,
@@ -7,7 +8,9 @@ import {
   useId,
 } from '../utils/utils';
 
+const ATTR_FIELD = 'data-field';
 const FIELDSETS = isBrowser() ? document.getElementsByTagName('fieldset') : [];
+const MANAGED = new WeakMap<Element, string>(); // Keep track of aria-labelledby values we have set, so we never overwrite values set by consumer
 
 // NOTE:
 // <fieldset> descriptions should be accessible to screen reader users. However, using aria-describedby
@@ -19,24 +22,30 @@ const FIELDSETS = isBrowser() ? document.getElementsByTagName('fieldset') : [];
 // This approach is also verified by the chief of accessibility at NRK and the accessibility expert at NAV
 const handleFieldsetMutations = () => {
   for (const fieldset of FIELDSETS) {
-    if (fieldset.hasAttribute(ARIA_LABELLEDBY)) continue; // Speed up by skipping labelled fieldsets
+    const prev = attr(fieldset, ARIA_LABELLEDBY);
+    if (prev && prev !== MANAGED.get(fieldset)) continue; // Skip if aria-labelledby is set by consumer
 
-    let labelledby = '';
-    for (const el of fieldset.children) {
-      const name = el.nodeName;
-      const isLegendOrDescription =
-        name === 'LEGEND' ||
-        el.getAttribute('data-field') === 'description' ||
-        (name === 'P' && el.previousElementSibling?.nodeName === 'LEGEND'); // Backwards compatibility
+    // aria-labelledby overrules aria-label, so only look for elements when consumer has not provided aria-label
+    const els = [];
+    let legend: Element | undefined;
+    if (!attr(fieldset, ARIA_LABEL)?.trim())
+      for (const el of fieldset.children) {
+        if (el.nodeName === 'LEGEND') legend ??= el;
+        else if (attr(el, ATTR_FIELD) === 'description') els.push(el);
+      }
 
-      if (isLegendOrDescription) labelledby += `${useId(el)} `;
-    }
-    attr(fieldset, ARIA_LABELLEDBY, labelledby.trim() || null);
+    if (legend && els.length) els.unshift(legend); // Only name the fieldset when it has a description
+    const next = els.map(useId).join(' ');
+    attr(fieldset, ARIA_LABELLEDBY, next || null);
+    if (next) MANAGED.set(fieldset, next);
+    else MANAGED.delete(fieldset);
   }
 };
 
 onHotReload('fieldset', () => [
   onMutation(document, handleFieldsetMutations, {
+    attributeFilter: [ATTR_FIELD], // Needed to stay in sync when aria-label or description changes
+    attributes: true,
     childList: true,
     subtree: true,
   }),

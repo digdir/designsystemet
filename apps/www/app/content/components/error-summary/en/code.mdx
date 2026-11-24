@@ -2,11 +2,12 @@
 
 ## Usage
 
-The class name `ds-error-summary` is used on the `<ds-error-summary>` element.
-The web component handles focus when it becomes visible and `aria-labelledby` automatically.
+The class name `ds-error-summary` is used on a `<fieldset>` element.
+Focus is automatically moved to the error summary when it becomes visible.
 
-Start with a heading (`h2`–`h6`) with the class `ds-heading`, which becomes the accessible name of the error summary.
-We add a `<ul class="ds-list">` after the heading which contains a list of errors.
+Start with a `<legend>`, which becomes the accessible name of the error summary.
+You can use `aria-label` or `aria-labelledby` instead, but the error summary must have an accessible name.
+We add a `<ul class="ds-list">` after the legend which contains a list of errors.
 Each error is a `<li>` with a link (`<a>`) that has the class `ds-link` and an `href` to the relevant field with the error.
 
 ## CSS variables and data attributes
@@ -33,16 +34,16 @@ Below is an example of how focus is automatically moved to error summary when it
 
 ## React
 
-Use `Heading`, `List` and `Link` inside `ErrorSummary`:
-- `Heading` defines the heading. Use level 2–6, since `ErrorSummary` uses the first `h2`–`h6` as its accessible name.
+`ErrorSummary` renders a `<fieldset>`. Use `ErrorSummary.Heading`, `List` and `Link` inside it:
+- `ErrorSummary.Heading` renders a `<legend>`, and becomes the accessible name of `ErrorSummary`.
 - `List.Unordered` contains the list of errors, with one `List.Item` per error.
 - Each error has a `Link` with an `href` to the unique identifier for a form field, so that the user can navigate to the correct place in the form.
 
 ```tsx
-import { ErrorSummary, Heading, Link, List } from '@digdir/designsystemet-react';
+import { ErrorSummary, Link, List } from '@digdir/designsystemet-react';
 
 <ErrorSummary>
-  <Heading>Heading</Heading>
+  <ErrorSummary.Heading>Heading</ErrorSummary.Heading>
   <List.Unordered>
     <List.Item>
       <Link href='#some-field-id'>Item</Link>
@@ -51,6 +52,6 @@ import { ErrorSummary, Heading, Link, List } from '@digdir/designsystemet-react'
 </ErrorSummary>
 ```
 
-The subcomponents `ErrorSummary.Heading`, `ErrorSummary.List`, `ErrorSummary.Item` and `ErrorSummary.Link` are still available, and render the same components.
+The subcomponents `ErrorSummary.List`, `ErrorSummary.Item` and `ErrorSummary.Link` are still available, and render `List.Unordered`, `List.Item` and `Link` respectively.
 
 <ReactComponentDocs />

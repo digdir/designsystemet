@@ -13,6 +13,20 @@ describe('Fieldset', () => {
     const fieldset = screen.getByRole('group', { name: 'test legend' });
     expect(fieldset).toBeDefined();
   });
+  test('description is marked as fieldset description', () => {
+    render(
+      <Fieldset>
+        <Fieldset.Legend>test legend</Fieldset.Legend>
+        <Fieldset.Description>test description</Fieldset.Description>
+      </Fieldset>,
+    );
+
+    expect(screen.getByText('test description')).toHaveAttribute(
+      'data-field',
+      'description',
+    );
+  });
+
   test('and its children are disabled', () => {
     render(
       <Fieldset disabled>

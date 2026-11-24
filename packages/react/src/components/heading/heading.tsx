@@ -31,12 +31,7 @@ export const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
     const Component = asChild ? Slot : (`h${level}` as ElementType);
 
     return (
-      <Component
-        className={cl(`ds-heading`, className)}
-        ref={ref}
-        suppressHydrationWarning // Since <ds-error-summary> will add id attribute dynamically
-        {...rest}
-      />
+      <Component className={cl(`ds-heading`, className)} ref={ref} {...rest} />
     );
   },
 );

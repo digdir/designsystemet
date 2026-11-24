@@ -13,7 +13,7 @@
 - [`data-clickdelegatefor`](#data-clickdelegatefor)
 - [`details` and `summary` (accessibility polyfill)](#details-and-summary-accessibility-polyfill)
 - [`<dialog>` (`closedby` polyfill)](#dialog-closedby-polyfill)
-- [`<ds-error-summary>`](#ds-error-summary)
+- [error summary](#error-summary)
 - [`<ds-field>`](#ds-field)
   - [Counter](#counter)
 - [`fieldset`](#fieldset)
@@ -152,18 +152,18 @@ Use invokers `command` and `commandfor`, to open and close dialog.
 </dialog>
 ```
 
-## `<ds-error-summary>`
-Automatically takes focus when visible and sets `aria-labelledby` to the first child heading. No API.
+## Error summary
+Automatically takes focus when error summary CSS is used. A warning is logged if the error summary has no accessible name from a `legend`, `aria-label` or `aria-labelledby`.
 
 ```html
-<ds-error-summary class="ds-error-summary">
-  <h2 class="ds-heading">Summary</h2>
+<fieldset class="ds-error-summary">
+  <legend>Summary</legend>
   <ul class="ds-list">
     <li><a class="ds-link" href="#none">Error 1</a></li>
     <li><a class="ds-link" href="#none">Error 2</a></li>
     <li><a class="ds-link" href="#none">Error 3</a></li>
   </ul>
-</ds-error-summary>
+</fieldset>
 ```
 
 ## `<ds-field>`
@@ -198,7 +198,13 @@ You can add a counter to inputs and textareas by adding the `data-field="counter
 
 ## `fieldset`
 
-An observer will look on `fieldset` element, add an id to combine children element with `data-field="description"` and `legend` into `aria-labelledby` on `fieldset`.
+An observer looks for `fieldset` elements with a direct child `data-field="description"`, and combines the `legend` and descriptions into `aria-labelledby` on the `fieldset`, so the description is announced together with the legend.
+The `aria-labelledby` is kept in sync when descriptions are added, removed or hidden.
+
+Nothing is set if the `fieldset`:
+- only has a `legend`, as this natively names the `fieldset`
+- has `aria-label`
+- already has `aria-labelledby`
 
 ```html
 <fieldset>

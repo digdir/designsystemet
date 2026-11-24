@@ -1,3 +1,4 @@
+/* @deprecated since <label> and <legend> is styled by ds-fieldset, ds-error-summary and ds-field */
 .ds-label {
   font-weight: var(--ds-font-weight-semibold);
   line-height: var(--ds-body-md-line-height);
