@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import type { PaintContext } from '../rebind';
 import {
+  clearNeutralMode,
   closeButtonIconRule,
   MUTED_COLOR_COMPONENTS,
   mutedColorRule,
@@ -422,6 +423,20 @@ describe('closeButtonIconRule', () => {
     );
     expect(at('Dialog', '/content/Heading')).toBeNull();
     expect(at('Card', '/close button/Icon button/Icon/shape/shape')).toBeNull();
+  });
+});
+
+describe('clearNeutralMode', () => {
+  it('clears the neutral color mode, and no other modes', () => {
+    expect(clearNeutralMode({ collection: 'Color', mode: 'neutral' })).toBe(
+      true,
+    );
+    expect(clearNeutralMode({ collection: 'Color', mode: 'accent' })).toBe(
+      false,
+    );
+    expect(
+      clearNeutralMode({ collection: 'Color scheme', mode: 'neutral' }),
+    ).toBe(false);
   });
 });
 

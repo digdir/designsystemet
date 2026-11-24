@@ -39,6 +39,9 @@ const PLAIN_COLOR_COMPONENTS: ComponentTarget[] = [
   { page: 'Avatar stack', name: 'Avatar stack' },
   { page: 'Chip', name: 'Chip' },
   { page: 'Popover', name: 'Popover.Trigger' },
+  // These only have layers set to the neutral color mode, e.g. Popover's button.
+  { page: 'Popover', name: 'Popover' },
+  { page: 'Table', name: '.Masterrow' },
 ];
 const PLAIN_COLOR_PAGES = new Set(PLAIN_COLOR_COMPONENTS.map((c) => c.page));
 
@@ -223,6 +226,20 @@ export function closeButtonIconRule({
     : null;
 }
 
+/**
+ * Layers set to the neutral color, e.g. Dialog's close button, Card's footer button and Popover's button. They
+ * follow the component's color instead, so the UI kit doesn't need a neutral color.
+ */
+export function clearNeutralMode({
+  collection,
+  mode,
+}: {
+  collection: string;
+  mode: string;
+}): boolean {
+  return collection === 'Color' && mode === 'neutral';
+}
+
 export const mutedColors: Migration = {
   id: 'muted-colors',
   title: 'Muted colors',
@@ -239,12 +256,7 @@ export const mutedColors: Migration = {
       {
         paint: mutedColorRule,
         unboundPaint: closeButtonIconRule,
-        // The close button in Dialog's header was neutral.
-        clearMode: ({ component, path, collection, mode }) =>
-          component === '_Header' &&
-          /\/Icon button$/.test(path) &&
-          collection === 'Color' &&
-          mode === 'neutral',
+        clearMode: clearNeutralMode,
         // Spinner, which is its own component.
         skip: (node) => node.type === 'INSTANCE' && node.name === 'Spinner',
       },
