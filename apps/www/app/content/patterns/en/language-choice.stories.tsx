@@ -58,15 +58,18 @@ export const LanguageChoiceInHeader = () => {
         .page-header {
           display: grid;
           grid-template-columns: 1fr auto auto auto auto;
-          grid-template-areas: 'logo search language profile menu';
+          grid-template-areas:
+            'logo search language profile menu'
+            'nav nav nav nav nav';
           align-items: center;
-          gap: var(--ds-size-2);
+          column-gap: var(--ds-size-2);
         }
         .page-header-logo { grid-area: logo; }
         .page-header-search { grid-area: search; }
         .page-header-language { grid-area: language; }
         .page-header-profile { grid-area: profile; }
         .page-header-menu { grid-area: menu; }
+        .page-menu { grid-area: nav; }
 
         .page-menu {
           display: grid;
@@ -94,33 +97,35 @@ export const LanguageChoiceInHeader = () => {
         }
         .page-menu-narrow { display: none; }
 
-        /* Not enough room: move the profile to its own line */
+        /* Not enough room: move search and language into the menu */
         @container (width < 42rem) {
           .page-header {
-            grid-template-columns: 1fr auto auto auto;
+            grid-template-columns: 1fr auto auto;
             grid-template-areas:
-              'logo search language menu'
-              'profile profile profile profile';
-          }
-          .page-header-profile {
-            width: 100%;
-            justify-content: flex-start;
-          }
-          .page-header-profile > svg { margin-inline-start: auto; }
-        }
-
-        /* Even less room: move search and language into the menu */
-        @container (width < 30rem) {
-          .page-header {
-            grid-template-columns: 1fr auto;
-            grid-template-areas:
-              'logo menu'
-              'profile profile';
+              'logo profile menu'
+              'nav nav nav';
           }
           .page-header-search,
           .page-header-language,
           .page-header-language-dropdown { display: none; }
           .page-menu-narrow { display: contents; }
+        }
+
+        /* Even less room: move the profile to its own line */
+        @container (width < 28rem) {
+          .page-header {
+            grid-template-columns: 1fr auto;
+            grid-template-areas:
+              'logo menu'
+              'nav nav'
+              'profile profile';
+          }
+          .page-header-profile {
+            width: 100%;
+            margin-top: var(--ds-size-2);
+            justify-content: flex-start;
+          }
+          .page-header-profile > svg { margin-inline-start: auto; }
         }
       `}</style>
       <header data-size='sm'>
@@ -228,39 +233,39 @@ export const LanguageChoiceInHeader = () => {
             )}
             Meny
           </Button>
+          <nav
+            id='page-menu'
+            aria-label='Meny'
+            className='page-menu'
+            hidden={!menuOpen}
+          >
+            <div className='page-menu-narrow'>
+              <Button variant='tertiary'>
+                <MagnifyingGlassIcon aria-hidden />
+                Søk
+              </Button>
+              <Divider />
+              <p className='page-menu-heading'>
+                <LanguageIcon aria-hidden />
+                Language
+              </p>
+              <ul>{languageLinks}</ul>
+              <Divider />
+            </div>
+            <ul>
+              <li>
+                <Button variant='tertiary' asChild>
+                  <a href='#'>Tjenester</a>
+                </Button>
+              </li>
+              <li>
+                <Button variant='tertiary' asChild>
+                  <a href='#'>Om oss</a>
+                </Button>
+              </li>
+            </ul>
+          </nav>
         </div>
-        <nav
-          id='page-menu'
-          aria-label='Meny'
-          className='page-menu'
-          hidden={!menuOpen}
-        >
-          <div className='page-menu-narrow'>
-            <Button variant='tertiary'>
-              <MagnifyingGlassIcon aria-hidden />
-              Søk
-            </Button>
-            <Divider />
-            <p className='page-menu-heading'>
-              <LanguageIcon aria-hidden />
-              Language
-            </p>
-            <ul>{languageLinks}</ul>
-            <Divider />
-          </div>
-          <ul>
-            <li>
-              <Button variant='tertiary' asChild>
-                <a href='#'>Tjenester</a>
-              </Button>
-            </li>
-            <li>
-              <Button variant='tertiary' asChild>
-                <a href='#'>Om oss</a>
-              </Button>
-            </li>
-          </ul>
-        </nav>
       </header>
       <main
         style={{
