@@ -58,6 +58,9 @@ export function mutedColorRule(context: PaintContext): PaintTarget {
   const { component, variant, path, property, variable } = context;
   const readOnly = /read-?only/i.test(variant);
   const isDescription = /^\/label and description\/description$/i.test(path);
+  const isOptionDescription =
+    /^\.Item in (suggestion|multiselect)$/.test(component) &&
+    /\/label and description\/description$/i.test(path);
 
   // File upload changed more than its neutral colors: the drop zone has no background unless hovered, and
   // the read-only drop zone is muted.
@@ -92,8 +95,8 @@ export function mutedColorRule(context: PaintContext): PaintTarget {
     case 'surface-tinted':
       return color('surface-muted');
     case 'text-subtle':
-      // Field descriptions use the text color.
-      if (isDescription) return color('text-default');
+      // Field descriptions, and option descriptions in Suggestion, use the text color, as in the CSS.
+      if (isDescription || isOptionDescription) return color('text-default');
       if (
         /\/(prefix|suffix)\//.test(path) ||
         /^(_tab elements base|Tabs)$/.test(component) ||
