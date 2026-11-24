@@ -625,10 +625,9 @@ export default function Changelog({
           <Fieldset>
             <Fieldset.Legend>{t('changelog.packages')}</Fieldset.Legend>
             <div className={classes.chips}>
-              {CHANGELOG_PACKAGES.map(({ id, label, color }) => (
+              {CHANGELOG_PACKAGES.map(({ id, label }) => (
                 <Chip.Checkbox
                   key={id}
-                  data-color={color}
                   name='package'
                   value={id}
                   disabled={!isHydrated}
