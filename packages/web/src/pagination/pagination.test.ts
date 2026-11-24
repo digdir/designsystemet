@@ -56,4 +56,48 @@ describe('pagination helper', () => {
     expect(result.prev).toEqual({ inert: undefined, value: 9 });
     expect(result.next).toEqual({ inert: true, value: 10 });
   });
+
+  it('clamps out of range current to the first page', () => {
+    for (const current of [0, -5, Number.NaN]) {
+      const result = pagination({ current, total: 10, show: 5 });
+
+      expect(result.prev).toEqual({ inert: true, value: 1 }); // Behaves as page 1
+      expect(result.next).toEqual({ inert: undefined, value: 2 });
+      expect(result.pages[0]['aria-current']).toBe('page');
+    }
+  });
+
+  it('clamps current above total to the last page', () => {
+    const result = pagination({ current: 50, total: 10, show: 5 });
+
+    expect(result.prev).toEqual({ inert: undefined, value: 9 }); // Not page 49
+    expect(result.next).toEqual({ inert: true, value: 10 });
+    expect(result.pages.at(-1)?.['aria-current']).toBe('page');
+  });
+
+  it('never marks an ellipsis as the current page', () => {
+    for (const current of [0, -5, 50, Number.NaN, 2.5]) {
+      const { pages } = pagination({ current, total: 100, show: 7 });
+
+      for (const page of pages)
+        if (page.inert) expect(page['aria-current']).toBeUndefined();
+    }
+  });
+
+  it('rounds fractional current to a whole page', () => {
+    const result = pagination({ current: 2.5, total: 10, show: 5 });
+
+    expect(result.prev).toEqual({ inert: undefined, value: 2 });
+    expect(result.next).toEqual({ inert: undefined, value: 4 });
+  });
+
+  it('handles a total below one as a single page', () => {
+    for (const total of [0, -5]) {
+      const result = pagination({ current: 1, total, show: 5 });
+
+      expect(result.prev).toEqual({ inert: true, value: 1 });
+      expect(result.next).toEqual({ inert: true, value: 1 }); // Not page 0
+      expect(result.pages).toEqual([{ 'aria-current': 'page', value: 1 }]); // Consistent with prev/next
+    }
+  });
 });

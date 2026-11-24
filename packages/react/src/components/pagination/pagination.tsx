@@ -1,5 +1,5 @@
-import type { DSPaginationElement } from '@digdir/designsystemet-web';
-import '@digdir/designsystemet-web'; // Import ds-breadcrumbs custom element
+import type { DSPaginationElement } from '@digdir/designsystemet-web/ds-pagination';
+import '@digdir/designsystemet-web/ds-pagination'; // Import ds-pagination custom element
 import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';

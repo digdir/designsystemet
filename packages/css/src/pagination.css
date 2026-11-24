@@ -52,7 +52,8 @@
       --dsc-button-color: var(--ds-color-text-subtle);
     }
 
-    & > li > [aria-label]:empty::before {
+    /* Paint the page number inside empty step buttons, but never prev/next - those draw an icon instead */
+    & > li:not(:first-child, :last-child) > [aria-label]:empty::before {
       content: attr(aria-label);
     }
 

@@ -29,21 +29,23 @@ export type PaginationStep = {
 };
 
 export const pagination = ({
-  current: now = 1,
+  current = 1,
   total = 10,
   show = 7,
 }: PaginationOptions = {}): PaginationResult => {
+  const max = Math.max(total, 1); // There is always at least one page
+  const now = Math.min(Math.max(Math.round(current) || 1, 1), max); // Clamp to 1...max so out of range input can not produce invalid steps
   const mid = (show - 1) / 2;
-  const start = Math.max(Math.min(now - Math.floor(mid), total - show + 1), 1);
-  const end = Math.min(Math.max(now + Math.ceil(mid), show), total);
+  const start = Math.max(Math.min(now - Math.floor(mid), max - show + 1), 1);
+  const end = Math.min(Math.max(now + Math.ceil(mid), show), max);
   const pages = Array.from({ length: end + 1 - start }, (_, i) => i + start);
 
   if (show > 4 && start > 1) pages.splice(0, 2, 1, 0);
-  if (show > 3 && end < total) pages.splice(-2, 2, 0, total);
+  if (show > 3 && end < max) pages.splice(-2, 2, 0, max);
 
   return {
     prev: { inert: now <= 1 || undefined, value: Math.max(now - 1, 1) },
-    next: { inert: now >= total || undefined, value: Math.min(now + 1, total) },
+    next: { inert: now >= max || undefined, value: Math.min(now + 1, max) },
     pages: pages.map((value) => ({
       ...(value === now ? { 'aria-current': 'page' as const } : {}),
       inert: !value || undefined,
