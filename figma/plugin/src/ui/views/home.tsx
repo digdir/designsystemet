@@ -1,5 +1,16 @@
-import { Badge, Card, Heading, Paragraph } from '@digdir/designsystemet-react';
-import { FileExportIcon, PaletteIcon, RocketIcon } from '@navikt/aksel-icons';
+import {
+  Badge,
+  Card,
+  Heading,
+  Paragraph,
+  Spinner,
+} from '@digdir/designsystemet-react';
+import {
+  FileExportIcon,
+  PaletteIcon,
+  RocketIcon,
+  TagIcon,
+} from '@navikt/aksel-icons';
 
 // A utility on the start page: a small card with an icon and a short label. Add new utilities to the list
 // in HomeView; the grid makes room for them.
@@ -9,21 +20,29 @@ type Utility = {
   onClick: () => void;
   /** A count shown in the card's corner, e.g. migrations not applied to this file. Hidden when 0. */
   badge?: { count: number; label: string };
+  /** Shown instead of the label while the utility runs, with a spinner instead of the icon. */
+  busyLabel?: string;
 };
 
 // The start view: import a theme into this file, and the utilities, e.g. updating a copy of the UI kit.
-// Export is shown when it's turned on, i.e. when onExport is given.
+// Export and stamping are shown when they're turned on, i.e. when onExport or onStampUiKit is given.
 export function HomeView({
   onImport,
   onUpdateKit,
   pendingMigrations = 0,
   onExport,
+  onStampUiKit,
+  stamping = false,
 }: {
   onImport: () => void;
   onUpdateKit: () => void;
   /** The number of migrations not applied to this file yet. */
   pendingMigrations?: number;
   onExport?: () => void;
+  /** Stamps the UI kit's source file for migrations. For maintainers. */
+  onStampUiKit?: () => void;
+  /** Whether the UI kit is being stamped. */
+  stamping?: boolean;
 }): React.JSX.Element {
   const utilities: Utility[] = [
     {
@@ -41,6 +60,16 @@ export function HomeView({
             label: 'Export config from Figma',
             icon: <FileExportIcon />,
             onClick: onExport,
+          },
+        ]
+      : []),
+    ...(onStampUiKit
+      ? [
+          {
+            label: 'Stamp UI kit (maintainers)',
+            icon: <TagIcon />,
+            onClick: onStampUiKit,
+            busyLabel: stamping ? 'Stamping the UI kit…' : undefined,
           },
         ]
       : []),
@@ -80,18 +109,23 @@ export function HomeView({
           Utilities
         </Heading>
         <div className='home-utility-grid'>
-          {utilities.map(({ label, icon, onClick, badge }) => (
+          {utilities.map(({ label, icon, onClick, badge, busyLabel }) => (
             <Card
               key={label}
               data-color='neutral'
               asChild
               className='home-utility-card'
             >
-              <button type='button' onClick={onClick}>
+              <button
+                type='button'
+                onClick={onClick}
+                aria-busy={busyLabel ? true : undefined}
+                aria-disabled={busyLabel ? true : undefined}
+              >
                 <span aria-hidden className='home-card-icon'>
-                  {icon}
+                  {busyLabel ? <Spinner aria-hidden data-size='md' /> : icon}
                 </span>
-                <span className='home-utility-label'>{label}</span>
+                <span className='home-utility-label'>{busyLabel ?? label}</span>
                 {badge && badge.count > 0 && (
                   <>
                     {/* The count is drawn by CSS, so screen readers get it as text instead. */}

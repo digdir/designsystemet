@@ -1,6 +1,7 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import {
   describeVariable,
+  matchPagesByComponents,
   normalizePageName,
   type RebindRules,
   rebindComponents,
@@ -44,7 +45,19 @@ type FakeNode = {
   parent?: FakeNode | { type: string };
   explicitVariableModes: Record<string, string>;
   overrides?: Array<{ id: string; overriddenFields: string[] }>;
+  /** Shared plugin data, e.g. a stamp, by key. */
+  shared?: Record<string, string>;
+  getSharedPluginData: (namespace: string, key: string) => string;
 };
+
+/** Reads `shared`, like `getSharedPluginData` reads shared plugin data. */
+function getSharedPluginData(
+  this: { shared?: Record<string, string> },
+  _namespace: string,
+  key: string,
+) {
+  return this.shared?.[key] ?? '';
+}
 
 const node = (
   props: Partial<FakeNode> & Pick<FakeNode, 'id' | 'name' | 'type'>,
@@ -52,6 +65,7 @@ const node = (
   fills: [],
   strokes: [],
   explicitVariableModes: {},
+  getSharedPluginData,
   ...props,
 });
 
@@ -94,6 +108,7 @@ function setup() {
   const page = {
     name: '❖  Dialog',
     loadAsync: async () => {},
+    getSharedPluginData,
     findAllWithCriteria: () => [component],
   };
   vi.stubGlobal('figma', {
@@ -247,6 +262,151 @@ describe('rebindComponents', () => {
     expect(log.warnings[0]).toMatch(/^Color\/surface-muted is missing/);
   });
 
+  it('finds a renamed page by its components, and names it in the preview', async () => {
+    setup();
+    const { root } = (
+      globalThis as unknown as {
+        figma: { root: { children: Array<{ name: string }> } };
+      }
+    ).figma;
+    root.children[0].name = '❖  Modal';
+    const log = newLog();
+
+    await rebindComponents([{ page: 'Dialog', name: 'Dialog' }], rules, {
+      dryRun: true,
+      log,
+      pause: noPause,
+    });
+
+    expect(log.warnings).toEqual([]);
+    expect([...log.changes.values()].map((change) => change.page)).toEqual([
+      'Dialog (page ‘Modal’)',
+      'Dialog (page ‘Modal’)',
+    ]);
+  });
+
+  it('only warns about a component that is on none of the pages with the name', async () => {
+    setup();
+    const { root } = (
+      globalThis as unknown as { figma: { root: { children: unknown[] } } }
+    ).figma;
+    root.children.push({
+      name: 'Dialog',
+      loadAsync: async () => {},
+      getSharedPluginData,
+      findAllWithCriteria: () => [],
+    });
+    const log = newLog();
+
+    await rebindComponents([{ page: 'Dialog', name: 'Dialog' }], rules, {
+      dryRun: true,
+      log,
+      pause: noPause,
+    });
+
+    expect(log.warnings).toEqual([]);
+    expect([...log.changes.values()].map((change) => change.count)).toEqual([
+      1, 1,
+    ]);
+  });
+
+  it('searches each page once, leaves pages found by name out of the fallback, and changes a component once', async () => {
+    setup();
+    const { root } = (
+      globalThis as unknown as {
+        figma: {
+          root: {
+            children: Array<{ findAllWithCriteria: () => unknown[] }>;
+          };
+        };
+      }
+    ).figma;
+    const dialogPage = root.children[0];
+    const original = dialogPage.findAllWithCriteria;
+    const search = vi.fn(original);
+    dialogPage.findAllWithCriteria = search;
+    // Another page with the same component, and one of its own that only Popup lists.
+    const close = node({
+      id: '9:9',
+      name: 'Close',
+      type: 'COMPONENT',
+      parent: { type: 'PAGE' },
+    });
+    const modal = {
+      name: '❖  Modal',
+      loadAsync: async () => {},
+      getSharedPluginData,
+      findAllWithCriteria: () => [...original(), close],
+    };
+    root.children.push(modal);
+    const log = newLog();
+
+    await rebindComponents(
+      [
+        { page: 'Dialog', name: 'Dialog' },
+        { page: 'Popup', name: 'Dialog' },
+        { page: 'Popup', name: 'Close' },
+      ],
+      rules,
+      { dryRun: true, log, pause: noPause },
+    );
+
+    // The Dialog page is found by name, and isn't searched again for Popup, which is found on Modal instead.
+    expect(search).toHaveBeenCalledTimes(1);
+    expect(log.warnings).toEqual([]);
+    // The component on both pages is the same, so it's only counted once, under the first.
+    expect([...log.changes.values()].map((change) => change.page)).toEqual([
+      'Dialog',
+      'Dialog',
+    ]);
+  });
+
+  it('finds a stamped page and component, whatever they’re called now', async () => {
+    setup();
+    const { root } = (
+      globalThis as unknown as {
+        figma: {
+          root: {
+            children: Array<{
+              name: string;
+              shared?: Record<string, string>;
+              findAllWithCriteria: () => FakeNode[];
+            }>;
+          };
+        };
+      }
+    ).figma;
+    const page = root.children[0];
+    page.name = '❖  Modal';
+    page.shared = { page: 'Dialog' };
+    const [component] = page.findAllWithCriteria();
+    component.name = 'Dialogue';
+    component.shared = { component: 'Dialog' };
+    // A page named Dialog, stamped as another page, isn't used for Dialog.
+    const search = vi.fn(() => [] as FakeNode[]);
+    root.children.push({
+      name: 'Dialog',
+      shared: { page: 'Card' },
+      loadAsync: async () => {},
+      getSharedPluginData,
+      findAllWithCriteria: search,
+    } as never);
+    const log = newLog();
+
+    await rebindComponents([{ page: 'Dialog', name: 'Dialog' }], rules, {
+      dryRun: true,
+      log,
+      pause: noPause,
+    });
+
+    expect(log.warnings).toEqual([]);
+    expect(search).not.toHaveBeenCalled();
+    expect([...log.changes.values()].map((change) => change.page)).toEqual([
+      'Dialog (page ‘Modal’)',
+      'Dialog (page ‘Modal’)',
+    ]);
+  });
+
   it('warns about components and pages that aren’t in the file', async () => {
     setup();
     const log = newLog();
@@ -264,6 +424,54 @@ describe('rebindComponents', () => {
       'Could not find the component Modal on the page Dialog, so it was left as it is.',
       'Could not find the page Tooltip, so its components were left as they are: Tooltip.',
     ]);
+  });
+});
+
+describe('matchPagesByComponents', () => {
+  const targets = [
+    ...['Dialog', '_Header', '_Content', '_Footer'].map((name) => ({
+      page: 'Dialog',
+      name,
+    })),
+    ...['_Container', '_Header', '_Content', '_Footer', '_Card_title'].map(
+      (name) => ({ page: 'Card', name }),
+    ),
+  ];
+  const dialog = new Set(['Dialog', '_Header', '_Content', '_Footer']);
+  const card = new Set(['_Container', '_Header', '_Content', '_Footer']);
+
+  it('finds a renamed page by its components', () => {
+    expect(matchPagesByComponents(targets, ['Dialog'], [card, dialog])).toEqual(
+      new Map([['Dialog', [1]]]),
+    );
+  });
+
+  it('doesn’t match on names that other pages use too', () => {
+    // Card's page has _Header, _Content and _Footer, but not Dialog.
+    expect(matchPagesByComponents(targets, ['Dialog'], [card]).size).toBe(0);
+  });
+
+  it('needs at least half of the page’s components', () => {
+    expect(
+      matchPagesByComponents(targets, ['Dialog'], [new Set(['Dialog'])]).size,
+    ).toBe(0);
+    expect(
+      matchPagesByComponents(
+        targets,
+        ['Dialog'],
+        [new Set(['Dialog', '_Header'])],
+      ),
+    ).toEqual(new Map([['Dialog', [0]]]));
+  });
+
+  it('uses the page with the most components, or all of them when they tie', () => {
+    const some = new Set(['Dialog', '_Header']);
+    expect(matchPagesByComponents(targets, ['Dialog'], [some, dialog])).toEqual(
+      new Map([['Dialog', [1]]]),
+    );
+    expect(
+      matchPagesByComponents(targets, ['Dialog'], [dialog, some, dialog]),
+    ).toEqual(new Map([['Dialog', [0, 2]]]));
   });
 });
 
@@ -306,6 +514,7 @@ function stubFile(components: FakeNode[], figmaProps: object = {}) {
   const page = {
     name: '❖  Dialog',
     loadAsync: async () => {},
+    getSharedPluginData,
     findAllWithCriteria: () => components,
   };
   vi.stubGlobal('figma', {

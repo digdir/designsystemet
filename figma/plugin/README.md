@@ -25,13 +25,13 @@ The plugin explains this to users in [the about view](./src/ui/views/about.tsx).
 
 When a release changes which variables the UI kit's components use, users with their own copy of the UI kit need their layers updated too. An import can't do this, as it only updates variables and styles. A migration does: **Update UI kit** in the plugin lists the migrations, the user chooses which to run, sees a summary of what will change in each component, and then applies them. Undo in Figma takes back all of it at once. The file records which migrations were applied, and when.
 
-A migration finds the UI kit's components by page and name, and rebinds the color variables on their layers by rules (see [rebind.ts](./src/plugin/migrate/rebind.ts)). It changes main components first. Layers in instances of those components follow them, so only their overrides are changed there. Layers in instances of other components, e.g. text from Typography in Dialog, are changed in place, which overrides them in that component.
+A migration finds the UI kit's components by page and name (see [Finding the UI kit's pages](#finding-the-ui-kits-pages)), and rebinds the color variables on their layers by rules (see [rebind.ts](./src/plugin/migrate/rebind.ts)). It changes main components first. Layers in instances of those components follow them, so only their overrides are changed there. Layers in instances of other components, e.g. text from Typography in Dialog, are changed in place, which overrides them in that component.
 
 What a migration leaves alone, which the plugin and the changeset tell users:
 
 - Components and layers the user made outside the UI kit's components, even if they use the same variables.
 - Colors the user overrode on instances of the UI kit's components, in their own designs.
-- UI kit components that are renamed or moved to another page. They aren't found, and the summary says so.
+- UI kit components that are renamed or moved to another page, in a copy made before the UI kit was stamped. They aren't found, and the summary says so. Renamed pages are found by the components on them.
 
 Layers the user added inside a UI kit component are changed, as the rules apply to every layer in it.
 
@@ -42,12 +42,25 @@ To add a migration:
 3. Test the rules, and run it on a copy of the UI kit from before the change. Compare the result with the updated UI kit.
 4. Run it on a file with the user's own work too: a component of their own, a layer they added inside a UI kit component, and an instance with a color they changed. Check that only the second one changes.
 
+### Finding the UI kit's pages
+
+People may rename pages and components in their copy of the UI kit. A migration looks for each page in this order:
+
+1. The page stamped with the migration's page name, e.g. `Dialog`.
+2. The page with that name, ignoring the symbols in front, e.g. `❖  Dialog`.
+3. The page with the most of that page's components, if it has at least half of them, and one that no other page in the migration lists. `_Header` is on both the Dialog and Card pages, so it can't find a page on its own. This loads the pages not found by 1 or 2, so it's only done when a page is missing.
+
+On a page, a component is found by its stamp, or else by its name. When a page has another name than the migration's, the summary says so, e.g. "Dialog (page ‘Modal’)".
+
+Stamps are shared plugin data on the pages and components of the UI kit's source file ([stamps.ts](./src/plugin/migrate/stamps.ts)). They're copied with a duplicated file, so copies made after stamping are found even if both pages and components are renamed. Before a release of the UI kit, stamp the source file: set `FEAT_STAMP_UI_KIT` to `true` in [app.tsx](./src/ui/app.tsx), run the plugin in the source file, and choose **Stamp UI kit (maintainers)**. It stamps the pages and components that don't have a stamp yet, and keeps existing stamps, so they stay the same when a page or component is renamed later. A migration lists its components by their stamps.
+
 | Migration | What it does |
 | --- | --- |
 | `muted-colors` | Components no longer use the neutral color: borders, read-only fields and secondary text use the muted colors, and the rest the component's own color ([#5351](https://github.com/digdir/designsystemet/issues/5351)). |
 
 ### Features that are turned off
 
+- **Stamp UI kit:** for maintainers, see [Finding the UI kit's pages](#finding-the-ui-kits-pages). Set `FEAT_STAMP_UI_KIT` to `true` in [app.tsx](./src/ui/app.tsx).
 - **Export:** creates a config from the variables and styles in the file. Set `FEAT_EXPORT` to `true` in [app.tsx](./src/ui/app.tsx) to show it as a utility on the start page.
 - **Import from CSS:** creates a config from theme CSS built by Designsystemet, e.g. `designsystemet.css`. Set `FEAT_CSS_IMPORT` to `true` in [import.tsx](./src/ui/views/import.tsx).
 

@@ -46,6 +46,9 @@ type UiState = {
 const START_VIEW: View = 'home';
 // Feature toggle: export, which creates a config from the variables in this file. Turned off for now.
 const FEAT_EXPORT = false;
+// Feature toggle: stamping the UI kit's source file for migrations, see plugin/migrate/stamps.ts. For maintainers,
+// who turn it on in a local build before a release.
+const FEAT_STAMP_UI_KIT = false;
 
 const initialState: UiState = {
   view: START_VIEW,
@@ -238,6 +241,8 @@ function App() {
   const [copyStatus, setCopyStatus] = useState<'copied' | 'failed' | null>(
     null,
   );
+  // Whether the UI kit is being stamped, for the spinner on its card. The result is shown with figma.notify.
+  const [stamping, setStamping] = useState(false);
 
   useEffect(() => {
     const stopListening = onPluginMessage((msg) => {
@@ -272,6 +277,9 @@ function App() {
                   }
                 : { status: 'error', message: msg.message ?? 'Unknown error' },
           });
+          break;
+        case 'stamp-ui-kit-result':
+          setStamping(false);
           break;
         case 'migrations-list':
           dispatch({ type: 'migrations-listed', available: msg.migrations });
@@ -308,6 +316,12 @@ function App() {
     setCopyStatus(null);
     dispatch({ type: 'export-started' });
     postToPlugin('export-config');
+  };
+
+  const stampUiKit = () => {
+    if (stamping) return;
+    setStamping(true);
+    postToPlugin('stamp-ui-kit');
   };
 
   const showMigrations = () => {
@@ -364,6 +378,8 @@ function App() {
             onUpdateKit={showMigrations}
             pendingMigrations={pendingMigrations}
             onExport={FEAT_EXPORT ? exportConfig : undefined}
+            onStampUiKit={FEAT_STAMP_UI_KIT ? stampUiKit : undefined}
+            stamping={stamping}
           />
         )}
         {state.view === 'import' && (

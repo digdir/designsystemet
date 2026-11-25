@@ -105,6 +105,17 @@ type MigrationsResult = {
   message?: string;
 };
 
+// UI -> plugin: stamp the pages and components of the UI kit's source file, so migrations find them in copies
+// even after they're renamed. For maintainers; see plugin/migrate/stamps.ts. The result is shown with figma.notify.
+type StampUiKit = {
+  type: 'stamp-ui-kit';
+};
+
+// Plugin -> UI: stamping finished, or failed.
+type StampUiKitResult = {
+  type: 'stamp-ui-kit-result';
+};
+
 export type MigrationInfo = {
   id: string;
   title: string;
@@ -148,7 +159,9 @@ export type FigmaMessages =
   | ListMigrations
   | MigrationsList
   | RunMigrations
-  | MigrationsResult;
+  | MigrationsResult
+  | StampUiKit
+  | StampUiKitResult;
 
 export type Notification = {
   kind: 'error' | 'warning' | 'info';

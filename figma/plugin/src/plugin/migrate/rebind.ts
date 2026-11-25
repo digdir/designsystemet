@@ -6,6 +6,7 @@
 // change unless it was overridden, so only its overrides are left to change. Layers in instances of other
 // components, e.g. text from Typography in Dialog, are changed in place, which overrides them there.
 
+import { componentName, pageStamp, pageTitle } from './stamps';
 import type { MigrationContext, MigrationLog, VariableRef } from './types';
 
 /** A component or component set in the UI kit, by its page and name. */
@@ -16,8 +17,13 @@ export type ComponentTarget = {
 
 /** Where a layer is: the target component, the variant it's in, and its path below the variant. */
 export type LayerContext = {
-  /** The page the target component is on, as the migration names it, e.g. `Checkbox`. Changes are grouped by it. */
+  /** The page the target component is on, as the migration names it, e.g. `Checkbox`. Rules use it. */
   page: string;
+  /**
+   * How the preview names the page, when the file's page has another name than the migration's, e.g.
+   * `Dialog (page ‘Modal’)`. Changes are grouped by it, or by `page` when it's left out.
+   */
+  pageLabel?: string;
   component: string;
   /** The variant's name, e.g. `state=read-only`, or '' for a component that isn't a set. */
   variant: string;
@@ -53,6 +59,8 @@ export type RebindRules = {
 type Root = {
   target: ComponentTarget;
   node: ComponentNode | ComponentSetNode;
+  /** Set when the component was found on a page with another name than the migration's. */
+  pageLabel?: string;
 };
 
 /** A change to one paint: what it was bound to, and what it's bound to now (or `removed`). */
@@ -154,7 +162,7 @@ export async function rebindComponents(
 
   const count = (layer: LayerContext, changes: PaintChange[]) => {
     for (const { property, from, to } of changes) {
-      countChange(log, layer.page, property, from, to);
+      countChange(log, layer.pageLabel ?? layer.page, property, from, to);
     }
   };
 
@@ -255,7 +263,7 @@ export async function rebindComponents(
         continue;
       countChange(
         log,
-        layer.page,
+        layer.pageLabel ?? layer.page,
         'mode',
         `${collection.name} ${mode.name}`,
         'inherited',
@@ -290,13 +298,14 @@ export async function rebindComponents(
     await pause();
   };
 
-  for (const { target, node } of roots) {
+  for (const { target, node, pageLabel } of roots) {
     const variants = node.type === 'COMPONENT_SET' ? node.children : [node];
     for (const variant of variants) {
       await visitLayer(
         variant,
         {
           page: target.page,
+          ...(pageLabel && { pageLabel }),
           component: target.name.trim(),
           variant: node.type === 'COMPONENT_SET' ? variant.name : '',
           path: '',
@@ -316,46 +325,174 @@ export async function rebindComponents(
   }
 }
 
-/** Finds the target components in the file. Logs a warning for each one that isn't there. */
+/**
+ * Finds the target components in the file. Logs a warning for each one that isn't there.
+ *
+ * A page is found by its stamp (see stamps.ts), or else by its name, as the migration names it. People may rename
+ * pages in a copy of the UI kit made before it was stamped, so a page that isn't found either way is looked for by
+ * what's on it: the page with the most of its components, see `matchPagesByComponents`. For that, the pages not
+ * found are loaded, which can be slow in a file with large designs of its own, so it's only done when a page is
+ * missing. On a page, components are found by their stamp, or else by their name.
+ */
 export async function findComponents(
   targets: ComponentTarget[],
   log: MigrationLog,
 ): Promise<Root[]> {
   const warn = createWarn(log);
-  const roots: Root[] = [];
   const pageNames = [...new Set(targets.map((target) => target.page))];
+
+  // The components on each page searched, so no page is searched twice.
+  const searched = new Map<PageNode, Array<ComponentNode | ComponentSetNode>>();
+  const componentsOn = async (page: PageNode) => {
+    let components = searched.get(page);
+    if (!components) {
+      await page.loadAsync();
+      components = topLevelComponents(page);
+      searched.set(page, components);
+    }
+    return components;
+  };
+
+  // The pages to search for each of the migration's pages: the pages stamped with its name, or else the pages
+  // with its name that aren't stamped as another page.
+  const found = new Map<string, Array<{ page: PageNode; label?: string }>>();
+  const labelled = (pageName: string, page: PageNode) =>
+    normalizePageName(page.name) === normalizePageName(pageName)
+      ? { page }
+      : { page, label: `${pageName} (page ‘${pageTitle(page.name)}’)` };
   for (const pageName of pageNames) {
-    const page = figma.root.children.find(
-      (p) => normalizePageName(p.name) === normalizePageName(pageName),
+    const stamped = figma.root.children.filter(
+      (page) => pageStamp(page) === pageName,
     );
+    const pages =
+      stamped.length > 0
+        ? stamped
+        : figma.root.children.filter(
+            (page) =>
+              !pageStamp(page) &&
+              normalizePageName(page.name) === normalizePageName(pageName),
+          );
+    if (pages.length > 0) {
+      found.set(
+        pageName,
+        pages.map((page) => labelled(pageName, page)),
+      );
+    }
+  }
+
+  // Then by their components, among the pages that weren't found. Only these are loaded for it.
+  const missing = pageNames.filter((pageName) => !found.has(pageName));
+  if (missing.length > 0) {
+    const foundByName = new Set(
+      [...found.values()].flat().map(({ page }) => page),
+    );
+    const candidates = figma.root.children.filter(
+      (page) => !foundByName.has(page),
+    );
+    const names: Array<Set<string>> = [];
+    for (const page of candidates) {
+      const components = await componentsOn(page);
+      names.push(new Set(components.map(componentName)));
+    }
+    const matches = matchPagesByComponents(targets, missing, names);
+    for (const [pageName, indexes] of matches) {
+      found.set(
+        pageName,
+        indexes.map((index) => labelled(pageName, candidates[index])),
+      );
+    }
+  }
+
+  const roots: Root[] = [];
+  // A component on a page that matches several of the migration's pages is only changed once, by the first.
+  const seen = new Set<string>();
+  for (const pageName of pageNames) {
     const onPage = targets.filter((target) => target.page === pageName);
-    if (!page) {
+    const pages = found.get(pageName);
+    if (!pages) {
       warn(
         `Could not find the page ${pageName}, so its components were left as they are: ${onPage.map((t) => t.name.trim()).join(', ')}.`,
       );
       continue;
     }
-    await page.loadAsync();
-    const components = page
-      .findAllWithCriteria({ types: ['COMPONENT_SET', 'COMPONENT'] })
-      .filter(
-        (node) =>
-          node.type === 'COMPONENT_SET' ||
-          node.parent?.type !== 'COMPONENT_SET',
-      );
+    const where = pages.some(({ label }) => label)
+      ? `for ${pageName}, on the page ${pages.map(({ page }) => `‘${pageTitle(page.name)}’`).join(' or ')}`
+      : `on the page ${pageName}`;
     for (const target of onPage) {
-      const found = components.filter(
-        (node) => node.name.trim() === target.name.trim(),
-      );
-      if (found.length === 0) {
+      let foundAny = false;
+      for (const { page, label } of pages) {
+        for (const node of await componentsOn(page)) {
+          if (componentName(node) !== target.name.trim()) continue;
+          foundAny = true;
+          if (seen.has(node.id)) continue;
+          seen.add(node.id);
+          roots.push({ target, node, ...(label && { pageLabel: label }) });
+        }
+      }
+      if (!foundAny) {
         warn(
-          `Could not find the component ${target.name.trim()} on the page ${pageName}, so it was left as it is.`,
+          `Could not find the component ${target.name.trim()} ${where}, so it was left as it is.`,
         );
       }
-      for (const node of found) roots.push({ target, node });
     }
   }
   return roots;
+}
+
+/** The component sets and the components that aren't variants on a page, which must be loaded. */
+function topLevelComponents(
+  page: PageNode,
+): Array<ComponentNode | ComponentSetNode> {
+  return page
+    .findAllWithCriteria({ types: ['COMPONENT_SET', 'COMPONENT'] })
+    .filter(
+      (node) =>
+        node.type === 'COMPONENT_SET' || node.parent?.type !== 'COMPONENT_SET',
+    );
+}
+
+/**
+ * For each of the migration's pages that wasn't found by name, the pages in the file that hold its components,
+ * by their index in `pages` (the component names on each page). A page qualifies when it has at least half of
+ * the components the migration lists for that page, including one that no other page in the migration lists,
+ * so that names used on several pages, like `_Header` in Dialog and Card, can't match on their own. The pages
+ * with the most components win; when several have as many, e.g. a duplicated page, all of them are used.
+ */
+export function matchPagesByComponents(
+  targets: ComponentTarget[],
+  pageNames: string[],
+  pages: Array<Set<string>>,
+): Map<string, number[]> {
+  const namesByPage = new Map<string, Set<string>>();
+  for (const { page, name } of targets) {
+    const names = namesByPage.get(page) ?? new Set<string>();
+    names.add(name.trim());
+    namesByPage.set(page, names);
+  }
+  const matches = new Map<string, number[]>();
+  for (const pageName of pageNames) {
+    const names = [...(namesByPage.get(pageName) ?? [])];
+    const unique = names.filter((name) =>
+      [...namesByPage].every(
+        ([other, otherNames]) => other === pageName || !otherNames.has(name),
+      ),
+    );
+    const needed = Math.ceil(names.length / 2);
+    let best = 0;
+    let indexes: number[] = [];
+    pages.forEach((onPage, index) => {
+      const score = names.filter((name) => onPage.has(name)).length;
+      if (score < needed || !unique.some((name) => onPage.has(name))) return;
+      if (score > best) {
+        best = score;
+        indexes = [index];
+      } else if (score === best) {
+        indexes.push(index);
+      }
+    });
+    if (indexes.length > 0) matches.set(pageName, indexes);
+  }
+  return matches;
 }
 
 /** Page names in the UI kit start with symbols, e.g. `❖  Dialog`. Compares the words only. */
