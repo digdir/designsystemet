@@ -11,7 +11,7 @@ import {
 } from './import/import-to-figma';
 import { createImportLog } from './import/log';
 import { listMigrations, runMigrations } from './migrate/run-migrations';
-import { stampUiKit } from './stamps/stamps';
+import { countStampedPages, stampUiKit } from './stamps/stamps';
 
 /** Steps reported to the UI: validating, creating tokens, preparing the import, then the Figma import's own steps. */
 const TOTAL_STEPS = 3 + IMPORT_STEPS;
@@ -85,7 +85,12 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
       );
       console.error('Error stamping the UI kit:', error);
     }
-    postMessage('stamp-ui-kit-result');
+    postMessage('stamp-status', { stampedPages: countStampedPages() });
+    return;
+  }
+
+  if (msg.type === 'get-stamp-status') {
+    postMessage('stamp-status', { stampedPages: countStampedPages() });
     return;
   }
 

@@ -9,7 +9,7 @@ body {
   padding: 0;
 
   color: var(--figma-color-text);
-  background: var(--ds-color-neutral-background-tinted);
+  background: var(--ds-color-background-tinted);
 }
 
 header {
@@ -17,7 +17,7 @@ header {
   flex-direction: column;
   align-items: flex-start;
   padding: var(--ds-size-4) var(--view-padding-inline);
-  border-bottom: 1px solid var(--ds-color-neutral-border-subtle);
+  border-bottom: 1px solid var(--ds-color-border-muted);
 }
 
 footer {
@@ -27,12 +27,12 @@ footer {
   gap: var(--ds-size-2);
   padding: var(--ds-size-4) var(--view-padding-inline);
   &:has(button) {
-    border-top: 1px solid var(--ds-color-neutral-border-subtle);
+    border-top: 1px solid var(--ds-color-border-muted);
   }
 }
 
 details {
-  --dsc-details-border-color: var(--ds-color-neutral-border-subtle);
+  --dsc-details-border-color: var(--ds-color-border-muted);
   border-radius: var(--ds-border-radius-md);
   border: solid 1px var(--dsc-details-border-color);
 
@@ -119,7 +119,7 @@ textarea {
 
 .about-version {
   margin-top: auto;
-  color: var(--ds-color-neutral-text-subtle);
+  color: var(--ds-color-text-muted);
 }
 
 .home-view {
@@ -139,7 +139,7 @@ textarea {
   max-width: 32rem;
 
   & .ds-paragraph {
-    color: var(--ds-color-neutral-text-subtle);
+    color: var(--ds-color-text-muted);
   }
 }
 
@@ -197,6 +197,13 @@ textarea {
   font-weight: var(--ds-font-weight-medium);
 }
 
+/* A short status under a utility's label, e.g. how much of the file is stamped. */
+.home-utility-note {
+  margin-top: calc(var(--ds-size-2) * -1);
+  color: var(--ds-color-text-muted);
+  font-size: var(--ds-font-size-minus-1);
+}
+
 /* Room for the badge in the card's corner. */
 .home-view button.home-utility-card {
   position: relative;
@@ -221,7 +228,7 @@ textarea {
 }
 
 .migration-status {
-  color: var(--ds-color-neutral-text-subtle);
+  color: var(--ds-color-text-muted);
 }
 
 .migration-status--applied {

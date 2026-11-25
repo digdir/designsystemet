@@ -43,6 +43,7 @@ export function AboutView(): React.JSX.Element {
         on your plan, so make sure yours allows enough modes for your config.
         See{' '}
         <Link
+          data-color='accent'
           href={FIGMA_PRICING_URL}
           onClick={(event) => {
             event.preventDefault();
@@ -56,6 +57,7 @@ export function AboutView(): React.JSX.Element {
       <Paragraph>
         Need help or have questions? Join our{' '}
         <Link
+          data-color='accent'
           href={SLACK_URL}
           onClick={(event) => {
             event.preventDefault();

@@ -20,6 +20,8 @@ type Utility = {
   onClick: () => void;
   /** A count shown in the card's corner, e.g. migrations not applied to this file. Hidden when 0. */
   badge?: { count: number; label: string };
+  /** A short status under the label, e.g. how much of the file is stamped. */
+  note?: string;
   /** Shown instead of the label while the utility runs, with a spinner instead of the icon. */
   busyLabel?: string;
 };
@@ -34,6 +36,7 @@ export function HomeView({
   onExport,
   onStampUiKit,
   stamping = false,
+  stampedPages = null,
 }: {
   onImport: () => void;
   onUpdateKit: () => void;
@@ -44,6 +47,8 @@ export function HomeView({
   onStampUiKit?: () => void;
   /** Whether the UI kit is being stamped. */
   stamping?: boolean;
+  /** How many pages in this file are stamped, or null if not known yet. */
+  stampedPages?: number | null;
 }): React.JSX.Element {
   const utilities: Utility[] = [
     {
@@ -73,6 +78,12 @@ export function HomeView({
           icon: <TagIcon />,
           onClick: onStampUiKit,
           busyLabel: stamping ? 'Stamping the UI kit…' : undefined,
+          note:
+            stampedPages === null
+              ? undefined
+              : stampedPages === 0
+                ? 'Not stamped'
+                : `${stampedPages} ${stampedPages === 1 ? 'page' : 'pages'} stamped`,
         },
       ]
     : [];
@@ -89,7 +100,7 @@ export function HomeView({
         </Paragraph>
       </div>
 
-      <Card data-color='neutral' asChild className='home-main-card'>
+      <Card asChild className='home-main-card'>
         <button type='button' onClick={onImport}>
           <span aria-hidden className='home-card-icon'>
             <PaletteIcon />
@@ -153,10 +164,11 @@ function UtilityCard({
   icon,
   onClick,
   badge,
+  note,
   busyLabel,
 }: Utility): React.JSX.Element {
   return (
-    <Card data-color='neutral' asChild className='home-utility-card'>
+    <Card asChild className='home-utility-card'>
       <button
         type='button'
         onClick={onClick}
@@ -164,9 +176,16 @@ function UtilityCard({
         aria-disabled={busyLabel ? true : undefined}
       >
         <span aria-hidden className='home-card-icon'>
-          {busyLabel ? <Spinner aria-hidden data-size='md' /> : icon}
+          {busyLabel ? (
+            <Spinner data-color='accent' aria-hidden data-size='md' />
+          ) : (
+            icon
+          )}
         </span>
         <span className='home-utility-label'>{busyLabel ?? label}</span>
+        {note && !busyLabel && (
+          <span className='home-utility-note'>{note}</span>
+        )}
         {badge && badge.count > 0 && (
           <>
             {/* The count is drawn by CSS, so screen readers get it as text instead. */}

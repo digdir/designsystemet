@@ -111,9 +111,15 @@ type StampUiKit = {
   type: 'stamp-ui-kit';
 };
 
-// Plugin -> UI: stamping finished, or failed.
-type StampUiKitResult = {
-  type: 'stamp-ui-kit-result';
+// UI -> plugin: how much of this file is stamped, for the Stamp UI kit card.
+type GetStampStatus = {
+  type: 'get-stamp-status';
+};
+
+// Plugin -> UI: how many pages are stamped. Sent when asked, and when stamping finished or failed.
+type StampStatus = {
+  type: 'stamp-status';
+  stampedPages: number;
 };
 
 export type MigrationInfo = {
@@ -163,7 +169,8 @@ export type FigmaMessages =
   | RunMigrations
   | MigrationsResult
   | StampUiKit
-  | StampUiKitResult;
+  | GetStampStatus
+  | StampStatus;
 
 export type Notification = {
   kind: 'error' | 'warning' | 'info';

@@ -48,7 +48,7 @@ const START_VIEW: View = 'home';
 const FEAT_EXPORT = false;
 // Feature toggle: stamping the UI kit's source file for migrations, see plugin/stamps/stamps.ts. For maintainers,
 // who turn it on in a local build before a release.
-const FEAT_STAMP_UI_KIT = false;
+const FEAT_STAMP_UI_KIT = true;
 
 const initialState: UiState = {
   view: START_VIEW,
@@ -243,6 +243,8 @@ function App() {
   );
   // Whether the UI kit is being stamped, for the spinner on its card. The result is shown with figma.notify.
   const [stamping, setStamping] = useState(false);
+  // How many pages in this file are stamped, shown on the Stamp UI kit card. Null until the plugin says.
+  const [stampedPages, setStampedPages] = useState<number | null>(null);
 
   useEffect(() => {
     const stopListening = onPluginMessage((msg) => {
@@ -278,8 +280,9 @@ function App() {
                 : { status: 'error', message: msg.message ?? 'Unknown error' },
           });
           break;
-        case 'stamp-ui-kit-result':
+        case 'stamp-status':
           setStamping(false);
+          setStampedPages(msg.stampedPages);
           break;
         case 'migrations-list':
           dispatch({ type: 'migrations-listed', available: msg.migrations });
@@ -303,6 +306,7 @@ function App() {
     });
     // For the home view's badge: how many migrations this file hasn't had yet.
     postToPlugin('list-migrations');
+    if (FEAT_STAMP_UI_KIT) postToPlugin('get-stamp-status');
 
     return stopListening;
   }, []);
@@ -387,6 +391,7 @@ function App() {
             onExport={FEAT_EXPORT ? exportConfig : undefined}
             onStampUiKit={FEAT_STAMP_UI_KIT ? stampUiKit : undefined}
             stamping={stamping}
+            stampedPages={stampedPages}
           />
         )}
         {state.view === 'import' && (
@@ -424,6 +429,7 @@ function App() {
       <footer>
         {canGoBack && (
           <Button
+            data-color='accent'
             onClick={() => dispatch({ type: 'go-back' })}
             variant='tertiary'
           >
@@ -434,34 +440,36 @@ function App() {
           <div className='footer-actions'>
             {START_VIEW === 'import' ? (
               <>
-                <Button onClick={importConfig} disabled={!configText.trim()}>
+                <Button
+                  data-color='accent'
+                  onClick={importConfig}
+                  disabled={!configText.trim()}
+                >
                   Import
                 </Button>
                 <Button
-                  data-color='neutral'
                   variant='tertiary'
                   onClick={() => dispatch({ type: 'show-about' })}
                 >
                   What does importing do?
                 </Button>
-                <Button
-                  data-color='neutral'
-                  variant='tertiary'
-                  onClick={showMigrations}
-                >
+                <Button variant='tertiary' onClick={showMigrations}>
                   Update UI kit
                 </Button>
               </>
             ) : (
               <>
                 <Button
-                  data-color='neutral'
                   variant='tertiary'
                   onClick={() => dispatch({ type: 'show-about' })}
                 >
                   What does importing do?
                 </Button>
-                <Button onClick={importConfig} disabled={!configText.trim()}>
+                <Button
+                  data-color='accent'
+                  onClick={importConfig}
+                  disabled={!configText.trim()}
+                >
                   Import
                 </Button>
               </>
@@ -471,6 +479,7 @@ function App() {
         {state.view === 'export' && exportedConfig && (
           <div className='footer-actions'>
             <Button
+              data-color='accent'
               variant='secondary'
               onClick={() =>
                 copyText(exportedConfig).then(
@@ -486,6 +495,7 @@ function App() {
                   : 'Copy'}
             </Button>
             <Button
+              data-color='accent'
               onClick={() =>
                 downloadText('designsystemet.config.json', exportedConfig)
               }
@@ -497,6 +507,7 @@ function App() {
         {state.view === 'migrations' &&
           state.migrations.status === 'preview' && (
             <Button
+              data-color='accent'
               onClick={() => runMigrations(state.migrations.selected, false)}
               disabled={!canApply}
             >
@@ -506,7 +517,6 @@ function App() {
         {state.view === 'finished' && state.notifications.length > 0 && (
           <Button
             onClick={() => dispatch({ type: 'show-notifications' })}
-            data-color='neutral'
             variant='tertiary'
           >
             Show import log

@@ -36,6 +36,11 @@ export function componentStamp(node: BaseNode): string {
   return readStamp(node, COMPONENT_KEY);
 }
 
+/** The number of stamped pages in the file. Works without loading the pages. */
+export function countStampedPages(): number {
+  return figma.root.children.filter((page) => pageStamp(page)).length;
+}
+
 /** A component's name as migrations know it: its stamp, or else its own name. */
 export function componentName(node: BaseNode): string {
   return componentStamp(node) || node.name.trim();

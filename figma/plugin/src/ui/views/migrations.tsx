@@ -39,7 +39,7 @@ export function MigrationsView({
   if (!available || status === 'previewing' || status === 'running') {
     return (
       <div className='status-view' role='status'>
-        <Spinner aria-hidden data-size='lg' />
+        <Spinner data-color='accent' aria-hidden data-size='lg' />
         <Heading level={2} data-size='sm'>
           {status === 'running'
             ? 'Updating components'
@@ -95,7 +95,7 @@ export function MigrationsView({
       </Heading>
       <Paragraph>You can see what changes before you apply it.</Paragraph>
       {available.map((migration) => (
-        <Card key={migration.id} data-color='neutral' asChild>
+        <Card key={migration.id} asChild>
           <button type='button' onClick={() => onChoose(migration.id)}>
             <Heading level={3} data-size='xs'>
               {migration.title}

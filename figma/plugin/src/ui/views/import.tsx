@@ -155,6 +155,7 @@ export function ImportView({
         <Field.Description>
           Get your config from{' '}
           <Link
+            data-color='accent'
             href={THEME_BUILDER_URL}
             onClick={(event) => {
               // Links in the plugin UI can't open the browser, so the plugin opens it with figma.openExternal.
@@ -166,7 +167,7 @@ export function ImportView({
           </Link>
           , upload the file or paste it below, and click "Import".
         </Field.Description>
-        <FileUpload data-color='neutral' className='import-upload'>
+        <FileUpload className='import-upload'>
           <Field.Description>
             {source?.status === 'converting' && source.fileNames.length > 0
               ? `Reading ${source.fileNames.join(', ')}…`
@@ -174,7 +175,7 @@ export function ImportView({
                 ? `Loaded ${source.fileNames.join(', ')}`
                 : 'Drop a json file here less than 1 MB in size'}
           </Field.Description>
-          <Button asChild variant='secondary'>
+          <Button data-color='accent' asChild variant='secondary'>
             <span>Choose file</span>
           </Button>
           <input

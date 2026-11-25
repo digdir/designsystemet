@@ -1,5 +1,10 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { componentName, pageTitle, stampUiKit } from './stamps';
+import {
+  componentName,
+  countStampedPages,
+  pageTitle,
+  stampUiKit,
+} from './stamps';
 
 type Fake = {
   id: string;
@@ -62,6 +67,23 @@ describe('stampUiKit', () => {
     expect(dialog.shared).toEqual({ component: 'Modal', id: dialog.id });
     expect(copy.shared).toEqual({ component: 'My dialog', id: copy.id });
     expect(variant.shared).toEqual({});
+  });
+});
+
+describe('countStampedPages', () => {
+  afterEach(() => {
+    vi.unstubAllGlobals();
+  });
+
+  it('counts the stamped pages, not copied stamps', () => {
+    const stamped = page('❖  Dialog', []);
+    stamped.shared = { page: 'Dialog', id: stamped.id };
+    const copied = page('Dialog copy', [], { page: 'Dialog', id: stamped.id });
+    vi.stubGlobal('figma', {
+      root: { children: [stamped, copied, page('---', [])] },
+    });
+
+    expect(countStampedPages()).toBe(1);
   });
 });
 
