@@ -155,11 +155,10 @@ function reducer(state: UiState, action: Action): UiState {
         },
       };
     case 'go-back':
-      // From the preview or the result, go back to choosing migrations.
+      // From the preview, go back to choosing migrations. From the result, go back to the start.
       if (
         state.view === 'migrations' &&
-        (state.migrations.status === 'preview' ||
-          state.migrations.status === 'done')
+        state.migrations.status === 'preview'
       ) {
         return {
           ...state,
@@ -174,8 +173,9 @@ function previousView(state: UiState): View {
   switch (state.view) {
     // The import views go back to the config, except the log of a successful import, which goes back to its result.
     case 'about':
-    case 'finished':
       return 'import';
+    // A finished import or migration goes back to the start.
+    case 'finished':
     case 'migrations':
       return START_VIEW;
     case 'notifications':
@@ -347,6 +347,11 @@ function App() {
   const exportedConfig =
     state.exported?.status === 'success' ? state.exported.config : null;
 
+  // A finished import or applied migrations: the way back goes to the start view.
+  const backToStart =
+    state.view === 'finished' ||
+    (state.view === 'migrations' && state.migrations.status === 'done');
+
   // Every view but the start view and a running import has a way back.
   const canGoBack =
     state.view !== START_VIEW &&
@@ -420,7 +425,7 @@ function App() {
             onClick={() => dispatch({ type: 'go-back' })}
             variant='tertiary'
           >
-            {state.view === 'finished' ? 'Import again' : 'Go back'}
+            {backToStart ? 'Back to start' : 'Go back'}
           </Button>
         )}
         {state.view === 'import' && (
