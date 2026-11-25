@@ -17,6 +17,7 @@ export interface BlogPosts {
       alt: string;
     };
     searchTerms: string[];
+    categories: string[];
   }[];
   metadata: PageMetadata;
 }
@@ -57,6 +58,7 @@ export async function getBlogPosts(lang: string): Promise<BlogPosts> {
         alt: frontmatter.imageAlt || t('meta.meta-cover'),
       },
       searchTerms,
+      categories: frontmatter.categories ?? [],
     });
   }
 

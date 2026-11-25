@@ -10,7 +10,7 @@ import {
 } from '@digdir/designsystemet-react';
 import { type ChangeEvent, type ClipboardEvent, useState } from 'react';
 import { convertCss, isThemeCss } from '../convert-css';
-import { postToPlugin } from '../post-to-plugin';
+import { postToPlugin } from '../plugin-messages';
 
 const THEME_BUILDER_URL = 'https://theme.designsystemet.no';
 // Configs and theme CSS are far smaller (designsystemet.css is about 50 KB). Anything larger is refused,
