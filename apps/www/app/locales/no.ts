@@ -72,7 +72,16 @@ export default {
     tag: 'Bloggen',
     title: 'Bloggen',
     description:
-      'Her finner du historier, erfaringer og oppdateringer fra Designsystemet. Et sted for å lære av hverandre og holde deg oppdatert. Du kan abonnere på bloggen gjennom <0>RSS</0> eller <1>Atom</1>',
+      'Her finner du oppdateringer fra Designsystemet og erfaringsdeling fra andre. Du kan abonnere på bloggen gjennom <0>RSS</0> eller <1>Atom</1>',
+    filter: {
+      legend: 'Filtrer blogginnlegg etter kategori',
+    },
+    categories: {
+      case: 'Erfaringer',
+      updates: 'Oppdateringer',
+      'in-depth': 'Fagartikler',
+      about: 'Om Designsystemet',
+    },
     write: {
       title: 'Vil du skrive for bloggen?',
       description:
