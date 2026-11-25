@@ -1,6 +1,6 @@
 import { Heading, Link, List, Paragraph } from '@digdir/designsystemet-react';
 import { version } from '../../../package.json';
-import { postToPlugin } from '../post-to-plugin';
+import { postToPlugin } from '../plugin-messages';
 
 const SLACK_URL = 'https://www.designsystemet.no/slack';
 const FIGMA_PRICING_URL = 'https://www.figma.com/pricing/';
