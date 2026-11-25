@@ -25,7 +25,8 @@ type Utility = {
 };
 
 // The start view: import a theme into this file, and the utilities, e.g. updating a copy of the UI kit.
-// Export and stamping are shown when they're turned on, i.e. when onExport or onStampUiKit is given.
+// Export and stamping are shown when they're turned on, i.e. when onExport or onStampUiKit is given. Stamping is
+// in its own section, For maintainers.
 export function HomeView({
   onImport,
   onUpdateKit,
@@ -63,17 +64,18 @@ export function HomeView({
           },
         ]
       : []),
-    ...(onStampUiKit
-      ? [
-          {
-            label: 'Stamp UI kit (maintainers)',
-            icon: <TagIcon />,
-            onClick: onStampUiKit,
-            busyLabel: stamping ? 'Stamping the UI kit…' : undefined,
-          },
-        ]
-      : []),
   ];
+  // For the UI kit's maintainers, in their own section, so it's clear they aren't for everyone.
+  const maintainerUtilities: Utility[] = onStampUiKit
+    ? [
+        {
+          label: 'Stamp UI kit',
+          icon: <TagIcon />,
+          onClick: onStampUiKit,
+          busyLabel: stamping ? 'Stamping the UI kit…' : undefined,
+        },
+      ]
+    : [];
 
   return (
     <div className='home-view'>
@@ -104,46 +106,81 @@ export function HomeView({
         </button>
       </Card>
 
-      <section className='home-utilities' aria-labelledby='home-utilities'>
-        <Heading level={2} data-size='xs' id='home-utilities'>
-          Utilities
-        </Heading>
-        <div className='home-utility-grid'>
-          {utilities.map(({ label, icon, onClick, badge, busyLabel }) => (
-            <Card
-              key={label}
-              data-color='neutral'
-              asChild
-              className='home-utility-card'
-            >
-              <button
-                type='button'
-                onClick={onClick}
-                aria-busy={busyLabel ? true : undefined}
-                aria-disabled={busyLabel ? true : undefined}
-              >
-                <span aria-hidden className='home-card-icon'>
-                  {busyLabel ? <Spinner aria-hidden data-size='md' /> : icon}
-                </span>
-                <span className='home-utility-label'>{busyLabel ?? label}</span>
-                {badge && badge.count > 0 && (
-                  <>
-                    {/* The count is drawn by CSS, so screen readers get it as text instead. */}
-                    <Badge
-                      aria-hidden
-                      data-color='accent'
-                      count={badge.count}
-                      maxCount={9}
-                      className='home-utility-badge'
-                    />
-                    <span className='ds-sr-only'>, {badge.label}</span>
-                  </>
-                )}
-              </button>
-            </Card>
-          ))}
-        </div>
-      </section>
+      <UtilitySection id='home-utilities' title='Utilities'>
+        {utilities}
+      </UtilitySection>
+      {maintainerUtilities.length > 0 && (
+        <UtilitySection
+          id='home-maintainer-utilities'
+          title='For maintainers'
+          description='Internal tools for the UI kit’s source file. Hidden in releases.'
+        >
+          {maintainerUtilities}
+        </UtilitySection>
+      )}
     </div>
+  );
+}
+
+function UtilitySection({
+  id,
+  title,
+  description,
+  children,
+}: {
+  id: string;
+  title: string;
+  description?: string;
+  children: Utility[];
+}): React.JSX.Element {
+  return (
+    <section className='home-utilities' aria-labelledby={id}>
+      <Heading level={2} data-size='xs' id={id}>
+        {title}
+      </Heading>
+      {description && <Paragraph data-size='sm'>{description}</Paragraph>}
+      <div className='home-utility-grid'>
+        {children.map((utility) => (
+          <UtilityCard key={utility.label} {...utility} />
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function UtilityCard({
+  label,
+  icon,
+  onClick,
+  badge,
+  busyLabel,
+}: Utility): React.JSX.Element {
+  return (
+    <Card data-color='neutral' asChild className='home-utility-card'>
+      <button
+        type='button'
+        onClick={onClick}
+        aria-busy={busyLabel ? true : undefined}
+        aria-disabled={busyLabel ? true : undefined}
+      >
+        <span aria-hidden className='home-card-icon'>
+          {busyLabel ? <Spinner aria-hidden data-size='md' /> : icon}
+        </span>
+        <span className='home-utility-label'>{busyLabel ?? label}</span>
+        {badge && badge.count > 0 && (
+          <>
+            {/* The count is drawn by CSS, so screen readers get it as text instead. */}
+            <Badge
+              aria-hidden
+              data-color='accent'
+              count={badge.count}
+              maxCount={9}
+              className='home-utility-badge'
+            />
+            <span className='ds-sr-only'>, {badge.label}</span>
+          </>
+        )}
+      </button>
+    </Card>
   );
 }
