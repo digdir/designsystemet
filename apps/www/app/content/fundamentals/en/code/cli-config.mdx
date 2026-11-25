@@ -1,7 +1,7 @@
 ---
 title: CLI Config
 description: Information on how to use the CLI config file.
-date: 2026-11-19
+date: 2026-11-25
 category: Code
 color: blue
 icon: FileJsonIcon
@@ -285,7 +285,7 @@ The `severity` override allows you to customise the colours used for severity, w
 | inner | Object | No | Contains colours for inner focus |
 | outer | Object | No | Contains colours for outer focus |
 
-Without overrides, inner focus uses `background-default` and outer focus uses `text-default` from a colour scale generated from `#24272B`. The theme's own colours do not affect the focus colours.
+Without overrides, the focus colours come from the first colour in `colors`: inner focus uses its `surface-default` and outer focus uses its `text-default`.
 
 ##### overrides.focus.(inner|outer)
 | Name | Type | Required | Description |

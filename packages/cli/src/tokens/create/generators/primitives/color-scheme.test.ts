@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { type CssColor, generateColorScale } from '../../../../colors/index.ts';
-import { focusColor, visitedLinkColor } from '../../../../schemas/defaults.ts';
+import { visitedLinkColor } from '../../../../schemas/defaults.ts';
 import { colorsSchema } from '../../../../schemas/schema-color.ts';
 import type { ColorOverrideSchema } from '../../../../schemas/schema-overrides.ts';
 import { generateColorScheme, getThemeColorScales, getThemeColorSchemes, groupByScheme } from './color-scheme.ts';
@@ -43,14 +43,19 @@ describe('generateColorScheme', () => {
     expect(theme.accent[12]).toEqual({ $type: 'color', $value: ACCENT });
   });
 
-  it('defaults focus tokens to the focus color scale positions 1 and 11', () => {
-    const result = generateColorScheme('theme', 'light', colorsSchema.parse({ accent: ACCENT }));
-    const theme = result.theme as Record<string, Record<string, { $value: string }>>;
-    const focusScale = generateColorScale(focusColor, 'light');
+  it.each(['light', 'dark'] as const)(
+    'defaults focus tokens in %s to the surface and text of the first color',
+    (scheme) => {
+      const colors = colorsSchema.parse({ info: '#0A71C0', accent: ACCENT, neutral: NEUTRAL });
+      const result = generateColorScheme('theme', scheme, colors);
+      const theme = result.theme as Record<string, Record<string, { $value: string }>>;
+      // accent is the first color: the severity color listed before it is moved last
+      const accentScale = generateColorScale(ACCENT, scheme);
 
-    expect(theme.focus.inner.$value).toBe(focusScale['background-default'].hex);
-    expect(theme.focus.outer.$value).toBe(focusScale['text-default'].hex);
-  });
+      expect(theme.focus.inner.$value).toBe(accentScale['surface-default'].hex);
+      expect(theme.focus.outer.$value).toBe(accentScale['text-default'].hex);
+    },
+  );
 
   it('defaults link.visited to the visited-link scale position 12', () => {
     const result = generateColorScheme('theme', 'light', baseColors);

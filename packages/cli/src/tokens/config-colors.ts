@@ -3,7 +3,6 @@ import type { ColorScheme, CssColor, SemanticColorNames, SeverityColorNames } fr
 import { isSeverityColor, severityColors, visitedLinkColor } from '../schemas/defaults.ts';
 import type { ExternalConfigSchemaInput } from '../schemas/schema.ts';
 import { colorNameSchema } from '../schemas/schema-color.ts';
-import { defaultFocusColors } from './default-focus.ts';
 
 type ThemeConfig = NonNullable<ExternalConfigSchemaInput['themes']>[string];
 type Overrides = NonNullable<ThemeConfig['overrides']>;
@@ -120,8 +119,14 @@ export function configColorsFromValues({
     overrides.linkVisited = linkVisitedOverride;
   }
 
-  const focusInnerOverride = diffFromDefaults(focusInner, (scheme) => defaultFocusColors(scheme).inner);
-  const focusOuterOverride = diffFromDefaults(focusOuter, (scheme) => defaultFocusColors(scheme).outer);
+  // The default focus colors are the surface and text of the theme's first color, as they are in the source.
+  const [firstColorName] = colors.keys();
+  const firstColorSteps = firstColorName === undefined ? undefined : scales.get(firstColorName);
+  const focusInnerOverride = diffFromDefaults(
+    focusInner,
+    (scheme) => firstColorSteps?.get('surface-default')?.[scheme],
+  );
+  const focusOuterOverride = diffFromDefaults(focusOuter, (scheme) => firstColorSteps?.get('text-default')?.[scheme]);
   if (focusInnerOverride || focusOuterOverride) {
     overrides.focus = {
       ...(focusInnerOverride && { inner: focusInnerOverride }),

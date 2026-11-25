@@ -254,7 +254,7 @@ Import this file after @digdir/designsystemet-css, for example:
   --ds-color-danger-border-muted: #8a7371;
   --ds-color-danger-text-muted: #6d5955;
   --ds-color-focus-inner: #ffffff;
-  --ds-color-focus-outer: #181a1c;
+  --ds-color-focus-outer: #001b32;
   --ds-link-color-visited: #663299; /** Deprecated: style .ds-link:visited instead. */
 
   color-scheme: light;
@@ -415,7 +415,7 @@ Import this file after @digdir/designsystemet-css, for example:
   --ds-color-danger-border-muted: #8a7371;
   --ds-color-danger-text-muted: #6d5955;
   --ds-color-focus-inner: #ffffff;
-  --ds-color-focus-outer: #181a1c;
+  --ds-color-focus-outer: #001b32;
   --ds-link-color-visited: #663299; /** Deprecated: style .ds-link:visited instead. */
 
   color-scheme: light;
@@ -740,8 +740,8 @@ Import this file after @digdir/designsystemet-css, for example:
   --ds-color-danger-surface-muted: #3c2a27;
   --ds-color-danger-border-muted: #947c79;
   --ds-color-danger-text-muted: #b8a3a1;
-  --ds-color-focus-inner: #17181a;
-  --ds-color-focus-outer: #ececec;
+  --ds-color-focus-inner: #142941;
+  --ds-color-focus-outer: #e7edf4;
   --ds-link-color-visited: #b49acd; /** Deprecated: style .ds-link:visited instead. */
 
   color-scheme: dark;
@@ -901,8 +901,8 @@ Import this file after @digdir/designsystemet-css, for example:
   --ds-color-danger-surface-muted: #3c2a27;
   --ds-color-danger-border-muted: #947c79;
   --ds-color-danger-text-muted: #b8a3a1;
-  --ds-color-focus-inner: #17181a;
-  --ds-color-focus-outer: #ececec;
+  --ds-color-focus-inner: #142941;
+  --ds-color-focus-outer: #e7edf4;
   --ds-link-color-visited: #b49acd; /** Deprecated: style .ds-link:visited instead. */
 
   color-scheme: dark;

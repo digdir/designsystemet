@@ -711,11 +711,11 @@
     "focus": {
       "inner": {
         "$type": "color",
-        "$value": "#17181a"
+        "$value": "#312525"
       },
       "outer": {
         "$type": "color",
-        "$value": "#ececec"
+        "$value": "#fae8e8"
       }
     }
   }
