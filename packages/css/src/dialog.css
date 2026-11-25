@@ -153,7 +153,6 @@
     margin-block-end: var(--dsc-dialog-icon-spacing);
     margin-inline-start: var(--dsc-dialog-icon-spacing);
     margin-inline-end: var(--_dsc-dialog-icon-top-right-margin);
-    color: inherit;
   }
 }
 
