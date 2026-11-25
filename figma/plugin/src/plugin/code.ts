@@ -73,8 +73,10 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
   if (msg.type === 'stamp-ui-kit') {
     try {
       const { pages, components, kept } = await stampUiKit();
+      const count = (n: number, word: string) =>
+        `${n} ${word}${n === 1 ? '' : 's'}`;
       figma.notify(
-        `Stamped ${pages} pages and ${components} components. ${kept} already had a stamp and kept it.`,
+        `Stamped ${count(pages, 'page')} and ${count(components, 'component')}. ${kept} already had a stamp and kept it.`,
       );
     } catch (error) {
       figma.notify(

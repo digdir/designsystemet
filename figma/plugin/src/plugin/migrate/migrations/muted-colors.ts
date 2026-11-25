@@ -135,8 +135,9 @@ export function mutedColorRule(context: PaintContext): PaintTarget {
   const { component, variant, path, property, variable } = context;
   const readOnly = /read-?only/i.test(variant);
   const isDescription = /^\/label and description\/description$/i.test(path);
+  // On the Suggestion page, so it also covers the options in Suggestion's own instances of them.
   const isOptionDescription =
-    /^\.Item in (suggestion|multiselect)$/.test(component) &&
+    context.page === 'Suggestion' &&
     /\/label and description\/description$/i.test(path);
 
   // File upload changed more than its neutral colors: the drop zone has no background unless hovered, and
@@ -250,6 +251,7 @@ export const mutedColors: Migration = {
     color('border-muted'),
     color('text-muted'),
   ],
+  pages: [...new Set(MUTED_COLOR_COMPONENTS.map(({ page }) => page))],
   run: (context) =>
     rebindComponents(
       MUTED_COLOR_COMPONENTS,

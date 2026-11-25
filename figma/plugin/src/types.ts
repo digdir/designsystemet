@@ -122,6 +122,8 @@ export type MigrationInfo = {
   description: string;
   /** When the migration was applied to this file, as an ISO date, if it has been. */
   appliedAt?: string;
+  /** Whether the file has any of the UI kit pages the migration changes, so it has something to migrate. */
+  inFile: boolean;
 };
 
 /** One kind of change in a component, in words, e.g. Border: neutral border-subtle → border-muted. */

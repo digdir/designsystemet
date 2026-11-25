@@ -1,6 +1,7 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import {
   describeVariable,
+  hasAnyPage,
   matchPagesByComponents,
   normalizePageName,
   type RebindRules,
@@ -106,6 +107,7 @@ function setup() {
     parent: { type: 'PAGE' },
   });
   const page = {
+    id: '0:1',
     name: '❖  Dialog',
     loadAsync: async () => {},
     getSharedPluginData,
@@ -368,6 +370,7 @@ describe('rebindComponents', () => {
         figma: {
           root: {
             children: Array<{
+              id: string;
               name: string;
               shared?: Record<string, string>;
               findAllWithCriteria: () => FakeNode[];
@@ -378,15 +381,16 @@ describe('rebindComponents', () => {
     ).figma;
     const page = root.children[0];
     page.name = '❖  Modal';
-    page.shared = { page: 'Dialog' };
+    page.shared = { page: 'Dialog', id: page.id };
     const [component] = page.findAllWithCriteria();
     component.name = 'Dialogue';
-    component.shared = { component: 'Dialog' };
+    component.shared = { component: 'Dialog', id: component.id };
     // A page named Dialog, stamped as another page, isn't used for Dialog.
     const search = vi.fn(() => [] as FakeNode[]);
     root.children.push({
+      id: '0:2',
       name: 'Dialog',
-      shared: { page: 'Card' },
+      shared: { page: 'Card', id: '0:2' },
       loadAsync: async () => {},
       getSharedPluginData,
       findAllWithCriteria: search,
@@ -407,6 +411,37 @@ describe('rebindComponents', () => {
     ]);
   });
 
+  it('compares stamps like names, and ignores a stamp copied to another page', async () => {
+    setup();
+    const { root } = (
+      globalThis as unknown as {
+        figma: { root: { children: Array<{ id: string; shared?: object }> } };
+      }
+    ).figma;
+    root.children[0].shared = { page: 'DIALOG', id: '0:1' };
+    // A duplicate of the Dialog page, with the stamp it was copied with.
+    const search = vi.fn(() => [] as FakeNode[]);
+    root.children.push({
+      id: '0:9',
+      name: 'Dialog examples',
+      shared: { page: 'Dialog', id: '0:1' },
+      loadAsync: async () => {},
+      getSharedPluginData,
+      findAllWithCriteria: search,
+    } as never);
+    const log = newLog();
+
+    await rebindComponents([{ page: 'Dialog', name: 'Dialog' }], rules, {
+      dryRun: true,
+      log,
+      pause: noPause,
+    });
+
+    expect(log.warnings).toEqual([]);
+    expect(log.changes.size).toBeGreaterThan(0);
+    expect(search).not.toHaveBeenCalled();
+  });
+
   it('warns about components and pages that aren’t in the file', async () => {
     setup();
     const log = newLog();
@@ -424,6 +459,35 @@ describe('rebindComponents', () => {
       'Could not find the component Modal on the page Dialog, so it was left as it is.',
       'Could not find the page Tooltip, so its components were left as they are: Tooltip.',
     ]);
+  });
+});
+
+describe('hasAnyPage', () => {
+  afterEach(() => {
+    vi.unstubAllGlobals();
+  });
+
+  it('finds the pages by name or stamp, without loading them', () => {
+    const loadAsync = vi.fn();
+    vi.stubGlobal('figma', {
+      root: {
+        children: [
+          { id: '0:1', name: '❖  Dialog', loadAsync, getSharedPluginData },
+          {
+            id: '0:2',
+            name: 'Kort',
+            shared: { page: 'Card', id: '0:2' },
+            loadAsync,
+            getSharedPluginData,
+          },
+        ],
+      },
+    });
+
+    expect(hasAnyPage(['Tooltip', 'Dialog'])).toBe(true);
+    expect(hasAnyPage(['Card'])).toBe(true);
+    expect(hasAnyPage(['Tooltip'])).toBe(false);
+    expect(loadAsync).not.toHaveBeenCalled();
   });
 });
 
@@ -619,6 +683,89 @@ describe('rebindComponents in a dry run', () => {
         to: 'text-default',
         count: 1,
       },
+    ]);
+  });
+
+  it('doesn’t count a layer that follows its main component through an instance in between', async () => {
+    // Paragraph's fill changes. _Content has an instance of Paragraph, and Dialog an instance of _Content, so the
+    // same fill is in both, following Paragraph. Only Paragraph's own layer is counted.
+    const paragraph = node({
+      id: '5:6',
+      name: 'Paragraph',
+      type: 'COMPONENT',
+      fills: [bound('n-text')],
+    });
+    const content = node({
+      id: '3:3',
+      name: '_Content',
+      type: 'COMPONENT',
+      children: [
+        node({
+          id: '3:4',
+          name: 'Paragraph',
+          type: 'INSTANCE',
+          children: [
+            node({
+              id: 'I3:4;5:7',
+              name: 'Text',
+              type: 'RECTANGLE',
+              fills: [bound('n-text')],
+            }),
+          ],
+        }),
+      ],
+    });
+    // The text layer in Paragraph is 5:7; the paragraph component itself is changed too.
+    paragraph.children = [
+      node({
+        id: '5:7',
+        name: 'Text',
+        type: 'RECTANGLE',
+        fills: [bound('n-text')],
+      }),
+    ];
+    const dialog = node({
+      id: '1:1',
+      name: 'Dialog',
+      type: 'COMPONENT',
+      children: [
+        node({
+          id: '1:2',
+          name: '_Content',
+          type: 'INSTANCE',
+          children: [
+            node({
+              id: 'I1:2;3:4',
+              name: 'Paragraph',
+              type: 'INSTANCE',
+              children: [
+                node({
+                  id: 'I1:2;3:4;5:7',
+                  name: 'Text',
+                  type: 'RECTANGLE',
+                  fills: [bound('n-text')],
+                }),
+              ],
+            }),
+          ],
+        }),
+      ],
+    });
+    stubFile([dialog, content, paragraph]);
+    const log = newLog();
+
+    await rebindComponents(
+      ['Dialog', '_Content', 'Paragraph'].map((name) => ({
+        page: 'Dialog',
+        name,
+      })),
+      rules,
+      { dryRun: true, log, pause: noPause },
+    );
+
+    // Paragraph's own fill and its text layer.
+    expect([...log.changes.values()].map((change) => change.count)).toEqual([
+      2,
     ]);
   });
 

@@ -178,13 +178,27 @@ describe('mutedColorRule', () => {
     ).toEqual(color('text-muted'));
   });
 
-  it('uses the text color for option descriptions in Suggestion', () => {
-    for (const component of ['.Item in suggestion', '.Item in multiselect']) {
+  it('uses the text color for option descriptions in Suggestion, also in its instances of them', () => {
+    for (const [component, path] of [
+      [
+        '.Item in suggestion',
+        '/Checkbox and label/label and description/description',
+      ],
+      [
+        '.Item in multiselect',
+        '/Checkbox and label/label and description/description',
+      ],
+      [
+        'Suggestion',
+        '/List/Option 1/Checkbox and label/label and description/description',
+      ],
+    ]) {
       expect(
         mutedColorRule(
           paint({
+            page: 'Suggestion',
             component,
-            path: '/Checkbox and label/label and description/description',
+            path,
             property: 'text',
             variable: neutral('text-subtle'),
           }),
@@ -197,6 +211,7 @@ describe('mutedColorRule', () => {
     expect(
       mutedColorRule(
         paint({
+          page: 'Suggestion',
           component: '.Item in suggestion',
           path: '/Checkbox and label/label and description/label',
           property: 'text',

@@ -144,6 +144,7 @@ describe('runMigrations', () => {
       title: 'Fails',
       description: '',
       requires: [],
+      pages: [],
       run: async () => {
         throw new Error('Layer is locked');
       },

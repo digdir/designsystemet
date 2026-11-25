@@ -232,18 +232,24 @@ export async function rebindComponents(
     }
   };
 
-  // Whether a layer in an instance will change with the layer it comes from, which this run changes.
+  // Whether a layer in an instance will change with a layer it comes from, which this run changes. Follows the
+  // chain of layers back to the main component, as a layer in between may have been skipped for following too,
+  // e.g. text in Dialog's instance of _Content, which follows _Content's Paragraph, which follows Paragraph.
   const followsChangedLayer = (
     node: SceneNode,
     property: 'fill' | 'stroke',
     signature: string,
   ): boolean => {
-    const source = sourceLayerId(node.id);
-    return (
-      source !== null &&
-      changedLayers.get(`${source}|${property}`) === signature &&
-      !overrides.isOverridden(node, property)
-    );
+    for (
+      let source = sourceLayerId(node.id);
+      source !== null;
+      source = sourceLayerId(source)
+    ) {
+      if (changedLayers.get(`${source}|${property}`) === signature) {
+        return !overrides.isOverridden(node, property);
+      }
+    }
+    return false;
   };
 
   const clearModes = async (node: SceneNode, layer: LayerContext) => {
@@ -353,25 +359,14 @@ export async function findComponents(
     return components;
   };
 
-  // The pages to search for each of the migration's pages: the pages stamped with its name, or else the pages
-  // with its name that aren't stamped as another page.
+  // The pages to search for each of the migration's pages, by stamp or name, see `pagesFor`.
   const found = new Map<string, Array<{ page: PageNode; label?: string }>>();
   const labelled = (pageName: string, page: PageNode) =>
     normalizePageName(page.name) === normalizePageName(pageName)
       ? { page }
       : { page, label: `${pageName} (page ‘${pageTitle(page.name)}’)` };
   for (const pageName of pageNames) {
-    const stamped = figma.root.children.filter(
-      (page) => pageStamp(page) === pageName,
-    );
-    const pages =
-      stamped.length > 0
-        ? stamped
-        : figma.root.children.filter(
-            (page) =>
-              !pageStamp(page) &&
-              normalizePageName(page.name) === normalizePageName(pageName),
-          );
+    const pages = pagesFor(pageName);
     if (pages.length > 0) {
       found.set(
         pageName,
@@ -437,6 +432,31 @@ export async function findComponents(
     }
   }
   return roots;
+}
+
+/**
+ * The pages for one of a migration's pages: the pages stamped as it, or else the pages with its name that aren't
+ * stamped as another page. Doesn't load the pages. Stamps and names are compared the same way, without symbols or
+ * case, e.g. `Avatar Stack` is `Avatar stack`.
+ */
+function pagesFor(pageName: string): PageNode[] {
+  const name = normalizePageName(pageName);
+  const stamped = figma.root.children.filter(
+    (page) => normalizePageName(pageStamp(page)) === name,
+  );
+  return stamped.length > 0
+    ? stamped
+    : figma.root.children.filter(
+        (page) => !pageStamp(page) && normalizePageName(page.name) === name,
+      );
+}
+
+/**
+ * Whether the file has any of these UI kit pages, found by stamp or name. Doesn't load the pages. Pages renamed
+ * in a copy made before the UI kit was stamped aren't counted, as finding them means loading every page.
+ */
+export function hasAnyPage(pageNames: string[]): boolean {
+  return pageNames.some((pageName) => pagesFor(pageName).length > 0);
 }
 
 /** The component sets and the components that aren't variants on a page, which must be loaded. */

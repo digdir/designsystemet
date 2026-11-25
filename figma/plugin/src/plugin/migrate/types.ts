@@ -42,5 +42,7 @@ export type Migration = {
   description: string;
   /** Variables that must exist in the file before the migration can run, e.g. ones a newer config adds. */
   requires: VariableRef[];
+  /** The UI kit pages the migration changes. A file without any of them has nothing to migrate. */
+  pages: string[];
   run: (context: MigrationContext) => Promise<void>;
 };

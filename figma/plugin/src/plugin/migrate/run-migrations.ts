@@ -6,7 +6,7 @@ import pkg from '../../../package.json';
 import type { MigrationInfo, MigrationSummary } from '../../types';
 import { createPause, type Pause } from '../import/pause';
 import { mutedColors } from './migrations/muted-colors';
-import { createVariableIndex, refName } from './rebind';
+import { createVariableIndex, hasAnyPage, refName } from './rebind';
 import type { Migration, MigrationLog } from './types';
 
 /** All migrations, oldest first. Add new ones at the end; they run in this order. */
@@ -33,11 +33,12 @@ function readApplied(): AppliedMigrations {
 
 export function listMigrations(): MigrationInfo[] {
   const applied = readApplied();
-  return MIGRATIONS.map(({ id, title, description }) => ({
+  return MIGRATIONS.map(({ id, title, description, pages }) => ({
     id,
     title,
     description,
     appliedAt: applied[id]?.appliedAt,
+    inFile: hasAnyPage(pages),
   }));
 }
 

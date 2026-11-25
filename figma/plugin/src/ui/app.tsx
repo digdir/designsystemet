@@ -340,9 +340,11 @@ function App() {
     (summary) => !summary.error && summary.total > 0,
   );
 
-  // Migrations not applied to this file yet, for the badge on the Update UI kit card.
+  // Migrations not applied to this file yet, for the badge on the Update UI kit card. Only in a file with the
+  // UI kit's pages, as other files have nothing to migrate.
   const pendingMigrations =
-    state.migrations.available?.filter((m) => !m.appliedAt).length ?? 0;
+    state.migrations.available?.filter((m) => m.inFile && !m.appliedAt)
+      .length ?? 0;
 
   const exportedConfig =
     state.exported?.status === 'success' ? state.exported.config : null;
