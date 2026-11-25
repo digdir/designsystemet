@@ -2,7 +2,7 @@
 title: Spør brukerne om dato og klokkeslett
 sidebar_title: Dato og klokkeslett
 category: Spør brukerne om...
-description: Gjør det enkelt for brukerne å oppgi dato og klokkeslett. Ta utgangspunkt i hva de skal oppgi, og velg en løsning som passer oppgaven og behovene deres.
+description: Slik gjør du det enkelt for brukerne å oppgi dato og klokkeslett.
 partners: Digdir, Brønnøysundregistrene
 date: 2026-11-23
 order: 10
@@ -16,7 +16,7 @@ Unngå å gjøre oppgaven mer komplisert enn nødvendig. Et vanlig tekstfelt, se
 
 Når du spør om kjente datoer, som fødselsdato eller bryllupsdato, bør brukerne kunne skrive datoen direkte uten å måtte navigere i en kalender.
 
-Du kan bruke ett felt for hele datoen eller separate felt for dag, måned og år. Separate felt kan gjøre det tydelig hvilke deler av datoen brukerne skal oppgi, men gir samtidig flere fokuspunkter, gjør det vanskeligere å lime inn en hel dato og krever at brukerne forstår hvordan datoen er delt opp. Hvis du bruker separate felt, bør du gruppere dem med `fieldset` og `legend`, slik at sammenhengen mellom dem er tydelig.
+Du kan bruke ett felt for hele datoen eller separate felt for dag, måned og år. Separate felt viser tydelig hvilke deler brukerne skal fylle ut. Samtidig må brukerne flytte seg mellom flere felt, og det blir vanskeligere å lime inn en hel dato. Hvis du bruker separate felt, bør du gruppere dem med `fieldset` og `legend`, slik at det er tydelig at de hører sammen.
 
 Når du ber brukerne om en dato slik den står i et bankkort, pass eller annet dokument, bør rekkefølgen og formatet samsvare med dokumentet. Det gjør det enklere å overføre datoen korrekt og reduserer risikoen for feil.
 
@@ -24,7 +24,7 @@ Gjør det tydelig hvilket datoformat du forventer. Du kan for eksempel angi dato
 
 <Story story="KnownDates" />
 
-I eksempelet over bruker vi `inputmode="numeric"` for å gi brukeren numerisk tastatur på mobil og nettbrett. Vi velger bevisst å ikke bruke `type="number"` for dag, måned og år. `type="number"` er utviklet for numeriske verdier som kan økes og reduseres. Det gir funksjonalitet som spinnknapper og automatisk validering. Dette er ikke alltid hensiktsmessig når brukeren skal skrive inn en dato, og kan gi [tilgjengelighetsutfordringer (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/number#accessibility).
+I eksempelet over bruker vi `inputmode="numeric"` for å gi brukeren numerisk tastatur på mobil og nettbrett. Vi velger bevisst å ikke bruke `type="number"` for dag, måned og år. `type="number"` er utviklet for numeriske verdier som kan økes og reduseres. Det gir funksjonalitet som spinnknapper og automatisk validering. Dette er ikke hensiktsmessig når brukeren skal skrive inn en dato, og kan gi [tilgjengelighetsutfordringer (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/number#accessibility).
 
 Legg til rette for fleksibilitet i hva brukerne kan skrive inn. Godta for eksempel både «5» og «05» for dag og måned, og både «90» og «1990» for år når det er entydig hvilket år brukeren mener. Hvis du krever et bestemt format, må dette fremgå tydelig, og feilmeldinger bør forklare nøyaktig hva som er galt. 
 

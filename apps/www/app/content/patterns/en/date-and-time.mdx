@@ -2,7 +2,7 @@
 title: Ask users for date and time
 sidebar_title: Date and time
 category: Ask users for...
-description: Make it easy for users to provide date and time. Start with what they need to provide, and choose a solution that fits the task and their needs.
+description: How to make it easy for users to provide date and time.
 partners: Digdir, The Brønnøysund Register Centre
 date: 2026-11-23
 order: 10
@@ -16,7 +16,7 @@ Avoid making the task more complicated than necessary. A standard text field, se
 
 When asking for known dates, such as a date of birth or wedding date, users should be able to type the date directly without having to navigate a calendar.
 
-You can use one field for the whole date or separate fields for day, month and year. Separate fields can make it clear which parts of the date users need to provide, but they also add more focus stops, make it harder to paste a full date, and require users to understand how the date is split up. If you use separate fields, group them with `fieldset` and `legend` so that the relationship between them is clear.
+You can use one field for the whole date or separate fields for day, month and year. Separate fields clearly show which parts users need to fill in. At the same time, users have to move between several fields, and it becomes harder to paste a full date. If you use separate fields, group them with `fieldset` and `legend` so it is clear that they belong together.
 
 When asking users to enter a date as it appears on a bank card, passport or other document, the order and format should match the document. This makes it easier to transfer the date accurately and reduces the risk of errors.
 
@@ -24,7 +24,7 @@ Make it clear which date format you expect. For example, you can state the date 
 
 <Story story="KnownDatesEN" />
 
-In the example above, we use `inputmode="numeric"` to provide a numeric keyboard on mobile phones and tablets. We deliberately avoid using `type="number"` for day, month and year. `type="number"` is designed for numeric values that can be incremented and decremented. It introduces functionality such as spin buttons and automatic validation. This is not always appropriate when users enter a date, and it can cause [accessibility issues (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/number#accessibility).
+In the example above, we use `inputmode="numeric"` to provide a numeric keyboard on mobile phones and tablets. We deliberately avoid using `type="number"` for day, month and year. `type="number"` is designed for numeric values that can be incremented and decremented. It introduces functionality such as spin buttons and automatic validation. This is not appropriate when users enter a date, and it can cause [accessibility issues (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/number#accessibility).
 
 Allow flexibility in what users can enter. For example, accept both “5” and “05” for day and month, and both “90” and “1990” for year when it is clear which year the user means. If you require a specific format, make this clear, and error messages should explain exactly what is wrong.
 
