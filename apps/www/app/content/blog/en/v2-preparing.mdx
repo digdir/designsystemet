@@ -1,0 +1,290 @@
+---
+title: V2 is on its way – here is how to prepare
+description: In v2, we extend the color system and build even more on web standards.
+date: 2026-11-18
+author: designsystemet.no
+categories: [updates]
+imageSrc: /img/blog/v2-preparing/v2.webp
+imageAlt: Illustration of two people placing a large blue ball on top of a blue block.
+---
+
+When `@digdir/designsystemet-web` was released in February, designsystemet.no took an important step towards our vision:
+to offer small, robust building blocks based on web standards, that are easy for everyone to use and build on.
+V2 continues in the same direction. We extend the color system and remove old solutions in favour of web standards.
+
+## What's new in v2
+
+### New Figma plugin
+
+For a long time we have relied on a third-party solution to import themes into Figma.
+Now we are making our own plugin, which simplifies the process and gives us full control over the import.
+This makes it easier for you to manage your theme in Figma.
+
+### New colors
+
+It has long been a small challenge to make neutral colors harmonize with the base color of a color scale.
+Input, for example, takes colors from `neutral` when the field is read-only.
+
+That is why every color scale gets three new colors: `surface-muted`, `border-muted` and `text-muted`.
+This makes it easier to get a neutral look that harmonizes with the color scale, without components having to take colors from another scale.
+
+### And much more
+
+On top of this come many improvements to the theme builder and the CLI.
+
+## How to prepare your code
+
+We know that breaking changes take time to handle, and a smooth transition matters to us.
+This is how you can get ready now:
+
+1. **Upgrade to the latest 1.x version** of all `@digdir/designsystemet*` packages.
+2. **Look for warnings:** TypeScript marks deprecated props and exports in your editor, the React and web packages log warnings in the console, and the CLI prints warnings in the terminal.
+3. **Replace deprecated code:** Everything in the lists below is already marked as `@deprecated` in v1, and the replacements already work. So you can switch now, without waiting for v2.
+
+<div data-wide-content>
+<div className="ds-card">
+<Details>
+<Details.Summary>Changes for everyone</Details.Summary>
+<div data-size='sm'>
+| Component | Don't use | Use (works in v1 too) | Note |
+| :-------- | :-------- | :------------------------ | :--- |
+| **ToggleGroup** | `data-toggle-group="LABEL"` | `focusgroup="radiogroup" aria-label="LABEL"` | Also works without changes, but screen readers will not announce the name of the group |
+| **Spinner** | `<svg class="ds-spinner">` | `<progress class="ds-spinner">`<br />and `<button aria-busy="true">` | CSS draws the spinner automatically |
+| **Individual CSS files** | The old names `togglegroup.css` and `skiplink.css` | The new names `toggle-group.css` and `skip-link.css` | The new file names have been available and recommended for a long time |
+| **Search** | Removed | [Read the blog post about why Search is being removed, and what to use instead](/en/blog/search-is-being-removed-what-should-you-do) |  |
+</div>
+</Details>
+<Details>
+<Details.Summary>Changes for React only</Details.Summary>
+<div data-size='sm'>
+| Component | Don't use | Use (works in v1 too) | Note |
+| :-------- | :-------- | :------------------------ | :--- |
+| **Types** | The old import `@digdir/designsystemet-react/colors` | The new import `@digdir/designsystemet-types` | The new import has been available and recommended for a long time |
+| **ToggleGroup.Item** | `data-variant` and `icon` | Don't style based on `data-variant`, and put the icon directly in `ToggleGroup.Item` |  |
+| **RovingFocus** | `RovingFocusRoot` and `RovingFocusItem` | [focusgroup](/en/components/utilities/focusgroup) |  |
+| **Utilities** | [`useDebounceCallback`](#usedebouncecallback), [`useSynchronizedAnimation`](#usesynchronizedanimation), [`useIsomorphicLayoutEffect`](#useisomorphiclayouteffect), [`useMediaQuery`](#usemediaquery), [`omit`](#omit), [`MergeRight`](#mergeright) | Copy the code into your project if you need it. Select a function to see its code. |  |
+
+<br />
+### `useDebounceCallback`
+
+```ts
+import { useEffect, useRef } from 'react';
+
+type DebounceFunction<T> = (...args: T[]) => void;
+
+export function useDebounceCallback<T>(
+  callback: DebounceFunction<T>,
+  delay = 50,
+) {
+  const timeoutRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    // Cleanup the previous timeout on re-render
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, []);
+
+  const debouncedCallback = (...args: T[]) => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+
+    timeoutRef.current = window.setTimeout(() => {
+      callback(...args);
+    }, delay);
+  };
+
+  return debouncedCallback;
+}
+```
+
+### `useSynchronizedAnimation`
+
+```ts
+// Inspired by Sam Selikoff
+// https://github.com/samselikoff/2022-02-24-use-synchronized-animation/blob/main/src/App.js
+import { useEffect, useLayoutEffect, useRef } from 'react';
+
+/**
+ * Synchronizes the css animation of multiple elements with the same `animationName`.
+ *
+ * @example
+ * const ref = useSynchronizedAnimation<HTMLDivElement>('spin');
+ *
+ * <div ref={ref} />
+ */
+export function useSynchronizedAnimation<T>(animationName: string) {
+  const ref = useRef<T>(null);
+  const useHook = typeof window === 'undefined' ? useEffect : useLayoutEffect;
+
+  useHook(() => {
+    const animations = document
+      .getAnimations()
+      .filter(
+        (animation) =>
+          'animationName' in animation &&
+          animation.animationName === animationName,
+      );
+
+    const firstOfType = animations.find(
+      (animation) =>
+        'animationName' in animation &&
+        animation.animationName === animationName,
+    );
+
+    const myAnimation = animations.find(
+      (animation) =>
+        (animation.effect as KeyframeEffect)?.target === ref.current,
+    );
+
+    if (myAnimation && myAnimation === firstOfType) {
+      myAnimation.currentTime = 0;
+    }
+
+    if (
+      myAnimation &&
+      firstOfType?.currentTime &&
+      myAnimation !== firstOfType
+    ) {
+      myAnimation.currentTime = firstOfType.currentTime;
+    }
+
+    return () => {
+      if (myAnimation && firstOfType?.currentTime) {
+        myAnimation.currentTime = firstOfType.currentTime;
+      }
+    };
+  }, [animationName]);
+
+  return ref;
+}
+```
+
+### `useIsomorphicLayoutEffect`
+
+```ts
+import { useEffect, useLayoutEffect } from 'react';
+
+export const useIsomorphicLayoutEffect =
+  typeof window === 'undefined' ? useEffect : useLayoutEffect;
+```
+
+### `useMediaQuery`
+
+```ts
+import { useEffect, useLayoutEffect, useState } from 'react';
+
+type UseMediaQueryOptions = {
+  defaultValue?: boolean;
+  initializeWithValue?: boolean;
+};
+
+export function useMediaQuery(
+  query: string,
+  {
+    defaultValue = false,
+    initializeWithValue = true,
+  }: UseMediaQueryOptions = {},
+): boolean {
+  const useHook = typeof window === 'undefined' ? useEffect : useLayoutEffect;
+  const onChange = () => setMatches(getMatches(query));
+  const getMatches = (query: string): boolean => {
+    if (typeof window === 'undefined') return defaultValue;
+    return window.matchMedia(query).matches;
+  };
+  const [matches, setMatches] = useState<boolean>(() => {
+    return initializeWithValue ? getMatches(query) : defaultValue;
+  });
+
+  useHook(() => {
+    const matchMedia = window.matchMedia(query);
+    onChange(); // Triggered at the first client-side load and if query changes
+
+    // Use deprecated `addListener` and `removeListener` to support Safari < 14
+    if (matchMedia.addListener) matchMedia.addListener(onChange);
+    else matchMedia.addEventListener('change', onChange);
+
+    return () => {
+      if (matchMedia.removeListener) matchMedia.removeListener(onChange);
+      else matchMedia.removeEventListener('change', onChange);
+    };
+  }, [query]);
+
+  return matches;
+}
+```
+
+### `omit`
+
+```ts
+type UnknownRecord = Record<string | number | symbol, unknown>;
+
+/**
+ * Returns a partial copy of an object omitting the keys specified.
+ * @example omit(['a', 'd'], {a: 1, b: 2, c: 3, d: 4}); //=> {b: 2, c: 3}
+ */
+export const omit = (names: string[], obj: UnknownRecord): object => {
+  const result: UnknownRecord = {};
+  const index: UnknownRecord = {};
+  let idx = 0;
+  const len = names.length;
+
+  while (idx < len) {
+    index[names[idx]] = 1;
+    idx += 1;
+  }
+
+  for (const prop in obj)
+    if (!Object.hasOwn(index, prop))
+      result[prop] = obj[prop];
+
+  return result;
+};
+```
+
+### `MergeRight`
+
+```ts
+/**
+ * Create a new type with the properties of the first type merged with the properties of the second type.
+ * If a key exists in both types, the property from the *second* type will be used.
+ */
+export type MergeRight<T1, T2> = Omit<T1, keyof T2> & T2;
+```
+
+
+</div>
+</Details>
+<Details>
+<Details.Summary>Changes in the CLI</Details.Summary>
+<div>
+
+- Use a [config file](/en/fundamentals/start-here/own-theme) instead of the options `--main-colors`, `--support-colors`, `--neutral-color`, `--font-family`, `--border-radius` and `--theme`.
+- Import types from `@digdir/designsystemet-types` instead of `@digdir/designsystemet/types`.
+
+</div>
+</Details>
+</div>
+</div>
+
+## What about Suggestion?
+
+Suggestion has been marked as experimental for a long time.
+It is the most complex component in designsystemet.no, and the many ways you use it
+have given us a lot of good feedback on what it should support, and what it can solve better.
+We are now working on improving the component before we make it stable.
+
+## Questions?
+
+Reach out to us on [Slack](https://designsystemet.no/slack) or open an issue on [GitHub (github.com)](https://github.com/digdir/designsystemet/issues) if you get stuck or think we have missed something.
+
+<Contributors
+  authors={[
+    'Michael Marszalek',
+    'Eirik Backer',
+    'Tobias Barsnes',
+  ]}
+/>

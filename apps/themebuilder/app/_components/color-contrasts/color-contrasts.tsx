@@ -1,24 +1,43 @@
-import {
-  type Color,
-  type ColorScale,
-  generateColorSchemes,
-  getContrastFromHex,
-  type SemanticColorNames,
+import type {
+  Color,
+  SemanticColorNames,
 } from '@digdir/designsystemet/internal';
+import { getContrastFromHex } from '@digdir/designsystemet/internal';
 import {
   Field,
   Heading,
   Paragraph,
   Select,
-  Skeleton,
 } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
+import { useColorScheme } from '~/_hooks/use-color-scheme';
+import {
+  getContrastLevel,
+  getContrastTargets,
+  getMinContrast,
+  textAndBorderSteps,
+} from '~/model/contrast';
+import { useThemeStore } from '~/model/theme-store';
 import classes from './color-contrasts.module.css';
 
-const initialTheme = generateColorSchemes('#0062BA');
+const baseFills: SemanticColorNames[] = [
+  'base-default',
+  'base-hover',
+  'base-active',
+];
+const baseContrasts: SemanticColorNames[] = [
+  'base-contrast-subtle',
+  'base-contrast-default',
+];
+
+const levels = [
+  { level: 'AAA', description: 'colorContrasts.aaa-description' },
+  { level: 'AA', description: 'colorContrasts.aa-description' },
+  { level: 'AA18', description: 'colorContrasts.aa18-description' },
+  { level: 'DECO', description: 'colorContrasts.deco-description' },
+] as const;
 
 export const ColorContrasts = () => {
   const { t } = useTranslation();
@@ -32,61 +51,40 @@ export const ColorContrasts = () => {
           </Paragraph>
 
           <div>
-            {' '}
+            {levels.map(({ level, description }) => (
+              <div key={level} className={classes.tagGroup}>
+                <div className={cl(classes.tag, classes[level])}>{level}</div>
+                <Paragraph data-size='sm'>{t(description)}</Paragraph>
+              </div>
+            ))}
             <div className={classes.tagGroup}>
-              <div className={cl(classes.tag, classes.AAA)}>AAA</div>
+              <div className={classes.requirement}>
+                {t('colorContrasts.min-contrast', { ratio: 'x' })}
+              </div>
               <Paragraph data-size='sm'>
-                {t('colorContrasts.aaa-description')}
-              </Paragraph>
-            </div>
-            <div className={classes.tagGroup}>
-              <div className={cl(classes.tag, classes.AA)}>AA</div>
-              <Paragraph data-size='sm'>
-                {t('colorContrasts.aa-description')}
-              </Paragraph>
-            </div>
-            <div className={classes.tagGroup}>
-              <div className={cl(classes.tag, classes.AA18)}>AA18</div>
-              <Paragraph data-size='sm'>
-                {t('colorContrasts.aa18-description')}{' '}
-              </Paragraph>
-            </div>
-            <div className={classes.tagGroup}>
-              <div className={cl(classes.tag, classes.DECO)}>DECO</div>
-              <Paragraph data-size='sm'>
-                {t('colorContrasts.deco-description')}
+                {t('colorContrasts.min-contrast-description')}
               </Paragraph>
             </div>
           </div>
         </div>
       </div>
       <div className='panelRight'>
-        <ColorContrastMapper
-          variant='text-vs-background'
-          vertical={[
-            'border-subtle',
-            'border-default',
-            'border-strong',
-            'text-subtle',
-            'text-default',
-          ]}
-          horizontal={[
-            'background-default',
-            'background-tinted',
-            'surface-default',
-            'surface-tinted',
-            'surface-hover',
-          ]}
+        <ContrastTable
+          title={t('colorContrasts.text-vs-background')}
+          description={t('colorContrasts.text-vs-background-desc')}
+          vertical={textAndBorderSteps}
+          horizontal={getContrastTargets(textAndBorderSteps)}
         />
-        <ColorContrastMapper
-          variant='base-colors'
-          vertical={['base-default', 'base-hover', 'base-active']}
+        <ContrastTable
+          title={t('colorContrasts.base-colors')}
+          description={t('colorContrasts.base-colors-description')}
+          vertical={baseFills}
           horizontal={[
+            // Not required by the spec, but the base color should have 3:1 against these to be meaningful
             'background-default',
             'background-tinted',
             'surface-default',
-            'base-contrast-subtle',
-            'base-contrast-default',
+            ...baseContrasts,
           ]}
         />
       </div>
@@ -94,75 +92,43 @@ export const ColorContrasts = () => {
   );
 };
 
-const ColorContrastMapper = ({
+/** The contrast between every `vertical` and `horizontal` step of a color that is chosen above the table */
+const ContrastTable = ({
+  title,
+  description,
   vertical,
   horizontal,
-  variant,
 }: {
+  title: string;
+  description: string;
   vertical: SemanticColorNames[];
   horizontal: SemanticColorNames[];
-  variant: string;
 }) => {
   const { t } = useTranslation();
-  const { colorScheme, colors, severityColors } = useThemebuilder();
-  const [selectedColor, setSelectedColor] = useState('dominant');
-
-  const getMappedTheme = (): ColorScale => {
-    let colorTheme = colors?.[0]?.colors || initialTheme;
-
-    if (selectedColor !== 'dominant') {
-      for (const color of colors) {
-        if (color.name === selectedColor) {
-          colorTheme = color.colors;
-          break;
-        }
-      }
-
-      for (const color of severityColors) {
-        if (color.name === selectedColor) {
-          colorTheme = color.colors;
-          break;
-        }
-      }
-    }
-
-    return colorTheme[colorScheme];
-  };
-
-  const mappedTheme = getMappedTheme();
-
-  if (Object.keys(mappedTheme).length === 0) return <Skeleton height={400} />;
+  const [colorScheme] = useColorScheme();
+  const { colors } = useThemeStore();
+  const [selectedName, setSelectedName] = useState('');
+  /* The first color is shown until one is chosen, and when the chosen one is removed from the theme */
+  const selected =
+    colors.find((color) => color.name === selectedName) || colors[0];
+  const scale = selected.colors[colorScheme];
 
   return (
     <>
-      {' '}
-      <Heading data-size='2xs'>
-        {variant === 'base-colors'
-          ? t('colorContrasts.base-colors')
-          : t('colorContrasts.text-vs-background')}
-      </Heading>
+      <Heading data-size='2xs'>{title}</Heading>
       <Paragraph data-size='sm' className={classes.desc}>
-        {variant === 'base-colors'
-          ? t('colorContrasts.base-colors-description')
-          : t('colorContrasts.text-vs-background-desc')}
+        {description}
       </Paragraph>
       <Field className={classes.fieldGroup}>
         <Select
           data-size='sm'
           className={classes.select}
-          onChange={(e) => {
-            setSelectedColor(e.target.value);
-          }}
+          onChange={(e) => setSelectedName(e.target.value)}
           aria-label={t('colorContrasts.select-color')}
-          value={selectedColor}
+          value={selected.name}
         >
-          {colors.map((color, colorIndex) => (
-            <Select.Option key={`color-${colorIndex}`} value={color.name}>
-              {color.name}
-            </Select.Option>
-          ))}
-          {severityColors.map((color, index) => (
-            <Select.Option key={`severity-${index}`} value={color.name}>
+          {colors.map((color) => (
+            <Select.Option key={color.name} value={color.name}>
               {color.name}
             </Select.Option>
           ))}
@@ -171,28 +137,25 @@ const ColorContrastMapper = ({
       <section
         className={cl(classes.tableContainer, 'ds-focus')}
         tabIndex={0}
-        aria-label={
-          variant === 'base-colors'
-            ? t('colorContrasts.base-colors')
-            : t('colorContrasts.text-vs-background')
-        }
+        aria-label={title}
       >
         <table className={classes.table}>
           <tbody>
             <tr>
               <th />
-              {horizontal.map((color, index) => (
-                <ThCell key={index} color={mappedTheme[color]} />
+              {horizontal.map((color) => (
+                <ThCell key={color} color={scale[color]} />
               ))}
             </tr>
-            {vertical.map((color2, index) => (
-              <tr key={index}>
-                <ThCell color={mappedTheme[color2]} />
-                {horizontal.map((color1, index) => (
-                  <td key={index} className={classes.td}>
+            {vertical.map((color2) => (
+              <tr key={color2}>
+                <ThCell color={scale[color2]} />
+                {horizontal.map((color1) => (
+                  <td key={color1} className={classes.td}>
                     <TdCell
-                      color1={mappedTheme[color1]}
-                      color2={mappedTheme[color2]}
+                      color1={scale[color1]}
+                      color2={scale[color2]}
+                      minContrast={getMinContrast(color1, color2)}
                     />
                   </td>
                 ))}
@@ -214,28 +177,19 @@ const ThCell = ({ color }: { color: Color }) => (
   </th>
 );
 
-const ContrastTag = ({ contrast }: { contrast: number }) => {
-  let className: 'AAA' | 'AA' | 'AA18' | 'DECO' = 'AAA';
-  let displayText = 'AAA';
-
-  if (contrast < 3) {
-    className = 'DECO';
-    displayText = 'DECO';
-  } else if (contrast < 4.5) {
-    className = 'AA18';
-    displayText = 'AA18';
-  } else if (contrast < 7) {
-    className = 'AA';
-    displayText = 'AA';
-  }
-
-  return (
-    <div className={cl(classes.tag, classes[className])}>{displayText}</div>
-  );
-};
-const TdCell = ({ color1, color2 }: { color1: Color; color2: Color }) => {
+const TdCell = ({
+  color1,
+  color2,
+  minContrast,
+}: {
+  color1: Color;
+  color2: Color;
+  minContrast?: number;
+}) => {
+  const { t } = useTranslation();
   const contrast = getContrastFromHex(color1.hex, color2.hex);
   const formattedContrast = Math.floor(contrast * 10) / 10;
+  const level = getContrastLevel(contrast);
 
   return (
     <div className={classes.cell}>
@@ -251,10 +205,20 @@ const TdCell = ({ color1, color2 }: { color1: Color; color2: Color }) => {
       </div>
       <div className={classes.meta}>
         <div className={classes.tagContainer}>
-          <ContrastTag contrast={contrast} />
+          <div className={cl(classes.tag, classes[level])}>{level}</div>
         </div>
         <div className={classes.contrast}>{formattedContrast}:1</div>
       </div>
+      {minContrast !== undefined &&
+        (contrast < minContrast ? (
+          <div className={cl(classes.requirement, classes.failed)}>
+            {t('colorContrasts.min-contrast-failed', { ratio: minContrast })}
+          </div>
+        ) : (
+          <div className={classes.requirement}>
+            {t('colorContrasts.min-contrast', { ratio: minContrast })}
+          </div>
+        ))}
     </div>
   );
 };

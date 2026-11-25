@@ -27,6 +27,7 @@ import { getFileFromContentDir } from '~/_utils/files.server';
 import { generateFromMdx } from '~/_utils/generate-from-mdx';
 import { getComponentDocs } from '~/_utils/get-react-props.server';
 import { generateMetadata, withMetaImage } from '~/_utils/metadata';
+import { getStoryHtml } from '~/_utils/story-html';
 import { stripTrailingSlash } from '~/_utils/strip-trailing-slash';
 import i18n from '~/i18next.server';
 import type { Route } from './+types/component';
@@ -286,6 +287,7 @@ export default function Components({
             <LiveComponent
               key={story.name}
               story={`${story.code.trim()}\nrender(<${story.name} />)`}
+              html={getStoryHtml(story)}
             />
           ))
         )}

@@ -24,6 +24,7 @@ We use several automated mechanisms to help detect and reduce risk:
 We use [pnpm](https://pnpm.io) for managing dependencies.
 
 We have configured pnpm with the following:
+
 - No dependency version newer than 72 hours is installed.
 - Prevent transitive dependencies from using exotic sources.
 - By default block script execution for dependencies.

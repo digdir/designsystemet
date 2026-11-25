@@ -1,71 +1,63 @@
-import type { ThemeInfo } from '@digdir/designsystemet/internal';
+import {
+  type Color,
+  type SemanticColorNames,
+  semanticColorSpec,
+  type ThemeInfo,
+} from '@digdir/designsystemet/internal';
 import { ColorGroup } from '../color-group/color-group';
+import { capitalizeFirstLetter } from '../color-step-dialog/util';
 
 import classes from './color-scale.module.css';
 
-type ScaleProps = {
-  colorScale: ThemeInfo;
-  showHeader?: boolean;
-  namespace: string;
+type Group = {
+  header: string;
+  colorNames: SemanticColorNames[];
+  names: string[];
 };
 
-export const Scale = ({ colorScale, showHeader, namespace }: ScaleProps) => {
-  return (
-    <div className={classes.themes}>
-      <div className={classes.test} focusgroup='menu inline'>
-        <ColorGroup
-          header={showHeader ? 'Background' : ''}
-          colorNames={['background-default', 'background-tinted']}
-          colorScale={colorScale}
-          names={['Default', 'Tinted']}
-          namespace={namespace}
-        />
-        <ColorGroup
-          header={showHeader ? 'Surface' : ''}
-          colorNames={[
-            'surface-default',
-            'surface-tinted',
-            'surface-hover',
-            'surface-active',
-          ]}
-          colorScale={colorScale}
-          names={['Default', 'Tinted', 'Hover', 'Active']}
-          namespace={namespace}
-        />
-        <ColorGroup
-          header={showHeader ? 'Border' : ''}
-          colorNames={['border-subtle', 'border-default', 'border-strong']}
-          colorScale={colorScale}
-          names={['Subtle', 'Default', 'Strong']}
-          namespace={namespace}
-        />
-        <ColorGroup
-          header={showHeader ? 'Text' : ''}
-          colorNames={['text-subtle', 'text-default']}
-          colorScale={colorScale}
-          names={['Subtle', 'Default']}
-          namespace={namespace}
-        />
-        <ColorGroup
-          header={showHeader ? 'Base' : ''}
-          colorNames={[
-            'base-default',
-            'base-hover',
-            'base-active',
-            'base-contrast-subtle',
-            'base-contrast-default',
-          ]}
-          colorScale={colorScale}
-          names={[
-            'Default',
-            'Hover',
-            'Active',
-            'Contrast Subtle',
-            'Contrast Default',
-          ]}
-          namespace={namespace}
-        />
-      </div>
-    </div>
-  );
+/** The color steps grouped by their `group` in the spec, in spec order */
+const groups = Object.values(semanticColorSpec).reduce<Group[]>(
+  (acc, { name, group, displayName }) => {
+    const header = capitalizeFirstLetter(group);
+    let current = acc.find((g) => g.header === header);
+    if (!current) {
+      current = { header, colorNames: [], names: [] };
+      acc.push(current);
+    }
+    current.colorNames.push(name);
+    current.names.push(displayName.replace(`${header} `, ''));
+    return acc;
+  },
+  [],
+);
+
+type ScaleProps = {
+  colorScale: ThemeInfo;
+  /** Whether the names of the groups and steps are shown above the scale */
+  showHeader: boolean;
+  /** The name of the color */
+  namespace: string;
+  onSelect: (step: Color) => void;
 };
+
+/** The scale of one color: a button for every step, in the groups of the spec */
+export const Scale = ({
+  colorScale,
+  showHeader,
+  namespace,
+  onSelect,
+}: ScaleProps) => (
+  <div className={classes.groups} focusgroup='menu inline'>
+    {groups.map(({ header, colorNames, names }) => (
+      <ColorGroup
+        key={header}
+        header={showHeader ? header : undefined}
+        colorNames={colorNames}
+        colorScale={colorScale}
+        names={names}
+        namespace={namespace}
+        onSelect={onSelect}
+      />
+    ))}
+  </div>
+);

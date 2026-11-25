@@ -1,18 +1,17 @@
-import * as ds from '@digdir/designsystemet-react';
-import * as aksel from '@navikt/aksel-icons';
-import { type HTMLAttributes, type ReactNode, useState } from 'react';
+import {
+  CheckmarkCircleFillIcon,
+  XMarkOctagonFillIcon,
+} from '@navikt/aksel-icons';
+import type { HTMLAttributes, ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import { LiveError, LivePreview, LiveProvider } from 'react-live';
-import { renderStoryHtml } from '~/_utils/render-story';
+import { liveScope } from '../live-component/scope';
 import classes from './do-dont.module.css';
-
-const scopes = {
-  ...ds,
-  ...aksel,
-};
 
 type doDontProps = {
   code: string;
+  /** `code` rendered to HTML */
+  html: string;
   variant: 'do' | 'dont';
   children?: ReactNode;
   layout?: 'row' | 'column' | 'centered';
@@ -20,13 +19,13 @@ type doDontProps = {
 
 export const DoDont = ({
   code,
+  html,
   variant,
   layout = 'row',
   children,
   ...rest
 }: doDontProps) => {
   const { t } = useTranslation();
-  const [html] = useState(() => renderStoryHtml(code, scopes));
   return (
     <div
       className={classes.dodont}
@@ -40,12 +39,12 @@ export const DoDont = ({
       >
         {variant === 'do' ? (
           <>
-            <aksel.CheckmarkCircleFillIcon aria-hidden='true' />
+            <CheckmarkCircleFillIcon aria-hidden='true' />
             <p className='ds-paragraph'>{t('do')}</p>
           </>
         ) : (
           <>
-            <aksel.XMarkOctagonFillIcon aria-hidden='true' />
+            <XMarkOctagonFillIcon aria-hidden='true' />
             <p className='ds-paragraph'>{t('dont')}</p>
           </>
         )}
@@ -60,7 +59,7 @@ export const DoDont = ({
           <code className='language-html'>{html}</code>
         </pre>
       </div>
-      <LiveProvider code={code} scope={scopes} noInline disabled>
+      <LiveProvider code={code} scope={liveScope} noInline disabled>
         <div className={classes.preview}>
           <LivePreview
             className={classes['live-preview']}

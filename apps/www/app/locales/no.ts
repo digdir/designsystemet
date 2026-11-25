@@ -72,7 +72,16 @@ export default {
     tag: 'Bloggen',
     title: 'Bloggen',
     description:
-      'Her finner du historier, erfaringer og oppdateringer fra Designsystemet. Et sted for å lære av hverandre og holde deg oppdatert. Du kan abonnere på bloggen gjennom <0>RSS</0> eller <1>Atom</1>',
+      'Her finner du oppdateringer fra Designsystemet og erfaringsdeling fra andre. Du kan abonnere på bloggen gjennom <0>RSS</0> eller <1>Atom</1>',
+    filter: {
+      legend: 'Filtrer blogginnlegg etter kategori',
+    },
+    categories: {
+      case: 'Erfaringer',
+      updates: 'Oppdateringer',
+      'in-depth': 'Fagartikler',
+      about: 'Om Designsystemet',
+    },
     write: {
       title: 'Vil du skrive for bloggen?',
       description:
@@ -219,9 +228,36 @@ export default {
       normal: 'Klikk for å forstørre bilde.',
     },
   },
+  'color-examples': {
+    colors: {
+      red: 'Rød',
+      orange: 'Oransje',
+      yellow: 'Gul',
+      green: 'Grønn',
+      teal: 'Turkis',
+      blue: 'Blå',
+      purple: 'Lilla',
+    },
+  },
+  'size-examples': {
+    button: 'Knapp',
+    'font-size': '{{size}} font',
+    height: 'Høyde',
+    'medium-title': 'Eksempel med Medium-komponenter',
+    input: 'Input tekst',
+    device: 'Enhet',
+    desktop: 'Desktop',
+    mobile: 'Mobil',
+    search: 'Søk',
+    'new-user': 'Ny bruker',
+    'log-in': 'Logg inn',
+  },
   'color-info-table': {
     name: 'Navn',
     usage: 'Bruksområde',
+    contrast: 'Minimumskontrast',
+    'contrast-against': '{{ratio}}:1 mot',
+    'all-in-group': 'alle {{group}}-farger',
   },
   'image-banner': {
     'play-video': 'Spill av video',

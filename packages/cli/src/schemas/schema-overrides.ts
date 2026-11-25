@@ -68,3 +68,4 @@ export const overridesSchema = z
   .optional();
 
 export type ColorOverrideSchema = z.infer<typeof overridesSchema>;
+export type ColorOverrideSchemaInput = z.input<typeof overridesSchema>;

@@ -144,6 +144,7 @@ No changes
 ### Textarea
 
 **This is now just a native `textarea`. Use `Textfield` to get a composed component.**
+
 - All props associated with this has been moved to `Textfield`
 - Set `multiline={true}` on `Textfield` to get a replacement for `Textarea`
 
@@ -163,6 +164,7 @@ No changes
 ### ErrorMessage
 
 **This component has been renamed to `ValidationMessage`**
+
 - `error` prop has been removed, change validation type with `data-color`
 
 ### Heading

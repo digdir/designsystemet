@@ -1,5 +1,18 @@
 import '@digdir/designsystemet-web';
 
+/* Re-export types used in props and refs */
+export type {
+  DSBreadcrumbsElement,
+  DSErrorSummaryElement,
+  DSFieldElement,
+  DSPaginationElement,
+  DSSuggestionElement,
+  DSTabElement,
+  DSTabListElement,
+  DSTabPanelElement,
+  DSTabsElement,
+} from '@digdir/designsystemet-web';
+
 export type { AlertProps } from './alert/alert';
 export { Alert } from './alert/alert';
 
@@ -185,6 +198,7 @@ export { Popover, PopoverTrigger, PopoverTriggerContext } from './popover';
 export type { RadioProps } from './radio/radio';
 export { Radio } from './radio/radio';
 
+// @deprecated v2
 export type {
   SearchButtonProps,
   SearchClearProps,

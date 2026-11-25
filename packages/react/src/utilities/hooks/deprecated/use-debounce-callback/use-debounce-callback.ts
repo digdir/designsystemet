@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 
 type DebounceFunction<T> = (...args: T[]) => void;
 
+// @deprecated v2
 export function useDebounceCallback<T>(
   callback: DebounceFunction<T>,
   delay = 50,

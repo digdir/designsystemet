@@ -73,7 +73,16 @@ export default {
     tag: 'Blog',
     title: 'Blog',
     description:
-      'Here you will find stories, experiences, and updates from Designsystemet. A place to learn from each other and stay up to date. You can subscribe to this blog through <0>RSS</0> or <1>Atom</1>',
+      'Here you will find updates from Designsystemet and experiences shared by others. You can subscribe to this blog through <0>RSS</0> or <1>Atom</1>',
+    filter: {
+      legend: 'Filter blog posts by category',
+    },
+    categories: {
+      case: 'Case studies',
+      updates: 'Updates',
+      'in-depth': 'In depth',
+      about: 'About Designsystemet',
+    },
     write: {
       title: 'Want to write for the blog?',
       description:
@@ -220,9 +229,36 @@ export default {
       normal: 'Click to enlarge image.',
     },
   },
+  'color-examples': {
+    colors: {
+      red: 'Red',
+      orange: 'Orange',
+      yellow: 'Yellow',
+      green: 'Green',
+      teal: 'Teal',
+      blue: 'Blue',
+      purple: 'Purple',
+    },
+  },
+  'size-examples': {
+    button: 'Button',
+    'font-size': '{{size}} font',
+    height: 'Height',
+    'medium-title': 'Example with Medium components',
+    input: 'Input text',
+    device: 'Device',
+    desktop: 'Desktop',
+    mobile: 'Mobile',
+    search: 'Search',
+    'new-user': 'New user',
+    'log-in': 'Log in',
+  },
   'color-info-table': {
     name: 'Name',
     usage: 'Usage',
+    contrast: 'Minimum contrast',
+    'contrast-against': '{{ratio}}:1 against',
+    'all-in-group': 'all {{group}} colors',
   },
   'image-banner': {
     'play-video': 'Play video',
