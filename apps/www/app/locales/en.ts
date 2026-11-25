@@ -299,6 +299,11 @@ export default {
   },
   do: 'Do',
   dont: "Don't",
+  'icons-with-text': {
+    title: 'Use icons together with text',
+    description:
+      'Be careful about using icons on their own. Few icons are understood the same way by everyone, and many can be interpreted differently without enough context. Combine icons with text wherever possible. When an icon has to be used without visible text, it must have a descriptive, accessible name. The name must be available to users of screen readers, keyboards and mice.',
+  },
   contributors: 'Contributors',
   editOnGithub: 'Edit this page on github.com (opens in a new tab)',
   updated: 'Updated',
