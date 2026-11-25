@@ -169,6 +169,11 @@ export function mutedColorRule(context: PaintContext): PaintTarget {
     return color(step);
   }
 
+  // Dialog's close button is a tertiary button, whose icon is `text-subtle`.
+  if (step === 'text-default' && isDialogCloseButtonIcon(context)) {
+    return color('text-subtle');
+  }
+
   if (SAME_STEP_PAGES.has(context.page)) return color(step);
 
   if (PLAIN_COLOR_PAGES.has(context.page)) {
@@ -214,17 +219,18 @@ export function mutedColorRule(context: PaintContext): PaintTarget {
   }
 }
 
+/** Whether a layer is in the icon of Dialog's close button. */
+function isDialogCloseButtonIcon({ page, path }: LayerContext): boolean {
+  return page === 'Dialog' && /\/close button\/Icon button\/Icon\//.test(path);
+}
+
 /**
  * Dialog's close button icon has a hard-coded `#262626` inside its shape, next to neutral `text-default` on the
- * shape itself. It gets `text-default` too, so the button follows the dialog's color.
+ * shape itself. Both get `text-subtle`, the icon color of a tertiary button, so the button follows the dialog's
+ * color. `mutedColorRule` handles the one on the shape.
  */
-export function closeButtonIconRule({
-  page,
-  path,
-}: LayerContext): VariableRef | null {
-  return page === 'Dialog' && /\/close button\/Icon button\/Icon\//.test(path)
-    ? color('text-default')
-    : null;
+export function closeButtonIconRule(context: LayerContext): VariableRef | null {
+  return isDialogCloseButtonIcon(context) ? color('text-subtle') : null;
 }
 
 /**

@@ -429,12 +429,29 @@ describe('mutedColorRule variant names', () => {
   });
 });
 
+describe('mutedColorRule for Dialog’s close button', () => {
+  it('moves the neutral text-default on the icon to text-subtle, and leaves other text as text-default', () => {
+    const at = (path: string) =>
+      mutedColorRule(
+        paint({
+          component: '_Header',
+          path,
+          variable: neutral('text-default'),
+        }),
+      );
+    expect(at('/close button/Icon button/Icon/shape')).toEqual(
+      color('text-subtle'),
+    );
+    expect(at('/content/Heading')).toEqual(color('text-default'));
+  });
+});
+
 describe('closeButtonIconRule', () => {
-  it('binds the hard-coded color in Dialog’s close button icon to text-default', () => {
+  it('binds the hard-coded color in Dialog’s close button icon to text-subtle', () => {
     const at = (page: string, path: string) =>
       closeButtonIconRule({ page, component: '_Header', variant: '', path });
     expect(at('Dialog', '/close button/Icon button/Icon/shape/shape')).toEqual(
-      color('text-default'),
+      color('text-subtle'),
     );
     expect(at('Dialog', '/content/Heading')).toBeNull();
     expect(at('Card', '/close button/Icon button/Icon/shape/shape')).toBeNull();
