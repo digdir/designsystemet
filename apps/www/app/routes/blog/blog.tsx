@@ -58,23 +58,15 @@ export const links: Route.LinksFunction = () => [
   ]),
 ];
 
-const CATEGORY_PARAM = 'category';
-
 export default function Blog({ loaderData: { posts } }: Route.ComponentProps) {
   const { t } = useTranslation();
   const [selected, setSelected] = useState<BlogCategory[]>([]);
 
-  /* The page is prerendered without search params, so we read them after
-     hydration to avoid a hydration mismatch */
+  /* The page is prerendered, so search params can only be read after hydration */
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    setSelected(params.getAll(CATEGORY_PARAM).filter(isBlogCategory));
+    setSelected(params.getAll('category').filter(isBlogCategory));
   }, []);
-
-  /* Only show chips for categories that have at least one post */
-  const availableCategories = blogCategories.filter((category) =>
-    posts.some((post) => post.categories.includes(category)),
-  );
 
   const filteredPosts =
     selected.length === 0
@@ -89,35 +81,29 @@ export default function Blog({ loaderData: { posts } }: Route.ComponentProps) {
     );
     setSelected(next);
 
-    /* Keep the URL in sync so filtered views can be shared. We update history
-       directly instead of navigating, so the page doesn't refetch data on every
-       click. Router state is kept so back/forward and scroll restoration work. */
+    /* replaceState instead of navigate, so the loader doesn't refetch on every click */
     const url = new URL(window.location.href);
-    url.searchParams.delete(CATEGORY_PARAM);
-    for (const c of next) url.searchParams.append(CATEGORY_PARAM, c);
+    url.searchParams.delete('category');
+    for (const c of next) url.searchParams.append('category', c);
     window.history.replaceState(window.history.state, '', url);
   };
 
   return (
     <>
-      {availableCategories.length > 0 && (
-        <fieldset className={classes.filter}>
-          <legend className='ds-sr-only'>{t('blog.filter.legend')}</legend>
-          {availableCategories.map((category) => (
-            <Chip.Checkbox
-              key={category}
-              name={CATEGORY_PARAM}
-              value={category}
-              checked={selected.includes(category)}
-              onChange={(event) =>
-                toggleCategory(category, event.currentTarget.checked)
-              }
-            >
-              {t(`blog.categories.${category}`)}
-            </Chip.Checkbox>
-          ))}
-        </fieldset>
-      )}
+      <fieldset className={classes.filter}>
+        <legend className='ds-sr-only'>{t('blog.filter.legend')}</legend>
+        {blogCategories.map((category) => (
+          <Chip.Checkbox
+            key={category}
+            checked={selected.includes(category)}
+            onChange={(event) =>
+              toggleCategory(category, event.currentTarget.checked)
+            }
+          >
+            {t(`blog.categories.${category}`)}
+          </Chip.Checkbox>
+        ))}
+      </fieldset>
       {filteredPosts.map((post, index) => {
         return (
           <BlogCard

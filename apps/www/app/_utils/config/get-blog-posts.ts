@@ -1,6 +1,6 @@
 import { join } from 'node:path';
 import i18n from '../../i18next.server';
-import { type BlogCategory, parseBlogCategories } from '../blog-categories';
+import { type BlogCategory, isBlogCategory } from '../blog-categories';
 import { getFileFromContentDir, getFilesFromContentDir } from '../files.server';
 import { getFrontmatter } from '../get-frontmatter.server';
 import { defaultCoverImagePath, type PageMetadata } from '../metadata';
@@ -59,7 +59,7 @@ export async function getBlogPosts(lang: string): Promise<BlogPosts> {
         alt: frontmatter.imageAlt || t('meta.meta-cover'),
       },
       searchTerms,
-      categories: parseBlogCategories(frontmatter.categories),
+      categories: (frontmatter.categories ?? []).filter(isBlogCategory),
     });
   }
 
