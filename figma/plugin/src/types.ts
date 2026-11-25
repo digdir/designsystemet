@@ -101,6 +101,8 @@ type MigrationsResult = {
   status: 'success' | 'error';
   /** One per migration that ran, oldest first. */
   summaries: MigrationSummary[];
+  /** The name of the version saved to the file's version history before the migrations were applied, if one was. */
+  savedVersion?: string;
   /** What went wrong, on error. */
   message?: string;
 };

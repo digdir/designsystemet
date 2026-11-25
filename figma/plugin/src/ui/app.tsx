@@ -84,6 +84,7 @@ type Action =
       type: 'migrations-finished';
       dryRun: boolean;
       summaries: MigrationSummary[];
+      savedVersion?: string;
       error?: string;
     }
   | { type: 'go-back' };
@@ -151,6 +152,7 @@ function reducer(state: UiState, action: Action): UiState {
           // A failure goes back to choosing, with the error shown there.
           status: action.error ? 'select' : action.dryRun ? 'preview' : 'done',
           summaries: action.summaries,
+          savedVersion: action.savedVersion,
           error: action.error,
         },
       };
@@ -292,6 +294,7 @@ function App() {
             type: 'migrations-finished',
             dryRun: msg.dryRun,
             summaries: msg.summaries,
+            savedVersion: msg.savedVersion,
             error:
               msg.status === 'error'
                 ? `Could not ${msg.dryRun ? 'preview' : 'apply'} the migrations: ${msg.message ?? 'Unknown error'}`

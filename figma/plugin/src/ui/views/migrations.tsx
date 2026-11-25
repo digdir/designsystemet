@@ -20,6 +20,8 @@ export type MigrationsState = {
    */
   status: 'select' | 'previewing' | 'preview' | 'running' | 'done';
   summaries: MigrationSummary[];
+  /** The name of the version saved to the file's version history before the last run, if one was. */
+  savedVersion?: string;
   /** Why the last preview or run failed. */
   error?: string;
 };
@@ -34,7 +36,7 @@ export function MigrationsView({
   /** Previews a migration. */
   onChoose: (id: string) => void;
 }): React.JSX.Element {
-  const { available, status, summaries, error } = state;
+  const { available, status, summaries, savedVersion, error } = state;
 
   if (!available || status === 'previewing' || status === 'running') {
     return (
@@ -63,7 +65,11 @@ export function MigrationsView({
         </Heading>
         <Paragraph>
           {done
-            ? 'You can undo all of it at once with Undo in Figma.'
+            ? `You can undo all of it at once with Undo in Figma.${
+                savedVersion
+                  ? ` The file as it was before is saved in its version history, as "${savedVersion}".`
+                  : ''
+              }`
             : 'Nothing has changed yet. Check the changes below, and click "Apply changes" to make them. You can undo them afterwards with Undo in Figma.'}
         </Paragraph>
         {summaries.map((summary) => (

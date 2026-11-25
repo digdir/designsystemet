@@ -3,6 +3,7 @@ import {
   listMigrations,
   MIGRATIONS,
   runMigrations,
+  saveVersionBeforeMigrations,
   summarize,
 } from './run-migrations';
 import type { MigrationLog } from './types';
@@ -174,5 +175,34 @@ describe('runMigrations', () => {
 
     expect(commitUndo).not.toHaveBeenCalled();
     expect(listMigrations()[0].appliedAt).toBeUndefined();
+  });
+});
+
+describe('saveVersionBeforeMigrations', () => {
+  afterEach(() => {
+    vi.unstubAllGlobals();
+  });
+
+  const title = MIGRATIONS.find((m) => m.id === 'muted-colors')?.title;
+
+  it('saves a version named after the chosen migrations, and returns its name', async () => {
+    const saveVersionHistoryAsync = vi.fn(async () => ({ id: '1' }));
+    vi.stubGlobal('figma', { saveVersionHistoryAsync });
+
+    const name = await saveVersionBeforeMigrations(['muted-colors']);
+
+    expect(name).toBe(`Before UI kit update: ${title}`);
+    expect(saveVersionHistoryAsync).toHaveBeenCalledWith(
+      name,
+      expect.any(String),
+    );
+  });
+
+  it('saves nothing when no migration is chosen', async () => {
+    const saveVersionHistoryAsync = vi.fn();
+    vi.stubGlobal('figma', { saveVersionHistoryAsync });
+
+    expect(await saveVersionBeforeMigrations(['unknown'])).toBeUndefined();
+    expect(saveVersionHistoryAsync).not.toHaveBeenCalled();
   });
 });

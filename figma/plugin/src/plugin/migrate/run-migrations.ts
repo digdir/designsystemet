@@ -5,6 +5,7 @@
 import pkg from '../../../package.json';
 import type { MigrationInfo, MigrationSummary } from '../../types';
 import { createPause, type Pause } from '../import/pause';
+import { saveVersion } from '../save-version';
 import { mutedColors } from './migrations/muted-colors';
 import { createVariableIndex, hasAnyPage, refName } from './rebind';
 import type { Migration, MigrationLog } from './types';
@@ -40,6 +41,20 @@ export function listMigrations(): MigrationInfo[] {
     appliedAt: applied[id]?.appliedAt,
     inFile: hasAnyPage(pages),
   }));
+}
+
+/**
+ * Saves a version of the file before the chosen migrations are applied, named after them. Returns the name of
+ * the version, or undefined when none was saved; see `saveVersion`.
+ */
+export async function saveVersionBeforeMigrations(
+  ids: string[],
+): Promise<string | undefined> {
+  const titles = MIGRATIONS.filter(({ id }) => ids.includes(id)).map(
+    ({ title }) => title,
+  );
+  if (titles.length === 0) return undefined;
+  return saveVersion(`Before UI kit update: ${titles.join(', ')}`);
 }
 
 /**
