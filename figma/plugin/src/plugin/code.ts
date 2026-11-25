@@ -11,7 +11,7 @@ import {
 } from './import/import-to-figma';
 import { createImportLog } from './import/log';
 import { listMigrations, runMigrations } from './migrate/run-migrations';
-import { stampUiKit } from './migrate/stamps';
+import { stampUiKit } from './stamps/stamps';
 
 /** Steps reported to the UI: validating, creating tokens, preparing the import, then the Figma import's own steps. */
 const TOTAL_STEPS = 3 + IMPORT_STEPS;

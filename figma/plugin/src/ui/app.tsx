@@ -46,7 +46,7 @@ type UiState = {
 const START_VIEW: View = 'home';
 // Feature toggle: export, which creates a config from the variables in this file. Turned off for now.
 const FEAT_EXPORT = false;
-// Feature toggle: stamping the UI kit's source file for migrations, see plugin/migrate/stamps.ts. For maintainers,
+// Feature toggle: stamping the UI kit's source file for migrations, see plugin/stamps/stamps.ts. For maintainers,
 // who turn it on in a local build before a release.
 const FEAT_STAMP_UI_KIT = false;
 

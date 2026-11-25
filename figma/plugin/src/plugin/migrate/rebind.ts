@@ -6,7 +6,7 @@
 // change unless it was overridden, so only its overrides are left to change. Layers in instances of other
 // components, e.g. text from Typography in Dialog, are changed in place, which overrides them there.
 
-import { componentName, pageStamp, pageTitle } from './stamps';
+import { componentName, pageStamp, pageTitle } from '../stamps/stamps';
 import type { MigrationContext, MigrationLog, VariableRef } from './types';
 
 /** A component or component set in the UI kit, by its page and name. */

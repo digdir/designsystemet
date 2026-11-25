@@ -106,7 +106,7 @@ type MigrationsResult = {
 };
 
 // UI -> plugin: stamp the pages and components of the UI kit's source file, so migrations find them in copies
-// even after they're renamed. For maintainers; see plugin/migrate/stamps.ts. The result is shown with figma.notify.
+// even after they're renamed. For maintainers; see plugin/stamps/stamps.ts. The result is shown with figma.notify.
 type StampUiKit = {
   type: 'stamp-ui-kit';
 };
