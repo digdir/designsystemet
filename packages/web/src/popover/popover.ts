@@ -29,10 +29,10 @@ if (isBrowser() && !isSupported() && !isPolyfilled()) {
 }
 
 // NOTE:
-// The native popover event "toggle" is not composed, meaning it does not bubble out of shadow DOM.
-// This means that if a popover is inside a shadow root, the toggle event will not be visible outside of that shadow root.
+// The native popover events "beforetoggle" and "toggle" are not composed, meaning they do not bubble out of shadow DOM.
+// This means that if a popover is inside a shadow root, these events will not be visible outside of that shadow root.
 // To handle this, we monkey-patch the showPopover and hidePopover methods to manually trigger the toggle-function.
-// We also bind toggle events to shadow roots found during click events, so that we can listen for toggle events on shadow roots as well.
+// We also bind beforetoggle and toggle events to shadow roots found during click events, so that we can listen for them on shadow roots as well.
 
 declare global {
   interface GlobalEventHandlersEventMap {
@@ -55,6 +55,22 @@ const handleToggle = (
   e: Event &
     Partial<ToggleEvent> & { detail?: HTMLElement; source?: HTMLElement },
 ) => toggle(getComposedTarget(e), e.newState, e.oldState, e.source || e.detail);
+
+// The "toggle" event is a queued task, so the browser can paint a popover opened
+// by popovertarget or commandfor before it is positioned. "beforetoggle" fires
+// before the popover opens, and an animation frame runs after it opens but
+// before it is painted.
+const handleBeforeToggle = (
+  e: Event & Partial<ToggleEvent> & { source?: HTMLElement },
+) => {
+  const el = getComposedTarget(e);
+  const source = e.source; // Read while dispatching, since a source in shadow DOM is retargeted to its host afterwards
+  if (e.newState === 'open' && el)
+    requestAnimationFrame(() => {
+      if (!POPOVERS.has(el as HTMLElement) && el.matches(':popover-open'))
+        toggle(el, 'open', 'closed', source);
+    });
+};
 
 function toggle(
   el: Element | null,
@@ -156,14 +172,25 @@ const handleScrollbar = (e: Event) => {
     for (const [popover] of POPOVERS) popover.showPopover(); // Immediately show again to prevent flicker
 };
 
-// And add listeners for toggle event on shadowRoots as "toggle" is not a composed event
+// And add listeners for beforetoggle and toggle events on shadowRoots as they are not composed events
 const handleClick = (e: Event) => {
   for (const [root, off] of ROOTS)
     if (!root.host?.isConnected && ROOTS.delete(root)) off(); // Prune roots whose host is no longer connected (e.g. removed custom elements) to avoid unbounded growth
 
   const root = getRoot(getComposedTarget(e));
-  if (root instanceof ShadowRoot && !ROOTS.has(root))
-    ROOTS.set(root, on(root, 'toggle', handleToggle, QUICK_EVENT));
+  if (root instanceof ShadowRoot && !ROOTS.has(root)) {
+    const offToggle = on(root, 'toggle', handleToggle, QUICK_EVENT);
+    const offBeforeToggle = on(
+      root,
+      'beforetoggle',
+      handleBeforeToggle,
+      QUICK_EVENT,
+    );
+    ROOTS.set(root, () => {
+      offToggle();
+      offBeforeToggle();
+    });
+  }
 };
 
 onHotReload('popover', () => {
@@ -213,6 +240,7 @@ onHotReload('popover', () => {
     on(document, 'click', handleClick, QUICK_EVENT),
     on(document, 'pointerdown pointerup scroll', handleScrollbar, QUICK_EVENT),
     on(document, 'toggle ds-toggle-source', handleToggle, QUICK_EVENT), // Use capture since the toggle event does not bubble
+    on(document, 'beforetoggle', handleBeforeToggle, QUICK_EVENT), // Use capture since the beforetoggle event does not bubble either
     () => {
       // Restore original methods on hot reload
       Object.defineProperties(HTMLElement.prototype, {

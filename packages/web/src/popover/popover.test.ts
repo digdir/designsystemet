@@ -222,6 +222,62 @@ describe('popover floating behavior', () => {
   });
 });
 
+describe('popover positioning before the first paint', () => {
+  // The "toggle" event is a queued task that can run after the first paint, so
+  // these tests expect the popover to be positioned in the animation frame it
+  // opens in
+  const stopToggle = (event: Event) => event.stopImmediatePropagation(); // Keep "toggle" from this module, so only the animation frame can position the popover
+  const nextFrame = () =>
+    new Promise((resolve) => requestAnimationFrame(resolve));
+
+  afterEach(() => window.removeEventListener('toggle', stopToggle, true)); // Remove even if a test fails, so later tests get toggle events
+
+  it('positions a popover opened by popovertarget', {
+    tags: ['browser'],
+  }, async () => {
+    window.addEventListener('toggle', stopToggle, true);
+    render(`
+      <button popovertarget="my-popover">Open</button>
+      <div id="my-popover" popover="auto" style="--_ds-floating: top">Content</div>
+    `);
+
+    document.querySelector('button')?.click();
+    await nextFrame();
+
+    const popover = document.getElementById('my-popover');
+    expect(popover).toHaveAttribute('data-floating');
+    expect(popover?.style.translate).not.toBe('');
+  });
+
+  it('positions a popover opened by popovertarget inside a shadow root next to its trigger', {
+    tags: ['browser'],
+  }, async () => {
+    const host = document.createElement('div');
+    document.body.appendChild(host);
+    const root = host.attachShadow({ mode: 'open' });
+    root.innerHTML = `
+      <button popovertarget="shadow-popover">Open</button>
+      <div
+        id="shadow-popover"
+        popover="auto"
+        style="--_ds-floating: right; position: absolute; inset: 0 auto auto 0; margin: 0"
+      >Content</div>
+    `;
+    root.addEventListener('toggle', stopToggle, true); // Added before this module listens on the shadow root, so it runs first
+
+    const trigger = root.querySelector('button') as HTMLElement;
+    trigger.click();
+    await nextFrame();
+
+    // Placed next to the shadow host instead, if the source is read after the event is dispatched
+    const popover = root.getElementById('shadow-popover') as HTMLElement;
+    expect(popover.getBoundingClientRect().left).toBeCloseTo(
+      trigger.getBoundingClientRect().right,
+      0,
+    );
+  });
+});
+
 describe('popover shadow DOM support', () => {
   it('positions a popover triggered from inside a shadow root', async () => {
     const host = document.createElement('div');
