@@ -6,6 +6,7 @@ Imports a Designsystemet config, e.g. from [the theme builder](https://theme.des
 
 An import makes the file match the config:
 
+- Saves a version of the file to its version history first, named "Before theme import", so the user can restore the file as it was (see [save-version.ts](./src/plugin/save-version.ts)). It's saved once the config is validated, so a config with errors saves nothing.
 - Creates the collections, modes, variables, text styles and effect styles in the config, and updates the ones that already exist, matched by name.
 - Only writes what has changed, so importing the same config again changes nothing.
 - Deletes modes, variables and styles from earlier imports that are no longer in the config. What the import creates is marked with plugin data, so items added by hand are kept unless an import adopts them by updating an item with a matching name; items renamed or duplicated after an import are also kept (see [ownership.ts](./src/plugin/import/ownership.ts)).
@@ -23,7 +24,7 @@ The plugin explains this to users in [the about view](./src/ui/views/about.tsx).
 
 ## Migrations
 
-When a release changes which variables the UI kit's components use, users with their own copy of the UI kit need their layers updated too. An import can't do this, as it only updates variables and styles. A migration does: **Update UI kit** in the plugin lists the migrations, the user chooses which to run, sees a summary of what will change in each component, and then applies them. Undo in Figma takes back all of it at once. The file records which migrations were applied, and when.
+When a release changes which variables the UI kit's components use, users with their own copy of the UI kit need their layers updated too. An import can't do this, as it only updates variables and styles. A migration does: **Update UI kit** in the plugin lists the migrations, the user chooses which to run, sees a summary of what will change in each component, and then applies them. Before applying, the plugin saves a version of the file to its version history, named after the migrations. Undo in Figma takes back all of it at once. The file records which migrations were applied, and when.
 
 A migration finds the UI kit's components by page and name (see [Finding the UI kit's pages](#finding-the-ui-kits-pages)), and rebinds the color variables on their layers by rules (see [rebind.ts](./src/plugin/migrate/rebind.ts)). It changes main components first. Layers in instances of those components follow them, so only their overrides are changed there. Layers in instances of other components, e.g. text from Typography in Dialog, are changed in place, which overrides them in that component.
 
