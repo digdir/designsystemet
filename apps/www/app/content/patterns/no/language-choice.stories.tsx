@@ -179,7 +179,15 @@ export const LanguageChoiceInHeader = () => {
               fontWeight: 500,
             }}
           >
-            <img src='/img/emblem.svg' alt='' width='24' height='24' />
+            <span
+              aria-hidden
+              style={{
+                width: 24,
+                height: 24,
+                background: 'currentColor',
+                mask: 'url(/img/emblem.svg) center / contain no-repeat',
+              }}
+            />
             Avsender
           </span>
           <Dropdown.TriggerContext>
@@ -514,7 +522,15 @@ export const UntranslatedContent = () => {
             fontWeight: 500,
           }}
         >
-          <img src='/img/emblem.svg' alt='' width='24' height='24' />
+          <span
+            aria-hidden
+            style={{
+              width: 24,
+              height: 24,
+              background: 'currentColor',
+              mask: 'url(/img/emblem.svg) center / contain no-repeat',
+            }}
+          />
           Avsender
         </span>
         <span
@@ -640,7 +656,15 @@ export const LanguageChoiceForPage = () => {
             fontWeight: 500,
           }}
         >
-          <img src='/img/emblem.svg' alt='' width='24' height='24' />
+          <span
+            aria-hidden
+            style={{
+              width: 24,
+              height: 24,
+              background: 'currentColor',
+              mask: 'url(/img/emblem.svg) center / contain no-repeat',
+            }}
+          />
           Avsender
         </span>
         <span style={{ display: 'flex', gap: 'var(--ds-size-3)' }}>
@@ -758,7 +782,15 @@ export const ImportantLanguageOnFrontPage = () => {
             fontWeight: 500,
           }}
         >
-          <img src='/img/emblem.svg' alt='' width='24' height='24' />
+          <span
+            aria-hidden
+            style={{
+              width: 24,
+              height: 24,
+              background: 'currentColor',
+              mask: 'url(/img/emblem.svg) center / contain no-repeat',
+            }}
+          />
           Avsender
         </span>
         <span
