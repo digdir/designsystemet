@@ -1,3 +1,4 @@
+import pc from 'picocolors';
 import { z } from 'zod';
 import { semanticColorNames } from '../colors/specs.ts';
 import { severityColorNames } from './defaults.ts';
@@ -56,3 +57,19 @@ export const overridesSchema = z
 
 export type ColorOverrideSchema = z.infer<typeof overridesSchema>;
 export type ColorOverrideSchemaInput = z.input<typeof overridesSchema>;
+
+/**
+ * Non-fatal: warns about `overrides.linkVisited`, which was removed in v2. The schema drops unknown keys
+ * without a message, so a config that still has it would otherwise build without the color and without notice.
+ */
+export const warnRemovedOverrides = (config: { themes?: Record<string, { overrides?: object } | undefined> }) => {
+  for (const [themeName, theme] of Object.entries(config.themes ?? {})) {
+    if (theme?.overrides && Object.hasOwn(theme.overrides, 'linkVisited')) {
+      console.warn(
+        pc.yellow(
+          `⚠️  Theme "${themeName}": "overrides.linkVisited" is no longer supported and is ignored. To style visited links, style .ds-link:visited.`,
+        ),
+      );
+    }
+  }
+};
