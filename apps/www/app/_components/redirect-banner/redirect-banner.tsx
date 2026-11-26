@@ -25,6 +25,9 @@ export function RedirectBanner({ lang }: { lang: string }) {
   useEffect(() => {
     const params = new URLSearchParams(search);
     const from = params.get(REDIRECT_PARAM);
+    setNotice((current) =>
+      current?.pathname === pathname ? current : null,
+    );
     if (!from) return;
 
     /* Only trust the param if it matches a redirect we know leads to this page */
@@ -41,18 +44,20 @@ export function RedirectBanner({ lang }: { lang: string }) {
     );
   }, [pathname, search, hash, navigate]);
 
-  if (notice?.pathname !== pathname) return null;
-
   return (
-    <Alert data-color='info' data-size='sm' className={classes.banner}>
-      <Paragraph>
-        {t('redirect-banner.message', {
-          from: notice.from,
-          date: formatDate(notice.expires, lang),
-          /* React already escapes, and i18next would turn "/" into "&#x2F;" */
-          interpolation: { escapeValue: false },
-        })}
-      </Paragraph>
-    </Alert>
+    <div role='status' aria-live='polite'>
+      {notice?.pathname === pathname && (
+        <Alert data-color='info' data-size='sm' className={classes.banner}>
+          <Paragraph>
+            {t('redirect-banner.message', {
+              from: notice.from,
+              date: formatDate(notice.expires, lang),
+              /* React already escapes, and i18next would turn "/" into "&#x2F;" */
+              interpolation: { escapeValue: false },
+            })}
+          </Paragraph>
+        </Alert>
+      )}
+    </div>
   );
 }
