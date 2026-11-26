@@ -2,7 +2,8 @@ import type { SemanticColorNames, SemanticColorSpec } from './types.ts';
 import { semanticColorMap } from './types.ts';
 
 const backgrounds: SemanticColorNames[] = ['background-default', 'background-tinted'];
-const surfaces: SemanticColorNames[] = ['surface-default', 'surface-tinted'];
+// Components put text and borders on all of these, e.g. read-only fields on surface-muted
+const surfaces: SemanticColorNames[] = ['surface-default', 'surface-tinted', 'surface-muted'];
 const interactiveSurfaces: SemanticColorNames[] = ['surface-hover', 'surface-active'];
 
 /**
@@ -120,7 +121,7 @@ export const semanticColorSpec: SemanticColorSpec = {
     group: 'text',
     displayName: 'Text Default',
     luminance: {
-      light: 0.0245,
+      light: 0.01,
       dark: 0.84,
     },
     minContrast: [{ ratio: 4.5, against: [...backgrounds, ...surfaces, ...interactiveSurfaces] }],
@@ -176,6 +177,50 @@ export const semanticColorSpec: SemanticColorSpec = {
       dark: 1,
     },
     minContrast: [{ ratio: 4.5, against: ['base-default', 'base-hover'] }],
+  },
+  'surface-muted': {
+    number: 17,
+    name: 'surface-muted',
+    group: 'surface',
+    displayName: 'Surface Muted',
+    luminance: {
+      light: 0.81,
+      dark: 0.027,
+    },
+    chroma: {
+      factor: { light: 0.2, dark: 0.4 },
+      max: 0.03,
+    },
+  },
+  'border-muted': {
+    number: 18,
+    name: 'border-muted',
+    group: 'border',
+    displayName: 'Border Muted',
+    luminance: {
+      light: 0.19,
+      dark: 0.22,
+    },
+    minContrast: [{ ratio: 3, against: [...backgrounds, ...surfaces] }],
+    chroma: {
+      factor: { light: 0.2, dark: 0.4 },
+      max: 0.03,
+    },
+  },
+  'text-muted': {
+    number: 19,
+    name: 'text-muted',
+    group: 'text',
+    displayName: 'Text Muted',
+    luminance: {
+      light: 0.11,
+      dark: 0.39,
+    },
+    minContrast: [{ ratio: 4.5, against: [...backgrounds, ...surfaces] }],
+    chroma: {
+      factor: { light: 0.2, dark: 0.4 },
+      max: 0.03,
+    },
   },
 };
 

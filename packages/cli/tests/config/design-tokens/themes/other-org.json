@@ -64,6 +64,18 @@
       "16": {
         "$type": "color",
         "$value": "{other-org.dominant.16}"
+      },
+      "17": {
+        "$type": "color",
+        "$value": "{other-org.dominant.17}"
+      },
+      "18": {
+        "$type": "color",
+        "$value": "{other-org.dominant.18}"
+      },
+      "19": {
+        "$type": "color",
+        "$value": "{other-org.dominant.19}"
       }
     },
     "complimentary": {
@@ -130,6 +142,18 @@
       "16": {
         "$type": "color",
         "$value": "{other-org.complimentary.16}"
+      },
+      "17": {
+        "$type": "color",
+        "$value": "{other-org.complimentary.17}"
+      },
+      "18": {
+        "$type": "color",
+        "$value": "{other-org.complimentary.18}"
+      },
+      "19": {
+        "$type": "color",
+        "$value": "{other-org.complimentary.19}"
       }
     },
     "hyphen-color": {
@@ -196,6 +220,18 @@
       "16": {
         "$type": "color",
         "$value": "{other-org.hyphen-color.16}"
+      },
+      "17": {
+        "$type": "color",
+        "$value": "{other-org.hyphen-color.17}"
+      },
+      "18": {
+        "$type": "color",
+        "$value": "{other-org.hyphen-color.18}"
+      },
+      "19": {
+        "$type": "color",
+        "$value": "{other-org.hyphen-color.19}"
       }
     },
     "double-hyphen-color": {
@@ -262,6 +298,18 @@
       "16": {
         "$type": "color",
         "$value": "{other-org.double-hyphen-color.16}"
+      },
+      "17": {
+        "$type": "color",
+        "$value": "{other-org.double-hyphen-color.17}"
+      },
+      "18": {
+        "$type": "color",
+        "$value": "{other-org.double-hyphen-color.18}"
+      },
+      "19": {
+        "$type": "color",
+        "$value": "{other-org.double-hyphen-color.19}"
       }
     },
     "neutral": {
@@ -328,6 +376,18 @@
       "16": {
         "$type": "color",
         "$value": "{other-org.neutral.16}"
+      },
+      "17": {
+        "$type": "color",
+        "$value": "{other-org.neutral.17}"
+      },
+      "18": {
+        "$type": "color",
+        "$value": "{other-org.neutral.18}"
+      },
+      "19": {
+        "$type": "color",
+        "$value": "{other-org.neutral.19}"
       }
     },
     "info": {
@@ -394,6 +454,18 @@
       "16": {
         "$type": "color",
         "$value": "{other-org.info.16}"
+      },
+      "17": {
+        "$type": "color",
+        "$value": "{other-org.info.17}"
+      },
+      "18": {
+        "$type": "color",
+        "$value": "{other-org.info.18}"
+      },
+      "19": {
+        "$type": "color",
+        "$value": "{other-org.info.19}"
       }
     },
     "success": {
@@ -460,6 +532,18 @@
       "16": {
         "$type": "color",
         "$value": "{other-org.success.16}"
+      },
+      "17": {
+        "$type": "color",
+        "$value": "{other-org.success.17}"
+      },
+      "18": {
+        "$type": "color",
+        "$value": "{other-org.success.18}"
+      },
+      "19": {
+        "$type": "color",
+        "$value": "{other-org.success.19}"
       }
     },
     "warning": {
@@ -526,6 +610,18 @@
       "16": {
         "$type": "color",
         "$value": "{other-org.warning.16}"
+      },
+      "17": {
+        "$type": "color",
+        "$value": "{other-org.warning.17}"
+      },
+      "18": {
+        "$type": "color",
+        "$value": "{other-org.warning.18}"
+      },
+      "19": {
+        "$type": "color",
+        "$value": "{other-org.warning.19}"
       }
     },
     "danger": {
@@ -592,6 +688,18 @@
       "16": {
         "$type": "color",
         "$value": "{other-org.danger.16}"
+      },
+      "17": {
+        "$type": "color",
+        "$value": "{other-org.danger.17}"
+      },
+      "18": {
+        "$type": "color",
+        "$value": "{other-org.danger.18}"
+      },
+      "19": {
+        "$type": "color",
+        "$value": "{other-org.danger.19}"
       }
     },
     "link": {

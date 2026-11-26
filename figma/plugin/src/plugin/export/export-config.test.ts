@@ -115,12 +115,14 @@ describe('exportConfig', () => {
     const collections = await syncedCollections({
       theme: { colors: { accent: '#0062ba', neutral: '#24272b' } },
     });
-    editColor(collections, 'theme/accent/3', 'Dark', '#123456');
+    // Not `surface-default` or `text-default` of the first color: the default focus colors follow those, so
+    // editing one without the focus color also gives a focus override.
+    editColor(collections, 'theme/accent/4', 'Dark', '#123456');
 
     const { config } = await exportConfig(collections);
 
     expect(config.themes?.theme.overrides).toEqual({
-      colors: { accent: { 'surface-default': { dark: '#123456' } } },
+      colors: { accent: { 'surface-tinted': { dark: '#123456' } } },
     });
   });
 

@@ -15,9 +15,8 @@ import { styleBorderRadiusVars } from '@internal/components';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useColorScheme } from '~/_hooks/use-color-scheme';
-import { previewColorVars } from '~/model/theme-colors';
+import { generateColorVars } from '~/model/theme-colors';
 import { useThemeStore } from '~/model/theme-store';
-import { REQUIRED_COLOR } from '~/model/theme-workspace';
 import classes from './examples.module.css';
 import { SettingsCard } from './settings-card/settings-card';
 import { TableCard } from './table-card/table-card';
@@ -45,15 +44,12 @@ export const Examples = () => {
   const [colorScheme] = useColorScheme();
   const { colors, borderRadius } = useThemeStore();
 
-  /* The neutral color is always part of the examples, so it is not a color to choose */
-  const previewColors = colors.filter((color) => color.name !== REQUIRED_COLOR);
   const [previewName, setPreviewName] = useState('');
   const previewColor =
-    previewColors.find((color) => color.name === previewName) ||
-    previewColors[0];
+    colors.find((color) => color.name === previewName) || colors[0];
 
   const style: Record<string, string> = {
-    ...previewColorVars(colors, previewColor, colorScheme),
+    ...(previewColor && generateColorVars(previewColor.colors, colorScheme)),
     ...styleBorderRadiusVars,
     '--ds-border-radius-base': `${borderRadius / 16}rem`,
   };
@@ -66,7 +62,7 @@ export const Examples = () => {
           value={previewColor?.name}
           onChange={(event) => setPreviewName(event.target.value)}
         >
-          {previewColors.map((color) => (
+          {colors.map((color) => (
             <Select.Option key={color.name} value={color.name}>
               {color.name}
             </Select.Option>

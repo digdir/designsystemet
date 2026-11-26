@@ -1,6 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { beforeAll, describe, expect, it, vi } from 'vitest';
 import pkg from '../../package.json' with { type: 'json' };
+import { isSeverityColor, severityColors } from '../schemas/defaults.ts';
 import { configSchema, type ExternalConfigSchemaInput } from '../schemas/schema.ts';
 import { formatThemeCSS } from '../tokens/format.ts';
 import type { Theme } from '../tokens/types.ts';
@@ -36,6 +37,10 @@ const plainTheme: ThemeInput = {
   colors: { accent: '#0d7a5f', 'my-brand': '#8a1c4a', neutral: '#1e2b3c' },
   borderRadius: 0,
 };
+// A theme without neutral, with the default focus colors.
+const noNeutralTheme: ThemeInput = {
+  colors: { accent: '#0062ba' },
+};
 
 const builtCSS: Record<string, string> = {};
 
@@ -45,6 +50,7 @@ beforeAll(async () => {
   vi.spyOn(console, 'log').mockImplementation(() => {});
   builtCSS.withOverrides = await buildThemeCSS('with-overrides', themeWithOverrides);
   builtCSS.plain = await buildThemeCSS('plain', plainTheme);
+  builtCSS.noNeutral = await buildThemeCSS('no-neutral', noNeutralTheme);
 }, 30_000);
 
 describe('generateConfigFromCSS', () => {
@@ -54,9 +60,26 @@ describe('generateConfigFromCSS', () => {
       readFileSync(new URL('../../../../designsystemet.config.json', import.meta.url), 'utf8'),
     ) as ExternalConfigSchemaInput;
 
+    // The root config lists the severity colors with their default values. Reading a theme back leaves out a
+    // severity color that has its default value, so they aren't expected in the result.
+    const expectedThemes = Object.fromEntries(
+      Object.entries(rootConfig.themes ?? {}).map(([name, theme]) => [
+        name,
+        {
+          ...theme,
+          colors: Object.fromEntries(
+            Object.entries(theme.colors).filter(
+              ([color, value]) =>
+                !isSeverityColor(color) || value.toLowerCase() !== severityColors[color].toLowerCase(),
+            ),
+          ),
+        },
+      ]),
+    );
+
     const { config, warnings } = generateConfigFromCSS({ designsystemet: css });
 
-    expect(config.themes).toEqual(rootConfig.themes);
+    expect(config.themes).toEqual(expectedThemes);
     expect(warnings).toEqual([]);
   });
 
@@ -64,6 +87,13 @@ describe('generateConfigFromCSS', () => {
     const { config, warnings } = generateConfigFromCSS({ 'with-overrides': builtCSS.withOverrides });
 
     expect(config.themes).toEqual({ 'with-overrides': themeWithOverrides });
+    expect(warnings).toEqual([]);
+  });
+
+  it('reads back a theme without neutral, without focus overrides', () => {
+    const { config, warnings } = generateConfigFromCSS({ 'no-neutral': builtCSS.noNeutral });
+
+    expect(config.themes).toEqual({ 'no-neutral': noNeutralTheme });
     expect(warnings).toEqual([]);
   });
 
