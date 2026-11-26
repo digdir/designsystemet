@@ -24,6 +24,7 @@ description: Repo-wide conventions for designsystemet.no — the project name in
 - Don't add a link to the pull request; the changelog generator adds it.
 - Write the summary as one line, without line breaks in it. The link to the pull request is added to the end of the first line, so a sentence that continues on the next line ends up after the link. Details such as a table or a longer explanation go below it, after a blank line.
 - The text ends up in an MDX page on designsystemet.no. Write code such as `<Button>` or `{value}` in backticks. Outside them, a tag like `<Button>` fails when the page is compiled, and `{value}` is run as JavaScript.
+- When the same text fits several packages, list them all in one changeset. Changes with identical text are shown once in the changelog, with their packages. A second changeset in other words is shown as a separate change.
 - We sometimes credit a contributor, or someone whose feedback led to the change, with their GitHub `@username` in the text. Check that the username exists, so we don't credit or notify a stranger.
 
 ## Dependencies
