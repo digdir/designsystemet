@@ -55,6 +55,21 @@ import { RoiCalculator } from '../roi-calculator/roi-calcuator';
 import { VideoCard } from '../video-card/video-card';
 import classes from './mdx-components.module.css';
 
+/**
+ * Links to files, like /llms.txt or a page's .md version, are not app routes.
+ * The server answers them, so they need a full page load.
+ */
+const isFileLink = (href: string) =>
+  /\.[a-z0-9]+$/i.test(href.split(/[?#]/)[0].split('/').pop() ?? '');
+
+const MdxLink = ({ href = '', ...props }: LinkProps) => (
+  <Link {...props} asChild>
+    <RRLink to={href} reloadDocument={isFileLink(href)}>
+      {props.children}
+    </RRLink>
+  </Link>
+);
+
 const defaultComponents = {
   VideoCard,
   Alert,
@@ -103,16 +118,8 @@ const defaultComponents = {
   Contributors,
   ColorInfoTable,
   p: (props: ParagraphProps) => <Paragraph {...props} />,
-  Link: ({ href, ...props }: LinkProps) => (
-    <Link {...props} asChild>
-      <RRLink to={href || ''}>{props.children}</RRLink>
-    </Link>
-  ),
-  a: ({ href, ...props }: LinkProps) => (
-    <Link {...props} asChild>
-      <RRLink to={href || ''}>{props.children}</RRLink>
-    </Link>
-  ),
+  Link: MdxLink,
+  a: MdxLink,
   pre: ({
     children: {
       props: { children = '', className = '' },
