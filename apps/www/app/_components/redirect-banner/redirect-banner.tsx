@@ -25,9 +25,7 @@ export function RedirectBanner({ lang }: { lang: string }) {
   useEffect(() => {
     const params = new URLSearchParams(search);
     const from = params.get(REDIRECT_PARAM);
-    setNotice((current) =>
-      current?.pathname === pathname ? current : null,
-    );
+    setNotice((current) => (current?.pathname === pathname ? current : null));
     if (!from) return;
 
     /* Only trust the param if it matches a redirect we know leads to this page */
