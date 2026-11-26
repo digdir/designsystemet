@@ -1,17 +1,21 @@
 import { Button } from '@digdir/designsystemet-react';
 import { ChevronDownIcon, MoonIcon, SunIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
-import { useId, useState } from 'react';
+import { useId, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { LiveError, LivePreview, LiveProvider } from 'react-live';
 import { CodePanel, type Language } from './code-panel';
 import { HtmlCapture } from './html-capture';
 import classes from './live-component.module.css';
 import { liveScope } from './scope';
+import { getStorySource } from './story-source';
 import { useColorScheme } from './use-color-scheme';
 
 export type LiveComponentProps = {
+  /** The story's component, as written in the stories file */
   story: string;
+  /** The name of that component */
+  name: string;
   /** `story` rendered to HTML */
   html: string;
   layout?: 'row' | 'column' | 'centered' | 'block';
@@ -24,6 +28,7 @@ export type LiveComponentProps = {
 /** A story shown as a preview, with its code in a panel that can be opened underneath. */
 export const LiveComponent = ({
   story,
+  name,
   html,
   layout = 'centered',
   language = 'react',
@@ -39,9 +44,14 @@ export const LiveComponent = ({
   const invertedColorScheme = colorScheme === 'dark' ? 'light' : 'dark';
   const previewColorScheme = useInverted ? invertedColorScheme : colorScheme;
   const editorId = useId();
+  const source = useMemo(() => getStorySource(story, name), [story, name]);
 
   return (
-    <LiveProvider code={story} scope={liveScope} noInline>
+    <LiveProvider
+      code={source.toRunnable(source.code)}
+      scope={liveScope}
+      noInline
+    >
       <HtmlCapture onHtmlCapture={setEditedHtml} />
       <div
         className={cl(classes.preview, 'u-long-content')}
@@ -97,6 +107,7 @@ export const LiveComponent = ({
       </div>
       <CodePanel
         id={editorId}
+        source={source}
         html={editedHtml ?? html}
         hidden={!showEditor}
         language={language}

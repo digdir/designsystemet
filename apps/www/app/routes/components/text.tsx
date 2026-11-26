@@ -123,7 +123,10 @@ export default function Text({
   );
 }
 
-const Story = ({ story, layout }: Omit<LiveComponentProps, 'html'>) => {
+const Story = ({
+  story,
+  layout,
+}: Omit<LiveComponentProps, 'html' | 'name'>) => {
   const data = useRouteLoaderData<Route.ComponentProps['loaderData']>(
     'component-text-page',
   );
@@ -135,7 +138,8 @@ const Story = ({ story, layout }: Omit<LiveComponentProps, 'html'>) => {
   if (!foundStory) return <Alert lang='en'>Story not found: {story}</Alert>;
   return (
     <LiveComponent
-      story={`${foundStory.code}\n\nrender(<${foundStory.name} />)`}
+      story={foundStory.code}
+      name={foundStory.name}
       html={getStoryHtml(foundStory)}
       layout={layout}
     />

@@ -13,6 +13,7 @@ import { CodeEditor } from './code-editor';
 import { formatHtml } from './format-html';
 import classes from './live-component.module.css';
 import { loadAllIcons } from './scope';
+import type { StorySource } from './story-source';
 
 export type Language = 'react' | 'html';
 
@@ -20,6 +21,8 @@ export type Language = 'react' | 'html';
 const RUN_DELAY = 250;
 
 type CodePanelProps = {
+  /** The React code to show, and how to run it */
+  source: StorySource;
   /** The HTML the code currently renders to */
   html: string;
   id?: string;
@@ -34,6 +37,7 @@ type CodePanelProps = {
  * Must be inside the `LiveProvider` that renders the preview.
  */
 export const CodePanel = ({
+  source,
   html,
   id,
   hidden,
@@ -47,15 +51,15 @@ export const CodePanel = ({
   const [showHTML, setShowHTML] = useState(language === 'html');
   const [copied, setCopied] = useState(false);
   const [story, setStory] = useState(live.code);
-  const [code, setCode] = useState(live.code);
-  const latestCode = useRef(live.code);
+  const [code, setCode] = useState(source.code);
+  const latestCode = useRef(source.code);
   const pendingRun = useRef<ReturnType<typeof setTimeout>>(undefined);
   const formattedHtml = formatHtml(html, truncateSvg);
 
   // A new story replaces whatever was typed into the previous one
   if (story !== live.code) {
     setStory(live.code);
-    setCode(live.code);
+    setCode(source.code);
   }
 
   const onChange = (code: string) => {
@@ -64,13 +68,13 @@ export const CodePanel = ({
     clearTimeout(pendingRun.current);
     pendingRun.current = undefined;
     // The story as written only needs the icons that are already loaded
-    if (code === live.code) return live.onChange(code);
+    if (code === source.code) return live.onChange(live.code);
     // Only the latest edit may run after both the typing pause and icon loading.
     const run = setTimeout(() => {
       loadAllIcons().then(() => {
         if (pendingRun.current !== run) return;
         pendingRun.current = undefined;
-        live.onChange(latestCode.current);
+        live.onChange(source.toRunnable(latestCode.current));
       });
     }, RUN_DELAY);
     pendingRun.current = run;
@@ -78,15 +82,15 @@ export const CodePanel = ({
 
   // An edit that is still waiting must not run against the next story, or after we are gone
   useEffect(() => {
-    latestCode.current = live.code;
+    latestCode.current = source.code;
     return () => {
       clearTimeout(pendingRun.current);
       pendingRun.current = undefined;
     };
-  }, [live.code]);
+  }, [live.code, source.code]);
 
   const reset = () => {
-    onChange(live.code);
+    onChange(source.code);
     // The reset button hides once there is nothing to reset, so focus has to go somewhere else
     (showHTML ? copyRef : editorRef).current?.focus();
   };
@@ -126,7 +130,7 @@ export const CodePanel = ({
         className={classes.action}
         onClick={reset}
         data-size='sm'
-        hidden={code === live.code}
+        hidden={code === source.code}
         type='button'
         // The text is hidden on narrow screens, where only the icon is left
         aria-label={t('live-component.reset')}
