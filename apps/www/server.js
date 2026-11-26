@@ -5,7 +5,7 @@ import express from 'express';
 //import rateLimit from 'express-rate-limit';
 import morgan from 'morgan';
 import { markdownNegotiation } from './server/markdown-negotiation.js';
-import { securityHeaders } from './server/security-headers.js';
+import { securityHeaders, ssrCacheControl } from './server/security-headers.js';
 
 // Short-circuit the type-checking of the built output.
 const BUILD_PATH = './dist/server/index.js';
@@ -15,8 +15,10 @@ const PORT = Number.parseInt(process.env.PORT || '3000', 10);
 const app = express();
 
 app.use(compression());
-app.use(markdownNegotiation);
 app.disable('x-powered-by');
+/* Before everything that sends a response, so the prerendered pages and the static files get the headers too */
+app.use(securityHeaders);
+app.use(markdownNegotiation);
 
 /* Serve /.well-known/api-catalog with correct Content-Type (RFC 9727) */
 app.get('/.well-known/api-catalog', (_req, res) => {
@@ -91,9 +93,8 @@ if (DEVELOPMENT) {
   app.use(express.static('dist/client', { redirect: false }));
 
   // RR v8 emits the server build (not the bundled `server/app.ts`) at
-  // BUILD_PATH, so drive the request handler from it directly. `securityHeaders`
-  // replaces the middleware that the bundled `server/app.ts` used to provide.
-  app.use(securityHeaders);
+  // BUILD_PATH, so drive the request handler from it directly.
+  app.use(ssrCacheControl);
   app.use(
     createRequestHandler({
       build: () => import(BUILD_PATH),
