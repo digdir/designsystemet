@@ -6,6 +6,10 @@ export default {
     message:
       'Denne dokumentasjonen gjelder Designsystemet {{version}}, som er en eldre versjon. For den nyeste versjonen, se',
   },
+  'redirect-banner': {
+    message:
+      'Du kom hit via en gammel lenke ({{from}}) som slutter å virke {{date}}. Oppdater lenken eller bokmerket ditt til adressen på denne siden.',
+  },
   frontpage: {
     heading: 'Designsystemet hjelper deg å lage gode digitale tjenester',
     'get-started': {

@@ -7,6 +7,10 @@ export default {
     message:
       'This documentation covers Designsystemet {{version}}, which is an older version. For the latest version, see',
   },
+  'redirect-banner': {
+    message:
+      'You got here through an old link ({{from}}) that stops working on {{date}}. Please update your link or bookmark to the address of this page.',
+  },
   frontpage: {
     heading: 'Designsystemet helps you build better digital services',
     'get-started': {
