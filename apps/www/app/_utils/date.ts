@@ -12,6 +12,7 @@ export const formatDate = (dateString: string, lc = 'no'): string => {
       day: 'numeric',
       month: 'long',
       year: 'numeric',
+      timeZone: 'UTC',
     }).format(date);
   } catch (error) {
     console.error('Error formatting date:', error);

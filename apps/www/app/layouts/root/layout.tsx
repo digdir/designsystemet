@@ -9,6 +9,7 @@ import { ConsentBanner } from '~/_components/consent-banner/consent-banner';
 import { Figma } from '~/_components/logos/figma';
 import { Github } from '~/_components/logos/github';
 import { Slack } from '~/_components/logos/slack';
+import { RedirectBanner } from '~/_components/redirect-banner/redirect-banner';
 import { SearchDialog } from '~/_components/search-dialog';
 import { VersionBanner } from '~/_components/version-banner/version-banner';
 import { useChangeLanguage } from '~/_hooks/use-change-language';
@@ -75,6 +76,7 @@ export default function RootLayout() {
       <div>
         <VersionBanner />
         {showBanner && <ConsentBanner lang={lang} />}
+        <RedirectBanner lang={lang} />
         <SkipLink href='#main'>{t('accessibility.skip-link')}</SkipLink>
       </div>
       <Header
