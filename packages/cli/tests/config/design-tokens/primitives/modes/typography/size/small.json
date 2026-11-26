@@ -20,7 +20,7 @@
     },
     "2": {
       "$type": "fontSizes",
-      "$value": "13"
+      "$value": "12"
     },
     "3": {
       "$type": "fontSizes",
@@ -32,7 +32,7 @@
     },
     "5": {
       "$type": "fontSizes",
-      "$value": "18"
+      "$value": "19"
     },
     "6": {
       "$type": "fontSizes",
@@ -40,19 +40,19 @@
     },
     "7": {
       "$type": "fontSizes",
-      "$value": "24"
+      "$value": "27"
     },
     "8": {
       "$type": "fontSizes",
-      "$value": "30"
+      "$value": "32"
     },
     "9": {
       "$type": "fontSizes",
-      "$value": "36"
+      "$value": "43"
     },
     "10": {
       "$type": "fontSizes",
-      "$value": "48"
+      "$value": "53"
     }
   },
   "letter-spacing": {

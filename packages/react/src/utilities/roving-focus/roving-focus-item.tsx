@@ -37,7 +37,7 @@ export function getPrevFocusableValue(
   return items.at(currIndex === 0 ? -1 : currIndex - 1);
 }
 
-/** @deprecated RovingFocusItem is deprecated.*/
+/** @deprecated v2 RovingFocusItem is deprecated.*/
 export const RovingFocusItem = forwardRef<HTMLElement, RovingFocusItemProps>(
   ({ value, asChild, ...rest }, ref) => {
     const Component = asChild ? Slot : 'div';

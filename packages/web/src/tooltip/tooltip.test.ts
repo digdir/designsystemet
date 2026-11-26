@@ -196,4 +196,38 @@ describe('tooltip behavior', () => {
     expect(liveRegion).toBeInTheDocument();
     expect(liveRegion?.textContent).toContain('Updated');
   });
+
+  it('repositions tooltip when text changes while open', {
+    tags: ['browser'], // Only run in browsers as this relies on layout and ResizeObserver
+  }, async () => {
+    const tip = document.createElement('div');
+    tip.style.cssText =
+      '--_ds-floating: top; position: absolute; inset: 0 auto auto 0; margin: 0; white-space: nowrap'; // Mimic .ds-tooltip, as CSS is not loaded in tests
+    setTooltipElement(tip);
+
+    document.body.innerHTML = `<button data-tooltip="Copy" style="position: fixed; top: 200px; left: 150px">Button</button>`;
+
+    const button = document.querySelector('button') as HTMLButtonElement;
+    const offCenter = () => {
+      const tipRect = tip.getBoundingClientRect();
+      const buttonRect = button.getBoundingClientRect();
+      return Math.abs(
+        tipRect.x + tipRect.width / 2 - (buttonRect.x + buttonRect.width / 2),
+      );
+    };
+    await tick(); // Let MutationObserver run
+
+    button.dispatchEvent(new FocusEvent('focus'));
+    await vi.waitFor(() => expect(tip).toHaveAttribute('data-floating'));
+    await tick(); // Let native "toggle" event run, as it is queued after "ds-toggle-source"
+    await tick();
+    expect(offCenter()).toBeLessThan(1);
+
+    const translate = tip.style.translate;
+    button.setAttribute('data-tooltip', 'Copied, with a much longer text');
+    await vi.waitFor(() => expect(tip.style.translate).not.toBe(translate));
+    expect(tip.textContent).toBe('Copied, with a much longer text');
+    expect(offCenter()).toBeLessThan(1);
+    tip.remove(); // Remove element
+  });
 });

@@ -66,7 +66,8 @@ function toggle(
   const prev = POPOVERS.get(el as HTMLElement);
 
   if (newState === 'open' && oldState === newState) return; // Keep existing positioning for a no-op open
-  if (newState === 'open' && prev && prev.source === source) return; // Prevent double binding
+  if (newState === 'open' && prev && (!source || prev.source === source))
+    return; // Prevent double binding, and keep the binding when native "toggle" arrives without source after "ds-toggle-source" (i.e. tooltip)
   prev?.cleanup(); // Cleanup if previously bound popover exists to avoid multiple autoUpdate memory leaks
   if (newState === 'closed' || !isPopover) return;
   if (!source) {
