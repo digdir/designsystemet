@@ -1,23 +1,21 @@
 /**
- * Builds the changelog pages for www from the root CHANGELOG.md, where each change is listed once
+ * Builds the changelog pages for www from changelog.json, where each change is listed once
  * with the packages it affects: one page for the code packages, and one for the Figma packages
  * (the UI kit and the plugin). Each page shows the changes that affect at least one of its
- * packages. The root CHANGELOG.md is built by scripts/group-changelogs.js; this file only
+ * packages. changelog.json is built by scripts/group-changelogs.js; this file only
  * formats it as MDX and writes it.
  */
 import { execFileSync } from 'node:child_process';
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
-import {
-  aggregateChangelogs,
-  findPackages,
-  NO_CHANGES,
-} from './aggregate-changelogs.js';
+import { findPackages, NO_CHANGES } from './aggregate-changelogs.js';
 import { releaseDateMarkup } from './changelog-date.js';
 import {
-  BUMPS,
-  CHANGELOG_FILE,
-  parseGroupedChangelog,
+  CHANGE_HEADINGS,
+  CHANGE_TYPES,
+  changeList,
+  readChangelog,
+  toMarkdown,
 } from './group-changelogs.js';
 
 const ROOT = process.cwd();
@@ -85,7 +83,7 @@ function getReleaseDate(version) {
 
 /**
  * @param {string} version
- * @param {{ bump: string, text: string, packages: string[] }[]} changes the changes to show
+ * @param {import('./group-changelogs.js').Change[]} changes the changes to show
  * @param {string | null} date the release date as `YYYY-MM-DD`, or null to leave the version undated
  */
 function formatVersion(version, changes, date) {
@@ -99,39 +97,38 @@ function formatVersion(version, changes, date) {
   if (date) out += `${releaseDateMarkup(date)}\n\n`;
 
   if (changes.length === 0) out += `${NO_CHANGES}\n\n`;
-  for (const bump of BUMPS) {
-    const entries = changes.filter((change) => change.bump === bump);
+  for (const type of CHANGE_TYPES) {
+    const entries = changes.filter((change) => change.type === type);
     if (entries.length === 0) continue;
-    out += `### ${bump}\n\n`;
-    for (const { text, packages } of entries) {
-      const tags = packages
-        .map((name) => `<Tag>${LABELS[name] ?? name}</Tag>`)
-        .join('');
-      // Styled by `[data-packages]` in apps/www/app/routes/components/component.module.css
-      out += `${text}\n\n  <div data-packages>${tags}</div>\n\n`;
-    }
+    out += `### ${CHANGE_HEADINGS[type]}\n\n`;
+    const list = changeList(entries, ({ packages }) => [
+      {
+        type: 'html',
+        // Styled by `[data-packages]` in apps/www/app/routes/components/component.module.css
+        value: `<div data-packages>${packages
+          .map((name) => `<Tag>${LABELS[name] ?? name}</Tag>`)
+          .join('')}</div>`,
+      },
+    ]);
+    out += `${toMarkdown([list])}\n\n`;
   }
 
   return `${out}</div>\n\n`;
 }
 
 /**
- * The versions in the root CHANGELOG.md, newest first, with only the changes that affect at least
- * one of `packages`.
- * @param {string[]} packages short package names, as in the root CHANGELOG.md
+ * The versions in changelog.json, newest first, with only the changes that affect at least one of
+ * `packages`.
+ * @param {string[]} packages package names
  */
 async function readChanges(packages) {
-  const versions = parseGroupedChangelog(
-    await fs.readFile(CHANGELOG_FILE, 'utf8'),
-  );
-  return new Map(
-    [...versions].map(([version, changes]) => [
-      version,
-      changes.filter((change) =>
-        change.packages.some((name) => packages.includes(name)),
-      ),
-    ]),
-  );
+  const { releases } = await readChangelog();
+  return releases.map((release) => ({
+    ...release,
+    changes: release.changes.filter((change) =>
+      change.packages.some((name) => packages.includes(name)),
+    ),
+  }));
 }
 
 async function writeComponentsChangelog() {
@@ -139,7 +136,7 @@ async function writeComponentsChangelog() {
   const pkgs = [...(await findPackages()).values()];
 
   let consolidatedContent = '';
-  for (const [version, changes] of await readChanges(CODE_PACKAGES)) {
+  for (const { version, changes } of await readChanges(CODE_PACKAGES)) {
     consolidatedContent += formatVersion(
       version,
       changes,
@@ -182,26 +179,14 @@ const FIGMA_PAGES = {
   },
 };
 
-// The Figma file is published by hand, not with the code, so its versions have no tags to date them
-// by. Instead, the date is written in the changelog as a `_Published YYYY-MM-DD_` line under the
-// version heading; see figma/README.md.
-const PUBLISHED_DATE = /^_Published (\d{4}-\d{2}-\d{2})_\s*$\n*/m;
-
 async function writeFigmaChangelog() {
-  // The published dates are only in the Figma packages' own changelogs
-  const pkgs = [...(await findPackages(['figma'])).values()];
-  const publishedDates = new Map();
-  for (const [version, packages] of await aggregateChangelogs(pkgs)) {
-    for (const body of packages.values()) {
-      const date = PUBLISHED_DATE.exec(body)?.[1];
-      if (date && !publishedDates.has(version))
-        publishedDates.set(version, date);
-    }
-  }
-
   let consolidatedContent = '';
-  for (const [version, changes] of await readChanges(FIGMA_PACKAGES)) {
-    const date = publishedDates.get(version) ?? null;
+  for (const { version, changes, figmaPublished } of await readChanges(
+    FIGMA_PACKAGES,
+  )) {
+    // The Figma file is published by hand, not with the code, so its versions have no tags to date
+    // them by. The date is written in its changelog instead; see figma/README.md.
+    const date = figmaPublished ?? null;
     // The Figma packages are versioned with the code by changesets, so most code releases add a
     // version without changes to them. Only versions with changes, or that were published, are shown.
     if (changes.length === 0 && !date) continue;

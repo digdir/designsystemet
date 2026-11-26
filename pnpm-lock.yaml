@@ -225,12 +225,27 @@ importers:
       chromatic:
         specifier: 18.15.1
         version: 18.15.1
+      mdast-util-to-string:
+        specifier: 4.0.0
+        version: 4.0.0
+      remark-gfm:
+        specifier: 4.0.1
+        version: 4.0.1
+      remark-parse:
+        specifier: 11.0.0
+        version: 11.0.0
+      remark-stringify:
+        specifier: 11.0.0
+        version: 11.0.0
       typescript:
         specifier: 6.0.3
         version: 6.0.3
       typescript-plugin-css-modules:
         specifier: 5.3.0
         version: 5.3.0(typescript@6.0.3)
+      unified:
+        specifier: 11.0.5
+        version: 11.0.5
       vite:
         specifier: 8.3.8
         version: 8.3.8(@types/node@24.19.2)(esbuild@0.28.2)(less@4.9.1)(sass@1.108.2)(stylus@0.62.0)(yaml@2.9.1)
