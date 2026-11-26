@@ -323,16 +323,8 @@ function useFilterParams() {
 }
 
 export default function Changelog({ loaderData }: Route.ComponentProps) {
-  const {
-    lang,
-    releases,
-    versions,
-    filters,
-    isFiltered,
-    total,
-    matchCount,
-    totalPages,
-  } = loaderData;
+  const { lang, releases, versions, filters, total, matchCount, totalPages } =
+    loaderData;
   const { t } = useTranslation();
   const { params, updateParams, isHydrated } = useFilterParams();
   const navigation = useNavigation();
@@ -417,6 +409,13 @@ export default function Changelog({ loaderData }: Route.ComponentProps) {
 
   useSearchHighlight(releasesRef, words, releases);
 
+  // From the URL being navigated to and what is typed, like the chips, so the reset button shows
+  // and hides at once
+  const hasFilters =
+    params.has('version') ||
+    selectedPackages.length > 0 ||
+    searchInput.trim() !== '';
+
   const status = [
     matchCount !== null ? t('changelog.matches', { count: matchCount }) : '',
     t('changelog.results', { count: total }),
@@ -487,20 +486,22 @@ export default function Changelog({ loaderData }: Route.ComponentProps) {
             >
               {status}
             </Paragraph>
-            {/* Disabled rather than removed when there is nothing to reset, so focus is not lost */}
-            <Button
-              variant='tertiary'
-              data-size='sm'
-              aria-disabled={!isFiltered || !isHydrated}
-              onClick={() => {
-                if (!isFiltered) return;
-                updateFilters('', []);
-                setSearchInput('');
-                statusRef.current?.focus();
-              }}
-            >
-              {t('changelog.reset')}
-            </Button>
+            {/* Only when there is something to reset. Focus moves to the status when it is used, so
+             * it is not lost when the button goes away. */}
+            {hasFilters ? (
+              <Button
+                variant='tertiary'
+                data-size='sm'
+                aria-disabled={!isHydrated}
+                onClick={() => {
+                  updateFilters('', []);
+                  setSearchInput('');
+                  statusRef.current?.focus();
+                }}
+              >
+                {t('changelog.reset')}
+              </Button>
+            ) : null}
           </div>
         </search>
 

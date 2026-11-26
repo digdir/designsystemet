@@ -208,7 +208,6 @@ export async function getChangelogPage(searchParams: URLSearchParams) {
     /** Every version, for links to the old changelog pages, e.g. `#1240` */
     versions: all.map((release) => release.version),
     filters: { version, packages, query, page },
-    isFiltered: Boolean(version) || isFiltered,
     /** The number of versions that match the filters */
     total: releases.length,
     /** The number of changes with the words searched for, when searching */
