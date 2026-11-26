@@ -9,7 +9,7 @@ What Designsystemet publishes to Figma Community:
 
 The UI kit (`figma-ui-kit`) and the plugin (`figma-plugin`) have the same version as the code packages: changesets versions them together (see `fixed` in `.changeset/config.json`).
 
-Their changelogs, [ui-kit/CHANGELOG.md](./ui-kit/CHANGELOG.md) and [plugin/CHANGELOG.md](./plugin/CHANGELOG.md), are shown together on designsystemet.no, under Fundamentals → Figma → Changelog. Most releases bump their versions without changes to them. Those versions are left out of the changelog page.
+Their changelogs, [ui-kit/CHANGELOG.md](./ui-kit/CHANGELOG.md) and [plugin/CHANGELOG.md](./plugin/CHANGELOG.md), are shown with the code packages' on the [changelog page](https://designsystemet.no/en/changelog?package=figma-ui-kit&package=figma-plugin) on designsystemet.no. Most releases bump their versions without changes to them. Those versions are left out when the page is filtered to the Figma packages.
 
 ## Documenting changes
 
@@ -45,12 +45,10 @@ The UI kit and the plugin are published to Figma Community by hand, and always t
 
    A version without a `_Published_` line is shown without a date.
 
-3. Update the changelog page on the website by running this from the root of the repository:
+3. Add the date to the changelog page on the website by running this from the root of the repository:
 
    ```sh
-   node scripts/sync-changelogs.js
+   node scripts/group-changelogs.js
    ```
 
-   It writes `apps/www/app/content/fundamentals/{en,no}/figma/changelog.mdx`. Commit those files with the changelogs.
-
-   The script also rebuilds the components changelog. If that file changes, leave it out of the commit, as it's updated when the code is released.
+   It adds the date to `apps/www/app/content/changelog/changelog.json`. Commit that file with the changelogs.

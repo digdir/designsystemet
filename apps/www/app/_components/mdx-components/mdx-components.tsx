@@ -71,7 +71,8 @@ const MdxLink = ({ href = '', ...props }: LinkProps) => (
   </Link>
 );
 
-const defaultComponents = {
+/** Also used for markdown rendered without MDX, e.g. the changes on the changelog page */
+export const defaultComponents = {
   VideoCard,
   Alert,
   Badge,

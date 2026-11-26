@@ -76,9 +76,19 @@ if (DEVELOPMENT) {
     max: 100, // limit each IP to 100 requests per windowMs for prerendered HTML
   }); */
 
+  /* The changelog is filtered by its search params in its loader (app/routes/changelog). Only the
+   * page without them is prerendered, so with them, its HTML and data come from React Router. */
+  const isFilteredChangelog = (req) =>
+    /^\/(?:no|en)\/changelog(?:\.data)?$/.test(req.path) &&
+    req.url.includes('?');
+
   /* Serve prerendered HTML files for clean URLs (e.g., /no/intro -> /no/intro/index.html) */
   app.use((req, res, next) => {
-    if (req.path.includes('.') || req.path.startsWith('/assets')) {
+    if (
+      req.path.includes('.') ||
+      req.path.startsWith('/assets') ||
+      isFilteredChangelog(req)
+    ) {
       return next();
     }
 
@@ -90,7 +100,10 @@ if (DEVELOPMENT) {
     });
   });
 
-  app.use(express.static('dist/client', { redirect: false }));
+  const serveClient = express.static('dist/client', { redirect: false });
+  app.use((req, res, next) =>
+    isFilteredChangelog(req) ? next() : serveClient(req, res, next),
+  );
 
   // RR v8 emits the server build (not the bundled `server/app.ts`) at
   // BUILD_PATH, so drive the request handler from it directly.

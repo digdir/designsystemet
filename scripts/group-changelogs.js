@@ -18,22 +18,24 @@
  *
  * Versions already in changelog.json are kept as they are, so they can be edited by hand, e.g. to
  * merge two entries that describe the same change for different readers, or to write notes about
- * the release in its `notes` field. The notes are shown in the GitHub release and on www.
+ * the release in its `notes` field. The notes are shown in the GitHub release and on www. Only
+ * their dates are added when they are missing, see addDates.
  *
- * The exported helpers are also used by scripts/sync-changelogs.js to build the changelog pages
- * for www from changelog.json.
+ * The changelog page on www reads changelog.json, see apps/www/app/_utils/changelog.server.ts.
  *
  * @typedef {'major' | 'minor' | 'patch'} ChangeType
  * @typedef {{ type: ChangeType, packages: string[], markdown: string, thanks?: string }} Change
  *   `packages` are package names, e.g. `@digdir/designsystemet-css`. `thanks` is the lines the
  *   changeset generator writes before the change, one for each first-time contributor, as
  *   paragraphs.
- * @typedef {{ version: string, figmaPublished?: string, notes?: string, changes: Change[] }} Release
- *   `figmaPublished` is the date the Figma file was published, from the `_Published YYYY-MM-DD_`
- *   line in the Figma packages' changelogs, see figma/README.md. `notes` is markdown written by
- *   hand, e.g. to introduce the release, without headings.
+ * @typedef {{ version: string, date?: string, figmaPublished?: string, notes?: string, changes: Change[] }} Release
+ *   `date` is the release date as `YYYY-MM-DD`, see getReleaseDate. `figmaPublished` is the date
+ *   the Figma file was published, from the `_Published YYYY-MM-DD_` line in the Figma packages'
+ *   changelogs, see figma/README.md. `notes` is markdown written by hand, e.g. to introduce the
+ *   release, without headings.
  * @typedef {{ releases: Release[] }} Changelog newest version first
  */
+import { execFileSync } from 'node:child_process';
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -446,6 +448,72 @@ export async function readChangelog(file = CHANGELOG_JSON) {
   return JSON.parse(await fs.readFile(file, 'utf8'));
 }
 
+function git(args) {
+  try {
+    return execFileSync('git', args, {
+      cwd: ROOT,
+      encoding: 'utf8',
+      stdio: ['ignore', 'pipe', 'ignore'],
+    }).trim();
+  } catch {
+    return '';
+  }
+}
+
+/**
+ * The release date of a version as `YYYY-MM-DD`: the commit date of the aggregated `v<version>`
+ * tag, or of the first commit that added the `## <version>` heading to a package changelog.
+ * Returns null for the version being prepared, which has neither yet: its release commit is the
+ * pull request this runs in, and that can stay open for weeks. It is dated at deploy time instead,
+ * see scripts/date-latest-changelog.js. Needs the full git history and tags, see `fetch-depth`
+ * in release.yml.
+ *
+ * With `tagOnly`, only the tag is used. The newest version is dated that way: in the release pull
+ * request, its heading is already committed, so it would be dated before it is released.
+ * @param {string} version
+ */
+function getReleaseDate(version, { tagOnly = false } = {}) {
+  const fromTag = git(['log', '-1', '--format=%cs', `refs/tags/v${version}`]);
+  if (fromTag || tagOnly) return fromTag || null;
+
+  // Anchored, so `## 1.0.0` does not also match the `## 1.0.0-next.1` pre-release headings.
+  const heading = `^## ${version.replaceAll('.', '\\.')}$`;
+  const fromChangelog = git([
+    'log',
+    '--reverse',
+    '--format=%cs',
+    `-G${heading}`,
+    '--',
+    'packages/*/CHANGELOG.md',
+  ]).split('\n')[0];
+  return fromChangelog || null;
+}
+
+/**
+ * Adds the dates that are missing: the release date, and the date the Figma file was published.
+ * The Figma file is published by hand after the release, so that date is taken from the Figma
+ * changelogs on every run.
+ * @param {Release[]} releases newest first
+ * @param {Map<string, string>} figmaPublished version → date
+ * @returns {Release[]}
+ */
+function addDates(releases, figmaPublished) {
+  return releases.map(
+    ({ version, date, figmaPublished: _, ...rest }, index) => {
+      const released =
+        date ?? getReleaseDate(version, { tagOnly: index === 0 }) ?? undefined;
+      const published = figmaPublished.get(version);
+      // In this order in changelog.json
+      return {
+        version,
+        ...(released && { date: released }),
+        ...(published && { figmaPublished: published }),
+        ...rest,
+      };
+    },
+  );
+}
+
 async function main() {
   const { values } = parseArgs({
     options: {
@@ -479,14 +547,20 @@ async function main() {
   }
   const existing = releases.size;
 
+  const figmaPublished = new Map();
   for (const entry of await groupChangelogs(await findPackages())) {
     if (!releases.has(entry.version)) releases.set(entry.version, entry);
+    if (entry.figmaPublished)
+      figmaPublished.set(entry.version, entry.figmaPublished);
   }
 
   /** @type {Changelog} */
   const changelog = {
-    releases: [...releases.values()].sort((a, b) =>
-      compareVersions(b.version, a.version),
+    releases: addDates(
+      [...releases.values()].sort((a, b) =>
+        compareVersions(b.version, a.version),
+      ),
+      figmaPublished,
     ),
   };
   await fs.writeFile(

@@ -6,10 +6,9 @@ on:
     paths:
       - "apps/www/**"
       - "internal/components/**"
-      # The changelog page is built from these (and apps/www/app/content/changelog/changelog.json) when www is deployed
+      # The deploy dates the newest version in the changelog with these
       - "scripts/aggregate-changelogs.js"
       - "scripts/group-changelogs.js"
-      - "scripts/sync-changelogs.js"
       - "scripts/date-latest-changelog.js"
       - ".github/workflows/azure-preview-www.yml"
       - ".github/workflows/azure-deploy-www.yml"

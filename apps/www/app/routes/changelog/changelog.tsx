@@ -19,42 +19,41 @@ import {
   SparklesIcon,
 } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
+import type { Root as HastRoot } from 'hast';
+import { type Components, toJsxRuntime } from 'hast-util-to-jsx-runtime';
 import {
-  type ComponentType,
-  createContext,
   type ReactNode,
   type RefObject,
-  useContext,
   useEffect,
-  useMemo,
   useRef,
   useState,
   useSyncExternalStore,
 } from 'react';
+import { Fragment, jsx, jsxs } from 'react/jsx-runtime';
 import { useTranslation } from 'react-i18next';
 import {
   isRouteErrorResponse,
   Link as RRLink,
-  type ShouldRevalidateFunctionArgs,
+  useNavigation,
   useSearchParams,
 } from 'react-router';
-import { MDXComponents } from '~/_components/mdx-components/mdx-components';
+import { defaultComponents } from '~/_components/mdx-components/mdx-components';
 import {
   CHANGE_TYPES,
   CHANGELOG_PACKAGES,
   type ChangeType,
-  parsePackages,
+  changelogPackages,
 } from '~/_utils/changelog';
-import { getFileFromContentDir } from '~/_utils/files.server';
-import { generateFromMdx } from '~/_utils/generate-from-mdx';
+import {
+  type ChangelogPageRelease,
+  getChangelogPage,
+} from '~/_utils/changelog.server';
 import { clearHighlight, highlightText } from '~/_utils/highlight';
 import { generateMetadata } from '~/_utils/metadata';
 import i18nConf from '~/i18n';
 import i18n from '~/i18next.server';
 import type { Route } from './+types/changelog';
 import classes from './changelog.module.css';
-
-const RELEASES_PER_PAGE = 10;
 
 const CHANGE_TYPE_ICONS = {
   major: ExclamationmarkTriangleIcon,
@@ -63,92 +62,23 @@ const CHANGE_TYPE_ICONS = {
 } satisfies Record<ChangeType, unknown>;
 
 /**
- * The elements of the MDX, see scripts/sync-changelogs.js: each `<Release>`, the `<Changes>` of
- * each type in it, and each `<Change>` with its text.
+ * The changelog is read from app/content/changelog/changelog.json, and filtered here by the search
+ * params, see getChangelogPage. Only the page without search params is prerendered; with them,
+ * server.js leaves the request to React Router.
  */
-const ELEMENTS =
-  /^<Release ([^>]*)>$|^<Changes ([^>]*)>$|^<Change ([^>]*)>$([\s\S]*?)^<\/Change>$/gm;
-const attribute = (attributes: string, name: string) =>
-  new RegExp(`\\b${name}="([^"]*)"`).exec(attributes)?.[1];
-
-/** The text of a change to search in: without markdown links, code marks and bold */
-const searchText = (markdown: string) =>
-  markdown
-    .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1')
-    .replace(/[`*]/g, '')
-    .replace(/\s+/g, ' ')
-    .trim()
-    .toLowerCase();
-
-type ChangelogRelease = {
-  version: string;
-  packages: string[];
-  changes: {
-    /** The `n` of the change, and of the `<Changes>` it is in */
-    n: string;
-    section: string;
-    packages: string[];
-    text: string;
-  }[];
-};
-
-/**
- * Numbers each `<Changes>` and `<Change>` in the MDX with an `n` attribute, so they can be shown
- * or hidden by the filters, and lists the releases with the text of their changes.
- */
-function parseChangelog(source: string) {
-  let count = 0;
-  const numbered = source.replace(
-    /^<Change(s?) /gm,
-    (_, plural) => `<Change${plural} n="${count++}" `,
-  );
-
-  const releases: ChangelogRelease[] = [];
-  let section = '';
-  for (const [, release, changes, change, body] of numbered.matchAll(
-    ELEMENTS,
-  )) {
-    if (release !== undefined) {
-      releases.push({
-        version: attribute(release, 'version') ?? '',
-        packages: parsePackages(attribute(release, 'packages')).map(
-          ({ id }) => id as string,
-        ),
-        changes: [],
-      });
-    } else if (changes !== undefined) {
-      section = attribute(changes, 'n') ?? '';
-    } else if (change !== undefined) {
-      releases.at(-1)?.changes.push({
-        n: attribute(change, 'n') ?? '',
-        section,
-        packages: parsePackages(attribute(change, 'packages')).map(
-          ({ id }) => id as string,
-        ),
-        text: searchText(body),
-      });
-    }
-  }
-  return { source: numbered, releases };
-}
-
-export async function loader({ params: { lang } }: Route.LoaderArgs) {
+export async function loader({ params: { lang }, request }: Route.LoaderArgs) {
   if (!lang || !i18nConf.supportedLngs.includes(lang)) {
     throw new Response('Not Found', { status: 404, statusText: 'Not Found' });
   }
 
-  const fileContent = getFileFromContentDir('changelog/changelog.mdx');
-  if (!fileContent) {
+  const changelog = await getChangelogPage(new URL(request.url).searchParams);
+  if (!changelog) {
     throw new Response('Not Found', { status: 404, statusText: 'Not Found' });
   }
-
-  const { source, releases } = parseChangelog(fileContent);
-  const result = await generateFromMdx(source);
   const t = await i18n.getFixedT(lang);
 
   return {
-    code: result.code,
-    releases,
+    ...changelog,
     lang,
     metadata: {
       title: t('changelog.title'),
@@ -165,30 +95,19 @@ export const meta = ({ loaderData, location }: Route.MetaArgs) => {
   });
 };
 
-/** The loader only depends on the language, so filtering and paging should not fetch it again */
-export const shouldRevalidate = ({
-  currentParams,
-  nextParams,
-}: ShouldRevalidateFunctionArgs) => currentParams.lang !== nextParams.lang;
+const markdownComponents = defaultComponents as unknown as Components;
 
-const ChangelogFilters = createContext<{
-  /** The releases on the current page */
-  versions: string[];
-  /** The selected version, if any */
-  version: string;
-  /** The `n` of the changes, and of the `<Changes>`, that match the filters, or null for all */
-  matches: Set<string> | null;
-  lang: string;
-}>({ versions: [], version: '', matches: null, lang: 'en' });
-
-/** Whether the `<Changes>` or `<Change>` numbered `n` is hidden by the filters */
-function useIsFiltered(n?: string) {
-  const { matches } = useContext(ChangelogFilters);
-  return Boolean(matches && n !== undefined && !matches.has(n));
+/** Markdown rendered on the server, see getChangelogPage */
+function Markdown({ tree }: { tree: HastRoot }) {
+  return toJsxRuntime(tree, {
+    Fragment,
+    jsx,
+    jsxs,
+    components: markdownComponents,
+  });
 }
 
-function ChangelogDate({ date }: { date: string }) {
-  const { lang } = useContext(ChangelogFilters);
+function ChangelogDate({ date, lang }: { date: string; lang: string }) {
   return (
     <time dateTime={date}>
       {new Intl.DateTimeFormat(lang === 'no' ? 'nb-NO' : 'en-GB', {
@@ -201,25 +120,18 @@ function ChangelogDate({ date }: { date: string }) {
   );
 }
 
-type ReleaseProps = {
-  version: string;
-  date?: string;
-  figmaPublished?: string;
-  packages?: string;
-  children?: ReactNode;
-};
-
-/** A version, with its changes grouped by type */
+/** A version, with its notes and its changes grouped by type */
 function Release({
-  version,
-  date,
-  figmaPublished,
-  packages,
-  children,
-}: ReleaseProps) {
+  release: { version, date, figmaPublished, notes, hasChanges, groups },
+  selected,
+  lang,
+}: {
+  release: ChangelogPageRelease;
+  /** Whether only this version is shown */
+  selected: boolean;
+  lang: string;
+}) {
   const { t } = useTranslation();
-  const { versions, version: selected, lang } = useContext(ChangelogFilters);
-  if (!versions.includes(version)) return null;
 
   const name = (
     <>
@@ -241,7 +153,7 @@ function Release({
             id={`v${version.replaceAll('.', '-')}`}
           >
             {/* Shows only this version, so it can be linked to */}
-            {selected === version ? (
+            {selected ? (
               name
             ) : (
               <RRLink
@@ -257,13 +169,14 @@ function Release({
             <p className={classes.releaseDates} lang={lang}>
               {date ? (
                 <span>
-                  {t('changelog.released')} <ChangelogDate date={date} />
+                  {t('changelog.released')}{' '}
+                  <ChangelogDate date={date} lang={lang} />
                 </span>
               ) : null}
               {figmaPublished ? (
                 <span>
                   {t('changelog.figma-published')}{' '}
-                  <ChangelogDate date={figmaPublished} />
+                  <ChangelogDate date={figmaPublished} lang={lang} />
                 </span>
               ) : null}
             </p>
@@ -271,36 +184,35 @@ function Release({
         </div>
       </header>
       {/* Also a version without changes can have notes */}
-      {children}
-      {packages ? null : (
+      {notes ? (
+        <div className={classes.releaseNotes}>
+          <Markdown tree={notes} />
+        </div>
+      ) : null}
+      {groups.map(({ type, changes }) => (
+        <Changes key={type} type={type}>
+          {changes.map(({ packages, body }, index) => (
+            <Change key={index} packages={packages}>
+              <Markdown tree={body} />
+            </Change>
+          ))}
+        </Changes>
+      ))}
+      {hasChanges ? null : (
         <Paragraph lang={lang}>{t('changelog.no-changes')}</Paragraph>
       )}
     </section>
   );
 }
 
-/**
- * Notes about a version, written by hand in changelog.json. They are about the whole
- * release, not one package, and are not searched, so they are hidden while filtering.
- */
-function ReleaseNotes({ children }: { children?: ReactNode }) {
-  const { matches } = useContext(ChangelogFilters);
-  if (matches) return null;
-  return <div className={classes.releaseNotes}>{children}</div>;
-}
-
 /** The changes of one type in a version */
 function Changes({
-  n,
   type,
   children,
 }: {
-  n?: string;
   type: ChangeType;
   children?: ReactNode;
 }) {
-  const isFiltered = useIsFiltered(n);
-  if (isFiltered) return null;
   const Icon = CHANGE_TYPE_ICONS[type];
 
   return (
@@ -316,24 +228,20 @@ function Changes({
 
 /** A change, with the packages it was released in */
 function Change({
-  n,
   packages,
   children,
 }: {
-  n?: string;
-  packages?: string;
+  packages: readonly string[];
   children?: ReactNode;
 }) {
   const { t } = useTranslation();
-  const isFiltered = useIsFiltered(n);
-  if (isFiltered) return null;
 
   return (
     <li className={classes.change}>
       {children}
       {/* A list, so screen readers read the packages separately */}
       <ul className={classes.tags} aria-label={t('changelog.packages-label')}>
-        {parsePackages(packages).map(({ id, label, color }) => (
+        {changelogPackages(packages).map(({ id, label, color }) => (
           <li key={id}>
             <Tag data-color={color} data-size='sm'>
               {label}
@@ -344,13 +252,6 @@ function Change({
     </li>
   );
 }
-
-const changelogComponents = {
-  Release,
-  ReleaseNotes,
-  Changes,
-  Change,
-} as unknown as Record<string, ComponentType<unknown>>;
 
 /** The name of the search highlight, styled with `::highlight(changelog-search)` */
 const SEARCH_HIGHLIGHT = 'changelog-search';
@@ -363,10 +264,9 @@ function useSearchHighlight(
   container: RefObject<HTMLElement | null>,
   words: string[],
   /** Changes whenever the shown changes do, so the highlights are made again */
-  key: string,
+  shown: unknown,
 ) {
   const wordsKey = words.join(' ');
-  // Made again when the words or the shown changes (`key`) change
   useEffect(() => {
     if (!container.current) return;
     highlightText(wordsKey.split(' '), container.current, {
@@ -378,17 +278,13 @@ function useSearchHighlight(
         ),
     });
     return () => clearHighlight(SEARCH_HIGHLIGHT);
-  }, [wordsKey, key]);
+  }, [wordsKey, shown]);
 }
 
-const NO_FILTERS = new URLSearchParams();
 const subscribeToNothing = () => () => {};
 
 /**
- * The filters in the URL, and a function to change them.
- *
- * The page is prerendered without filters, so they are ignored until the page has hydrated.
- * Otherwise a link with filters would not match the prerendered HTML.
+ * The filters in the URL, and a function to change them. The loader filters the changelog by them.
  *
  * A change is shown at once, before the navigation to the new URL is done. Further changes build
  * on it, so quick changes in a row are not lost.
@@ -423,94 +319,32 @@ function useFilterParams() {
     setSearchParams(next, { preventScrollReset: true, replace });
   }
 
-  return {
-    params: isHydrated ? params : NO_FILTERS,
-    updateParams,
-    isHydrated,
-  };
+  return { params, updateParams, isHydrated };
 }
 
-export default function Changelog({
-  loaderData: { code, lang, releases },
-}: Route.ComponentProps) {
+export default function Changelog({ loaderData }: Route.ComponentProps) {
+  const {
+    lang,
+    releases,
+    versions,
+    filters,
+    isFiltered,
+    total,
+    matchCount,
+    totalPages,
+  } = loaderData;
   const { t } = useTranslation();
   const { params, updateParams, isHydrated } = useFilterParams();
+  const navigation = useNavigation();
   // Focused after changing page or resetting the filters, so the reader continues from the results
   const statusRef = useRef<HTMLParagraphElement>(null);
   const releasesRef = useRef<HTMLDivElement>(null);
 
-  const requestedVersion = params.get('version') ?? '';
-  const version = releases.some((item) => item.version === requestedVersion)
-    ? requestedVersion
-    : '';
-  // No selected packages means no filter: changes in all packages are shown
+  // The chips follow the URL being navigated to, the rest follows what the loader returned
   const selectedPackages: string[] = CHANGELOG_PACKAGES.map(
     ({ id }) => id,
   ).filter((id) => params.getAll('package').includes(id));
-  const query = params.get('q')?.trim() ?? '';
-  const words = query.toLowerCase().split(/\s+/).filter(Boolean);
-  const isFiltered =
-    Boolean(version) || selectedPackages.length > 0 || words.length > 0;
-
-  // The changes that match the packages and the search, or null when all are shown. Keyed by
-  // strings, as the arrays are new on each render.
-  const packagesKey = selectedPackages.join(',');
-  const wordsKey = words.join(' ');
-  const matches = useMemo(() => {
-    if (!packagesKey && !wordsKey) return null;
-    const packages = packagesKey ? packagesKey.split(',') : [];
-    const searchWords = wordsKey ? wordsKey.split(' ') : [];
-    const result = new Set<string>();
-    for (const release of releases) {
-      for (const change of release.changes) {
-        if (
-          (!packages.length ||
-            change.packages.some((id) => packages.includes(id))) &&
-          searchWords.every((word) => change.text.includes(word))
-        ) {
-          result.add(change.n);
-          result.add(change.section);
-        }
-      }
-    }
-    return result;
-  }, [releases, packagesKey, wordsKey]);
-  const matchCount = matches
-    ? releases
-        .flatMap((release) => release.changes)
-        .filter((change) => matches.has(change.n)).length
-    : 0;
-
-  const filteredReleases = releases.filter(
-    (release) =>
-      (!version || release.version === version) &&
-      (!matches || release.changes.some((change) => matches.has(change.n))),
-  );
-
-  const totalPages = Math.ceil(filteredReleases.length / RELEASES_PER_PAGE);
-  const requestedPage = Number(params.get('page') ?? 1);
-  const currentPage =
-    Number.isInteger(requestedPage) && requestedPage > 0
-      ? Math.min(requestedPage, Math.max(1, totalPages))
-      : 1;
-  const visibleVersions = filteredReleases
-    .slice(
-      (currentPage - 1) * RELEASES_PER_PAGE,
-      currentPage * RELEASES_PER_PAGE,
-    )
-    .map((release) => release.version);
-
-  // The changelog is large, so it is rendered once, and its components only render again when
-  // the filters change. Not on every key typed in the search field, or every other render.
-  const visibleKey = visibleVersions.join();
-  const filters = useMemo(
-    () => ({ versions: visibleKey.split(','), version, matches, lang }),
-    [visibleKey, version, matches, lang],
-  );
-  const changelog = useMemo(
-    () => <MDXComponents code={code} components={changelogComponents} />,
-    [code],
-  );
+  const words = filters.query.toLowerCase().split(/\s+/).filter(Boolean);
 
   function updateFilters(nextVersion: string, nextPackages: string[]) {
     updateParams((next) => {
@@ -524,7 +358,7 @@ export default function Changelog({
   }
 
   const { pages, prevButtonProps, nextButtonProps } = usePagination({
-    currentPage,
+    currentPage: filters.page,
     totalPages: Math.max(1, totalPages),
     showPages: 5,
     setCurrentPage: (page) => {
@@ -536,28 +370,29 @@ export default function Changelog({
     },
   });
 
-  // The old changelog pages linked to versions as e.g. `#1240` for 1.24.0. Only checked once, when
-  // the page has hydrated.
+  // The old changelog pages linked to versions as e.g. `#1240` for 1.24.0. Hashes are not sent to
+  // the server, so this is checked once the page has hydrated.
   useEffect(() => {
     if (!isHydrated) return;
     const hash = /^#(\d+)$/.exec(window.location.hash)?.[1];
     if (!hash) return;
-    const matches = releases.filter(
-      (release) => release.version.replaceAll('.', '') === hash,
+    const matches = versions.filter(
+      (version) => version.replaceAll('.', '') === hash,
     );
     // e.g. `#1110` is either 1.1.10 or 1.11.0
     if (matches.length === 1) {
       updateParams((next) => {
-        next.set('version', matches[0].version);
+        next.set('version', matches[0]);
       });
     }
   }, [isHydrated]);
 
   // What is typed in the search field. The URL is updated when typing stops, so the list and the
   // count of results (which screen readers announce) do not change on every key.
+  const query = params.get('q')?.trim() ?? '';
   const [searchInput, setSearchInput] = useState(query);
   const sentQuery = useRef(query);
-  // The search in the URL changed in another way, e.g. reset, the back button or hydration
+  // The search in the URL changed in another way, e.g. reset or the back button
   useEffect(() => {
     if (query === sentQuery.current) return;
     sentQuery.current = query;
@@ -580,17 +415,13 @@ export default function Changelog({
     return () => clearTimeout(timer);
   }, [searchInput]);
 
-  useSearchHighlight(
-    releasesRef,
-    words,
-    `${visibleVersions.join()} ${packagesKey}`,
-  );
+  useSearchHighlight(releasesRef, words, releases);
 
   const status = [
-    words.length ? t('changelog.matches', { count: matchCount }) : '',
-    t('changelog.results', { count: filteredReleases.length }),
+    matchCount !== null ? t('changelog.matches', { count: matchCount }) : '',
+    t('changelog.results', { count: total }),
     totalPages > 1
-      ? t('changelog.page-of', { page: currentPage, total: totalPages })
+      ? t('changelog.page-of', { page: filters.page, total: totalPages })
       : '',
   ]
     .filter(Boolean)
@@ -634,7 +465,7 @@ export default function Changelog({
                   checked={selectedPackages.includes(id)}
                   onChange={(event) =>
                     updateFilters(
-                      version,
+                      filters.version,
                       event.target.checked
                         ? [...selectedPackages, id]
                         : selectedPackages.filter((item) => item !== id),
@@ -678,11 +509,19 @@ export default function Changelog({
           ref={releasesRef}
           className={cl(classes.releases, 'u-rich-text')}
           lang='en'
+          aria-busy={navigation.state === 'loading' || undefined}
         >
-          {filteredReleases.length === 0 ? (
+          {releases.length === 0 ? (
             <Paragraph lang={lang}>{t('changelog.empty')}</Paragraph>
           ) : null}
-          <ChangelogFilters value={filters}>{changelog}</ChangelogFilters>
+          {releases.map((release) => (
+            <Release
+              key={release.version}
+              release={release}
+              selected={filters.version === release.version}
+              lang={lang}
+            />
+          ))}
         </div>
 
         {totalPages > 1 ? (

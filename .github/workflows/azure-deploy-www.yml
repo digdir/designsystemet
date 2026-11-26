@@ -73,19 +73,14 @@ jobs:
 
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          # Full history and tags so scripts/sync-changelogs.js can date each release
-          fetch-depth: 0
           persist-credentials: false
 
-      # Built again from changelog.json, so edits made to it after the release PR reach www.
-      # The newest version is left undated by the release PR (its release does not exist yet);
-      # date it from the GitHub release before the content is copied into the image.
-      - name: Build the changelog page
+      # The newest version in changelog.json is left undated by the release PR (its release does not
+      # exist yet); date it from the GitHub release before the content is copied into the image.
+      - name: Date the latest changelog entry
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          node scripts/sync-changelogs.js
-          node scripts/date-latest-changelog.js
+        run: node scripts/date-latest-changelog.js
 
       - name: az login (oidc)
         uses: azure/login@a641126d1b8aa4d1fa005f4f92df94a3a4c4c906 # v3.1.0
