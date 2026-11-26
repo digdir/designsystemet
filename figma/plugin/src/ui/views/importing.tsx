@@ -16,7 +16,7 @@ export function ImportingView({
 }): React.JSX.Element {
   return (
     <div className='status-view' role='status'>
-      <Spinner aria-hidden data-size='lg' />
+      <Spinner data-color='accent' aria-hidden data-size='lg' />
       <Heading level={2} data-size='sm'>
         Importing to Figma
       </Heading>

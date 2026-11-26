@@ -10,9 +10,19 @@ import {
   type OnStep,
 } from './import/import-to-figma';
 import { createImportLog } from './import/log';
+import {
+  listMigrations,
+  runMigrations,
+  saveVersionBeforeMigrations,
+} from './migrate/run-migrations';
+import { savedVersionText, saveVersion } from './save-version';
+import { countStampedPages, stampUiKit } from './stamps/stamps';
 
-/** Steps reported to the UI: validating, creating tokens, preparing the import, then the Figma import's own steps. */
-const TOTAL_STEPS = 3 + IMPORT_STEPS;
+/**
+ * Steps reported to the UI: validating, creating tokens, preparing the import, saving a version of the file, then the
+ * Figma import's own steps.
+ */
+const TOTAL_STEPS = 4 + IMPORT_STEPS;
 
 if (figma.editorType === 'figma') {
   figma.showUI(__html__, {
@@ -64,6 +74,59 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
         message: error instanceof Error ? error.message : String(error),
       });
       console.error('Error exporting config:', error);
+    }
+    return;
+  }
+
+  if (msg.type === 'stamp-ui-kit') {
+    try {
+      const { pages, components, kept } = await stampUiKit();
+      const count = (n: number, word: string) =>
+        `${n} ${word}${n === 1 ? '' : 's'}`;
+      figma.notify(
+        `Stamped ${count(pages, 'page')} and ${count(components, 'component')}. ${kept} already had a stamp and kept it.`,
+      );
+    } catch (error) {
+      figma.notify(
+        `Could not stamp the UI kit: ${error instanceof Error ? error.message : String(error)}`,
+        { error: true },
+      );
+      console.error('Error stamping the UI kit:', error);
+    }
+    postMessage('stamp-status', { stampedPages: countStampedPages() });
+    return;
+  }
+
+  if (msg.type === 'get-stamp-status') {
+    postMessage('stamp-status', { stampedPages: countStampedPages() });
+    return;
+  }
+
+  if (msg.type === 'list-migrations') {
+    postMessage('migrations-list', { migrations: listMigrations() });
+    return;
+  }
+
+  if (msg.type === 'run-migrations') {
+    try {
+      // A restore point in the file's version history, saved before anything changes.
+      const savedVersion = msg.dryRun
+        ? undefined
+        : await saveVersionBeforeMigrations(msg.ids);
+      postMessage('migrations-result', {
+        dryRun: msg.dryRun,
+        status: 'success',
+        summaries: await runMigrations(msg.ids, msg.dryRun),
+        savedVersion,
+      });
+    } catch (error) {
+      postMessage('migrations-result', {
+        dryRun: msg.dryRun,
+        status: 'error',
+        summaries: [],
+        message: error instanceof Error ? error.message : String(error),
+      });
+      console.error('Error running migrations:', error);
     }
     return;
   }
@@ -121,10 +184,16 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
     reportProgress();
   };
 
+  let savedVersion: string | undefined;
   try {
     const tokenModel = await createTokenModel(msg.config, onStep, onDetail);
     // Warnings from building the model (unresolved aliases etc.) are reported with the import's own warnings.
     log.warnings.push(...tokenModel.warnings);
+
+    // A restore point in the file's version history. Saved once the config is known to be good, and before
+    // anything in the file changes.
+    await onStep('Saving a version of the file');
+    savedVersion = await saveVersion('Before theme import');
 
     await importToFigma(tokenModel, log, onStep, onDetail);
     // Always give feedback, so an import that changed nothing still has a log to show.
@@ -134,8 +203,9 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
 
     postMessage('import-result', {
       status: 'success',
-      message:
-        'You can now close this window. Check your variables and styles in Figma to make sure they were updated correctly.',
+      message: `You can now close this window. Check your variables and styles in Figma to make sure they were updated correctly.${
+        savedVersion ? ` ${savedVersionText(savedVersion)}` : ''
+      }`,
       info: log.info,
       warnings: log.warnings,
       timings: finishTimings(),
@@ -144,7 +214,9 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
     const errorMessage = error instanceof Error ? error.message : String(error);
     postMessage('import-result', {
       status: 'error',
-      message: `${label ? `${label} failed: ` : ''}${errorMessage}`,
+      message: `${label ? `${label} failed: ` : ''}${errorMessage}${
+        savedVersion ? ` ${savedVersionText(savedVersion)}` : ''
+      }`,
       info: log.info,
       warnings: log.warnings,
       timings: finishTimings(),

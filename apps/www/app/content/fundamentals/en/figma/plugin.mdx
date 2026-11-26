@@ -2,18 +2,18 @@
 title: Designsystemet Figma plugin
 sidebar_title: Figma plugin
 description: Import your theme from the Theme Builder into Figma with the Designsystemet plugin
-date: 2026-10-20
+date: 2026-11-25
 category: Figma
 color: yellow
 icon: PuzzlePieceIcon
 published: true
 order: 10
-search_terms: plugin, import, theme, variables, styles
+search_terms: plugin, import, theme, variables, styles, update, migration, ui kit
 ---
 
 import { ArrowRightIcon } from '@navikt/aksel-icons';
 
-The Designsystemet plugin creates the variables and styles that the components in the Designsystemet Figma file use. The plugin uses the same configuration file as the CLI, so design and code get the same values when you use both.
+The Designsystemet plugin creates the variables and styles that the components in the designsystemet.no UI kit use. The plugin uses the same configuration file as the CLI, so design and code get the same values when you use both. It can also update your own copy of the UI kit when a release changes the components.
 
 Get the plugin from [Figma Community (figma.com)](https://www.figma.com/community/plugin/1687841992393312960/designsystemet).
 
@@ -36,16 +36,41 @@ Get the plugin from [Figma Community (figma.com)](https://www.figma.com/communit
 - **Updates what's already there.** Variables and styles are matched by name, so the layers that use them stay connected when you change your theme and import again.
 - **Keeps what you've made.** The plugin keeps track of what it creates, and only deletes what it created itself. Variables and styles you've added, or renamed or duplicated from the import, are kept, and the plugin lists the ones that aren't in the configuration file.
 - **Only changes what has changed.** Importing an updated configuration file only writes what's different, so importing again is quick, and an unchanged configuration file changes nothing.
+- **Saves a version first.** Before an import changes anything, the plugin saves the file to its version history as "Before theme import". If the result isn't what you wanted, you can restore that version from **File → Show version history** in Figma.
 - **Matches your code.** Each variable shows the name of the CSS variable it matches in code, so developers see the right names in Dev Mode. Variables are also only suggested where they belong, such as colour variables for fills.
 - **Tells you what happened.** After the import, you get a list of what was created, updated and deleted, and of anything that couldn't be imported.
+
+## Update your copy of the UI kit
+
+Some releases of designsystemet.no change which variables the components in the UI kit use. If you have your own copy of the UI kit, importing your theme isn't enough after such a release: an import updates variables and styles, not the layers in the components. **Update UI kit** in the plugin makes those changes for you.
+
+1. Import a configuration file from the latest Theme Builder first, so the file has the variables the update needs.
+2. Open the plugin and choose **Update UI kit**. A number on the card shows how many updates the file hasn't had yet.
+3. Choose an update. The plugin shows what will change in each component. Nothing changes until you click **Apply changes**.
+4. Click **Apply changes**.
+
+Before the plugin applies an update, it saves a version of the file to its version history, named after the update. You can also take back the whole update with Undo in Figma.
+
+An update only changes the components of the UI kit. It leaves these alone:
+
+- Components and layers you've made yourself, even if they use the same variables.
+- Colours you've changed on instances of the UI kit's components in your own designs.
+- UI kit components you've renamed or moved to another page, in a copy made from an older version of the UI kit. The plugin lists the ones it didn't find.
+
+Layers you've added inside a UI kit component are changed with the rest of the component.
+
+If you use the UI kit as a library, without a copy of your own, you don't need this. You get the changes when you accept the library update in Figma.
 
 ## Good to know
 
 - Each theme, colour scheme and size is a mode in Figma, and how many modes a collection can have depends on your Figma plan. Check that yours allows enough for your configuration file.
 - The fonts in your theme must be available in Figma. If one isn't, the plugin stops before changing anything.
 - Text styles and effect styles can't have modes in Figma, so they get the values of the first theme, in the light colour scheme.
-- The plugin keeps variables, styles and modes it didn't create, such as the example themes in the Figma file, and lists them after the import. Delete the ones you don't need.
-- The plugin marks what it creates with [setPluginData](https://developers.figma.com/docs/plugins/api/properties/nodes-setplugindata/), so it can update and delete the right things the next time you import. It only stores its version number, the name it gave the variable or style, and the IDs of the modes it created. Only the Designsystemet plugin can read this data.
+- The plugin keeps variables, styles and modes it didn't create, such as the example themes in the UI kit, and lists them after the import. Delete the ones you don't need.
+- The plugin stores a little data in the file with [setPluginData](https://developers.figma.com/docs/plugins/api/properties/nodes-setplugindata/), which only the Designsystemet plugin can read:
+  - On what an import creates: its version number, the name it gave the variable or style, and the IDs of the modes it created. This is how it updates and deletes the right things the next time you import.
+  - On the file: which updates of the UI kit have been applied, when, and with which version of the plugin.
+- The pages and components of the UI kit are marked with their original names, so an update finds them after you rename them. These marks come with the UI kit when you copy it, and other plugins can read them.
 
 ## Limitations
 

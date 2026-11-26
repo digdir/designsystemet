@@ -2,18 +2,18 @@
 title: Figma-pluginen til Designsystemet
 sidebar_title: Figma-plugin
 description: Importer temaet ditt fra Temabyggeren til Figma med Designsystemet-pluginen.
-date: 2026-10-20
+date: 2026-11-25
 category: Figma
 color: yellow
 icon: PuzzlePieceIcon
 published: true
 order: 10
-search_terms: plugin, import, tema, variabler, stiler
+search_terms: plugin, import, tema, variabler, stiler, oppdatere, migrering, ui-kit
 ---
 
 import { ArrowRightIcon } from '@navikt/aksel-icons';
 
-Designsystemet-pluginen lager variablene og stilene som komponentene i Figma-filen til Designsystemet bruker. Pluginen bruker samme config-fil som CLI-et, slik at design og kode får de samme verdiene når du bruker begge deler.
+Designsystemet-pluginen lager variablene og stilene som komponentene i UI-kitet til designsystemet.no bruker. Pluginen bruker samme config-fil som CLI-et, slik at design og kode får de samme verdiene når du bruker begge deler. Den kan også oppdatere din egen kopi av UI-kitet når en versjon endrer komponentene.
 
 Hent pluginen fra [Figma Community (figma.com)](https://www.figma.com/community/plugin/1687841992393312960/designsystemet).
 
@@ -36,16 +36,41 @@ Hent pluginen fra [Figma Community (figma.com)](https://www.figma.com/community/
 - **Oppdaterer det som allerede finnes.** Variabler og stiler blir gjenkjent på navnet, så lagene som bruker dem, forblir koblet når du endrer temaet og importerer på nytt.
 - **Beholder det du har laget selv.** Pluginen holder rede på hva den lager, og sletter bare det den har laget selv. Variabler og stiler du har lagt til, eller gitt nytt navn eller duplisert fra importen, blir beholdt, og pluginen lister opp dem som ikke er i config-filen.
 - **Endrer bare det som er endret.** Når du importerer en oppdatert config-fil, skrives bare det som er annerledes. Det går derfor raskt å importere på nytt, og en uendret config-fil endrer ingenting.
+- **Lagrer en versjon først.** Før en import endrer noe, lagrer pluginen filen i versjonshistorikken som «Before theme import». Hvis resultatet ikke ble som du ville, kan du gjenopprette den versjonen fra **File → Show version history** i Figma.
 - **Stemmer med koden.** Hver variabel viser navnet på CSS-variabelen den tilsvarer i koden, så utviklere ser riktige navn i Dev Mode. Variablene blir også bare foreslått der de hører hjemme, for eksempel fargevariabler for fyll.
 - **Forteller deg hva som skjedde.** Etter importen får du en liste over hva som ble laget, oppdatert og slettet, og over det som ikke kunne importeres.
+
+## Oppdater kopien din av UI-kitet
+
+Noen versjoner av designsystemet.no endrer hvilke variabler komponentene i UI-kitet bruker. Hvis du har din egen kopi av UI-kitet, er det ikke nok å importere temaet etter en slik versjon: en import oppdaterer variabler og stiler, ikke lagene i komponentene. **Update UI kit** i pluginen gjør de endringene for deg.
+
+1. Importer først en config-fil fra den nyeste Temabyggeren, slik at filen har variablene oppdateringen trenger.
+2. Åpne pluginen og velg **Update UI kit**. Et tall på kortet viser hvor mange oppdateringer filen ikke har fått ennå.
+3. Velg en oppdatering. Pluginen viser hva som blir endret i hver komponent. Ingenting blir endret før du klikker **Apply changes**.
+4. Klikk **Apply changes**.
+
+Før pluginen gjør en oppdatering, lagrer den en versjon av filen i versjonshistorikken, med navn etter oppdateringen. Du kan også angre hele oppdateringen med Undo i Figma.
+
+En oppdatering endrer bare komponentene i UI-kitet. Dette blir ikke endret:
+
+- Komponenter og lag du har laget selv, også når de bruker de samme variablene.
+- Farger du har endret på instanser av UI-kitets komponenter i dine egne design.
+- Komponenter fra UI-kitet som du har gitt nytt navn eller flyttet til en annen side, i en kopi laget fra en eldre versjon av UI-kitet. Pluginen lister opp dem den ikke fant.
+
+Lag du har lagt til inne i en komponent fra UI-kitet, blir endret sammen med resten av komponenten.
+
+Hvis du bruker UI-kitet som bibliotek, uten en egen kopi, trenger du ikke dette. Da får du endringene når du godtar bibliotekoppdateringen i Figma.
 
 ## Greit å vite
 
 - Hvert tema, hver fargemodus og hver størrelse blir en mode i Figma, og hvor mange modes en collection kan ha, avhenger av Figma-abonnementet ditt. Sjekk at abonnementet ditt har nok modes for config-filen din.
 - Fontene i temaet ditt må være tilgjengelige i Figma. Hvis én ikke er det, stopper pluginen før den endrer noe.
 - Tekststiler og effektstiler kan ikke ha modes i Figma, så de får verdiene til det første temaet, i lys fargemodus.
-- Pluginen beholder variabler, stiler og modes den ikke har laget selv, som eksempeltemaene i Figma-filen, og lister dem opp etter importen. Slett dem du ikke trenger.
-- Pluginen merker det den lager, med [setPluginData](https://developers.figma.com/docs/plugins/api/properties/nodes-setplugindata/), slik at den kan oppdatere og slette riktig neste gang du importerer. Den lagrer bare versjonsnummeret sitt, navnet den ga variabelen eller stilen, og ID-ene til modes den har laget. Bare Designsystemet-pluginen kan lese disse dataene.
+- Pluginen beholder variabler, stiler og modes den ikke har laget selv, som eksempeltemaene i UI-kitet, og lister dem opp etter importen. Slett dem du ikke trenger.
+- Pluginen lagrer litt data i filen med [setPluginData](https://developers.figma.com/docs/plugins/api/properties/nodes-setplugindata/), som bare Designsystemet-pluginen kan lese:
+  - På det en import lager: versjonsnummeret sitt, navnet den ga variabelen eller stilen, og ID-ene til modes den har laget. Slik kan den oppdatere og slette riktig neste gang du importerer.
+  - På filen: hvilke oppdateringer av UI-kitet som er gjort, når, og med hvilken versjon av pluginen.
+- Sidene og komponentene i UI-kitet er merket med de opprinnelige navnene sine, slik at en oppdatering finner dem etter at du har gitt dem nytt navn. Merkene følger med UI-kitet når du kopierer det, og andre plugins kan lese dem.
 
 ## Begrensninger
 

@@ -1,0 +1,863 @@
+import { afterEach, describe, expect, it, vi } from 'vitest';
+import {
+  describeVariable,
+  hasAnyPage,
+  matchPagesByComponents,
+  normalizePageName,
+  type RebindRules,
+  rebindComponents,
+  sourceLayerId,
+} from './rebind';
+import type { MigrationLog } from './types';
+
+const noPause = async () => {};
+
+const VARIABLES = [
+  {
+    id: 'n-border',
+    name: 'color/neutral/border-subtle',
+    variableCollectionId: 'semantic',
+  },
+  {
+    id: 'n-text',
+    name: 'color/neutral/text-default',
+    variableCollectionId: 'semantic',
+  },
+  { id: 'border-muted', name: 'border-muted', variableCollectionId: 'color' },
+  { id: 'text-default', name: 'text-default', variableCollectionId: 'color' },
+];
+
+const bound = (id: string) => ({
+  type: 'SOLID',
+  color: { r: 0, g: 0, b: 0 },
+  boundVariables: { color: { type: 'VARIABLE_ALIAS', id } },
+});
+
+const boundId = (paints: Array<ReturnType<typeof bound>>) =>
+  paints.map((paint) => paint.boundVariables.color.id);
+
+type FakeNode = {
+  id: string;
+  name: string;
+  type: string;
+  fills?: unknown[];
+  strokes?: unknown[];
+  children?: FakeNode[];
+  parent?: FakeNode | { type: string };
+  explicitVariableModes: Record<string, string>;
+  overrides?: Array<{ id: string; overriddenFields: string[] }>;
+  /** Shared plugin data, e.g. a stamp, by key. */
+  shared?: Record<string, string>;
+  getSharedPluginData: (namespace: string, key: string) => string;
+};
+
+/** Reads `shared`, like `getSharedPluginData` reads shared plugin data. */
+function getSharedPluginData(
+  this: { shared?: Record<string, string> },
+  _namespace: string,
+  key: string,
+) {
+  return this.shared?.[key] ?? '';
+}
+
+const node = (
+  props: Partial<FakeNode> & Pick<FakeNode, 'id' | 'name' | 'type'>,
+): FakeNode => ({
+  fills: [],
+  strokes: [],
+  explicitVariableModes: {},
+  getSharedPluginData,
+  ...props,
+});
+
+/**
+ * A Dialog component with a neutral border, and an instance in it. The instance has a layer that follows the
+ * border (same variable as the main layer 2:2) and one with an overridden neutral fill.
+ */
+function setup() {
+  const border = node({
+    id: '2:2',
+    name: 'Border',
+    type: 'RECTANGLE',
+    strokes: [bound('n-border')],
+  });
+  const follows = node({
+    id: 'I3:3;2:2',
+    name: 'Border',
+    type: 'RECTANGLE',
+    strokes: [bound('n-border')],
+  });
+  const overridden = node({
+    id: 'I3:3;4:4',
+    name: 'Icon',
+    type: 'VECTOR',
+    fills: [bound('n-text')],
+  });
+  const instance = node({
+    id: '3:3',
+    name: 'Close',
+    type: 'INSTANCE',
+    children: [follows, overridden],
+  });
+  const component = node({
+    id: '1:1',
+    name: 'Dialog',
+    type: 'COMPONENT',
+    children: [border, instance],
+    parent: { type: 'PAGE' },
+  });
+  const page = {
+    id: '0:1',
+    name: '❖  Dialog',
+    loadAsync: async () => {},
+    getSharedPluginData,
+    findAllWithCriteria: () => [component],
+  };
+  vi.stubGlobal('figma', {
+    mixed: Symbol('mixed'),
+    root: { children: [page] },
+    variables: {
+      getLocalVariableCollectionsAsync: async () => [
+        { id: 'semantic', name: 'Semantic', modes: [] },
+        { id: 'color', name: 'Color', modes: [] },
+      ],
+      getLocalVariablesAsync: async () => VARIABLES,
+      getVariableByIdAsync: async (id: string) =>
+        VARIABLES.find((v) => v.id === id) ?? null,
+      getVariableCollectionByIdAsync: async () => null,
+      setBoundVariableForPaint: (
+        paint: object,
+        _field: string,
+        variable: { id: string },
+      ) => ({
+        ...paint,
+        boundVariables: { color: { type: 'VARIABLE_ALIAS', id: variable.id } },
+      }),
+    },
+  });
+  return { border, follows, overridden };
+}
+
+// Neutral to the same step in Color, except border-subtle, which becomes border-muted.
+const rules: RebindRules = {
+  paint: ({ variable }) => {
+    const step = variable.name.match(/^color\/neutral\/(.+)$/)?.[1];
+    if (!step) return null;
+    return {
+      collection: 'Color',
+      name: step === 'border-subtle' ? 'border-muted' : step,
+    };
+  },
+};
+
+const newLog = (): MigrationLog => ({ changes: new Map(), warnings: [] });
+
+describe('rebindComponents', () => {
+  afterEach(() => {
+    vi.unstubAllGlobals();
+  });
+
+  it('changes nothing in a dry run, and doesn’t count layers that follow their main component', async () => {
+    const { border, follows, overridden } = setup();
+    const log = newLog();
+
+    await rebindComponents([{ page: 'Dialog', name: 'Dialog' }], rules, {
+      dryRun: true,
+      log,
+      pause: noPause,
+    });
+
+    expect([...log.changes.values()]).toEqual([
+      {
+        page: 'Dialog',
+        what: 'Border',
+        from: 'neutral border-subtle',
+        to: 'border-muted',
+        count: 1,
+      },
+      {
+        page: 'Dialog',
+        what: 'Fill',
+        from: 'neutral text-default',
+        to: 'text-default',
+        count: 1,
+      },
+    ]);
+    expect(boundId(border.strokes as never)).toEqual(['n-border']);
+    expect(boundId(follows.strokes as never)).toEqual(['n-border']);
+    expect(boundId(overridden.fills as never)).toEqual(['n-text']);
+    expect(log.warnings).toEqual([]);
+  });
+
+  it('rebinds the main component’s layers and the overrides in instances', async () => {
+    const { border, overridden } = setup();
+    const log = newLog();
+
+    await rebindComponents([{ page: 'Dialog', name: 'Dialog' }], rules, {
+      dryRun: false,
+      log,
+      pause: noPause,
+    });
+
+    expect(boundId(border.strokes as never)).toEqual(['border-muted']);
+    expect(boundId(overridden.fills as never)).toEqual(['text-default']);
+  });
+
+  it('binds a solid paint without a variable when a rule asks, and leaves the others', async () => {
+    const { border } = setup();
+    const raw = (value: number) => ({
+      type: 'SOLID',
+      color: { r: value / 255, g: value / 255, b: value / 255 },
+    });
+    border.fills = [raw(38), raw(255)];
+    const log = newLog();
+
+    await rebindComponents(
+      [{ page: 'Dialog', name: 'Dialog' }],
+      {
+        ...rules,
+        unboundPaint: ({ path, hex }) =>
+          path === '/Border' && hex === '#262626'
+            ? { collection: 'Color', name: 'text-default' }
+            : null,
+      },
+      { dryRun: false, log, pause: noPause },
+    );
+
+    const [first, second] = border.fills as Array<ReturnType<typeof bound>>;
+    expect(first.boundVariables.color.id).toBe('text-default');
+    expect(second.boundVariables).toBeUndefined();
+    expect([...log.changes.values()]).toContainEqual({
+      page: 'Dialog',
+      what: 'Fill',
+      from: '#262626',
+      to: 'text-default',
+      count: 1,
+    });
+  });
+
+  it('removes paints when the rules say so', async () => {
+    const { border } = setup();
+
+    await rebindComponents(
+      [{ page: 'Dialog', name: 'Dialog' }],
+      { paint: ({ property }) => (property === 'stroke' ? 'remove' : null) },
+      { dryRun: false, log: newLog(), pause: noPause },
+    );
+
+    expect(border.strokes).toEqual([]);
+  });
+
+  it('leaves layers alone when the variable to use is missing', async () => {
+    const { border } = setup();
+    const log = newLog();
+
+    await rebindComponents(
+      [{ page: 'Dialog', name: 'Dialog' }],
+      { paint: () => ({ collection: 'Color', name: 'surface-muted' }) },
+      { dryRun: false, log, pause: noPause },
+    );
+
+    expect(boundId(border.strokes as never)).toEqual(['n-border']);
+    expect(log.changes.size).toBe(0);
+    expect(log.warnings).toHaveLength(2);
+    expect(log.warnings[0]).toMatch(/^Color\/surface-muted is missing/);
+  });
+
+  it('finds a renamed page by its components, and names it in the preview', async () => {
+    setup();
+    const { root } = (
+      globalThis as unknown as {
+        figma: { root: { children: Array<{ name: string }> } };
+      }
+    ).figma;
+    root.children[0].name = '❖  Modal';
+    const log = newLog();
+
+    await rebindComponents([{ page: 'Dialog', name: 'Dialog' }], rules, {
+      dryRun: true,
+      log,
+      pause: noPause,
+    });
+
+    expect(log.warnings).toEqual([]);
+    expect([...log.changes.values()].map((change) => change.page)).toEqual([
+      'Dialog (page ‘Modal’)',
+      'Dialog (page ‘Modal’)',
+    ]);
+  });
+
+  it('only warns about a component that is on none of the pages with the name', async () => {
+    setup();
+    const { root } = (
+      globalThis as unknown as { figma: { root: { children: unknown[] } } }
+    ).figma;
+    root.children.push({
+      name: 'Dialog',
+      loadAsync: async () => {},
+      getSharedPluginData,
+      findAllWithCriteria: () => [],
+    });
+    const log = newLog();
+
+    await rebindComponents([{ page: 'Dialog', name: 'Dialog' }], rules, {
+      dryRun: true,
+      log,
+      pause: noPause,
+    });
+
+    expect(log.warnings).toEqual([]);
+    expect([...log.changes.values()].map((change) => change.count)).toEqual([
+      1, 1,
+    ]);
+  });
+
+  it('searches each page once, leaves pages found by name out of the fallback, and changes a component once', async () => {
+    setup();
+    const { root } = (
+      globalThis as unknown as {
+        figma: {
+          root: {
+            children: Array<{ findAllWithCriteria: () => unknown[] }>;
+          };
+        };
+      }
+    ).figma;
+    const dialogPage = root.children[0];
+    const original = dialogPage.findAllWithCriteria;
+    const search = vi.fn(original);
+    dialogPage.findAllWithCriteria = search;
+    // Another page with the same component, and one of its own that only Popup lists.
+    const close = node({
+      id: '9:9',
+      name: 'Close',
+      type: 'COMPONENT',
+      parent: { type: 'PAGE' },
+    });
+    const modal = {
+      name: '❖  Modal',
+      loadAsync: async () => {},
+      getSharedPluginData,
+      findAllWithCriteria: () => [...original(), close],
+    };
+    root.children.push(modal);
+    const log = newLog();
+
+    await rebindComponents(
+      [
+        { page: 'Dialog', name: 'Dialog' },
+        { page: 'Popup', name: 'Dialog' },
+        { page: 'Popup', name: 'Close' },
+      ],
+      rules,
+      { dryRun: true, log, pause: noPause },
+    );
+
+    // The Dialog page is found by name, and isn't searched again for Popup, which is found on Modal instead.
+    expect(search).toHaveBeenCalledTimes(1);
+    expect(log.warnings).toEqual([]);
+    // The component on both pages is the same, so it's only counted once, under the first.
+    expect([...log.changes.values()].map((change) => change.page)).toEqual([
+      'Dialog',
+      'Dialog',
+    ]);
+  });
+
+  it('finds a stamped page and component, whatever they’re called now', async () => {
+    setup();
+    const { root } = (
+      globalThis as unknown as {
+        figma: {
+          root: {
+            children: Array<{
+              id: string;
+              name: string;
+              shared?: Record<string, string>;
+              findAllWithCriteria: () => FakeNode[];
+            }>;
+          };
+        };
+      }
+    ).figma;
+    const page = root.children[0];
+    page.name = '❖  Modal';
+    page.shared = { page: 'Dialog', id: page.id };
+    const [component] = page.findAllWithCriteria();
+    component.name = 'Dialogue';
+    component.shared = { component: 'Dialog', id: component.id };
+    // A page named Dialog, stamped as another page, isn't used for Dialog.
+    const search = vi.fn(() => [] as FakeNode[]);
+    root.children.push({
+      id: '0:2',
+      name: 'Dialog',
+      shared: { page: 'Card', id: '0:2' },
+      loadAsync: async () => {},
+      getSharedPluginData,
+      findAllWithCriteria: search,
+    } as never);
+    const log = newLog();
+
+    await rebindComponents([{ page: 'Dialog', name: 'Dialog' }], rules, {
+      dryRun: true,
+      log,
+      pause: noPause,
+    });
+
+    expect(log.warnings).toEqual([]);
+    expect(search).not.toHaveBeenCalled();
+    expect([...log.changes.values()].map((change) => change.page)).toEqual([
+      'Dialog (page ‘Modal’)',
+      'Dialog (page ‘Modal’)',
+    ]);
+  });
+
+  it('compares stamps like names, and ignores a stamp copied to another page', async () => {
+    setup();
+    const { root } = (
+      globalThis as unknown as {
+        figma: { root: { children: Array<{ id: string; shared?: object }> } };
+      }
+    ).figma;
+    root.children[0].shared = { page: 'DIALOG', id: '0:1' };
+    // A duplicate of the Dialog page, with the stamp it was copied with.
+    const search = vi.fn(() => [] as FakeNode[]);
+    root.children.push({
+      id: '0:9',
+      name: 'Dialog examples',
+      shared: { page: 'Dialog', id: '0:1' },
+      loadAsync: async () => {},
+      getSharedPluginData,
+      findAllWithCriteria: search,
+    } as never);
+    const log = newLog();
+
+    await rebindComponents([{ page: 'Dialog', name: 'Dialog' }], rules, {
+      dryRun: true,
+      log,
+      pause: noPause,
+    });
+
+    expect(log.warnings).toEqual([]);
+    expect(log.changes.size).toBeGreaterThan(0);
+    expect(search).not.toHaveBeenCalled();
+  });
+
+  it('warns about components and pages that aren’t in the file', async () => {
+    setup();
+    const log = newLog();
+
+    await rebindComponents(
+      [
+        { page: 'Dialog', name: 'Modal' },
+        { page: 'Tooltip', name: 'Tooltip' },
+      ],
+      rules,
+      { dryRun: true, log, pause: noPause },
+    );
+
+    expect(log.warnings).toEqual([
+      'Could not find the component Modal on the page Dialog, so it was left as it is.',
+      'Could not find the page Tooltip, so its components were left as they are: Tooltip.',
+    ]);
+  });
+});
+
+describe('hasAnyPage', () => {
+  afterEach(() => {
+    vi.unstubAllGlobals();
+  });
+
+  it('finds the pages by name or stamp, without loading them', () => {
+    const loadAsync = vi.fn();
+    vi.stubGlobal('figma', {
+      root: {
+        children: [
+          { id: '0:1', name: '❖  Dialog', loadAsync, getSharedPluginData },
+          {
+            id: '0:2',
+            name: 'Kort',
+            shared: { page: 'Card', id: '0:2' },
+            loadAsync,
+            getSharedPluginData,
+          },
+        ],
+      },
+    });
+
+    expect(hasAnyPage(['Tooltip', 'Dialog'])).toBe(true);
+    expect(hasAnyPage(['Card'])).toBe(true);
+    expect(hasAnyPage(['Tooltip'])).toBe(false);
+    expect(loadAsync).not.toHaveBeenCalled();
+  });
+});
+
+describe('matchPagesByComponents', () => {
+  const targets = [
+    ...['Dialog', '_Header', '_Content', '_Footer'].map((name) => ({
+      page: 'Dialog',
+      name,
+    })),
+    ...['_Container', '_Header', '_Content', '_Footer', '_Card_title'].map(
+      (name) => ({ page: 'Card', name }),
+    ),
+  ];
+  const dialog = new Set(['Dialog', '_Header', '_Content', '_Footer']);
+  const card = new Set(['_Container', '_Header', '_Content', '_Footer']);
+
+  it('finds a renamed page by its components', () => {
+    expect(matchPagesByComponents(targets, ['Dialog'], [card, dialog])).toEqual(
+      new Map([['Dialog', [1]]]),
+    );
+  });
+
+  it('doesn’t match on names that other pages use too', () => {
+    // Card's page has _Header, _Content and _Footer, but not Dialog.
+    expect(matchPagesByComponents(targets, ['Dialog'], [card]).size).toBe(0);
+  });
+
+  it('needs at least half of the page’s components', () => {
+    expect(
+      matchPagesByComponents(targets, ['Dialog'], [new Set(['Dialog'])]).size,
+    ).toBe(0);
+    expect(
+      matchPagesByComponents(
+        targets,
+        ['Dialog'],
+        [new Set(['Dialog', '_Header'])],
+      ),
+    ).toEqual(new Map([['Dialog', [0]]]));
+  });
+
+  it('uses the page with the most components, or all of them when they tie', () => {
+    const some = new Set(['Dialog', '_Header']);
+    expect(matchPagesByComponents(targets, ['Dialog'], [some, dialog])).toEqual(
+      new Map([['Dialog', [1]]]),
+    );
+    expect(
+      matchPagesByComponents(targets, ['Dialog'], [dialog, some, dialog]),
+    ).toEqual(new Map([['Dialog', [0, 2]]]));
+  });
+});
+
+describe('normalizePageName', () => {
+  it('ignores the symbols and spacing in UI kit page names', () => {
+    expect(normalizePageName('❖  Error summary')).toBe('error summary');
+    expect(normalizePageName('❖  Textarea  ')).toBe('textarea');
+  });
+});
+
+describe('describeVariable', () => {
+  it('names semantic colors by color and step, and Color variables by step', () => {
+    expect(
+      describeVariable({
+        collection: 'Semantic',
+        name: 'color/neutral/border-subtle',
+      }),
+    ).toBe('neutral border-subtle');
+    expect(
+      describeVariable({ collection: 'Color', name: 'border-muted' }),
+    ).toBe('border-muted');
+    expect(describeVariable({ collection: 'Size', name: 'size/1' })).toBe(
+      'Size/size/1',
+    );
+  });
+});
+
+/** Stubs a file with one page, Dialog, holding the given components, and links each layer to its parent. */
+function stubFile(components: FakeNode[], figmaProps: object = {}) {
+  const link = (parent: FakeNode) => {
+    for (const child of parent.children ?? []) {
+      child.parent = parent;
+      link(child);
+    }
+  };
+  for (const component of components) {
+    component.parent = { type: 'PAGE' };
+    link(component);
+  }
+  const page = {
+    name: '❖  Dialog',
+    loadAsync: async () => {},
+    getSharedPluginData,
+    findAllWithCriteria: () => components,
+  };
+  vi.stubGlobal('figma', {
+    mixed: Symbol('mixed'),
+    root: { children: [page] },
+    variables: {
+      getLocalVariableCollectionsAsync: async () => [
+        { id: 'semantic', name: 'Semantic', modes: [] },
+        { id: 'color', name: 'Color', modes: [] },
+      ],
+      getLocalVariablesAsync: async () => VARIABLES,
+      getVariableByIdAsync: async (id: string) =>
+        VARIABLES.find((v) => v.id === id) ?? null,
+      getVariableCollectionByIdAsync: async () => null,
+      setBoundVariableForPaint: (
+        paint: object,
+        _field: string,
+        variable: { id: string },
+      ) => ({
+        ...paint,
+        boundVariables: { color: { type: 'VARIABLE_ALIAS', id: variable.id } },
+      }),
+    },
+    ...figmaProps,
+  });
+}
+
+describe('rebindComponents in a dry run', () => {
+  afterEach(() => {
+    vi.unstubAllGlobals();
+  });
+
+  it('counts an override in a nested instance once, whatever order the targets are in', async () => {
+    // _Header has a close button whose icon fill is overridden. Dialog has an instance of _Header, so the
+    // same icon is in Dialog too, two instances deep, following _Header.
+    const header = node({
+      id: '5:5',
+      name: '_Header',
+      type: 'COMPONENT',
+      children: [
+        node({
+          id: '6:6',
+          name: 'Close',
+          type: 'INSTANCE',
+          overrides: [{ id: 'I6:6;7:7', overriddenFields: ['fills'] }],
+          children: [
+            node({
+              id: 'I6:6;7:7',
+              name: 'Icon',
+              type: 'VECTOR',
+              fills: [bound('n-text')],
+            }),
+          ],
+        }),
+      ],
+    });
+    const dialog = node({
+      id: '1:1',
+      name: 'Dialog',
+      type: 'COMPONENT',
+      children: [
+        node({
+          id: '8:8',
+          name: '_Header',
+          type: 'INSTANCE',
+          children: [
+            node({
+              id: 'I8:8;6:6',
+              name: 'Close',
+              type: 'INSTANCE',
+              children: [
+                node({
+                  id: 'I8:8;6:6;7:7',
+                  name: 'Icon',
+                  type: 'VECTOR',
+                  fills: [bound('n-text')],
+                }),
+              ],
+            }),
+          ],
+        }),
+      ],
+    });
+    stubFile([dialog, header]);
+    const log = newLog();
+
+    await rebindComponents(
+      [
+        { page: 'Dialog', name: 'Dialog' },
+        { page: 'Dialog', name: '_Header' },
+      ],
+      rules,
+      { dryRun: true, log, pause: noPause },
+    );
+
+    expect([...log.changes.values()]).toEqual([
+      {
+        // _Header is on the Dialog page, so its changes are listed under Dialog.
+        page: 'Dialog',
+        what: 'Fill',
+        from: 'neutral text-default',
+        to: 'text-default',
+        count: 1,
+      },
+    ]);
+  });
+
+  it('doesn’t count a layer that follows its main component through an instance in between', async () => {
+    // Paragraph's fill changes. _Content has an instance of Paragraph, and Dialog an instance of _Content, so the
+    // same fill is in both, following Paragraph. Only Paragraph's own layer is counted.
+    const paragraph = node({
+      id: '5:6',
+      name: 'Paragraph',
+      type: 'COMPONENT',
+      fills: [bound('n-text')],
+    });
+    const content = node({
+      id: '3:3',
+      name: '_Content',
+      type: 'COMPONENT',
+      children: [
+        node({
+          id: '3:4',
+          name: 'Paragraph',
+          type: 'INSTANCE',
+          children: [
+            node({
+              id: 'I3:4;5:7',
+              name: 'Text',
+              type: 'RECTANGLE',
+              fills: [bound('n-text')],
+            }),
+          ],
+        }),
+      ],
+    });
+    // The text layer in Paragraph is 5:7; the paragraph component itself is changed too.
+    paragraph.children = [
+      node({
+        id: '5:7',
+        name: 'Text',
+        type: 'RECTANGLE',
+        fills: [bound('n-text')],
+      }),
+    ];
+    const dialog = node({
+      id: '1:1',
+      name: 'Dialog',
+      type: 'COMPONENT',
+      children: [
+        node({
+          id: '1:2',
+          name: '_Content',
+          type: 'INSTANCE',
+          children: [
+            node({
+              id: 'I1:2;3:4',
+              name: 'Paragraph',
+              type: 'INSTANCE',
+              children: [
+                node({
+                  id: 'I1:2;3:4;5:7',
+                  name: 'Text',
+                  type: 'RECTANGLE',
+                  fills: [bound('n-text')],
+                }),
+              ],
+            }),
+          ],
+        }),
+      ],
+    });
+    stubFile([dialog, content, paragraph]);
+    const log = newLog();
+
+    await rebindComponents(
+      ['Dialog', '_Content', 'Paragraph'].map((name) => ({
+        page: 'Dialog',
+        name,
+      })),
+      rules,
+      { dryRun: true, log, pause: noPause },
+    );
+
+    // Paragraph's own fill and its text layer.
+    expect([...log.changes.values()].map((change) => change.count)).toEqual([
+      2,
+    ]);
+  });
+
+  it('counts a layer in an instance that was overridden with the same variable as its main component', async () => {
+    const border = node({
+      id: '2:2',
+      name: 'Border',
+      type: 'RECTANGLE',
+      strokes: [bound('n-border')],
+    });
+    const overridden = node({
+      id: 'I3:3;2:2',
+      name: 'Border',
+      type: 'RECTANGLE',
+      strokes: [bound('n-border')],
+    });
+    const instance = node({
+      id: '3:3',
+      name: 'Close',
+      type: 'INSTANCE',
+      overrides: [{ id: 'I3:3;2:2', overriddenFields: ['strokes'] }],
+      children: [overridden],
+    });
+    stubFile([
+      node({
+        id: '1:1',
+        name: 'Dialog',
+        type: 'COMPONENT',
+        children: [border, instance],
+      }),
+    ]);
+    const log = newLog();
+
+    await rebindComponents([{ page: 'Dialog', name: 'Dialog' }], rules, {
+      dryRun: true,
+      log,
+      pause: noPause,
+    });
+
+    expect([...log.changes.values()].map((change) => change.count)).toEqual([
+      2,
+    ]);
+  });
+
+  it('warns about text in a font that isn’t available, and doesn’t count it', async () => {
+    const text = {
+      ...node({
+        id: '9:9',
+        name: 'Title',
+        type: 'TEXT',
+        fills: [bound('n-text')],
+      }),
+      characters: 'Text',
+      getStyledTextSegments: () => [
+        { start: 0, end: 4, fills: [bound('n-text')] },
+      ],
+      getRangeAllFontNames: () => [{ family: 'Missing', style: 'Regular' }],
+    };
+    stubFile(
+      [
+        node({
+          id: '1:1',
+          name: 'Dialog',
+          type: 'COMPONENT',
+          children: [text],
+        }),
+      ],
+      {
+        loadFontAsync: async () => {
+          throw new Error('Font not found');
+        },
+      },
+    );
+    const log = newLog();
+
+    await rebindComponents([{ page: 'Dialog', name: 'Dialog' }], rules, {
+      dryRun: true,
+      log,
+      pause: noPause,
+    });
+
+    expect(log.changes.size).toBe(0);
+    expect(log.warnings).toEqual([
+      "Skipped text in Dialog, as the font Missing Regular isn't available.",
+    ]);
+  });
+});
+
+describe('sourceLayerId', () => {
+  it('gives the same layer one instance down', () => {
+    expect(sourceLayerId('I1:2;3:4')).toBe('3:4');
+    expect(sourceLayerId('I1:2;3:4;5:6')).toBe('I3:4;5:6');
+    expect(sourceLayerId('3:4')).toBeNull();
+  });
+});

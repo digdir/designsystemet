@@ -15,6 +15,10 @@ export function AboutView(): React.JSX.Element {
       <Paragraph>Importing makes this file match the config:</Paragraph>
       <List.Unordered>
         <List.Item>
+          Saves a version of the file first, named "Before theme import". You
+          can restore it from the file's version history.
+        </List.Item>
+        <List.Item>
           Creates the variable collections, modes, variables, text styles and
           effect styles in the config.
         </List.Item>
@@ -43,6 +47,7 @@ export function AboutView(): React.JSX.Element {
         on your plan, so make sure yours allows enough modes for your config.
         See{' '}
         <Link
+          data-color='accent'
           href={FIGMA_PRICING_URL}
           onClick={(event) => {
             event.preventDefault();
@@ -56,6 +61,7 @@ export function AboutView(): React.JSX.Element {
       <Paragraph>
         Need help or have questions? Join our{' '}
         <Link
+          data-color='accent'
           href={SLACK_URL}
           onClick={(event) => {
             event.preventDefault();

@@ -76,6 +76,87 @@ type OpenExternal = {
   url: string;
 };
 
+// UI -> plugin: list the migrations, and which have been applied to this file.
+type ListMigrations = {
+  type: 'list-migrations';
+};
+
+// Plugin -> UI: the migrations, oldest first.
+type MigrationsList = {
+  type: 'migrations-list';
+  migrations: MigrationInfo[];
+};
+
+// UI -> plugin: preview (dryRun) or apply the chosen migrations. They run oldest first, whatever the order here.
+type RunMigrations = {
+  type: 'run-migrations';
+  ids: string[];
+  dryRun: boolean;
+};
+
+// Plugin -> UI: what the migrations would change (dryRun) or changed.
+type MigrationsResult = {
+  type: 'migrations-result';
+  dryRun: boolean;
+  status: 'success' | 'error';
+  /** One per migration that ran, oldest first. */
+  summaries: MigrationSummary[];
+  /** The name of the version saved to the file's version history before the migrations were applied, if one was. */
+  savedVersion?: string;
+  /** What went wrong, on error. */
+  message?: string;
+};
+
+// UI -> plugin: stamp the pages and components of the UI kit's source file, so migrations find them in copies
+// even after they're renamed. For maintainers; see plugin/stamps/stamps.ts. The result is shown with figma.notify.
+type StampUiKit = {
+  type: 'stamp-ui-kit';
+};
+
+// UI -> plugin: how much of this file is stamped, for the Stamp UI kit card.
+type GetStampStatus = {
+  type: 'get-stamp-status';
+};
+
+// Plugin -> UI: how many pages are stamped. Sent when asked, and when stamping finished or failed.
+type StampStatus = {
+  type: 'stamp-status';
+  stampedPages: number;
+};
+
+export type MigrationInfo = {
+  id: string;
+  title: string;
+  description: string;
+  /** When the migration was applied to this file, as an ISO date, if it has been. */
+  appliedAt?: string;
+  /** Whether the file has any of the UI kit pages the migration changes, so it has something to migrate. */
+  inFile: boolean;
+};
+
+/** One kind of change in a component, in words, e.g. Border: neutral border-subtle → border-muted. */
+export type MigrationChangeSummary = {
+  /** What on the layers changes: Fill, Border, Text or Color mode. */
+  what: string;
+  from: string;
+  to: string;
+  /** How many times: one per layer, or per text range in text with several colors. */
+  count: number;
+};
+
+export type MigrationSummary = {
+  id: string;
+  title: string;
+  /** The changes, by component, sorted by name. Each page in the UI kit is one component. */
+  components: Array<{ name: string; changes: MigrationChangeSummary[] }>;
+  /** The number of changes made, or that would be. A layer whose fill and border both change counts twice. */
+  total: number;
+  /** What was skipped, e.g. components that aren't in the file. */
+  warnings: string[];
+  /** Why the migration can't run, e.g. variables it needs are missing. Nothing is changed. */
+  error?: string;
+};
+
 export type FigmaMessages =
   | ImportConfig
   | ImportProgress
@@ -84,7 +165,14 @@ export type FigmaMessages =
   | ConvertCssResult
   | ExportConfig
   | ExportConfigResult
-  | OpenExternal;
+  | OpenExternal
+  | ListMigrations
+  | MigrationsList
+  | RunMigrations
+  | MigrationsResult
+  | StampUiKit
+  | GetStampStatus
+  | StampStatus;
 
 export type Notification = {
   kind: 'error' | 'warning' | 'info';

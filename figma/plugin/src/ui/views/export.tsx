@@ -22,7 +22,7 @@ export function ExportView({
   if (exported.status === 'loading') {
     return (
       <div className='status-view' role='status'>
-        <Spinner aria-hidden data-size='lg' />
+        <Spinner data-color='accent' aria-hidden data-size='lg' />
         <Heading level={2} data-size='sm'>
           Reading variables
         </Heading>
