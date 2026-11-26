@@ -8,7 +8,6 @@ description: Rules for pages and blog posts on designsystemet.no. Use when addin
 ## Two languages
 
 - Every page exists as the same file under `no/` and `en/`. Change both in the same pull request. Nothing checks that they match.
-- The changelog, `content/changelog/changelog.mdx`, is the exception: it is English only and generated from the root `CHANGELOG.md` by `scripts/sync-changelogs.js`, so do not edit it by hand.
 
 ## Pages
 
