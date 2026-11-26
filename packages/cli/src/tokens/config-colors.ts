@@ -1,6 +1,6 @@
 import { generateColorScale } from '../colors/scale.ts';
 import type { ColorScheme, CssColor, SemanticColorNames, SeverityColorNames } from '../colors/types.ts';
-import { severityColors, visitedLinkColor } from '../schemas/defaults.ts';
+import { severityColors } from '../schemas/defaults.ts';
 import type { ExternalConfigSchemaInput } from '../schemas/schema.ts';
 import { colorNameSchema } from '../schemas/schema-color.ts';
 
@@ -14,7 +14,6 @@ export type SchemeColors = Partial<Record<ColorScheme, CssColor>>;
 export type ThemeColorValues = {
   /** The steps of each color, by color name in config order, e.g. `accent` → `base-default` → { light, dark }. */
   scales: Map<string, Map<SemanticColorNames, SchemeColors>>;
-  linkVisited?: SchemeColors;
   focusInner?: SchemeColors;
   focusOuter?: SchemeColors;
 };
@@ -29,15 +28,10 @@ const SCHEMES: ColorScheme[] = ['light', 'dark'];
 /**
  * The `colors` and `overrides` of the theme config that generated these colors. Each color's base color is its
  * `base-default` in light, which is the input color unchanged; every other step is generated from it, so steps that
- * differ from the generated scale (e.g. ones edited by hand) become overrides. Severity colors, the visited link color
- * and the focus colors are only included when they aren't the defaults, like the theme builder does.
+ * differ from the generated scale (e.g. ones edited by hand) become overrides. Severity colors and the focus colors
+ * are only included when they aren't the defaults, like the theme builder does.
  */
-export function configColorsFromValues({
-  scales,
-  linkVisited,
-  focusInner,
-  focusOuter,
-}: ThemeColorValues): ConfigColors {
+export function configColorsFromValues({ scales, focusInner, focusOuter }: ThemeColorValues): ConfigColors {
   const warnings: string[] = [];
   // Maps, as the color names come from the input: assigning them as object keys could reach Object.prototype
   // through a name like `__proto__`. They become objects with Object.fromEntries, which only adds own properties.
@@ -101,7 +95,6 @@ export function configColorsFromValues({
 
   // A missing value, e.g. a variable deleted in Figma, can't be an override, so the config uses the default.
   for (const [label, values] of [
-    ['visited link color', linkVisited],
     ['inner focus color', focusInner],
     ['outer focus color', focusOuter],
   ] as const) {
@@ -109,14 +102,6 @@ export function configColorsFromValues({
     if (missing.length > 0) {
       warnings.push(`The ${label} has no value in ${missing.join(' and ')}, so importing the config uses the default.`);
     }
-  }
-
-  const linkVisitedOverride = diffFromDefaults(
-    linkVisited,
-    (scheme) => generateColorScale(visitedLinkColor, scheme)['base-default'].hex,
-  );
-  if (linkVisitedOverride) {
-    overrides.linkVisited = linkVisitedOverride;
   }
 
   // The focus colors default to neutral's background and text colors, after any overrides,

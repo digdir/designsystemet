@@ -1,3 +1,4 @@
+import pc from 'picocolors';
 import { z } from 'zod';
 import { semanticColorNames } from '../colors/specs.ts';
 import { severityColorNames } from './defaults.ts';
@@ -26,18 +27,6 @@ const severityColorOverrideSchema = z
   .optional()
   .describe('An object with severity color names as keys');
 
-const linkVisitedOverrideSchema = z
-  .object({
-    light: colorSchema.optional().describe('A hex color that overrides light mode'),
-    dark: colorSchema.optional().describe('A hex color that overrides dark mode'),
-  })
-  .meta({
-    description: 'Deprecated: style .ds-link:visited instead. Overrides for the "link-visited" color',
-    deprecated: true,
-    // Non-standard JSON schema keyword, shown by VS Code instead of a generic deprecation warning
-    deprecationMessage: 'Style .ds-link:visited instead.',
-  });
-
 const focusOverrideSchema = z
   .object({
     inner: z
@@ -61,7 +50,6 @@ export const overridesSchema = z
   .object({
     colors: semanticColorOverrideSchema.optional(),
     severity: severityColorOverrideSchema.optional(),
-    linkVisited: linkVisitedOverrideSchema.optional(),
     focus: focusOverrideSchema.optional(),
   })
   .describe('Overrides for generated design tokens. Currently only supports colors defined in your theme')
@@ -69,3 +57,19 @@ export const overridesSchema = z
 
 export type ColorOverrideSchema = z.infer<typeof overridesSchema>;
 export type ColorOverrideSchemaInput = z.input<typeof overridesSchema>;
+
+/**
+ * Non-fatal: warns about `overrides.linkVisited`, which was removed in v2. The schema drops unknown keys
+ * without a message, so a config that still has it would otherwise build without the color and without notice.
+ */
+export const warnRemovedOverrides = (config: { themes?: Record<string, { overrides?: object } | undefined> }) => {
+  for (const [themeName, theme] of Object.entries(config.themes ?? {})) {
+    if (theme?.overrides && Object.hasOwn(theme.overrides, 'linkVisited')) {
+      console.warn(
+        pc.yellow(
+          `⚠️  Theme "${themeName}": "overrides.linkVisited" is no longer supported and is ignored. To style visited links, style .ds-link:visited.`,
+        ),
+      );
+    }
+  }
+};

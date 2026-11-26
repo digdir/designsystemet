@@ -594,12 +594,6 @@
         "$value": "{other-org.danger.16}"
       }
     },
-    "link": {
-      "visited": {
-        "$type": "color",
-        "$value": "{other-org.link.visited}"
-      }
-    },
     "focus": {
       "inner-color": {
         "$type": "color",
