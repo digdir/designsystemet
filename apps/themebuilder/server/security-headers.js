@@ -1,12 +1,39 @@
 const DEVELOPMENT = process.env.NODE_ENV === 'development';
 
-const connectSrc = [
-  "'self'",
-  'https://altinncdn.no',
-  DEVELOPMENT && 'ws://localhost:*',
-]
-  .filter(Boolean)
-  .join(' ');
+const csp = {
+  'default-src': ["'none'"],
+  'base-uri': ["'self'"],
+  'script-src': [
+    "'self'",
+    /* React Router hydrates from inline scripts */
+    "'unsafe-inline'",
+    "'unsafe-eval'",
+    /* react-scan, see `app/root.tsx`. Without a scheme, since it is loaded over the scheme of the page */
+    DEVELOPMENT && 'unpkg.com',
+  ],
+  'style-src': ["'self'", "'unsafe-inline'", 'https://altinncdn.no'],
+  'font-src': ["'self'", 'data:', 'https://altinncdn.no'],
+  'img-src': ["'self'", 'data:'],
+  'connect-src': [
+    "'self'",
+    'https://altinncdn.no',
+    /* Vite HMR */
+    DEVELOPMENT && 'ws://localhost:*',
+    /* The version check of react-scan */
+    DEVELOPMENT && 'https://www.react-grab.com',
+  ],
+  'frame-ancestors': ["'self'"],
+  'form-action': ["'self'"],
+  'manifest-src': ["'self'"],
+  /* Violations on a developer's machine are not worth reporting */
+  'report-uri': DEVELOPMENT ? [] : ['https://csp-report.digdir.no/api/reports'],
+};
+
+const contentSecurityPolicy = Object.entries(csp)
+  .map(([directive, sources]) => [directive, sources.filter(Boolean)])
+  .filter(([, sources]) => sources.length > 0)
+  .map(([directive, sources]) => [directive, ...sources].join(' '))
+  .join('; ');
 
 /**
  * Security/CSP headers and TRACE blocking, for both servers:
@@ -19,10 +46,8 @@ export function securityHeaders(req, res, next) {
     'max-age=31536000; includeSubDomains',
   );
   res.setHeader('X-Frame-Options', 'SAMEORIGIN');
-  res.setHeader(
-    'Content-Security-Policy-Report-Only',
-    `default-src 'none';base-uri 'self';script-src 'self' 'unsafe-inline' 'unsafe-eval';style-src 'self' https://altinncdn.no https://siteimproveanalytics.com 'unsafe-inline';font-src 'self' https://altinncdn.no;img-src 'self' data:;connect-src ${connectSrc};frame-ancestors 'self';form-action 'self';manifest-src 'self'; report-uri https://csp-report.digdir.no/api/reports`,
-  );
+  res.setHeader('Content-Security-Policy', contentSecurityPolicy);
+  res.setHeader('Cache-Control', 'max-age');
 
   /* Stop TRACE request */
   if (req.method === 'TRACE') {
