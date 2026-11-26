@@ -17,7 +17,8 @@
  *                                                        release PR's branch
  *
  * Versions already in changelog.json are kept as they are, so they can be edited by hand, e.g. to
- * merge two entries that describe the same change for different readers.
+ * merge two entries that describe the same change for different readers, or to write notes about
+ * the release in its `notes` field. The notes are shown in the GitHub release and on www.
  *
  * The exported helpers are also used by scripts/sync-changelogs.js to build the changelog pages
  * for www from changelog.json.
@@ -27,9 +28,10 @@
  *   `packages` are package names, e.g. `@digdir/designsystemet-css`. `thanks` is the lines the
  *   changeset generator writes before the change, one for each first-time contributor, as
  *   paragraphs.
- * @typedef {{ version: string, figmaPublished?: string, changes: Change[] }} Release
+ * @typedef {{ version: string, figmaPublished?: string, notes?: string, changes: Change[] }} Release
  *   `figmaPublished` is the date the Figma file was published, from the `_Published YYYY-MM-DD_`
- *   line in the Figma packages' changelogs, see figma/README.md.
+ *   line in the Figma packages' changelogs, see figma/README.md. `notes` is markdown written by
+ *   hand, e.g. to introduce the release, without headings.
  * @typedef {{ releases: Release[] }} Changelog newest version first
  */
 import { promises as fs } from 'node:fs';
@@ -363,8 +365,33 @@ export function changeList(changes, after = () => []) {
 }
 
 /**
- * A version as markdown, with the packages each change affects in the line under it, e.g.
- * `` _`figma-plugin` · `figma-ui-kit`_ ``. Used for the GitHub release and the release PR.
+ * Leaves out HTML comments. They are notes to the editors: hidden on GitHub, and not valid MDX on
+ * www. They are left out as nodes, so leaving one out can never join the text around it into a
+ * new comment.
+ * @template {import('mdast').Nodes} T
+ * @param {T[]} nodes
+ * @returns {T[]}
+ */
+const withoutComments = (nodes) =>
+  nodes
+    .filter((node) => !(node.type === 'html' && /^\s*<!--/.test(node.value)))
+    .map((node) =>
+      'children' in node
+        ? { ...node, children: withoutComments(node.children) }
+        : node,
+    );
+
+/**
+ * The notes about a release, see Release, as mdast.
+ * @param {Release} release
+ * @returns {import('mdast').RootContent[]}
+ */
+export const releaseNotes = (release) =>
+  release.notes ? withoutComments(parseMarkdown(release.notes).children) : [];
+
+/**
+ * A version as markdown, with its notes, and the packages each change affects in the line under
+ * it, e.g. `` _`figma-plugin` · `figma-ui-kit`_ ``. Used for the GitHub release and the release PR.
  * @param {Release} release
  */
 export function formatRelease(release) {
@@ -375,6 +402,7 @@ export function formatRelease(release) {
       depth: 2,
       children: [{ type: 'text', value: `designsystemet ${release.version}` }],
     },
+    ...releaseNotes(release),
   ];
   for (const type of CHANGE_TYPES) {
     const changes = release.changes.filter((change) => change.type === type);

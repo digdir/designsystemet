@@ -36,14 +36,14 @@ Re-export custom element types from `@digdir/designsystemet-web` (`DSErrorSummar
 
 **Size:** Some sizes in the Large size mode are 1px larger, as intended. A rounding error made them 1px too small. Small and Medium do not change. ([#5648](https://github.com/digdir/designsystemet/pull/5648))
 
-| Variable | Large |
-|---|---|
-| `size/3` | 13 → 14 |
-| `size/6` | 27 → 28 |
-| `size/9` | 41 → 42 |
-| `size/12` | 55 → 56 |
-| `size/15` | 69 → 70 |
-| `size/18` | 83 → 84 |
+| Variable  | Large     |
+| --------- | --------- |
+| `size/3`  | 13 → 14   |
+| `size/6`  | 27 → 28   |
+| `size/9`  | 41 → 42   |
+| `size/12` | 55 → 56   |
+| `size/15` | 69 → 70   |
+| `size/18` | 83 → 84   |
 | `size/30` | 139 → 140 |
 
 </Change>
@@ -58,17 +58,17 @@ Re-export custom element types from `@digdir/designsystemet-web` (`DSErrorSummar
 
 **Typography:** Font sizes in the Small and Large size modes now match code. Headings change the most: they get bigger in Small and smaller in Large. Medium does not change. ([#5609](https://github.com/digdir/designsystemet/issues/5609)) (thanks @ssb-cgn) ([#5647](https://github.com/digdir/designsystemet/pull/5647))
 
-| Variable | Small | Large |
-|---|---|---|
-| `font-size/1` | 11 → 11 | 13 → 14 |
-| `font-size/2` | 13 → 12 | 16 → 16 |
-| `font-size/3` | 14 → 14 | 18 → 19 |
-| `font-size/4` | 16 → 16 | 21 → 21 |
-| `font-size/5` | 18 → 19 | 24 → 25 |
-| `font-size/6` | 21 → 21 | 30 → 28 |
-| `font-size/7` | 24 → 27 | 36 → 35 |
-| `font-size/8` | 30 → 32 | 48 → 42 |
-| `font-size/9` | 36 → 43 | 60 → 56 |
+| Variable       | Small   | Large   |
+| -------------- | ------- | ------- |
+| `font-size/1`  | 11 → 11 | 13 → 14 |
+| `font-size/2`  | 13 → 12 | 16 → 16 |
+| `font-size/3`  | 14 → 14 | 18 → 19 |
+| `font-size/4`  | 16 → 16 | 21 → 21 |
+| `font-size/5`  | 18 → 19 | 24 → 25 |
+| `font-size/6`  | 21 → 21 | 30 → 28 |
+| `font-size/7`  | 24 → 27 | 36 → 35 |
+| `font-size/8`  | 30 → 32 | 48 → 42 |
+| `font-size/9`  | 36 → 43 | 60 → 56 |
 | `font-size/10` | 48 → 53 | 72 → 70 |
 
 </Change>
@@ -90,6 +90,7 @@ Update npm non-major dependencies ([#5613](https://github.com/digdir/designsyste
 <Change packages="cli">
 
 **CLI:** New `output` field for choosing what the CLI creates. It defaults to `["css"]`. Each output is saved in a default folder, which you can change with `dir`: ([#5416](https://github.com/digdir/designsystemet/pull/5416))
+
 - `"css"`: CSS, in `designsystemet`
 - `"types"`: type declarations, in `designsystemet`
 - `"design-tokens"`: design tokens, in `designsystemet/design-tokens`
@@ -117,6 +118,7 @@ New `ds-focus--within` helper class that adds the focus ring when the element or
 <Change packages="cli">
 
 New `tailwind` option on the `css` output. Set this to the desired Tailwind version to generate `<theme>.tailwind.css`. Defaults to `false`, which does not generate a Tailwind file. ([#5438](https://github.com/digdir/designsystemet/pull/5438))
+
 - `"v3"` generates the same file as before.
 - `"v4"` uses `@theme inline`, so Tailwind utilities reference the `--ds-*` variables directly and `data-color`, `data-color-scheme` and `data-size` also apply to them, at any depth in the DOM.
 
@@ -579,6 +581,7 @@ Update npm non-major dependencies ([#5373](https://github.com/digdir/designsyste
 <Change packages="css,react">
 
 **Avatar:** Now supports direct text content, removing the need for inner `<span>` or `data-initials`. ([#5340](https://github.com/digdir/designsystemet/pull/5340))
+
 - **deprecated**` data-initials` will be removed in next major release.
 
 </Change>
@@ -895,7 +898,8 @@ Bump minimum required Node.js version to `>=22.12.0` as required by `commander`.
 
 <Change packages="cli">
 
-Change url for config schema on www.designsystemet.no, from `cli` to `config` to better reflect which file the schema is for. ([#5211](https://github.com/digdir/designsystemet/pull/5211))
+Change url for config schema on [www.designsystemet.no](http://www.designsystemet.no), from `cli` to `config` to better reflect which file the schema is for. ([#5211](https://github.com/digdir/designsystemet/pull/5211))
+
 ```json
 "$schema": "https://designsystemet.no/schemas/config/[VERSION].json"
 ```
@@ -1304,6 +1308,7 @@ Removed color categories `main` and `support`. All colors are now defined in con
 <Change packages="react">
 
 **Avatar, Badge, Card, Details, Paragraph, Popover, Skeleton, Tag**: Remove redundant default value for `variant` prop: ([#4999](https://github.com/digdir/designsystemet/pull/4999))
+
 - Avatar - circle
 - Badge - base
 - Card - default
@@ -1739,6 +1744,7 @@ Padding set to 0 is now connected to the `0` variable, so Figma suggests related
 <Change packages="css">
 
 **Suggestion**: changes to design: ([#4731](https://github.com/digdir/designsystemet/pull/4731))
+
 - dropdown border and background-color to neutral
 - new hover styles on items
 - adjusted spacings
@@ -1829,6 +1835,7 @@ Padding set to 0 is now connected to the `0` variable, so Figma suggests related
 <Change packages="web">
 
 update dependencies to new major version: ([#4816](https://github.com/digdir/designsystemet/pull/4816))
+
 - @u-elements/u-combobox to 2.0.4
 - @u-elements/u-datalist to 2.0.1
 
@@ -2083,6 +2090,7 @@ Fixed an issue in **tooltip** that caused delay on all touch interactions on iOS
 <Change packages="web">
 
 **popover**: stop positioning non-popovers. ([#4651](https://github.com/digdir/designsystemet/pull/4651))
+
 - This fixes an issue with nested `<dialog>`s in popovers
 
 </Change>
@@ -2338,6 +2346,7 @@ New package with custom elements and observers for Designsystemet. ([#4409](http
 <Change packages="css">
 
 **pagination**: ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
 - add `--dsc-pagination-ellipsis` with default value `'\2026'`
 - set `--dsc-pagination-label: 'Bla i sider';` if language is `'nn'`, `'nb'` or `'no'`
 
@@ -2570,6 +2579,7 @@ Update npm non-major dependencies ([#4423](https://github.com/digdir/designsyste
 <Change packages="react">
 
 **Suggestion**: Add new prop `autoPlacement`, which is by default `true` ([#4359](https://github.com/digdir/designsystemet/pull/4359))
+
 - This means that `Suggestion` will now try to stay within the viewport on the y-axis
 
 </Change>
@@ -2577,6 +2587,7 @@ Update npm non-major dependencies ([#4423](https://github.com/digdir/designsyste
 <Change packages="cli,css,react,types">
 
 **Version `1.10.0` was released by accident, and we are skipping to `1.11.0`** ([#4392](https://github.com/digdir/designsystemet/pull/4392))
+
 - Version `1.10.0` is deprecated on npm, and not accessible on Github. Use `1.11.0` or newer.
 
 </Change>
@@ -2636,6 +2647,7 @@ Removed `sideEffects:false` property used by some bundlers to help tree-shake cj
 <Change packages="cli">
 
 Update `@types/node` to `24.10.7` ([#4396](https://github.com/digdir/designsystemet/pull/4396))
+
 - This does not affect the node versions we support
 
 </Change>
@@ -2696,6 +2708,7 @@ Make sure you rebuild your tokens: `npx @digdir/designsystemet tokens create <op
 
 **Dialog**: `data-placement` selector styles the Dialog as a "drawer"-component from the direction given (`left | right | top | bottom` or `center` which is the default) ([#4323](https://github.com/digdir/designsystemet/pull/4323))
 Added 3 new local variables:
+
 - `--dsc-dialog-placement-inline-max-width` (max-width when placement="left | right")
 - `--dsc-dialog-placement-block-max-width` (max-width when placement="top | bottom")
 - `--dsc-dialog-transition-duration` (duration for the slide in animations)
@@ -2834,6 +2847,7 @@ Fixed missing components, mostly in examples ([#4305](https://github.com/digdir/
 <Change packages="react">
 
 **Popover**: Fix unnecesary call of `onOpen` and missing call of `onClose` ([#4230](https://github.com/digdir/designsystemet/pull/4230))
+
 - Don't call `onOpen` when clicking `Popover.Trigger` when `Popover` is already open.
 - Call `onClose` when a controlled `Popover` is closed by clicking on `Popover.Trigger`.
 
@@ -2916,6 +2930,7 @@ Update npm non-major dependencies ([#4242](https://github.com/digdir/designsyste
 <Change packages="react">
 
 **Tooltip**: Check if `trim()` is available ([#4239](https://github.com/digdir/designsystemet/pull/4239))
+
 - Fixes if `Tooltip` has `<svg>` as a child
 
 </Change>
@@ -2966,6 +2981,7 @@ Add option to override `linkVisited` color in config: ([#4182](https://github.co
 <Change packages="cli">
 
 For your config file, you can now get the schema file from designsystemet.no ([#4195](https://github.com/digdir/designsystemet/pull/4195))
+
 ```json
 "$schema": "https://designsystemet.no/schemas/cli/[VERSION].json"
 ```
@@ -2982,6 +2998,7 @@ For your config file, you can now get the schema file from designsystemet.no ([#
 
 New command that lets you generate a config file from your design tokens: ([#4207](https://github.com/digdir/designsystemet/pull/4207))
 `npx @digdir/designsystemet generate-config-from-tokens --dir <path to design tokens>`
+
 - This command does not include any overrides you may have done.
 
 </Change>
@@ -2989,6 +3006,7 @@ New command that lets you generate a config file from your design tokens: ([#420
 <Change packages="css">
 
 **search**: Don't set `position: relative`, but use `isolation: isolate` on `.ds-search` ([#4212](https://github.com/digdir/designsystemet/pull/4212))
+
 - This removes `z-index` on `button[type="reset"]`
 
 </Change>
@@ -2996,6 +3014,7 @@ New command that lets you generate a config file from your design tokens: ([#420
 <Change packages="react">
 
 **Tag**: Add new prop `variant` ([#4173](https://github.com/digdir/designsystemet/pull/4173))
+
 - Accepts `default|outline`. `default` is the default value.
 
 </Change>
@@ -3003,6 +3022,7 @@ New command that lets you generate a config file from your design tokens: ([#420
 <Change packages="css">
 
 **tag**: Add new variant, `[data-variant="outline"]`. ([#4173](https://github.com/digdir/designsystemet/pull/4173))
+
 - To use the old variant, either don't set `data-variant`, or set it to `default`.
 
 </Change>
@@ -3010,6 +3030,7 @@ New command that lets you generate a config file from your design tokens: ([#420
 <Change packages="css">
 
 **tag**: New css variables to go with `[data-variant="outline"]`: ([#4173](https://github.com/digdir/designsystemet/pull/4173))
+
 - `--dsc-tag-border-width`
 - `--dsc-tag-border-color`
 - `--dsc-tag-border-style`
@@ -3019,6 +3040,7 @@ New command that lets you generate a config file from your design tokens: ([#420
 <Change packages="react">
 
 **Tooltip**: Tooltip is now automatically `aria-describedby` or `aria-labelledby` based on the content of the trigger component. ([#4202](https://github.com/digdir/designsystemet/pull/4202))
+
 - This can be overridden with the new `type`-prop that accepts `decribedby` or `labelledby`.
 
 </Change>
@@ -3060,6 +3082,7 @@ Update npm non-major dependencies ([#4193](https://github.com/digdir/designsyste
 <Change packages="cli">
 
 Restructure design tokens: ([#4105](https://github.com/digdir/designsystemet/pull/4105))
+
 - Removes `primitives/modes/color-scheme/[dark/light]/global.json`
 - Removes global colors (red, green, blue, orange, purple)
 - Moved severity colors directly to your theme file
@@ -3113,6 +3136,7 @@ You can override the base-hexcode, as well as individual steps:
 <Change packages="cli">
 
 Export zod schema and type for config file: ([#4170](https://github.com/digdir/designsystemet/pull/4170))
+
 - `configSchema`
 - `type ConfigSchema`
 
@@ -3198,6 +3222,7 @@ Update npm non-major dependencies ([#4147](https://github.com/digdir/designsyste
 <Change packages="css">
 
 **input**: Add outline on `:hover` when not `:focus-visible`, `:disabled` or `[readonly]`. This adds a few new CSS variables: ([#4125](https://github.com/digdir/designsystemet/pull/4125))
+
 - `--dsc-input-outline-color--hover`
 - `--dsc-input-outline-color--toggle--hover`
 - `--dsc-input-outline-width--hover`
@@ -3427,6 +3452,7 @@ Font size variables are now rounded to the nearest pixel. This affects size mode
 <Change packages="css">
 
 **link**: Change `:focus-visible` styling to use border, not background ([#4095](https://github.com/digdir/designsystemet/pull/4095))
+
 - Removes `--dsc-link-background--focus`
 - Removes `--dsc-link-color--focus`
 
@@ -3551,6 +3577,7 @@ Update npm non-major dependencies ([#4039](https://github.com/digdir/designsyste
 <Change packages="css">
 
 **Button**: Change sizes of svg and icon ([#3998](https://github.com/digdir/designsystemet/pull/3998))
+
 - In icon button (`[data-icon]`), it is `1.5em`
 - In normal button, it is `1.3em`
 
@@ -3663,6 +3690,7 @@ Update npm non-major dependencies ([#3973](https://github.com/digdir/designsyste
 <Change packages="css">
 
 **Link**: Automatically add recommended spacing to icons (svg or img), when there is also a `<span>` present. ([#3942](https://github.com/digdir/designsystemet/pull/3942))
+
 - `<Link><Icon />Text</Link>` will not get spacing
 - `<Link><Icon /> Text</Link>` will get a leading underlined space character between icon and text, which looks bad
 - `<Link><Icon /><span>Text</span></Link>` will get recommended spacing
@@ -3676,6 +3704,7 @@ Update npm non-major dependencies ([#3973](https://github.com/digdir/designsyste
 <Change packages="react">
 
 **Dialog**: Add `data-command="close"`, which you can use to close the modal. ([#3959](https://github.com/digdir/designsystemet/pull/3959))
+
 - This removes use of `<form>` on our close button
 
 </Change>
@@ -3689,6 +3718,7 @@ Update npm non-major dependencies ([#3973](https://github.com/digdir/designsyste
 <Change packages="css">
 
 **Dialog**: Rework close button ([#3959](https://github.com/digdir/designsystemet/pull/3959))
+
 - An empty button with `data-command="close"` will get an "X" icon
 - If `button[data-command="close"]` is the first child of `.ds-dialog`, it will float to the top right
 
@@ -3715,6 +3745,7 @@ Replace `chalk` with `picocolors` ([#3910](https://github.com/digdir/designsyste
 <Change packages="react">
 
 **Tabs**: Don't conditionally render `TabPanel`, use `hidden` instead ([#3936](https://github.com/digdir/designsystemet/pull/3936))
+
 - If any of your `TabPanel` components have heavy code, consider conditional rendering to improve performance
 
 </Change>
@@ -3933,6 +3964,7 @@ Update npm non-major dependencies ([#3868](https://github.com/digdir/designsyste
 <Change packages="react">
 
 **Suggestion:** ([#3857](https://github.com/digdir/designsystemet/pull/3857))
+
 - Deprecated `value`, use `selected` instead
 - Deprecated `defaultValue`, use `defaultSelected` instead
 - Deprecated `onValueChange`, use `onSelectedChange` instead
@@ -3951,6 +3983,7 @@ Update npm non-major dependencies ([#3868](https://github.com/digdir/designsyste
 <Change packages="css">
 
 **Table:** ([#3859](https://github.com/digdir/designsystemet/pull/3859))
+
 - sorting icon never shrinks, even when using `Button` component (which is `display: flex`) as parent
 - with `data-border` adjusts `border-radius` according to `border-width`
 
@@ -3979,6 +4012,7 @@ Update npm non-major dependencies ([#3868](https://github.com/digdir/designsyste
 <Change packages="cli">
 
 fix: letter-spacing now uses `em` unit instead of invalid percentage unit ([#3759](https://github.com/digdir/designsystemet/pull/3759))
+
 - **Note:** Users should run `npx @digdir/designsystemet@latest tokens build <options>` to rebuild css-variables with now valid letter-spacing. This will result in a slight visual change in the typography.
 
 </Change>
@@ -4629,6 +4663,7 @@ Components use the Divider component
 <Change packages="cli">
 
 Dark mode color adjustments ([#3386](https://github.com/digdir/designsystemet/pull/3386))
+
 - Reduced the saturation of the colors in dark mode by about 50%.
 - Made the background- and surface colors a bit darker.
 - Made the text-default color a bit brighter for better contrast.
@@ -4675,6 +4710,7 @@ Fixed ghost variables in examples
 <Change packages="cli">
 
 General color adjustments ([#3386](https://github.com/digdir/designsystemet/pull/3386))
+
 - Changed the luminance of border-default to work on top of surface-hover with 3:1 contrast.
 - Changed the luminance of text-subtle and border-strong to work on top of surface-hover with 4.5:1 contrast.
 
@@ -4695,6 +4731,7 @@ Removed a blue color from Radio on the example page
 <Change packages="css">
 
 Replaced usage of `background-default`/`background-tinted` color-variables with `surface-default`/`surface-tinted` in components ([#3412](https://github.com/digdir/designsystemet/pull/3412))
+
 - `Details`
 - `Input`
 - `Field`

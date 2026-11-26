@@ -77,7 +77,7 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
 
-      # Built again from the root CHANGELOG.md, so edits made to it after the release PR reach www.
+      # Built again from changelog.json, so edits made to it after the release PR reach www.
       # The newest version is left undated by the release PR (its release does not exist yet);
       # date it from the GitHub release before the content is copied into the image.
       - name: Build the changelog page

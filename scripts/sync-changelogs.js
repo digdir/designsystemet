@@ -1,48 +1,68 @@
 /**
- * Builds the changelog pages for www from changelog.json, where each change is listed once
- * with the packages it affects: one page for the code packages, and one for the Figma packages
- * (the UI kit and the plugin). Each page shows the changes that affect at least one of its
- * packages. changelog.json is built by scripts/group-changelogs.js; this file only
- * formats it as MDX and writes it.
+ * Builds the changelog page for www from changelog.json, where each change is listed once with the
+ * packages it affects. The page lists every package, and can be filtered by package, see
+ * apps/www/app/routes/changelog/changelog.tsx. changelog.json is built by
+ * scripts/group-changelogs.js; this file only formats it as MDX and writes it.
+ *
+ * It runs when the release pull request is made, and again in the www deploy, so edits to
+ * changelog.json reach www with the next deploy (see azure-deploy-www.yml).
+ *
+ * The MDX uses these components, so the page can filter and style the changes:
+ *
+ *   <Release version="1.24.1" date="2026-11-18" figmaPublished="2026-11-19" packages="cli,css">
+ *     <ReleaseNotes> markdown </ReleaseNotes>      only when the version has notes
+ *     <Changes type="patch" packages="cli,css">
+ *       <Change packages="cli,css"> markdown </Change>
+ *     </Changes>
+ *   </Release>
  */
 import { execFileSync } from 'node:child_process';
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
-import { releaseDateMarkup } from './changelog-date.js';
 import {
-  CHANGE_HEADINGS,
   CHANGE_TYPES,
-  changeList,
-  NO_CHANGES,
+  parseMarkdown,
   readChangelog,
+  releaseNotes,
   toMarkdown,
 } from './group-changelogs.js';
 
 const ROOT = process.cwd();
-const WWW = path.join(ROOT, 'apps/www/app/content/components-docs');
-const WWW_FIGMA = path.join(ROOT, 'apps/www/app/content/fundamentals');
+export const CHANGELOG_MDX = path.join(
+  ROOT,
+  'apps/www/app/content/changelog/changelog.mdx',
+);
 
-// The packages each page shows changes for
-const CODE_PACKAGES = [
-  '@digdir/designsystemet',
-  '@digdir/designsystemet-css',
-  '@digdir/designsystemet-react',
-  '@digdir/designsystemet-web',
-  '@digdir/designsystemet-types',
-];
-const FIGMA_PACKAGES = ['figma-plugin', 'figma-ui-kit'];
-
-// Short names for the packages, shown as tags under each change on www
-const LABELS = {
-  '@digdir/designsystemet': 'CLI',
-  '@digdir/designsystemet-css': 'CSS',
-  '@digdir/designsystemet-react': 'React',
-  '@digdir/designsystemet-web': 'Web',
-  '@digdir/designsystemet-types': 'Types',
-  'figma-plugin': 'Figma plugin',
-  'figma-ui-kit': 'Figma UI kit',
-  '@web/www': 'Documentation',
+// The ids used for the packages on www, in the filters and the URL
+const PACKAGE_IDS = {
+  '@digdir/designsystemet': 'cli',
+  '@digdir/designsystemet-css': 'css',
+  '@digdir/designsystemet-react': 'react',
+  '@digdir/designsystemet-web': 'web',
+  '@digdir/designsystemet-types': 'types',
+  'figma-plugin': 'figma-plugin',
+  'figma-ui-kit': 'figma-ui-kit',
+  '@web/www': 'www',
 };
+const PACKAGE_ORDER = Object.values(PACKAGE_IDS);
+
+/**
+ * The ids of the packages, in a fixed order and without duplicates, e.g. `cli,css`. changelog.json
+ * can be edited by hand, so a package without an id keeps only the characters a package name can
+ * have, and can never end the attribute it is written in.
+ * @param {string[]} names
+ */
+const packageIds = (names) =>
+  [
+    ...new Set(
+      names.map((name) => PACKAGE_IDS[name] ?? name.replace(/[^\w@/.-]/g, '')),
+    ),
+  ]
+    .sort((a, b) => PACKAGE_ORDER.indexOf(a) - PACKAGE_ORDER.indexOf(b))
+    .join(',');
+
+/** Only `YYYY-MM-DD`, for the same reason */
+const isDate = (date) => /^\d{4}-\d{2}-\d{2}$/.test(date ?? '');
 
 function git(args) {
   try {
@@ -62,11 +82,15 @@ function git(args) {
  * Returns null for the version being prepared, which has neither yet: its release commit is the
  * pull request this runs in, and that can stay open for weeks. It is dated at deploy time instead,
  * see scripts/date-latest-changelog.js. Needs the full git history and tags, see `fetch-depth`
- * in release.yml.
+ * in release.yml and azure-deploy-www.yml.
+ *
+ * With `tagOnly`, only the tag is used. The newest version is dated that way: in a preview deploy
+ * of the release pull request, its heading is already committed, so the changelog would date a
+ * version that is not released yet.
  */
-function getReleaseDate(version) {
+function getReleaseDate(version, { tagOnly = false } = {}) {
   const fromTag = git(['log', '-1', '--format=%cs', `refs/tags/v${version}`]);
-  if (fromTag) return fromTag;
+  if (fromTag || tagOnly) return fromTag || null;
 
   // Anchored, so `## 1.0.0` does not also match the `## 1.0.0-next.1` pre-release headings.
   const heading = `^## ${version.replaceAll('.', '\\.')}$`;
@@ -81,145 +105,69 @@ function getReleaseDate(version) {
   return fromChangelog || null;
 }
 
-/**
- * @param {string} version
- * @param {import('./group-changelogs.js').Change[]} changes the changes to show
- * @param {string | null} date the release date as `YYYY-MM-DD`, or null to leave the version undated
- */
-function formatVersion(version, changes, date) {
-  let out = `<div style={{
-  border: "1px solid var(--ds-color-neutral-border-subtle)",
-  borderRadius: "var(--ds-border-radius-md)",
-  padding: "var(--ds-size-5)",
-  marginBottom: "var(--ds-size-4)"
-  }}
->\n\n## ${version}\n\n`;
-  if (date) out += `${releaseDateMarkup(date)}\n\n`;
+/** @param {import('./group-changelogs.js').Change} change */
+const formatChange = ({ packages, markdown, thanks }) =>
+  `<Change packages="${packageIds(packages)}">\n\n${toMarkdown([
+    ...(thanks ? parseMarkdown(thanks).children : []),
+    ...parseMarkdown(markdown).children,
+  ])}\n\n</Change>\n\n`;
 
-  if (changes.length === 0) out += `${NO_CHANGES}\n\n`;
+/**
+ * @param {import('./group-changelogs.js').Release} release
+ * @param {string | null} date as `YYYY-MM-DD`. A version without a date is dated at deploy time,
+ * see scripts/date-latest-changelog.js.
+ */
+function formatRelease(release, date) {
+  const { version, figmaPublished, changes } = release;
+  const attributes = [`version="${version}"`];
+  if (isDate(date)) attributes.push(`date="${date}"`);
+  if (isDate(figmaPublished))
+    attributes.push(`figmaPublished="${figmaPublished}"`);
+  attributes.push(
+    `packages="${packageIds(changes.flatMap((change) => change.packages))}"`,
+  );
+
+  let out = `<Release ${attributes.join(' ')}>\n\n`;
+  const notes = toMarkdown(releaseNotes(release));
+  if (notes) out += `<ReleaseNotes>\n\n${notes}\n\n</ReleaseNotes>\n\n`;
   for (const type of CHANGE_TYPES) {
     const entries = changes.filter((change) => change.type === type);
     if (entries.length === 0) continue;
-    out += `### ${CHANGE_HEADINGS[type]}\n\n`;
-    const list = changeList(entries, ({ packages }) => [
-      {
-        type: 'html',
-        // Styled by `[data-packages]` in apps/www/app/routes/components/component.module.css
-        value: `<div data-packages>${packages
-          .map((name) => `<Tag>${LABELS[name] ?? name}</Tag>`)
-          .join('')}</div>`,
-      },
-    ]);
-    out += `${toMarkdown([list])}\n\n`;
+    const packages = packageIds(entries.flatMap((entry) => entry.packages));
+    out += `<Changes type="${type}" packages="${packages}">\n\n${entries.map(formatChange).join('')}</Changes>\n\n`;
   }
-
-  return `${out}</div>\n\n`;
-}
-
-/**
- * The versions in changelog.json, newest first, with only the changes that affect at least one of
- * `packages`.
- * @param {string[]} packages package names
- */
-async function readChanges(packages) {
-  const { releases } = await readChangelog();
-  return releases.map((release) => ({
-    ...release,
-    changes: release.changes.filter((change) =>
-      change.packages.some((name) => packages.includes(name)),
-    ),
-  }));
-}
-
-async function writeComponentsChangelog() {
-  await fs.mkdir(WWW, { recursive: true });
-  const releases = await readChanges(CODE_PACKAGES);
-
-  let consolidatedContent = '';
-  for (const { version, changes } of releases) {
-    consolidatedContent += formatVersion(
-      version,
-      changes,
-      getReleaseDate(version),
-    );
-  }
-
-  const latestVersion = releases[0]?.version;
-
-  const content = `---
-title: "Changelog"
-latestVersion: ${latestVersion}
----
-
-${consolidatedContent}`;
-
-  await fs.writeFile(path.join(WWW, 'changelog.mdx'), content, 'utf8');
-}
-
-// Shown in the Figma section of Fundamentals, next to "Get updates". The changelogs are only in English.
-const FIGMA_PAGES = {
-  en: {
-    frontmatter: {
-      title: 'Figma changelog',
-      sidebar_title: 'Changelog',
-      description:
-        'What has changed in each version of the Designsystemet Figma file.',
-    },
-    intro: '',
-  },
-  no: {
-    frontmatter: {
-      title: 'Endringslogg for Figma',
-      sidebar_title: 'Endringslogg',
-      description:
-        'Hva som er endret i hver versjon av Figma-filen til Designsystemet.',
-    },
-    intro:
-      "<Alert lang='no'>Endringslogger er kun tilgjengelige på engelsk</Alert>\n\n",
-  },
-};
-
-async function writeFigmaChangelog() {
-  let consolidatedContent = '';
-  for (const { version, changes, figmaPublished } of await readChanges(
-    FIGMA_PACKAGES,
-  )) {
-    // The Figma file is published by hand, not with the code, so its versions have no tags to date
-    // them by. The date is written in its changelog instead; see figma/README.md.
-    const date = figmaPublished ?? null;
-    // The Figma packages are versioned with the code by changesets, so most code releases add a
-    // version without changes to them. Only versions with changes, or that were published, are shown.
-    if (changes.length === 0 && !date) continue;
-    consolidatedContent += formatVersion(version, changes, date);
-  }
-
-  for (const [lang, { frontmatter, intro }] of Object.entries(FIGMA_PAGES)) {
-    const dir = path.join(WWW_FIGMA, lang, 'figma');
-    await fs.mkdir(dir, { recursive: true });
-    const content = `---
-title: ${frontmatter.title}
-sidebar_title: ${frontmatter.sidebar_title}
-description: ${frontmatter.description}
-category: Figma
-color: yellow
-icon: ClockDashedIcon
-published: true
-order: 50
-search_terms: changelog
-changelog: true
----
-
-${intro}<div lang="en">
-
-${consolidatedContent}</div>
-`;
-    await fs.writeFile(path.join(dir, 'changelog.mdx'), content, 'utf8');
-  }
+  return `${out}</Release>\n\n`;
 }
 
 async function main() {
-  await writeComponentsChangelog();
-  await writeFigmaChangelog();
+  // Only `x.y.z`, for the same reason as packageIds
+  const releases = (await readChangelog()).releases.filter(({ version }) =>
+    /^\d+\.\d+\.\d+$/.test(version),
+  );
+  const latestVersion = releases[0]?.version;
+
+  let content = '';
+  for (const release of releases) {
+    content += formatRelease(
+      release,
+      getReleaseDate(release.version, {
+        tagOnly: release.version === latestVersion,
+      }),
+    );
+  }
+
+  await fs.mkdir(path.dirname(CHANGELOG_MDX), { recursive: true });
+  await fs.writeFile(
+    CHANGELOG_MDX,
+    `---
+title: Changelog
+description: What has changed in each version of the code packages, the Figma file and the documentation.
+latestVersion: ${latestVersion}
+---
+
+${content}`,
+    'utf8',
+  );
 }
 
 main().catch((e) => {

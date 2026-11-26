@@ -280,7 +280,7 @@ function Release({
 }
 
 /**
- * Notes about a version, written by hand in the root CHANGELOG.md. They are about the whole
+ * Notes about a version, written by hand in changelog.json. They are about the whole
  * release, not one package, and are not searched, so they are hidden while filtering.
  */
 function ReleaseNotes({ children }: { children?: ReactNode }) {

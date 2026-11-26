@@ -6,8 +6,7 @@ on:
     paths:
       - "apps/www/**"
       - "internal/components/**"
-      # The changelog page is built from these when www is deployed
-      - "CHANGELOG.md"
+      # The changelog page is built from these (and apps/www/app/content/changelog/changelog.json) when www is deployed
       - "scripts/aggregate-changelogs.js"
       - "scripts/group-changelogs.js"
       - "scripts/sync-changelogs.js"
