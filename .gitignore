@@ -47,6 +47,7 @@ chromatic.log
 chromatic-diagnostics.json
 build-storybook.log
 
-# Claude session directory and guidance file
-.claude/
+# Claude session directory and guidance file. The shared skills are kept.
+.claude/*
+!.claude/skills/
 CLAUDE.md
