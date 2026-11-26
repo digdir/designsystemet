@@ -62,20 +62,27 @@ export const CodePanel = ({
     setCode(code);
     latestCode.current = code;
     clearTimeout(pendingRun.current);
+    pendingRun.current = undefined;
     // The story as written only needs the icons that are already loaded
     if (code === live.code) return live.onChange(code);
-    // Wait for a pause in the typing, so half-written code isn't compiled and reported as an
-    // error on every keystroke.
-    pendingRun.current = setTimeout(() => {
-      // Edited code may use any icon. Run whatever is newest once they have loaded.
-      loadAllIcons().then(() => live.onChange(latestCode.current));
+    // Only the latest edit may run after both the typing pause and icon loading.
+    const run = setTimeout(() => {
+      loadAllIcons().then(() => {
+        if (pendingRun.current !== run) return;
+        pendingRun.current = undefined;
+        live.onChange(latestCode.current);
+      });
     }, RUN_DELAY);
+    pendingRun.current = run;
   };
 
   // An edit that is still waiting must not run against the next story, or after we are gone
   useEffect(() => {
     latestCode.current = live.code;
-    return () => clearTimeout(pendingRun.current);
+    return () => {
+      clearTimeout(pendingRun.current);
+      pendingRun.current = undefined;
+    };
   }, [live.code]);
 
   const reset = () => {
