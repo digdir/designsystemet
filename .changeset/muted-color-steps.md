@@ -3,4 +3,14 @@
 "@digdir/designsystemet-css": minor
 ---
 
-**Color:** New muted color steps in every color: `surface-muted`, `border-muted` and `text-muted`, e.g. `--ds-color-accent-surface-muted`, or `--ds-color-surface-muted` to follow `data-color`. They are close to grey, with a hint of the color, for parts that should be quieter than the rest of the component, such as borders on form fields and the background of a read-only field. `border-muted` has at least 3:1 contrast and `text-muted` at least 4.5:1 against `background-default`, `background-tinted`, `surface-default`, `surface-tinted` and `surface-muted` of the same color. They aren't made for `surface-hover` or `surface-active`, where the contrast is lower. In forced colors mode they use `ButtonFace`, `ButtonBorder` and `CanvasText`.
+**Colors:** Every color has three new muted steps. They are close to grey, with a hint of the color, for parts that should be quieter than the rest of the component.
+
+| Step            | Use for                                               | Contrast        | Forced colors  |
+| --------------- | ----------------------------------------------------- | --------------- | -------------- |
+| `surface-muted` | Quiet backgrounds, such as a read-only field          |                 | `ButtonFace`   |
+| `border-muted`  | Quiet borders, such as on form fields                 | At least 3:1    | `ButtonBorder` |
+| `text-muted`    | Quiet text                                            | At least 4.5:1  | `CanvasText`   |
+
+Use them as CSS variables, e.g. `--ds-color-surface-muted`, which follows `data-color`.
+
+The contrast is measured against `background-default`, `background-tinted`, `surface-default`, `surface-tinted` and `surface-muted` of the same color. The muted steps aren't made for `surface-hover` or `surface-active`, where the contrast is lower.
