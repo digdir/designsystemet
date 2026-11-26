@@ -105,7 +105,11 @@ export const ApproximateDateEN = () => {
       >
         <Field>
           <Label>Month</Label>
-          <Select defaultValue='January'>
+          <Select defaultValue=''>
+            <Select.Option value='' disabled>
+              Choose month …
+            </Select.Option>
+            <Select.Option value='unknown'>Don't know</Select.Option>
             <Select.Option value='january'>January</Select.Option>
             <Select.Option value='february'>February</Select.Option>
             <Select.Option value='march'>March</Select.Option>
@@ -122,7 +126,10 @@ export const ApproximateDateEN = () => {
         </Field>
         <Field>
           <Label>Year</Label>
-          <Select defaultValue='2026'>
+          <Select defaultValue=''>
+            <Select.Option value='' disabled>
+              Choose year …
+            </Select.Option>
             <Select.Option value='2026'>2026</Select.Option>
             <Select.Option value='2025'>2025</Select.Option>
             <Select.Option value='2024'>2024</Select.Option>
@@ -209,7 +216,7 @@ export const PredefinedOptions1EN = () => {
       />
 
       <Link
-        href='#la-brukeren-begrense-utvalget'
+        href='#let-users-narrow-down-the-options'
         style={{ display: 'flex', marginTop: 'var(--ds-size-6)' }}
       >
         Find available appointments further ahead
