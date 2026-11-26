@@ -40,7 +40,12 @@ export {
   type ExternalConfigSchemaInput,
   externalConfigSchema,
 } from './schemas/schema.ts';
-export { colorNameSchema, isHexColor, themeNameSchema } from './schemas/schema-color.ts';
+export {
+  colorNameSchema,
+  isHexColor,
+  themeNameSchema,
+} from './schemas/schema-color.ts';
+export { stripUnknownConfigKeys } from './schemas/strip-unknown-keys.ts';
 export {
   configColorsFromValues,
   type SchemeColors,

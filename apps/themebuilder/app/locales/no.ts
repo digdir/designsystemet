@@ -54,6 +54,49 @@ export default {
       'Bruk kun små bokstaver a-z og tall, med enkle bindestreker mellom.',
     'duplicate-theme-name': 'Et tema med dette navnet finnes allerede.',
   },
+  shareTheme: {
+    share: 'Del som lenke',
+    description:
+      'Lag lenker som åpner temaene dine i temabyggeren. Temaene lagres da på serveren vår, og endringene dine lagres mens du jobber.',
+    'two-links':
+      'Du får én lenke for å se temaene, og én som også lar andre endre dem.',
+    linked:
+      'Endringene dine lagres mens du jobber. Del visningslenken for å vise temaene dine, eller redigeringslenken for å la andre endre dem.',
+    create: 'Lag lenker',
+    creating: 'Lager lenker...',
+    'view-link': 'Lenke for visning',
+    'view-link-description':
+      'Åpner temaene dine. Endringer som gjøres fra denne lenken lagres ikke.',
+    'edit-link': 'Lenke for redigering',
+    'edit-link-description':
+      'Alle som har denne lenken kan endre temaene dine.',
+    'copy-view': 'Kopier visningslenke',
+    'copy-edit': 'Kopier redigeringslenke',
+    'copied-view': 'Visningslenken er kopiert.',
+    'copied-edit': 'Redigeringslenken er kopiert.',
+    'copy-failed':
+      'Lenken kunne ikke kopieres. Den er markert, så du kan kopiere den selv.',
+    'copy-description':
+      'Vil du jobbe videre uten å endre det andre ser på disse lenkene?',
+    'create-copy': 'Lag en kopi med nye lenker',
+    'copy-created':
+      'Du jobber nå i en kopi. Endringene dine lagres til de nye lenkene.',
+    close: 'Lukk',
+    'error-generic': 'Lenkene kunne ikke lages. Prøv igjen senere.',
+    'error-rate-limited':
+      'Du har laget mange lenker på kort tid. Vent noen minutter og prøv igjen.',
+    'error-too-large':
+      'Det er for mange temaer eller farger til å dele som lenke.',
+    synced: 'Synkronisert',
+    syncing: 'Synkroniserer...',
+    'sync-failed': 'Ikke synkronisert. Prøver igjen...',
+    retry: 'Prøv nå',
+    'sync-too-large':
+      'Ikke synkronisert. Det er for mange temaer eller farger.',
+    'sync-rejected': 'Ikke synkronisert. Disse endringene kan ikke lagres.',
+    'sync-gone': 'Lenken finnes ikke lenger. Endringene dine lagres ikke.',
+    'view-only': 'Kun visning. Endringene dine lagres ikke.',
+  },
   importConfig: {
     title: 'Importer fra konfigurasjonsfil',
     description:

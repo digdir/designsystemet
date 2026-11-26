@@ -17,10 +17,26 @@ permissions:
 
 jobs:
   deploy-production:
+    if: ${{ github.event.inputs.environment == 'production' }}
     uses: $/.github/workflows/azure-deploy-themebuilder.yml
     with:
-      environment: ${{ github.event.inputs.environment == 'production' && 'production' || 'preview' }}
+      environment: production
+      database_identity: ${{ vars.THEMEBUILDER_DATABASE_IDENTITY }}
     secrets:
       AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
       AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
       AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      THEMEBUILDER_DATABASE_URL: ${{ secrets.THEMEBUILDER_DATABASE_URL }}
+
+  deploy-preview:
+    if: ${{ github.event.inputs.environment != 'production' }}
+    uses: $/.github/workflows/azure-deploy-themebuilder.yml
+    with:
+      environment: preview
+      database_identity: ${{ vars.THEMEBUILDER_PREVIEW_DATABASE_IDENTITY }}
+    secrets:
+      AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+      AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+      AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      # `next` is a preview, and only has a database when the previews are given one.
+      THEMEBUILDER_DATABASE_URL: ${{ secrets.THEMEBUILDER_PREVIEW_DATABASE_URL }}
