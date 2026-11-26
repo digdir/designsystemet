@@ -50,7 +50,7 @@
     "@changesets/get-github-info": "^1.0.1",
     "@changesets/types": "^7.0.0",
     "@digdir/designsystemet": "workspace:^",
-    "@testing-library/jest-dom": "7.0.1",
+    "@testing-library/jest-dom": "8.0.0",
     "@types/node": "24.19.2",
     "@vitejs/plugin-react": "6.3.0",
     "@vitest/browser-playwright": "5.1.0",
