@@ -50,6 +50,8 @@ export const CodeEditor = ({
       ref={ref}
       className={cl(classes.code, 'ds-focus--inset')}
       aria-label={label}
+      // The code underneath decides the height. The default of two rows is taller than one line of it
+      rows={1}
       value={value}
       onChange={(event) => onChange(event.target.value)}
       onFocus={onFocus}
