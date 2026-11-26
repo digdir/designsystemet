@@ -73,16 +73,7 @@ export default {
     tag: 'Blog',
     title: 'Blog',
     description:
-      'Here you will find updates from Designsystemet and experiences shared by others. You can subscribe to this blog through <0>RSS</0> or <1>Atom</1>',
-    filter: {
-      legend: 'Filter blog posts by category',
-    },
-    categories: {
-      case: 'Case studies',
-      updates: 'Updates',
-      'in-depth': 'In depth',
-      about: 'About Designsystemet',
-    },
+      'Here you will find stories, experiences, and updates from Designsystemet. A place to learn from each other and stay up to date. You can subscribe to this blog through <0>RSS</0> or <1>Atom</1>',
     write: {
       title: 'Want to write for the blog?',
       description:
