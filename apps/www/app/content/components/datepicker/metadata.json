@@ -1,11 +1,11 @@
 {
   "no": {
     "title": "Date picker",
-    "subtitle": "Designsystemet har foreløpig ikke en datovelger, men veiledning for hvordan du spør brukerne om dato og klokkeslett."
+    "subtitle": "designsystemet.no har foreløpig ikke en datovelger, men veiledning for hvordan du spør brukerne om dato og klokkeslett."
   },
   "en": {
     "title": "Date picker",
-    "subtitle": "Designsystemet does not have a Date picker component yet, but provides guidance on how to ask users for date and time."
+    "subtitle": "designsystemet.no does not have a Date picker component yet, but provides guidance on how to ask users for date and time."
   },
   "image": "DatePicker.svg",
   "cssFile": "",
