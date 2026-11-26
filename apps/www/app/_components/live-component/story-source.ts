@@ -7,7 +7,7 @@ export type StorySource = {
 };
 
 /** Code that calls `render` itself is run as it is, so a whole example can be pasted in */
-const CALLS_RENDER = /^render\(/m;
+const CALLS_RENDER = /^[ \t]*render\s*\(/m;
 
 const dedent = (code: string) => {
   const lines = code.split('\n');
@@ -59,7 +59,9 @@ export const getStorySource = (story: string, name: string): StorySource => {
       // In a fragment so siblings can be added, and on the first line so that the line numbers
       // of errors are those of the editor
       toRunnable: (code) =>
-        CALLS_RENDER.test(code) ? code : `render(<>${code}\n</>)`,
+        CALLS_RENDER.test(code)
+          ? code
+          : `const ${name} = () => <>${code}\n</>;\nrender(<${name} />)`,
     };
   }
 
