@@ -107,7 +107,11 @@ export const ApproximateDate = () => {
       >
         <Field>
           <Label>Måned</Label>
-          <Select defaultValue='Januar'>
+          <Select defaultValue=''>
+            <Select.Option value='' disabled>
+              Velg måned …
+            </Select.Option>
+            <Select.Option value='vet-ikke'>Vet ikke</Select.Option>
             <Select.Option value='januar'>Januar</Select.Option>
             <Select.Option value='februar'>Februar</Select.Option>
             <Select.Option value='mars'>Mars</Select.Option>
@@ -124,7 +128,10 @@ export const ApproximateDate = () => {
         </Field>
         <Field>
           <Label>År</Label>
-          <Select defaultValue='2026'>
+          <Select defaultValue=''>
+            <Select.Option value='' disabled>
+              Velg år …
+            </Select.Option>
             <Select.Option value='2026'>2026</Select.Option>
             <Select.Option value='2025'>2025</Select.Option>
             <Select.Option value='2024'>2024</Select.Option>
