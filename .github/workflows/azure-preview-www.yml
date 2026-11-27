@@ -9,6 +9,8 @@ on:
       # The changelog page reads it, and the deploy dates its newest version
       - "changelog.json"
       - "scripts/date-latest-changelog.js"
+      - "scripts/changelog-dates.js"
+      - "scripts/changelog-packages.ts"
       - ".github/workflows/azure-preview-www.yml"
       - ".github/workflows/azure-deploy-www.yml"
       - ".github/workflows/preview-comment.yml"

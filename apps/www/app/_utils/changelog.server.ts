@@ -15,7 +15,7 @@ import {
 } from './changelog';
 import { prettifyCodeBlocks } from './prettify-code-blocks';
 
-/** changelog.json, see scripts/group-changelogs.js */
+/** changelog.json, which scripts/group-changelogs.js writes and checks. It is shown as it is. */
 type Release = {
   version: string;
   date?: string;
@@ -34,27 +34,6 @@ const RELEASES_PER_PAGE = 10;
 const PACKAGE_IDS = new Map<string, ChangelogPackageId>(
   CHANGELOG_PACKAGES.map(({ packageName, id }) => [packageName, id]),
 );
-
-/**
- * changelog.json can be edited by hand, so it is checked when it is read. The build renders the
- * page, so it fails on a mistake instead of leaving something out.
- */
-function check({ version, date, figmaPublished, changes }: Release) {
-  const fail = (problem: string) => {
-    throw new Error(`changelog.json, version ${version}: ${problem}`);
-  };
-  if (!/^\d+\.\d+\.\d+$/.test(version)) fail('not an x.y.z version');
-  for (const day of [date, figmaPublished]) {
-    if (day !== undefined && !/^\d{4}-\d{2}-\d{2}$/.test(day))
-      fail(`${day} is not a YYYY-MM-DD date`);
-  }
-  for (const { type, packages } of changes) {
-    if (!(type in CHANGE_TYPES)) fail(`${type} is not a change type`);
-    for (const name of packages) {
-      if (!PACKAGE_IDS.has(name)) fail(`${name} is not in CHANGELOG_PACKAGES`);
-    }
-  }
-}
 
 /**
  * Markdown to hast. Raw HTML in the markdown is left out (remark-rehype does not keep it), so are
@@ -89,7 +68,6 @@ const plainText = (markdown: string) =>
 
 /** A release with its markdown rendered, and the text of its changes to search in */
 async function index(release: Release) {
-  check(release);
   const { notes, changes, ...rest } = release;
   return {
     ...rest,

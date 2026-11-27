@@ -15,11 +15,14 @@
  *                                                        and the release PR (see update-release-pr-body.sh)
  *     --file <path>                                      reads that changelog.json instead, e.g. from the
  *                                                        release PR's branch
+ *   node scripts/group-changelogs.js --check             only checks changelog.json, e.g. after it was
+ *                                                        edited by hand
  *
  * Versions already in changelog.json are kept as they are, so they can be edited by hand, e.g. to
  * merge two entries that describe the same change for different readers, or to write notes about
  * the release in its `notes` field. The notes are shown in the GitHub release and on www. Only
- * their dates are added when they are missing, see addDates.
+ * their dates are added when they are missing, see addDates. They are checked when they are
+ * read, see checkRelease.
  *
  * The changelog page on www reads changelog.json, see apps/www/app/_utils/changelog.server.ts.
  *
@@ -29,13 +32,12 @@
  *   changeset generator writes before the change, one for each first-time contributor, as
  *   paragraphs.
  * @typedef {{ version: string, date?: string, figmaPublished?: string, notes?: string, changes: Change[] }} Release
- *   `date` is the release date as `YYYY-MM-DD`, see getReleaseDate. `figmaPublished` is the date
+ *   `date` is the release date as `YYYY-MM-DD`, see changelog-dates.js. `figmaPublished` is the date
  *   the Figma file was published, from the `_Published YYYY-MM-DD_` line in the Figma packages'
  *   changelogs, see figma/README.md. `notes` is markdown written by hand, e.g. to introduce the
  *   release, without headings.
  * @typedef {{ releases: Release[] }} Changelog newest version first
  */
-import { execFileSync } from 'node:child_process';
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
 import { parseArgs } from 'node:util';
@@ -44,7 +46,8 @@ import remarkGfm from 'remark-gfm';
 import remarkParse from 'remark-parse';
 import remarkStringify from 'remark-stringify';
 import { unified } from 'unified';
-import { CHANGELOG_PACKAGES } from '../apps/www/app/_utils/changelog.ts';
+import { addReleaseDates } from './changelog-dates.js';
+import { CHANGELOG_PACKAGES } from './changelog-packages.ts';
 
 const ROOT = process.cwd();
 const CHANGELOG_JSON = path.join(ROOT, 'changelog.json');
@@ -55,16 +58,13 @@ const CUTOFF_VERSION = '0.101.0';
 // What a package's changelog says for a version that only bumped it with the others
 const NO_CHANGES = 'No changes in this release.';
 
-/**
- * The order packages are listed in under each change: as on the changelog page on www, which
- * also has their labels and colors. Node strips the types from changelog.ts.
- */
+/** The order packages are listed in under each change, see changelog-packages.ts */
 const PACKAGE_ORDER = CHANGELOG_PACKAGES.map(({ packageName }) => packageName);
 const packageOrder = (name) => {
   const index = PACKAGE_ORDER.indexOf(name);
   if (index === -1)
     throw new Error(
-      `${name} has a changelog, but is not in CHANGELOG_PACKAGES in apps/www/app/_utils/changelog.ts`,
+      `${name} has a changelog, but is not in CHANGELOG_PACKAGES in scripts/changelog-packages.ts`,
     );
   return index;
 };
@@ -417,58 +417,61 @@ function formatRelease(release) {
 }
 
 /**
- * @param {string} file
- * @returns {Promise<Changelog>}
+ * changelog.json can be edited by hand, so each version is checked when it is read. A mistake
+ * fails here, before the release, instead of leaving something out of the GitHub release or the
+ * changelog page on www, which show the versions as they are.
+ * @param {Release} release
  */
-const readChangelog = async (file) =>
-  JSON.parse(await fs.readFile(file, 'utf8'));
-
-function git(args) {
-  try {
-    return execFileSync('git', args, {
-      cwd: ROOT,
-      encoding: 'utf8',
-      stdio: ['ignore', 'pipe', 'ignore'],
-    }).trim();
-  } catch {
-    return '';
+function checkRelease({ version, date, figmaPublished, changes }) {
+  const fail = (problem) => {
+    throw new Error(`changelog.json, version ${version}: ${problem}`);
+  };
+  if (!/^\d+\.\d+\.\d+$/.test(version)) fail('not an x.y.z version');
+  for (const day of [date, figmaPublished]) {
+    if (day !== undefined && !/^\d{4}-\d{2}-\d{2}$/.test(day))
+      fail(`${day} is not a YYYY-MM-DD date`);
+  }
+  if (!Array.isArray(changes)) fail('has no list of changes');
+  for (const { type, packages, markdown } of changes) {
+    if (!CHANGE_TYPES.includes(type)) fail(`${type} is not a change type`);
+    if (typeof markdown !== 'string') fail('a change has no markdown');
+    for (const name of packages ?? fail('a change has no packages')) {
+      if (!PACKAGE_ORDER.includes(name))
+        fail(`${name} is not in CHANGELOG_PACKAGES`);
+    }
   }
 }
 
 /**
- * The release date of a version as `YYYY-MM-DD`: the commit date of its aggregated `v<version>`
- * tag, or for the versions before those tags (up to 1.0.3), of the CLI package's tag. Returns null
- * for the version being prepared, which has no tag yet. It is dated at deploy time instead, see
- * scripts/date-latest-changelog.js. Needs the tags, see `fetch-depth` in release.yml.
- * @param {string} version
+ * @param {string} file
+ * @returns {Promise<Changelog>} with every version checked
  */
-const getReleaseDate = (version) =>
-  git(['log', '-1', '--format=%cs', `refs/tags/v${version}`]) ||
-  git([
-    'log',
-    '-1',
-    '--format=%cs',
-    `refs/tags/@digdir/designsystemet@${version}`,
-  ]) ||
-  null;
+async function readChangelog(file) {
+  /** @type {Changelog} */
+  const changelog = JSON.parse(await fs.readFile(file, 'utf8'));
+  changelog.releases.forEach(checkRelease);
+  return changelog;
+}
 
 /**
- * Adds the dates that are missing: the release date, and the date the Figma file was published.
- * The Figma file is published by hand after the release, so that date is taken from the Figma
- * changelogs on every run.
+ * Adds the dates that are missing: the release date (see changelog-dates.js), and the date the
+ * Figma file was published. The Figma file is published by hand after the release, so that date
+ * is looked for in the Figma changelogs on every run. A date that is already there is kept.
  * @param {Release[]} releases newest first
- * @param {Map<string, string>} figmaPublished version → date
+ * @param {Map<string, string>} figmaPublished version → date, from the Figma changelogs
  * @returns {Release[]}
  */
 function addDates(releases, figmaPublished) {
-  return releases.map(({ version, date, figmaPublished: _, ...rest }) => {
-    const released = date ?? getReleaseDate(version) ?? undefined;
-    const published = figmaPublished.get(version);
-    // In this order in changelog.json
+  return addReleaseDates(releases).map((release) => {
+    const published =
+      release.figmaPublished ?? figmaPublished.get(release.version);
+    if (!published || release.figmaPublished) return release;
+    // After the version and its date in changelog.json
+    const { version, date, ...rest } = release;
     return {
       version,
-      ...(released && { date: released }),
-      ...(published && { figmaPublished: published }),
+      ...(date && { date }),
+      figmaPublished: published,
       ...rest,
     };
   });
@@ -480,8 +483,15 @@ async function main() {
       all: { type: 'boolean' },
       release: { type: 'string' },
       file: { type: 'string' },
+      check: { type: 'boolean' },
     },
   });
+
+  if (values.check) {
+    const { releases } = await readChangelog(CHANGELOG_JSON);
+    console.log(`changelog.json: ${releases.length} version(s) checked.`);
+    return;
+  }
 
   if (values.release) {
     const file = values.file ? path.resolve(values.file) : CHANGELOG_JSON;

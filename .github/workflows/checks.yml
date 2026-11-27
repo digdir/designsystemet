@@ -6,6 +6,8 @@ on:
       - "packages/**"
       - "apps/**"
       - "figma/**"
+      - "changelog.json"
+      - "scripts/**"
       - "biome.jsonc"
       # Dependency updates can break the build and types without touching any package files
       - "package.json"
@@ -28,5 +30,8 @@ jobs:
         run: pnpm build
       - name: Types
         run: pnpm types
+      # It can be edited by hand, e.g. in the release PR
+      - name: Check changelog.json
+        run: node scripts/group-changelogs.js --check
       - name: Biome CI
         run: pnpm biome ci .
