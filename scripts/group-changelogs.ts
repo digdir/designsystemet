@@ -520,7 +520,10 @@ async function main() {
     },
   });
 
-  // For `--check` and `--release`. The versions are always written to changelog.json.
+  // For `--check` and `--release`. The versions are always written to changelog.json, so it
+  // fails with the other modes, where it would be taken for the file that is written.
+  if (values.file && !values.check && !values.release)
+    throw new Error('--file is only for --check and --release');
   const file = values.file ? path.resolve(values.file) : CHANGELOG_JSON;
 
   if (values.check) {
