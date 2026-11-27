@@ -453,6 +453,8 @@ function checkRelease(release) {
   if (notes !== undefined && !isText(notes)) fail('notes is not text');
   if (!Array.isArray(changes)) fail('has no list of changes');
   for (const change of changes) {
+    if (!change || typeof change !== 'object')
+      fail('a change is not an object');
     const { type, packages, markdown, thanks } = change;
     checkKeys(change, CHANGE_KEYS);
     if (!CHANGE_TYPES.includes(type)) fail(`${type} is not a change type`);
@@ -468,14 +470,18 @@ function checkRelease(release) {
 }
 
 /**
- * @param {string} file
- * @returns {Promise<Changelog>} with every version checked
+ * Checks every version, and that each is there once. Both what is read and what is written go
+ * through here, so the file can't be written in a way it is not read back.
+ * @param {Changelog} changelog
+ * @returns {Changelog} as it was given
  */
-async function readChangelog(file) {
-  /** @type {Changelog} */
-  const changelog = JSON.parse(await fs.readFile(file, 'utf8'));
+function checkChangelog(changelog) {
+  if (!Array.isArray(changelog?.releases))
+    throw new Error('changelog.json has no list of releases');
   const versions = new Set();
   for (const release of changelog.releases) {
+    if (!release || typeof release !== 'object')
+      throw new Error('changelog.json has a release that is not an object');
     checkRelease(release);
     if (versions.has(release.version))
       throw new Error(`changelog.json has version ${release.version} twice`);
@@ -485,9 +491,17 @@ async function readChangelog(file) {
 }
 
 /**
+ * @param {string} file
+ * @returns {Promise<Changelog>} checked
+ */
+const readChangelog = async (file) =>
+  checkChangelog(JSON.parse(await fs.readFile(file, 'utf8')));
+
+/**
  * Fails when a package that is versioned with the others is not in CHANGELOG_PACKAGES. It gets a
  * changelog at its first release, which this script then fails on (see packageOrder), so it is
- * found here, in the pull request that adds the package.
+ * found here, in the pull request that adds the package. Changesets leaves out the packages in
+ * its `ignore` list and the ones without a version, so they get no changelog.
  */
 async function checkPackages() {
   const { ignore } = JSON.parse(
@@ -496,10 +510,10 @@ async function checkPackages() {
   for await (const file of fs.glob('{packages,figma,apps}/*/package.json', {
     cwd: ROOT,
   })) {
-    const { name } = JSON.parse(
+    const { name, version } = JSON.parse(
       await fs.readFile(path.join(ROOT, file), 'utf8'),
     );
-    if (!ignore.includes(name)) packageOrder(name);
+    if (version && !ignore.includes(name)) packageOrder(name);
   }
 }
 
@@ -576,8 +590,8 @@ async function main() {
       figmaPublished.set(entry.version, entry.figmaPublished);
   }
 
-  /** @type {Changelog} */
-  const changelog = {
+  // Checked before it is written, e.g. for a date in a Figma changelog that does not exist
+  const changelog = checkChangelog({
     releases: addDates(
       [...releases.values()].sort((a, b) =>
         compareVersions(b.version, a.version),
@@ -586,7 +600,7 @@ async function main() {
       // Every version is rebuilt without its date, so they must all be found again
       { required: Boolean(values.all) },
     ),
-  };
+  });
   await fs.writeFile(
     CHANGELOG_JSON,
     `${JSON.stringify(changelog, null, 2)}\n`,

@@ -7,6 +7,8 @@ on:
       - "apps/**"
       - "figma/**"
       - "changelog.json"
+      # The changelog check reads which packages are not versioned from it
+      - ".changeset/config.json"
       - "scripts/**"
       - "biome.jsonc"
       # Dependency updates can break the build and types without touching any package files
