@@ -16,7 +16,7 @@
  *     --file <path>                                      reads that changelog.json instead, e.g. from the
  *                                                        release PR's branch
  *   node scripts/group-changelogs.js --check             only checks changelog.json, e.g. after it was
- *                                                        edited by hand
+ *                                                        edited by hand, and that every package is listed
  *
  * Versions already in changelog.json are kept as they are, so they can be edited by hand, e.g. to
  * merge two entries that describe the same change for different readers, or to write notes about
@@ -64,7 +64,7 @@ const packageOrder = (name) => {
   const index = PACKAGE_ORDER.indexOf(name);
   if (index === -1)
     throw new Error(
-      `${name} has a changelog, but is not in CHANGELOG_PACKAGES in scripts/changelog-packages.ts`,
+      `${name} is not in CHANGELOG_PACKAGES in scripts/changelog-packages.ts`,
     );
   return index;
 };
@@ -416,26 +416,51 @@ function formatRelease(release) {
   return toMarkdown(nodes);
 }
 
+/** A `YYYY-MM-DD` date that exists, so not e.g. 2026-13-40 */
+const isDate = (day) =>
+  typeof day === 'string' &&
+  /^\d{4}-\d{2}-\d{2}$/.test(day) &&
+  !Number.isNaN(Date.parse(day)) &&
+  new Date(day).toISOString().startsWith(day);
+
+const RELEASE_KEYS = ['version', 'date', 'figmaPublished', 'notes', 'changes'];
+const CHANGE_KEYS = ['type', 'packages', 'markdown', 'thanks'];
+
 /**
  * changelog.json can be edited by hand, so each version is checked when it is read. A mistake
  * fails here, before the release, instead of leaving something out of the GitHub release or the
  * changelog page on www, which show the versions as they are.
  * @param {Release} release
  */
-function checkRelease({ version, date, figmaPublished, changes }) {
+function checkRelease(release) {
+  const { version, date, figmaPublished, notes, changes } = release;
   const fail = (problem) => {
     throw new Error(`changelog.json, version ${version}: ${problem}`);
   };
+  const isText = (value) => typeof value === 'string' && value.trim() !== '';
+  // e.g. `note` for `notes`, which would be left out without a word
+  const checkKeys = (object, keys) => {
+    for (const key of Object.keys(object))
+      if (!keys.includes(key)) fail(`${key} is not one of ${keys.join(', ')}`);
+  };
+
   if (!/^\d+\.\d+\.\d+$/.test(version)) fail('not an x.y.z version');
+  checkKeys(release, RELEASE_KEYS);
   for (const day of [date, figmaPublished]) {
-    if (day !== undefined && !/^\d{4}-\d{2}-\d{2}$/.test(day))
+    if (day !== undefined && !isDate(day))
       fail(`${day} is not a YYYY-MM-DD date`);
   }
+  if (notes !== undefined && !isText(notes)) fail('notes is not text');
   if (!Array.isArray(changes)) fail('has no list of changes');
-  for (const { type, packages, markdown } of changes) {
+  for (const change of changes) {
+    const { type, packages, markdown, thanks } = change;
+    checkKeys(change, CHANGE_KEYS);
     if (!CHANGE_TYPES.includes(type)) fail(`${type} is not a change type`);
-    if (typeof markdown !== 'string') fail('a change has no markdown');
-    for (const name of packages ?? fail('a change has no packages')) {
+    if (!isText(markdown)) fail('a change has no markdown');
+    if (thanks !== undefined && !isText(thanks)) fail('thanks is not text');
+    if (!Array.isArray(packages) || packages.length === 0)
+      fail('a change has no packages');
+    for (const name of packages) {
       if (!PACKAGE_ORDER.includes(name))
         fail(`${name} is not in CHANGELOG_PACKAGES`);
     }
@@ -449,8 +474,33 @@ function checkRelease({ version, date, figmaPublished, changes }) {
 async function readChangelog(file) {
   /** @type {Changelog} */
   const changelog = JSON.parse(await fs.readFile(file, 'utf8'));
-  changelog.releases.forEach(checkRelease);
+  const versions = new Set();
+  for (const release of changelog.releases) {
+    checkRelease(release);
+    if (versions.has(release.version))
+      throw new Error(`changelog.json has version ${release.version} twice`);
+    versions.add(release.version);
+  }
   return changelog;
+}
+
+/**
+ * Fails when a package that is versioned with the others is not in CHANGELOG_PACKAGES. It gets a
+ * changelog at its first release, which this script then fails on (see packageOrder), so it is
+ * found here, in the pull request that adds the package.
+ */
+async function checkPackages() {
+  const { ignore } = JSON.parse(
+    await fs.readFile(path.join(ROOT, '.changeset/config.json'), 'utf8'),
+  );
+  for await (const file of fs.glob('{packages,figma,apps}/*/package.json', {
+    cwd: ROOT,
+  })) {
+    const { name } = JSON.parse(
+      await fs.readFile(path.join(ROOT, file), 'utf8'),
+    );
+    if (!ignore.includes(name)) packageOrder(name);
+  }
 }
 
 /**
@@ -459,10 +509,11 @@ async function readChangelog(file) {
  * is looked for in the Figma changelogs on every run. A date that is already there is kept.
  * @param {Release[]} releases newest first
  * @param {Map<string, string>} figmaPublished version → date, from the Figma changelogs
+ * @param {{ required?: boolean }} options see addReleaseDates
  * @returns {Release[]}
  */
-function addDates(releases, figmaPublished) {
-  return addReleaseDates(releases).map((release) => {
+function addDates(releases, figmaPublished, options) {
+  return addReleaseDates(releases, options).map((release) => {
     const published =
       release.figmaPublished ?? figmaPublished.get(release.version);
     if (!published || release.figmaPublished) return release;
@@ -489,6 +540,7 @@ async function main() {
 
   if (values.check) {
     const { releases } = await readChangelog(CHANGELOG_JSON);
+    await checkPackages();
     console.log(`changelog.json: ${releases.length} version(s) checked.`);
     return;
   }
@@ -531,6 +583,8 @@ async function main() {
         compareVersions(b.version, a.version),
       ),
       figmaPublished,
+      // Every version is rebuilt without its date, so they must all be found again
+      { required: Boolean(values.all) },
     ),
   };
   await fs.writeFile(

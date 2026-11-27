@@ -22,7 +22,8 @@ const file = 'changelog.json';
 async function main() {
   /** @type {import('./group-changelogs.js').Changelog} */
   const changelog = JSON.parse(await fs.readFile(file, 'utf8'));
-  const releases = addReleaseDates(changelog.releases);
+  // Fails when the releases can't be read, so a deploy does not show a version without its date
+  const releases = addReleaseDates(changelog.releases, { required: true });
   const dated = releases.filter(
     (release, i) => release !== changelog.releases[i],
   );

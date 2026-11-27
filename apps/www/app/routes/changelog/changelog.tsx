@@ -204,8 +204,14 @@ function Release({
           ))}
         </Changes>
       ))}
-      {hasChanges ? null : (
-        <Paragraph lang={lang}>{t('changelog.no-changes')}</Paragraph>
+      {groups.length > 0 ? null : (
+        <Paragraph lang={lang}>
+          {t(
+            hasChanges
+              ? 'changelog.no-changes-in-packages'
+              : 'changelog.no-changes',
+          )}
+        </Paragraph>
       )}
     </section>
   );

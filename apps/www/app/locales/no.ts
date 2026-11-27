@@ -100,6 +100,7 @@ export default {
     released: 'Utgitt',
     'figma-published': 'Publisert i Figma',
     'no-changes': 'Ingen endringer i denne versjonen.',
+    'no-changes-in-packages': 'Ingen endringer i de valgte pakkene.',
     'packages-label': 'Pakker:',
     pagination: 'Sider i endringsloggen',
     'previous-page': 'Forrige side',

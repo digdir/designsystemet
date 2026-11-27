@@ -101,6 +101,7 @@ export default {
     released: 'Released',
     'figma-published': 'Published in Figma',
     'no-changes': 'No changes in this version.',
+    'no-changes-in-packages': 'No changes in the selected packages.',
     'packages-label': 'Packages:',
     pagination: 'Changelog pages',
     'previous-page': 'Previous page',

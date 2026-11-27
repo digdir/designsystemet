@@ -159,9 +159,9 @@ export async function getChangelogPage(
         /* Notes are about the whole release, not one package, and are not searched, so they are
          * left out while filtering */
         notes: isFiltered ? null : release.notes,
-        /* Of the changes that are shown, so a version kept for its Figma publish date says it has
-         * no changes in the selected packages */
-        hasChanges: changes.length > 0,
+        /* Of the version, also when filtering leaves none of them, as for a version that is kept
+         * for its Figma publish date */
+        hasChanges: release.changes.length > 0,
         groups: (Object.keys(CHANGE_TYPES) as ChangeType[])
           .map((type) => ({
             type,
