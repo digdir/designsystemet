@@ -128,10 +128,9 @@ export async function getChangelogPage(
   indexed ??= Promise.all(releases.map(index));
   const all = await indexed;
 
-  const requestedVersion = searchParams.get('version') ?? '';
-  const version = all.some((release) => release.version === requestedVersion)
-    ? requestedVersion
-    : '';
+  // A version that does not exist gives no results, like any other filter without matches, so a
+  // link to it does not show every version as if it was found
+  const version = searchParams.get('version') ?? '';
   // No selected packages means no filter: changes in all packages are shown
   const packages = CHANGELOG_PACKAGES.map(({ id }) => id).filter((id) =>
     searchParams.getAll('package').includes(id),

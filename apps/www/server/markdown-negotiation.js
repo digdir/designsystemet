@@ -388,7 +388,13 @@ export function markdownNegotiation(req, res, next) {
         .join('\n');
 
       const fullMarkdown = `${frontmatter}\n\n${markdown}`;
-      if (isCached(canonicalUrl) && res.statusCode === 200) {
+      // Not the answer to a HEAD request, which has no HTML to make the Markdown from
+      if (
+        isCached(canonicalUrl) &&
+        req.method === 'GET' &&
+        res.statusCode === 200 &&
+        chunks.length > 0
+      ) {
         cache.set(canonicalUrl, fullMarkdown);
       }
 
