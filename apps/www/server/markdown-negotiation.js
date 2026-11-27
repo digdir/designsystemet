@@ -255,6 +255,19 @@ const isCached = (url) =>
   process.env.NODE_ENV !== 'development' &&
   /^\/(?:no|en)\/changelog$/.test(url);
 
+/**
+ * Express middleware that answers with the Markdown that was kept, instead of rendering the page
+ * again. Used right before React Router, after markdownNegotiation and the middleware that logs
+ * and sets headers, so the answer is like the first one.
+ */
+export function cachedMarkdown(req, res, next) {
+  const cached =
+    req.headers.accept === 'text/markdown' ? cache.get(req.url) : undefined;
+  if (cached === undefined) return next();
+  setMarkdownHeaders(req, res, cached);
+  res.end(req.method === 'HEAD' ? undefined : cached, 'utf-8');
+}
+
 /** The headers of a Markdown response, in place of the ones of the HTML it was made from */
 function setMarkdownHeaders(req, res, markdown) {
   res.removeHeader('content-length');
@@ -302,12 +315,6 @@ export function markdownNegotiation(req, res, next) {
     req.accepts(['html', 'text/markdown']) !== 'text/markdown'
   ) {
     return next();
-  }
-
-  const cached = cache.get(canonicalUrl);
-  if (cached !== undefined) {
-    setMarkdownHeaders(req, res, cached);
-    return res.end(req.method === 'HEAD' ? undefined : cached, 'utf-8');
   }
 
   req.headers.accept = 'text/markdown';

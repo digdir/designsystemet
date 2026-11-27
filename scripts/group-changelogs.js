@@ -520,7 +520,9 @@ async function checkPackages() {
 /**
  * Adds the dates that are missing: the release date (see changelog-dates.js), and the date the
  * Figma file was published. The Figma file is published by hand after the release, so that date
- * is looked for in the Figma changelogs on every run. A date that is already there is kept.
+ * is taken from the Figma changelogs on every run. They are where it is written (see
+ * figma/README.md), so a date that is corrected there is corrected here. A date that is only in
+ * changelog.json is kept.
  * @param {Release[]} releases newest first
  * @param {Map<string, string>} figmaPublished version → date, from the Figma changelogs
  * @param {{ required?: boolean }} options see addReleaseDates
@@ -528,11 +530,10 @@ async function checkPackages() {
  */
 function addDates(releases, figmaPublished, options) {
   return addReleaseDates(releases, options).map((release) => {
-    const published =
-      release.figmaPublished ?? figmaPublished.get(release.version);
-    if (!published || release.figmaPublished) return release;
+    const published = figmaPublished.get(release.version);
+    if (!published || published === release.figmaPublished) return release;
     // After the version and its date in changelog.json
-    const { version, date, ...rest } = release;
+    const { version, date, figmaPublished: _, ...rest } = release;
     return {
       version,
       ...(date && { date }),

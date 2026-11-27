@@ -4,7 +4,10 @@ import compression from 'compression';
 import express from 'express';
 //import rateLimit from 'express-rate-limit';
 import morgan from 'morgan';
-import { markdownNegotiation } from './server/markdown-negotiation.js';
+import {
+  cachedMarkdown,
+  markdownNegotiation,
+} from './server/markdown-negotiation.js';
 import { securityHeaders, ssrCacheControl } from './server/security-headers.js';
 
 // Short-circuit the type-checking of the built output.
@@ -111,6 +114,7 @@ if (DEVELOPMENT) {
   // RR v8 emits the server build (not the bundled `server/app.ts`) at
   // BUILD_PATH, so drive the request handler from it directly.
   app.use(ssrCacheControl);
+  app.use(cachedMarkdown);
   app.use(
     createRequestHandler({
       build: () => import(BUILD_PATH),
