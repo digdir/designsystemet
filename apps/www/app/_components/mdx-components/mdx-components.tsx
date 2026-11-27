@@ -191,7 +191,7 @@ const Story = ({
   story,
   language = 'html',
   ...rest
-}: Omit<LiveComponentProps, 'html'>) => {
+}: Omit<LiveComponentProps, 'html' | 'name'>) => {
   const { stories } = useLoaderData() as {
     stories?: RenderedStory[] | null;
   };
@@ -201,7 +201,8 @@ const Story = ({
   if (!foundStory) return <Alert lang='en'>Story not found: {story}</Alert>;
   return (
     <LiveComponent
-      story={`${foundStory.code}\n\nrender(<${foundStory.name} />)`}
+      story={foundStory.code}
+      name={foundStory.name}
       html={getStoryHtml(foundStory)}
       language={language}
       {...rest}

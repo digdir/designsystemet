@@ -256,14 +256,13 @@ export default {
     'pause-video': 'Pause video',
   },
   'live-component': {
-    activateA: 'Press',
-    activateB: 'Enter',
-    activateC: 'to start editing',
+    'edit-code': 'Edit React code',
+    code: 'Code',
     'show-code': 'Show code',
-    'hide-code': 'Hide code',
     'invert-color-scheme': 'invert color scheme',
-    language: 'Language',
+    language: 'Code language',
     copy: 'Copy',
+    copied: 'Copied',
     reset: 'Reset',
   },
   toc: {

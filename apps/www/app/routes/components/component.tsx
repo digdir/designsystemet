@@ -286,7 +286,8 @@ export default function Components({
           stories.map((story) => (
             <LiveComponent
               key={story.name}
-              story={`${story.code.trim()}\nrender(<${story.name} />)`}
+              story={story.code}
+              name={story.name}
               html={getStoryHtml(story)}
             />
           ))

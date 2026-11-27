@@ -34,8 +34,10 @@
     }
   }
 
-  & .live-preview-error {
+  & .live-preview-status {
     grid-column: 1 / -1;
+  }
+  & .live-preview-error {
     margin: var(--ds-size-4);
   }
 
@@ -80,58 +82,22 @@
     height: fit-content;
   }
 }
-.editorWrapper {
-  position: relative;
+.editor {
   grid-column: 1 / -1;
-}
-.activate-editor {
-  position: absolute;
-  top: 16px;
-  left: 50%;
-  pointer-events: none;
-  transform: translateX(-50%);
-  font-size: var(--ds-font-size-2);
-  padding: var(--ds-size-2) var(--ds-size-3);
-  border-radius: var(--ds-border-radius-md);
-  background-color: var(--ds-color-neutral-surface-default);
-  opacity: 0;
-  &:focus-visible {
-    opacity: 1;
-  }
-
-  kbd {
-    font-family: ui-monospace, Menlo, Monaco, 'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro', 'Droid Sans Mono', 'Courier New', monospace;
-    background-color: var(--ds-color-neutral-surface-tinted);
-    padding: var(--ds-size-1);
-    border-radius: inherit;
-    border: solid 1px var(--ds-color-neutral-border-subtle);
-    position: relative;
-    bottom: 2px;
-    box-shadow: 0.5px 1px 0 0 var(--ds-color-neutral-border-strong);
-  }
-}
-.live-editor:hover {
-  outline: 2px solid var(--ds-color-neutral-border-subtle);
-}
-.editor,
-.htmlEditor {
+  margin: 0;
   border-top: 1px solid var(--ds-color-neutral-border-subtle);
-  font-family: monospace;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: var(--_border-radius);
-  border-bottom-left-radius: var(--_border-radius);
-  outline-offset: -1px;
-  &:focus-within {
-    outline: 2px solid var(--ds-color-neutral-border-default);
-  }
+  border-radius: 0 0 var(--_border-radius) var(--_border-radius);
 }
 
-.htmlEditor {
+/* Shared by the highlighted code and the textarea on top of it, so the two line up exactly */
+.code {
   margin: 0;
   padding: var(--ds-size-5);
+  font-family: monospace;
   font-size: min(0.8em, 14px);
   line-height: 1.5;
+  letter-spacing: normal;
+  tab-size: 2;
   white-space: pre-wrap;
   overflow-wrap: anywhere;
 
@@ -140,23 +106,46 @@
   }
 }
 
-.editor {
-  background-color: var(--ds-color-neutral-background-default);
+.liveEditor {
+  display: grid;
+  position: relative;
 
-  & > pre {
-    background-color: transparent !important;
-    font-size: min(0.8em, 14px);
-    padding: var(--ds-size-5) !important;
-    white-space: pre-wrap;
-    border-bottom-left-radius: var(--_border-radius);
-    border-bottom-right-radius: var(--_border-radius);
-    &:global(.language-html) [class~='plain'] {
-      color: var(--ds-color-neutral-text-default);
-    }
+  &[hidden] {
+    display: none;
   }
-
-  & [class~='plain-text'] {
-    color: var(--ds-color-neutral-text-default);
+  /* Hints that the code can be edited. Drawn on top of the borders that are already around the
+     code (ours above it, the panel's on the other sides), so they change colour instead of doubling. */
+  &:hover::after {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border: 1px solid var(--ds-color-neutral-border-default);
+    border-radius: inherit;
+    pointer-events: none;
+  }
+  > * {
+    grid-area: 1 / 1;
+    min-width: 0;
+  }
+  pre {
+    border-radius: 0 0 var(--_border-radius) var(--_border-radius);
+  }
+  textarea {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    border-radius: inherit;
+    resize: none;
+    overflow: hidden;
+    background: transparent;
+    /* Only the caret and the selection show; the colours come from the code underneath */
+    color: transparent;
+    caret-color: var(--ds-color-neutral-text-default);
+    &::selection {
+      color: transparent;
+      background-color: color-mix(in srgb, Highlight 35%, transparent);
+    }
   }
 }
 
@@ -169,7 +158,7 @@
   z-index: 1;
   --dsc-button-padding: var(--ds-size-2);
 }
-.resetText {
+.actionText {
   @media screen and (max-width: 380px) {
     display: none;
   }
@@ -182,9 +171,6 @@
   margin: 0;
   margin-left: var(--ds-size-2);
   align-self: center;
-  @media screen and (max-width: 480px) {
-    display: none;
-  }
 }
 .stack {
   display: grid;
@@ -208,8 +194,4 @@
       }
     }
   }
-}
-
-.hidden {
-  display: none;
 }

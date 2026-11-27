@@ -467,9 +467,6 @@ importers:
       node-html-parser:
         specifier: ^9.0.7
         version: 9.0.7
-      prism-react-renderer:
-        specifier: 2.4.1
-        version: 2.4.1(react@19.3.1)
       react:
         specifier: 19.3.1
         version: 19.3.1
@@ -486,8 +483,8 @@ importers:
         specifier: 17.1.13
         version: 17.1.13(i18next@26.7.2(typescript@6.0.3))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(typescript@6.0.3)
       react-live:
-        specifier: 4.1.8
-        version: 4.1.8(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
+        specifier: 5.0.1
+        version: 5.0.1(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
       react-router:
         specifier: 8.5.2
         version: 8.5.2(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
@@ -5119,9 +5116,8 @@ packages:
   react-is@17.0.2:
     resolution: {integrity: sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==}
 
-  react-live@4.1.8:
-    resolution: {integrity: sha512-B2SgNqwPuS2ekqj4lcxi5TibEcjWkdVyYykBEUBshPAPDQ527x2zPEZg560n8egNtAjUpwXFQm7pcXV65aAYmg==}
-    engines: {node: '>= 0.12.0', npm: '>= 2.0.0'}
+  react-live@5.0.1:
+    resolution: {integrity: sha512-DWx3NEsTLClPbluciIopnaaq+wlcKE5nV3oyIuipSnfYmU4JfGdPDFrhpp75bFCbMMzXzRlKMsbLk0aT7tYJ5Q==}
     peerDependencies:
       react: '>=18.0.0'
       react-dom: '>=18.0.0'
@@ -10178,7 +10174,7 @@ snapshots:
 
   react-is@17.0.2: {}
 
-  react-live@4.1.8(react-dom@19.3.1(react@19.3.1))(react@19.3.1):
+  react-live@5.0.1(react-dom@19.3.1(react@19.3.1))(react@19.3.1):
     dependencies:
       prism-react-renderer: 2.4.1(react@19.3.1)
       react: 19.3.1
