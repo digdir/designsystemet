@@ -87,4 +87,31 @@ describe('readonly behavior', () => {
 
     expect(event.defaultPrevented).toBe(true);
   });
+
+  it('stops drop events on readonly inputs and selects', () => {
+    document.body.innerHTML = `
+      <input id="input" type="text" readonly />
+      <select id="select" aria-readonly="true">
+        <option>One</option>
+      </select>
+    `;
+
+    const input = document.getElementById('input') as HTMLInputElement;
+    const select = document.getElementById('select') as HTMLSelectElement;
+
+    const inputDrop = new DragEvent('drop', {
+      bubbles: true,
+      cancelable: true,
+    });
+    input.dispatchEvent(inputDrop);
+
+    const selectDrop = new DragEvent('drop', {
+      bubbles: true,
+      cancelable: true,
+    });
+    select.dispatchEvent(selectDrop);
+
+    expect(inputDrop.defaultPrevented).toBe(true);
+    expect(selectDrop.defaultPrevented).toBe(true);
+  });
 });
