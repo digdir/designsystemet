@@ -11,7 +11,8 @@
  * runs this without installing packages, so both files only import from Node itself. Node
  * strips their types.
  *
- * Usage: node scripts/date-changelog.ts
+ * Usage: node scripts/date-changelog.ts (in the deploy, without installed packages), or with
+ * `pnpm node` to use the version of Node in package.json
  * Needs `gh` and a GH_TOKEN with read access to the repository's releases.
  */
 import { promises as fs } from 'node:fs';

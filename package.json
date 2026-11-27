@@ -37,7 +37,7 @@
     "types": "pnpm -r types",
     "types:scripts": "tsc -p scripts",
     "types:react": "pnpm --filter @digdir/designsystemet-react types",
-    "version-packages": "changeset version && node scripts/group-changelogs.ts && pnpm build:types && pnpm build:cli && node scripts/sync-cli-schema.js && pnpm update:theme && git add . && (git commit -m \"group changelog, sync schema and tokens\" || true)",
+    "version-packages": "changeset version && pnpm node scripts/group-changelogs.ts && pnpm build:types && pnpm build:cli && pnpm node scripts/sync-cli-schema.js && pnpm update:theme && git add . && (git commit -m \"group changelog, sync schema and tokens\" || true)",
     "publish-packages": "pnpm build && changeset publish",
     "chromatic": "pnpm --filter @web/storybook chromatic",
     "update:theme": "pnpm update:theme:default && pnpm update:theme:digdir",

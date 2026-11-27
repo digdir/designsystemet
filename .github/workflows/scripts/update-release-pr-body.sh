@@ -24,7 +24,7 @@ version=$(git show FETCH_HEAD:packages/cli/package.json | jq -r .version) ||
 # Exits with 2 when the version is not there. Anything else, like a changelog.json that can't be
 # read, fails this step, so it is seen.
 status=0
-node scripts/group-changelogs.ts --release "$version" --file release-changelog.json > release-notes.md || status=$?
+pnpm node scripts/group-changelogs.ts --release "$version" --file release-changelog.json > release-notes.md || status=$?
 [ "$status" -eq 2 ] && keep_pr "No ${version} in changelog.json on ${BRANCH}"
 [ "$status" -eq 0 ] || exit "$status"
 

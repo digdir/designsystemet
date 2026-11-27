@@ -8,16 +8,16 @@
  * list items, not lines.
  *
  * Usage:
- *   node scripts/group-changelogs.ts                     adds the versions that are missing from changelog.json
- *   node scripts/group-changelogs.ts --all               rebuilds every version
- *   node scripts/group-changelogs.ts --release <version> prints the version as markdown, for its
- *                                                        GitHub release (see create-aggregated-release.sh)
- *                                                        and the release PR (see update-release-pr-body.sh)
- *   node scripts/group-changelogs.ts --check             only checks changelog.json, e.g. after it was
- *                                                        edited by hand, and that every package is listed
- *     --file <path>                                      with --release or --check: reads that
- *                                                        changelog.json instead, e.g. from the release
- *                                                        PR's branch
+ *   pnpm node scripts/group-changelogs.ts                     adds the versions that are missing from changelog.json
+ *   pnpm node scripts/group-changelogs.ts --all               rebuilds every version
+ *   pnpm node scripts/group-changelogs.ts --release <version> prints the version as markdown, for its
+ *                                                             GitHub release (see create-aggregated-release.sh)
+ *                                                             and the release PR (see update-release-pr-body.sh)
+ *   pnpm node scripts/group-changelogs.ts --check             only checks changelog.json, e.g. after it was
+ *                                                             edited by hand, and that every package is listed
+ *     --file <path>                                           with --release or --check: reads that
+ *                                                             changelog.json instead, e.g. from the release
+ *                                                             PR's branch
  *
  * Versions already in changelog.json are kept as they are, so they can be edited by hand, e.g. to
  * merge two entries that describe the same change for different readers, or to write notes about
