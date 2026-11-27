@@ -78,3 +78,14 @@
     flex: 1 1 min(100%, 350px);
   }
 }
+
+/* Stack the boxes unless there is room for two wide boxes side by side, e.g. for tables */
+:global(.dodont-row[data-stacked]) > * {
+  flex-basis: min(100%, 480px);
+}
+
+@media (max-width: 40rem) {
+  .dodont .preview {
+    padding: var(--ds-size-4) var(--ds-size-2);
+  }
+}

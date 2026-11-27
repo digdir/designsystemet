@@ -42,6 +42,7 @@ import { useTranslation } from 'react-i18next';
 import { Link as RRLink, useLoaderData } from 'react-router';
 import { ColorInfoTable } from '~/_components/color-info-table/color-info-table';
 import { Contributors } from '~/_components/contributors/contributors';
+import { IconsWithText } from '~/_components/icons-with-text/icons-with-text';
 import { Image } from '~/_components/image/image';
 import { ResponsiveIframe } from '~/_components/responsive-iframe/responsive-iframe';
 import { getStoryHtml, type RenderedStory } from '~/_utils/story-html';
@@ -116,6 +117,7 @@ const defaultComponents = {
   Image,
   ResponsiveIframe,
   Contributors,
+  IconsWithText,
   ColorInfoTable,
   p: (props: ParagraphProps) => <Paragraph {...props} />,
   Link: MdxLink,

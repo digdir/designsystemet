@@ -48,7 +48,7 @@ export type LiveComponentProps = {
   story: string;
   /** `story` rendered to HTML */
   html: string;
-  layout?: 'row' | 'column' | 'centered' | 'block';
+  layout?: 'row' | 'column' | 'centered' | 'block' | 'page';
   language?: Language;
   defaultOpen?: boolean;
   startAsInert?: boolean /*to prevent focus on load of error-summary stories*/;

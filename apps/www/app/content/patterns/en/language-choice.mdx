@@ -1,15 +1,189 @@
 ---
 title: Language choice
-description: It should be predictable for users to find and change language.
-category: Upcoming patterns
+description: How to help users find and change language.
+category: Basic patterns
 partners: Digdir, Nav, The Norwegian Tax Administration ++
-search_terms: language selector, language choice
-date: 2026-08-10
+search_terms: language selector, language switcher, language choice, translation, flags, hreflang, lang, bokmål, nynorsk, sámi
+date: 2026-11-24
 order: 100
 ---
 
-Today, language choice is handled differently across public sector websites. Both placement and the use of icons vary. For example, language choice may be shown with flags, a globe, or be difficult to find on the front page. This makes it less predictable for users to find and change language.
+import { LanguageIcon } from '@navikt/aksel-icons';
 
-In autumn 2026, a cross-agency working group is exploring a shared pattern for language choice. Among other things, the working group is looking at placement and the use of text and icons.
+## Introduction
+Make it easy for users to find out which languages they can switch between. How the language choice should work depends, among other things, on whether all or only parts of the website are translated.
 
-Do you have experience, user testing, or other relevant findings about language choice? Please share them in the [GitHub discussion (github.com)](https://github.com/digdir/designsystemet/discussions/1682). Your input will become part of the knowledge base for this work.
+Basic advice:
+
+- Make the language choice easy to find, also for users who do not understand the language on the page. Use text together with the language icon.
+- Write the name of each language in that language, so users can recognise their own language.
+- Use information about the user's language preferences to suggest a language, but let users choose for themselves.
+- Show the available languages as links, not as buttons.
+- Make it clear which content the language choice applies to.
+
+## Design and experience
+
+### Make the language choice easy to find
+Place the language choice in the top area (`<header>`) when most of the website is translated. If space is limited on small screens, the language choice can be placed in the main menu. However, consider how important it is for your audience to find the language choice quickly. If users depend on changing language to understand the content or use the service, the language choice should be visible on small screens too.
+
+<Story story="LanguageChoiceInHeader" layout="page" />
+
+Choose a solution that suits the number of languages. If there are many languages to choose from, a dialog or a separate page may work better than a dropdown.
+
+<Story story="LanguageChoiceInDialog" />
+
+### When not all content is translated
+You do not need to wait until the whole website is translated before offering a new language. If the most important content is translated, users can benefit from it. Consider marking in the language selector if a language does not yet have full coverage.
+
+<Story story="LanguagePartlyTranslated" />
+
+Do not hide content that has not been translated. Show the content in the website's default language, but make it clear at the top of the page that it has not been translated. That way, users understand why the content is suddenly shown in a different language.
+
+<Story story="UntranslatedContent" layout="page" />
+
+### When only a limited part of the website is available in other languages
+If only a single page or service is available in other languages, and there are no plans to translate the whole website, it must be clear which content the language choice applies to. In that case, show the choice close to the content that is actually translated, not as a language choice in the header.
+
+<Story story="LanguageChoiceForPage" layout="page" />
+
+### When only one page is available in another language
+If you only have one page in another language, for example a page about your organisation in English, you do not need a language choice. Instead, link to the page from the menu or the footer (`<footer>`), with link text in the language the page is written in, for example «About us».
+
+### When some languages are especially important
+When some pages are especially important for a particular language group, make it clear, where relevant, that these pages are available in that language. For example, the front page can have a clear link to information in Ukrainian for people fleeing the war in Ukraine, so they quickly find information in a language they understand.
+
+<Story story="ImportantLanguageOnFrontPage" layout="page" />
+
+### Icons and symbols
+We recommend using an icon together with the text. It makes the content easier to scan, and users who skim the page can quickly recognise the language choice from both the text and the symbol.
+
+<IconsWithText />
+
+#### The language and translation icon
+<LanguageIcon aria-hidden fontSize="3rem" />
+
+The 文A icon is widely used for language and translation, including in established international icon libraries and on several large international websites.
+
+The icon combines the Chinese character 文 (Unicode U+6587), which is associated with writing and text, with the letter A (Unicode U+0041) from the Latin alphabet. Together, the characters are often used as a symbol for language or translation.
+
+Use the icon together with the text «Language». The icon is available in [Aksel Icons](/en/fundamentals/theme/icons), which Designsystemet uses, under the name «Language».
+
+The globe icon is also widely used for language choice. Read more about how we chose the icon in the [blog post about the language icon](/en/blog).
+
+#### Do not use flags as a symbol for language
+Flags in the language selector can cause confusion. Flags represent countries or regions, not languages. One language can be used in several countries, and one country can have several languages.
+
+Flags can be relevant when users need to choose a country or region, for example to get a country-specific version of a service. In that case, show the flag together with the name of the country or region, and make it clear what the choice applies to.
+
+<div className="dodont-row">
+  <DoDont story="DoFlagsForCountry">
+Use flags together with the country name when users need to choose a country or region. Use the language icon and language names without flags when users need to choose a language.
+  </DoDont>
+  <DoDont story="DontFlagsForLanguage">
+Do not use flags to show languages. English, Swedish and German are spoken in several countries, and Norway has several official languages.
+  </DoDont>
+</div>
+
+### Let users choose
+There are several sources you can use to suggest a language version to the user, and some are better suited than others. The best basis for deciding which language the user gets is still the user's own choice.
+
+#### Use the browser's language setting as a hint, not as the answer
+You can use the language preference from the browser to suggest an available language version. However, the setting does not always match the language the user wants to use. Make sure the language selector is easy to find and change. When users have chosen an available language themselves, respect their choice and do not override it.
+
+#### Do not choose language automatically based on location data alone
+IP addresses and other location data are poorly suited to deciding which language users prefer. Users may be travelling, using a VPN, be on a network with a shared location across countries, or be in an area where several languages are used.
+
+Location data can be relevant when the user needs a service or content adapted to a country or region, but it should not decide on its own which language the content is shown in. Let users easily override an automatic suggestion.
+
+## Language
+
+### Use a label that more people can understand
+Use an English label for the language choice, also when the page is in Norwegian, so users who do not understand Norwegian can find it. An alternative is to combine a Norwegian and an English label. That makes it easier for Norwegian-speaking users to see where they can switch between bokmål and nynorsk, and for non-Norwegian-speaking users to see where they can change language.
+
+<div className="dodont-row" data-stacked>
+  <DoDont story="DoLabel">
+Use the label «Language», «Språk/Language» or «Målform», depending on which options users have.
+  </DoDont>
+  <DoDont story="DontLabel">
+These labels make the language selector harder to find or understand.
+  </DoDont>
+</div>
+
+### Write language names in their own language
+Write the name of each language, together with the written standard where relevant, in that language, so people who speak the language recognise it.
+
+<div className="dodont-row" data-stacked>
+  <DoDont story="DoLanguageNames">
+Write the language name in that language. Show the written standard when the website is available in both bokmål and nynorsk.
+  </DoDont>
+  <DoDont story="DontLanguageNames">
+Do not translate language names, and do not show a written standard without the language name alongside other languages.
+  </DoDont>
+</div>
+
+It can also help some users if the language has an accessible name in the page's active language, so screen readers read it out, and users who hover over it with the mouse can see what the language is called.
+
+<Story story="LanguageNameTooltip" />
+
+## Code
+
+### Set the correct language on the page
+Use `lang` on the `<html>` element to set the main language of the page. For a page in Norwegian bokmål:
+
+```html
+<html lang="nb">
+```
+
+If parts of the page are in a different language, set the language on the relevant element, for example `<span lang="en">English text</span>`. This lets assistive technologies interpret and pronounce the content correctly.
+
+Use valid language codes, and make sure that the page title, metadata, accessible names and other texts used by assistive technologies are also in the correct language.
+
+### Use links to change language
+Use links to navigate between language versions of the content, also when the language options are shown in a dropdown, a dialog or another type of language selector. A button can be used to open and close the language selector itself, but the language options should be links when they lead to other pages.
+
+Use `hreflang` on the links to indicate the language of the page they point to. Also use `lang` when the link text is in a different language from the main language of the page:
+
+```html
+<a href="/en/" lang="en" hreflang="en">English</a>
+```
+
+When the same content is available in several languages, you should also specify alternative language versions with `rel="alternate"` and `hreflang` in the document's metadata, or with other methods supported by search engines.
+
+### Give each language version its own URL
+Each language version of the content should have its own stable URL. When users change language, the link should lead to the corresponding page in the selected language, if it exists.
+
+Avoid language changes that send users back to the front page or somewhere else on the website without them expecting it.
+
+<div className="dodont-row" data-stacked>
+  <DoDont story="DoLanguageUrls">
+Changing language leads to the same page in the chosen language.
+  </DoDont>
+  <DoDont story="DontLanguageUrls">
+Do not send users to the front page, and do not show different language versions at the same URL.
+  </DoDont>
+</div>
+
+## Sources and relevant information
+
+### Standards and requirements
+- [Other languages at the Language Council of Norway (in Norwegian)](https://sprakradet.no/spraklova/andre-sprak/)
+- [The Language Act § 13 on alternating between bokmål and nynorsk in publicly available documents at Lovdata (in Norwegian)](https://lovdata.no/lov/2021-05-21-42/§13)
+- [WCAG 3.1.1 Language of Page at W3C](https://www.w3.org/WAI/WCAG22/Understanding/language-of-page)
+- [WCAG 3.1.1 Language of Page at the Norwegian Authority for Universal Design of ICT (in Norwegian)](https://www.uutilsynet.no/wcag-standarden/311-sprak-pa-siden-niva/110)
+- [WCAG 3.1.2 Language of Parts at W3C](https://www.w3.org/WAI/WCAG22/Understanding/language-of-parts)
+- [WCAG 3.1.2 Language of Parts at the Norwegian Authority for Universal Design of ICT (in Norwegian)](https://www.uutilsynet.no/wcag-standarden/312-sprak-pa-deler-av-innhold-niva-aa/111)
+- [EN 301 549 v4.1.1 at ETSI (PDF)](https://www.etsi.org/deliver/etsi_en/301500_301599/301549/04.01.01_60/en_301549v040101p.pdf), 9.7 User preferences for web pages (2026). The European standard for accessibility of ICT products and services requires solutions to respect user preferences and not prevent their use.
+
+### Insight and knowledge base
+- [Icon Usability at Nielsen Norman Group (2014)](https://www.nngroup.com/articles/icon-usability/). Universally recognised icons are very rare. Most icons therefore need a text label for users to understand them.
+- [Icon Usability: When and How to Evaluate Digital Icons at Nielsen Norman Group (2024)](https://www.nngroup.com/articles/how-to-test-digital-icons/). When testing and evaluating an icon, look at recognisability, interpretation, relevance and how easy it is to find, among other things. Test the icon both in and out of context.
+
+### Basis for decisions
+- [Blog post about how we chose the language icon](/en/blog)
+- [GitHub discussion on language choice (github.com)](https://github.com/digdir/designsystemet/discussions/1682)
+
+<br/>
+
+<Card data-color='brand3' variant="tinted">
+  This pattern was developed by a cross-agency working group. Do you have experience, user testing or other relevant findings about language choice? Please share them in the [GitHub discussion on language choice (github.com)](https://github.com/digdir/designsystemet/discussions/1682).
+</Card>

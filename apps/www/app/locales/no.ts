@@ -298,6 +298,11 @@ export default {
   },
   do: 'Gjør slik',
   dont: 'Unngå dette',
+  'icons-with-text': {
+    title: 'Bruk ikoner sammen med tekst',
+    description:
+      'Vær forsiktig med å bruke ikoner alene. Det finnes få ikoner som alle forstår likt, og mange kan tolkes forskjellig uten nok kontekst. Kombiner derfor ikoner med tekst der det er mulig. Når et ikon må brukes uten synlig tekst, må det ha et beskrivende, tilgjengelig navn. Navnet må være tilgjengelig for brukere av både skjermleser, tastatur og mus.',
+  },
   contributors: 'Bidragsytere',
   editOnGithub: 'Rediger denne siden på github.com (åpnes i ny fane)',
   updated: 'Oppdatert',

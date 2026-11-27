@@ -1,0 +1,166 @@
+---
+title: Hvordan laget vi mønsteret for språkvalg
+description: Hva skal til for å lage et språkvalg som brukeren finner og forstår?
+date: 2026-12-01
+author: Digdir, Brønnøysundregistrene ++
+categories: [in-depth]
+imageSrc: /img/blog/language-selection-icon/language-icon.webp
+imageAlt: Språkikonet, et kinesisk tegn og bokstaven A.
+search_terms: ikon, språkvalg, språk, oversettelse, ikonografi, språkvelger, innsikt, undersøkelse, arbeidsgruppe
+---
+
+## Slik kom vi fram til anbefalingene for språkvalg
+Offentlige digitale tjenester skal være tilgjengelige for alle innbyggere, uansett hvilket språk de behersker. Likevel har norske nettsteder og apper løst språkvalg på vidt forskjellige måter: Noen bruker flagg, andre bruker globuser, noen skjuler språk bak hamburgermenyer, og enkelte gjetter brukerens språk basert på IP-adresse.
+
+For å skape en mer helhetlig og forutsigbar praksis ble det etablert en tverretatlig arbeidsgruppe med deltakere fra blant annet Digdir, Nav, Skatteetaten, Brønnøysundregistrene og NRK. Målet var å etablere et felles mønster i Designsystemet basert på et solid kunnskapsgrunnlag – ikke personlige preferanser eller vaner.
+
+Resultatet av dette arbeidet er mønsteret for språkvalg. I denne artikkelen går vi i dybden på vurderingene, dilemmaene og innsikten som ligger til grunn for anbefalingene.
+
+## Språkvalg er mer enn en språkvelger
+Når vi diskuterer språkvalg, ender samtalen fort opp i detaljer om ikoner og plassering av en nedtrekksmeny i headeren. Men i praksis er språkvalg et komplekst designproblem med mange ulike scenarioer:
+
+- Alt innhold er oversatt: Brukeren kan forvente fullverdig navigasjon og innhold på alle tilbudte språk.
+- Kun utvalgt innhold er oversatt: Nettstedet har noen sentrale sider på engelsk, men resten på norsk. Hva skjer når brukeren klikker seg videre?
+- Målform vs. fremmedspråk: Tjenesten tilbys på bokmål og nynorsk etter krav i språklova, og i tillegg kanskje samisk og engelsk.
+- Særskilt målgruppeinnhold: For eksempel akutt informasjon til ukrainske flyktninger, der innholdet kun er skrevet for én bestemt gruppe og ikke finnes som en generell side på norsk.
+- Utforming og valg av ledetekst: Hvem er det som faktisk trenger å finne språkvalgene, og hvordan identifiserer de det?
+
+Disse scenarioene stiller helt ulike krav til hvordan vi presenterer og avgrenser språket for brukeren.
+
+## Vi undersøkte hvordan språkvalg faktisk løses
+Arbeidsgruppen startet med en bred kartlegging av eksisterende praksis i norske og internasjonale løsninger:
+
+- Arbeidsgruppens egne løsninger: Vi startet med å kartlegge hva arbeidsgruppens medlemsvirksomheter gjør, og brukte dette for å avdekke hva gruppen måtte diskutere i det videre arbeidet, noe av det vi så i denne delen var:
+    - Ikonbruk var ikke konsekvent likt: språkikon, globeikon, flagg, ikke-ikon varianter observeres.
+    - Navngivning av selve språkvelgere var ikke likt: noen navngir med navnet på det valgte språket, andre med "Språk" eller "Language"
+    - Plassering varierer litt, de fleste plasserte valget i heder eller hovedmeny, men noen hadde det plassert også i footer
+    - Særtilfeller med delvis oversatt innhold, egne områder i tjenesten som var laget for annet språk eller liknende
+- Bruk av ikoner i offentlige nettsteder: Vi så stor variasjon. Altinn og Nav har brukt globus sammen med «Språk/Language», Skatteetaten har brukt flagg sammen med målformnavn, mens Politiet har brukt direktelenker som «English site» i menyen eller jordklode på enkeltsider.
+- Ledetekst og ikoner i apper i Norge: Populære apper som Vipps og Android bruker ofte ren tekst («Språk: Norsk bokmål»), mens apper som Entur og Reddit bruker språkikonet (文A). BankID, Ruter og Vy bruker ulike varianter av globus.
+- Store internasjonale tjenester: Wikipedia landet etter egne brukertester på språkikonet (文A) plassert ved artikkelen. YouTube bruker 文A for visningsspråk og globus for lokasjon/land, mens Google i dag veksler mellom globus og tekstavhengige løsninger.
+- Det ble også observert ulike varianter av måter å presentere språk på, i form av uliek plasseringer og ulik fremgångsmåte for å vise at de ulike språkvalgene kunne ha ulik dekning av oversettelse.
+- Ikonbiblioteker: Både Aksel, Material 3, Font Awesome og Lucide har symbolene «Language» (文A) og «Globe». Felles for bibliotekene er at 文A primært tagges med språk, tekst og oversettelse, mens globus tagges bredt med verden, nettverk, internett, geografi og lokasjon.
+
+## Hvilket ikon bør bety språk
+Et av de mest diskuterte spørsmålene i arbeidsgruppen var valg av ikon. Hvilket symbol gir best støtte til en tekstlig ledetekst, og fungerer best dersom det unntaksvis må stå alene?
+
+### Kandidatene
+Vi vurderte to hovedkandidater:
+- Språkikonet (文A): Sammensatt av det kinesiske tegnet 文 (knyttet til tekst/litteratur) og bokstaven A fra det latinske alfabetet.
+- Globeikonet: En sirkel med stiliserte lengde- og breddegrader.
+
+Tidlig i prosessen valgte vi å utelukke:
+- Jordklode med landmasser (kart): Kart gir sterke geografiske assosiasjoner og fungerte svært dårlig i tester for språkbytte.
+- Flagg: Flagg representerer nasjonalstater og geografiske områder, ikke språk (mer om dette lenger ned).
+- Komplekse varianter av språkikonet: Varianter med snakkebobler, tannhjul eller oversettelsespiler tilfører unødig visuell støy.
+
+### Kriteriene
+Vi definerte åtte kriterier for å vurdere kandidatene:
+
+1. Semantisk samsvar: Hvor direkte henger symbolet sammen med konseptet «språk»?
+2. Brukerforventning: Hva forventer brukerne at skal skje når ikonet aktiveres?
+3. Tvetydighet: Hvor mange andre, konkurrerende betydninger har ikonet?
+4. Sameksistens med nærliggende konsepter: Kan ikonet fungere i samme grensesnitt som valg for land/region, oversettelse eller internasjonale tjenester?
+5. Visuell egnethet: Hvor lesbart og gjenkjennbart er ikonet i små størrelser?
+6. Språklig og kulturell robusthet: Er ikonet uavhengig av ett bestemt land eller en enkelt kultur?
+7. Samspill med ledetekst: Hvor godt forsterker ikonet en tekst som «Language»?
+8. Egnethet uten ledetekst: Hvordan fungerer ikonet på trange flater der tekst unntaksvis mangler?
+
+I tillegg til kriteriene ble omfang i bruk tatt med i diskusjoner, men ikke brukt som et selvstendig kriterie. Dette for å unngå å legge for mye vekt på etablert bruk på en måte som betegnet det som utbredt sannhet. Arbeidsgruppen har likevel på flere av kriteriene diskutert utbredelse og gitt litt vekt på det der det er naturlig som del av kriteriet. 
+
+### Metodiske begrensninger
+Det er viktig å være åpen om begrensningene i kunnskapsgrunnlaget: Det finnes lite publisert, uavhengig og kvalitativ brukertesting av disse ikonene i en realistisk, ikke-ledende kontekst. Observasjoner viser bare hva designere har valgt historisk (ofte av vane), ikke hva som fungerer best for innbyggeren.
+
+Assosiasjonstester (både Wikimedias kjente test og en mindre test utført av NRK via Testflow) gir nyttige signaler om hva folk tenker når de konfronteres direkte med symbolene, men de måler ikke spontan atferd i en faktisk oppgaveløsning. Beslutningen vår bygger derfor på en helhetlig vurdering av semantikk, risiko for misforståelser og ikonenes alternative bruksområder.
+
+### Vurderingene
+Vurderingen ble gjort på en skala fra 1 (dårlig) til 3 (god):
+| Kriterium | Språkikon (文A) | Globeikon |
+| --- | :---: | :---: |
+| Semantisk samsvar | God (3) | Middels (2) |
+| Brukerforventning | Middels (2) | God (3) |
+| Tvetydighet | God (3) (få andre betydninger) | Dårlig (1) (mange konkurrerende betydninger) |
+| Sameksistens med andre valg | Middels (2) | Middels (2) |
+| Visuell egnethet | Middels (2) (flere detaljer) | God (3) (enkel geometri) |
+| Språklig og kulturell robusthet | God (3) | God (3) |
+| Samspill med ledetekst | God (3) | Middels (2) |
+| Egnethet uten ledetekst | God (3) | Middels (2) |
+| Totalscore | 21 poeng | 18 poeng |
+
+Selv da vi testet ulike modeller med høyere vekting av de tre øverste kriteriene, endte både arbeidsgruppen og uavhengige gjennomganger på samme konklusjon.
+
+#### Hvorfor språkikonet
+Hovedårsaken til at vi landet på språkikonet (文A), er lav tvetydighet og høyt semantisk samsvar.
+
+Globeikonet er i dag brukt til alt fra internett-tilkobling, VPN og nettverksinnstillinger til landvalg, internasjonale avdelinger og «community». Det er avhengig av en tydelig tekst for å bety språk.
+
+Språkikonet (文A) er derimot nesten utelukkende brukt til språk og tekstlige relasjoner. Selv om formen har flere detaljer enn en enkel sirkel, viser Wikimedias undersøkelser og våre tester at det gir færre feilaktige assosiasjoner til andre domener.
+
+#### Nærliggende konsepter: Språk VS oversettelse
+En bekymring i arbeidsgruppen var om 文A oppfattes for sterkt som maskinell oversettelse (likhet med Google Translate logoen).
+
+Selv om oversettelse og språkvalg er to ulike funksjoner, ligger de semantisk svært nær hverandre: Begge handler om å få presentert innhold på et språk du forstår. Hvis en tjeneste tilbyr både et overordnet språkbytte og automatisk maskinoversettelse på enkeltsider, bør oversettelsesfunksjonen differensieres tydelig med tekst eller et eget oversettelsessymbol. Men for det generelle valget av språk gir 文A en presis kobling til skrift og språk.
+
+I observasjoner i faktisk bruk så ser vi også at ikonet brukes oftere for å bety språkvalg og språk, sammenliknet med utbredelse i bruk for oversettelse.
+
+
+
+#### Hvorfor bruker vi ikoner i det hele tatt, ofte sammen med tekst
+Undersøkelser (for eksempel fra Nielsen Norman Group) viser at universelt forståelige ikoner nesten ikke eksisterer. Hovedregelen i mønsteret er derfor at ikoner aldri skal stå alene. Ikonet fungerer som et visuelt anker som hjelper brukere å skanne grensesnittet raskt, mens den medfølgende teksten fjerner enhver tvil om funksjonen.
+
+Vi vet også at enkelte grupper med ulike funksjonsnedsettelser har stor nytte av symbolikk og ikoner for å identifisere funksjoner, områder og annet innhold i en nettside.
+
+Vi fraråder derfor ikke bruk av ikon, men anbefaler heller varsomhet ved bruk av kun ikon uten ledetekst.
+
+## Språkvalget må kunne finnes før brukeren forstår språket
+En klassisk felle er å skrive språkvelgerens etikett på sidens standardspråk (for eksempel «Språk»). En bruker som kun snakker polsk eller engelsk, forstår ikke hva «Språk» betyr.
+
+I mønsteret anbefaler vi derfor:
+- Bruk «Language» eller «Språk/Language»: Ved å bruke det engelske ordet «Language» kjenner langt flere igjen funksjonen. For offentlige etater som skal tilby bokmål og nynorsk, er «Språk/Language» en god kombinasjon som ivaretar både nasjonale målformer og internasjonale brukere.
+- Kun målformer? Bruk «Målform»: Dersom nettstedet utelukkende tilbyr veksling mellom bokmål og nynorsk (uten fremmedspråk), er «Målform» en presis og lovmessig forankret ledetekst.
+- Bruk språkenes egne navn (autonymer/endonymer): I selve menyen skal hvert språk skrives på sitt eget språk: «English», «Norsk bokmål», «Davvisámegillii», «Polski». Unngå å oversette listen til norsk.
+
+## Språk og geografi er forskjellige ting
+En tydelig føring i mønsteret er: Ikke bruk flagg for å representere språk.
+
+Flagg representerer stater og geografiske territorier, ikke språk:
+
+Det norske flagget representerer Norge, men i Norge har vi bokmål, nynorsk, kvensk og flere samiske språk.
+Det britiske flagget representerer Storbritannia, mens engelsk snakkes som offisielt språk i over 60 land.
+Å bruke et flagg for språk tvinger fram uheldige politiske og identitetsmessige koblinger.
+
+Flagg hører utelukkende hjemme der brukeren skal velge en geografisk region, tollområde eller nasjonalitet – aldri for innholdsspråk.
+
+Jordklodeikonet ikke spesielt godt egnet til å representere språkvalg, men heller regioner, land eller liknende.
+
+## Ett språkvalg passer ikke alle nettsteder
+Offentlig sektor har store variasjoner i digital modenhet og oversettelsesressurser. Mønsteret definerer derfor retningslinjer for ulike nivåer av språktilbud, men har likevel ikke tatt for seg alle mulige detaljerte spesialtilfeller, mønsteret ville blitt alt for omfattende. Våre litt generaliserte tilfeller er derfor begrenset til:
+
+- Når ikke alt er oversatt: Ikke vent med å tilby et språk til 100 % av nettstedet er klart. Start med kjerneinformasjonen, men merk i språkvelgeren at dekningen er delvis.
+- Uoversatt innhold skal aldri skjules: Dersom en bruker navigerer inn på en side som mangler oversettelse, vis siden på standardspråket, men gi en tydelig forklaring øverst: «Denne siden finnes foreløpig kun på norsk».
+- Lokal språkvelger ved avgrenset innhold: Hvis kun én bestemt tjeneste eller søknad er oversatt, skal ikke språkvalget legges globalt i headeren. Plasser det heller lokalt på selve tjenestesiden.
+
+Mønsteret kan ikke ta høyde for alle komplekse tilfeller, men vi forsøker å lande på noe som gjør det mulig å utlede en retning for sin kontekst.
+
+## La brukeren velge
+
+Tjenester forsøker ofte å være «smarte» ved å gjette hvilket språk brukeren ønsker. Mønsteret advarer mot å stole blindt på slike signaler:
+
+Lokasjon og IP-adresse egner seg ikke til språk: En innbygger på reise i utlandet, eller en person i Norge som bruker VPN eller bedriftsnettverk med utenlandsk IP, skal ikke automatisk få et feil språk.
+Nettleserens Accept-Language-innstilling er et hint, ikke en fasit: Nettleserinnstillinger kan brukes til å foreslå et standardspråk ved første besøk, men må aldri overstyre eller låse brukeren.
+Eksplisitt valg trumfer alt: Når brukeren aktivt har valgt et språk i grensesnittet, skal dette valget lagres og respekteres på tvers av sider og besøk.
+
+
+## Hva vi landet på
+Mønsteret for språkvalg beskriver hva som anbefales, for eksmepel:
+- Språkikonet (文A) kombinert med synlig tekst («Language» eller «Språk/Language») for å identifisere språkvelgeren.
+- Språknavn på språket selv i listen over tilgjengelige valg.
+- Ingen flagg brukes ikke for å symbolisere et språk eller språkvalg
+- Tydelig avgrensning av hva språkvalget gjelder (spesielt ved delvis oversatte nettsteder).
+- Brukerens eksplisitte valg trumfer automatiske gjetninger fra IP eller nettleser.
+- Korrekt teknisk fundament: Bruk av riktige lang-attributter, hreflang på lenker og egne, stabile URL-er for hver språkversjon.
+
+## Vil du se beslutningsgrunnlaget
+Mønsteret og vurderingene er åpne for innsyn og videre debatt. I GitHub-diskusjonen har vi samlet alle rådata, observasjoner, skjermbilder og matriser fra arbeidsgruppens arbeid:
+
+👉 [Delta i diskusjonen og se hele kunnskapsgrunnlaget på GitHub](https://github.com/digdir/designsystemet/discussions/1682)
