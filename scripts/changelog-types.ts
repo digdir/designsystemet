@@ -1,9 +1,20 @@
 /**
  * The shape of changelog.json at the root of the repo. scripts/group-changelogs.js writes and
- * checks it, and the changelog page on www shows it.
+ * checks it, and the changelog page on www shows it. Node strips the types when the script
+ * imports this file.
  */
 
-export type ChangeType = 'major' | 'minor' | 'patch';
+/**
+ * The types of change, biggest first, with the headings they are listed under: the ones
+ * changesets writes in the package changelogs, which the GitHub release and www use as well.
+ */
+export const CHANGE_HEADINGS = {
+  major: 'Major Changes',
+  minor: 'Minor Changes',
+  patch: 'Patch Changes',
+} as const;
+
+export type ChangeType = keyof typeof CHANGE_HEADINGS;
 
 export type Change = {
   type: ChangeType;

@@ -1,6 +1,8 @@
 import { readdirSync, readFileSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 import { cwd } from 'node:process';
+import en from '../locales/en';
+import no from '../locales/no';
 
 export type SearchIndexItem = {
   id: string;
@@ -394,6 +396,26 @@ function indexPatterns(): SearchIndexItem[] {
 }
 
 /**
+ * The changelog is a route, not an MDX file, so it is added by hand. Listed with the
+ * fundamentals, like the Figma changelog page it replaces was.
+ */
+function indexChangelog(): SearchIndexItem[] {
+  return (['en', 'no'] as const).map((lang) => {
+    const { title, description } = { en, no }[lang].changelog;
+    return {
+      id: `changelog-${lang}`,
+      title,
+      description,
+      content: description,
+      url: `/${lang}/changelog`,
+      type: 'fundamentals',
+      lang,
+      keywords: 'changelog, endringslogg, release notes, versions, versjoner',
+    };
+  });
+}
+
+/**
  * Build the complete search index
  */
 export function buildSearchIndex(): SearchIndex {
@@ -404,6 +426,7 @@ export function buildSearchIndex(): SearchIndex {
     ...indexFundamentals(),
     ...indexBestPractices(),
     ...indexPatterns(),
+    ...indexChangelog(),
   ];
 }
 

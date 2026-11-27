@@ -10,12 +10,11 @@ import {
   type ChangelogPackage,
 } from '../../../../scripts/changelog-packages';
 
-export const CHANGE_TYPES = {
-  major: 'Major changes',
-  minor: 'Minor changes',
-  patch: 'Patch changes',
-} as const;
-export type ChangeType = keyof typeof CHANGE_TYPES;
+// The types of change and their headings are in scripts/ as well, with the shape of changelog.json
+export {
+  CHANGE_HEADINGS,
+  type ChangeType,
+} from '../../../../scripts/changelog-types';
 
 /** The packages with these ids, in their order. */
 export const changelogPackages = (ids: readonly string[]): ChangelogPackage[] =>

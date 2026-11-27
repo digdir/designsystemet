@@ -33,12 +33,13 @@ The UI kit and the plugin are published to Figma Community by hand, and always t
 
 1. Publish the UI kit and the plugin with the version in their `package.json`, which is the version their changes are listed under in their changelogs.
 
-2. Write the date you published on in [`changelog.json`](../changelog.json) at the root of the repository, as `figmaPublished` on that version, after its `date`:
+2. Write the date you published on in [`changelog.json`](../changelog.json) at the root of the repository, as `figmaPublished` on that version:
 
    ```json
    "version": "1.24.0",
-   "date": "2026-11-09",
    "figmaPublished": "2026-11-20",
    ```
+
+   Put it after `date` if the version has one. The newest version often has no `date` yet. Don't write one: it is added from the GitHub release.
 
    Commit the file. The date is checked in the pull request, and shown on the changelog page the next time the website is deployed. A version without `figmaPublished` is shown without that date.

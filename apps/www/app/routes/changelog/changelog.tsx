@@ -38,7 +38,7 @@ import {
 import { RRLink } from '~/_components/link';
 import { defaultComponents } from '~/_components/mdx-components/mdx-components';
 import {
-  CHANGE_TYPES,
+  CHANGE_HEADINGS,
   CHANGELOG_PACKAGES,
   type ChangelogPackage,
   type ChangeType,
@@ -179,6 +179,8 @@ function Release({
                   <ChangelogDate date={date} lang={lang} />
                 </span>
               ) : null}
+              {/* The dot between the dates is only drawn, so their text is kept apart by this */}
+              {date && figmaPublished ? ' ' : null}
               {figmaPublished ? (
                 <span>
                   {t('changelog.figma-published')}{' '}
@@ -198,7 +200,7 @@ function Release({
       {groups.map(({ type, changes }) => (
         <Changes key={type} type={type}>
           {changes.map(({ packages, body }, index) => (
-            <Change key={index} packages={packages}>
+            <Change key={index} packages={packages} lang={lang}>
               <Markdown tree={body} />
             </Change>
           ))}
@@ -238,7 +240,7 @@ function Changes({
     <section className={classes.changes} data-change-type={type}>
       <Heading level={3} data-size='xs' className={classes.changesHeading}>
         <Icon aria-hidden />
-        {CHANGE_TYPES[type]}
+        {CHANGE_HEADINGS[type]}
       </Heading>
       <ul>{children}</ul>
     </section>
@@ -248,9 +250,12 @@ function Changes({
 /** A change, with the packages it was released in */
 function Change({
   packages,
+  lang,
   children,
 }: {
   packages: readonly string[];
+  /** The language of the page, which the names of the packages are in */
+  lang: string;
   children?: ReactNode;
 }) {
   const { t } = useTranslation();
@@ -259,8 +264,12 @@ function Change({
   return (
     <li className={classes.change}>
       {children}
+      {/* As text, so it is also in the markdown version of the page */}
+      <p className='ds-sr-only' lang={lang}>
+        {t('changelog.packages-label')}
+      </p>
       {/* A list, so screen readers read the packages separately */}
-      <ul className={classes.tags} aria-label={t('changelog.packages-label')}>
+      <ul className={classes.tags} lang={lang}>
         {changelogPackages(packages).map((pkg) => (
           <li key={pkg.id}>
             <Tag data-color={pkg.color} data-size='sm'>

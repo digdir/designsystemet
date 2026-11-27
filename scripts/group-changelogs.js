@@ -45,6 +45,7 @@ import remarkStringify from 'remark-stringify';
 import { unified } from 'unified';
 import { addReleaseDates } from './changelog-dates.js';
 import { CHANGELOG_PACKAGES } from './changelog-packages.ts';
+import { CHANGE_HEADINGS } from './changelog-types.ts';
 
 const ROOT = process.cwd();
 const CHANGELOG_JSON = path.join(ROOT, 'changelog.json');
@@ -67,13 +68,7 @@ const packageOrder = (name) => {
 };
 
 /** @type {ChangeType[]} biggest first */
-const CHANGE_TYPES = ['major', 'minor', 'patch'];
-/** The headings changesets writes in the package changelogs */
-const CHANGE_HEADINGS = {
-  major: 'Major Changes',
-  minor: 'Minor Changes',
-  patch: 'Patch Changes',
-};
+const CHANGE_TYPES = Object.keys(CHANGE_HEADINGS);
 
 const processor = unified()
   .use(remarkParse)
@@ -440,6 +435,9 @@ function checkRelease(release) {
       fail(`${day} is not a YYYY-MM-DD date`);
   }
   if (notes !== undefined && !isText(notes)) fail('notes is not text');
+  // They are shown under the heading of the version, in the GitHub release and on www
+  if (notes && parseMarkdown(notes).children.some((n) => n.type === 'heading'))
+    fail('notes has a heading');
   if (!Array.isArray(changes)) fail('has no list of changes');
   for (const change of changes) {
     if (!change || typeof change !== 'object')

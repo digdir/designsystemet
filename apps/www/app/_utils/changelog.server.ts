@@ -10,7 +10,7 @@ import changelogJson from '../../../../changelog.json';
 // Its shape. scripts/group-changelogs.js writes and checks it, and it is shown as it is.
 import type { Release } from '../../../../scripts/changelog-types';
 import {
-  CHANGE_TYPES,
+  CHANGE_HEADINGS,
   CHANGELOG_PACKAGES,
   type ChangelogPackageId,
   type ChangeType,
@@ -91,7 +91,11 @@ export async function getChangelogPage(
   searchParams: URLSearchParams,
   { allPages = false } = {},
 ) {
-  indexed ??= Promise.all(releases.map(index));
+  // Not kept when it fails, so the next request tries again
+  indexed ??= Promise.all(releases.map(index)).catch((error) => {
+    indexed = undefined;
+    throw error;
+  });
   const all = await indexed;
 
   // A version that does not exist gives no results, like any other filter without matches, so a
@@ -150,7 +154,7 @@ export async function getChangelogPage(
         /* Of the version, also when filtering leaves none of them, as for a version that is kept
          * for its Figma publish date */
         hasChanges: release.changes.length > 0,
-        groups: (Object.keys(CHANGE_TYPES) as ChangeType[])
+        groups: (Object.keys(CHANGE_HEADINGS) as ChangeType[])
           .map((type) => ({
             type,
             changes: changes
