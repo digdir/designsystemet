@@ -125,11 +125,14 @@ function ChangelogDate({ date, lang }: { date: string; lang: string }) {
 function Release({
   release: { version, date, figmaPublished, notes, hasChanges, groups },
   selected,
+  onSelect,
   lang,
 }: {
   release: ChangelogPageRelease;
   /** Whether only this version is shown */
   selected: boolean;
+  /** Called when the link to show only this version is followed */
+  onSelect: () => void;
   lang: string;
 }) {
   const { t } = useTranslation();
@@ -160,6 +163,7 @@ function Release({
               <RRLink
                 to={{ search: new URLSearchParams({ version }).toString() }}
                 preventScrollReset
+                onClick={onSelect}
                 data-color='neutral'
               >
                 {name}
@@ -353,17 +357,19 @@ export default function Changelog({ loaderData }: Route.ComponentProps) {
   // The old changelog pages linked to versions as e.g. `#1240` for 1.24.0. Hashes are not sent to
   // the server, so this is checked once the page has hydrated.
   useEffect(() => {
-    const hash = /^#(\d+)$/.exec(window.location.hash)?.[1];
-    if (!hash) return;
-    const matches = versions.filter(
-      (version) => version.replaceAll('.', '') === hash,
-    );
-    // e.g. `#1110` is either 1.1.10 or 1.11.0
-    if (matches.length === 1) {
+    const [, digits, repeat = 0] =
+      /^#(\d+)(?:-(\d+))?$/.exec(window.location.hash) ?? [];
+    if (!digits) return;
+    // Versions with the same digits were numbered from the newest: `#1110` was 1.11.0 and
+    // `#1110-1` was 1.1.10
+    const version = versions.filter(
+      (version) => version.replaceAll('.', '') === digits,
+    )[Number(repeat)];
+    if (version) {
       // Replaced, so going back leaves the page instead of showing every version
       updateParams(
         (next) => {
-          next.set('version', matches[0]);
+          next.set('version', version);
         },
         { replace: true },
       );
@@ -523,6 +529,8 @@ export default function Changelog({ loaderData }: Route.ComponentProps) {
               key={release.version}
               release={release}
               selected={filters.version === release.version}
+              // The list becomes one version, so the reader continues from the top of it
+              onSelect={() => statusRef.current?.focus()}
               lang={lang}
             />
           ))}
