@@ -7,6 +7,8 @@ import remarkRehype from 'remark-rehype';
 import { unified } from 'unified';
 // At the root of the repo, since the GitHub releases are made from it as well
 import changelogJson from '../../../../changelog.json';
+// Its shape. scripts/group-changelogs.js writes and checks it, and it is shown as it is.
+import type { Release } from '../../../../scripts/changelog-types';
 import {
   CHANGE_TYPES,
   CHANGELOG_PACKAGES,
@@ -14,20 +16,6 @@ import {
   type ChangeType,
 } from './changelog';
 import { prettifyCodeBlocks } from './prettify-code-blocks';
-
-/** changelog.json, which scripts/group-changelogs.js writes and checks. It is shown as it is. */
-type Release = {
-  version: string;
-  date?: string;
-  figmaPublished?: string;
-  notes?: string;
-  changes: {
-    type: ChangeType;
-    packages: string[];
-    markdown: string;
-    thanks?: string;
-  }[];
-};
 
 const RELEASES_PER_PAGE = 10;
 

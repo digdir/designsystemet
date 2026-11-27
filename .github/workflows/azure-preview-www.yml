@@ -11,6 +11,7 @@ on:
       - "scripts/date-changelog.js"
       - "scripts/changelog-dates.js"
       - "scripts/changelog-packages.ts"
+      - "scripts/changelog-types.ts"
       - ".github/workflows/azure-preview-www.yml"
       - ".github/workflows/azure-deploy-www.yml"
       - ".github/workflows/preview-comment.yml"

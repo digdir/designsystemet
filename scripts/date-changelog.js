@@ -20,7 +20,7 @@ import { addReleaseDates } from './changelog-dates.js';
 const file = 'changelog.json';
 
 async function main() {
-  /** @type {import('./group-changelogs.js').Changelog} */
+  /** @type {import('./changelog-types.ts').Changelog} */
   const changelog = JSON.parse(await fs.readFile(file, 'utf8'));
   // Fails when the releases can't be read, so a deploy does not show a version without its date
   const releases = addReleaseDates(changelog.releases, { required: true });

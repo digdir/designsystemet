@@ -20,24 +20,20 @@
  *
  * Versions already in changelog.json are kept as they are, so they can be edited by hand, e.g. to
  * merge two entries that describe the same change for different readers, or to write notes about
- * the release in its `notes` field. The notes are shown in the GitHub release and on www. Only
- * their dates are set, see addDates: the release date when it is missing, and the date the Figma
- * file was published, which is always the one in the Figma changelogs, so it is corrected there
- * and not here. The versions are checked when they are read, see checkRelease.
+ * the release in its `notes` field, or to add the date the Figma file was published (see
+ * figma/README.md). The notes are shown in the GitHub release and on www. Only their release
+ * date is added when it is missing, see changelog-dates.js. The versions are checked when they
+ * are read, see checkRelease.
+ *
+ * `--all` loses those edits, except for the dates the Figma file was published.
  *
  * The changelog page on www reads changelog.json, see apps/www/app/_utils/changelog.server.ts.
  *
- * @typedef {'major' | 'minor' | 'patch'} ChangeType
- * @typedef {{ type: ChangeType, packages: string[], markdown: string, thanks?: string }} Change
- *   `packages` are package names, e.g. `@digdir/designsystemet-css`. `thanks` is the lines the
- *   changeset generator writes before the change, one for each first-time contributor, as
- *   paragraphs.
- * @typedef {{ version: string, date?: string, figmaPublished?: string, notes?: string, changes: Change[] }} Release
- *   `date` is the release date as `YYYY-MM-DD`, see changelog-dates.js. `figmaPublished` is the date
- *   the Figma file was published, from the `_Published YYYY-MM-DD_` line in the Figma packages'
- *   changelogs, see figma/README.md. `notes` is markdown written by hand, e.g. to introduce the
- *   release, without headings.
- * @typedef {{ releases: Release[] }} Changelog newest version first
+ * The shape of changelog.json is in changelog-types.ts.
+ * @typedef {import('./changelog-types.ts').ChangeType} ChangeType
+ * @typedef {import('./changelog-types.ts').Change} Change
+ * @typedef {import('./changelog-types.ts').Release} Release
+ * @typedef {import('./changelog-types.ts').Changelog} Changelog
  */
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
@@ -56,7 +52,7 @@ const CHANGELOG_JSON = path.join(ROOT, 'changelog.json');
 // Stop at "## 0.101.0" - this is the first entry before version 1
 const CUTOFF_VERSION = '0.101.0';
 
-// What a package's changelog says for a version that only bumped it with the others
+// What the GitHub release and the release PR say for a version without changes
 const NO_CHANGES = 'No changes in this release.';
 
 /** The order packages are listed in under each change, see changelog-packages.ts */
@@ -103,10 +99,9 @@ const isDependencyBump = (text) => text.startsWith('Updated dependencies');
 /**
  * The stable versions in a package's CHANGELOG.md, in file order, down to CUTOFF_VERSION.
  * @param {string} md
- * @param {string} file named when something in it is wrong
- * @returns {{ version: string, published?: string, items: { type: ChangeType, markdown: string, thanks?: string }[] }[]}
+ * @returns {{ version: string, items: { type: ChangeType, markdown: string, thanks?: string }[] }[]}
  */
-function parsePackageChangelog(md, file) {
+function parsePackageChangelog(md) {
   const versions = [];
   let version = null;
   let type = 'patch';
@@ -148,17 +143,6 @@ function parsePackageChangelog(md, file) {
         version.items.push({ type, markdown, ...(thanks && { thanks }) });
         thanks = undefined;
       }
-    } else if (node.type === 'paragraph') {
-      // `_Published YYYY-MM-DD_` under the version heading, in the Figma packages' changelogs.
-      // Written by hand, so a line that is not read as one fails instead of being left out.
-      const text = textOf(node).trim();
-      if (!/^Published\b/.test(text)) continue;
-      const date = text.replace(/^Published /, '');
-      if (!isDate(date))
-        throw new Error(
-          `${file}, version ${version.version}: "${text}" is not "Published YYYY-MM-DD" with a date that exists`,
-        );
-      version.published = date;
     }
   }
   return versions;
@@ -297,33 +281,22 @@ async function findPackages() {
 }
 
 /**
- * Merges the package changelogs into one list of changes per version. The dates are not set
- * here, see addDates, which is given the dates the Figma file was published that are read here.
+ * Merges the package changelogs into one list of changes per version.
  * @param {Iterable<{ name: string, dir: string }>} pkgs
- * @returns {Promise<{ releases: Release[], figmaPublished: Map<string, string> }>} the releases
- *   newest first, and version → date
+ * @returns {Promise<Release[]>} newest first, without dates
  */
 async function groupChangelogs(pkgs) {
   /** @type {Map<string, { version: string, changes: Map<string, Change> }>} */
   const releases = new Map();
-  /** @type {Map<string, string>} */
-  const figmaPublished = new Map();
   const sorted = [...pkgs].sort(
     (a, b) => packageOrder(a.name) - packageOrder(b.name),
   );
   for (const pkg of sorted) {
-    const file = path.join(pkg.dir, 'CHANGELOG.md');
-    const md = await fs.readFile(file, 'utf8');
-    for (const { version, published, items } of parsePackageChangelog(
-      md,
-      path.relative(ROOT, file),
-    )) {
+    const md = await fs.readFile(path.join(pkg.dir, 'CHANGELOG.md'), 'utf8');
+    for (const { version, items } of parsePackageChangelog(md)) {
       if (!releases.has(version))
         releases.set(version, { version, changes: new Map() });
       const release = releases.get(version);
-      // The Figma packages are published together, so they have the same date
-      if (published && !figmaPublished.has(version))
-        figmaPublished.set(version, published);
 
       // The same text in several package changelogs is one change
       for (const { type, markdown, thanks } of items) {
@@ -342,15 +315,12 @@ async function groupChangelogs(pkgs) {
       }
     }
   }
-  return {
-    releases: [...releases.values()]
-      .sort((a, b) => compareVersions(b.version, a.version))
-      .map(({ version, changes }) => ({
-        version,
-        changes: sortChanges(mergeDependencyUpdates([...changes.values()])),
-      })),
-    figmaPublished,
-  };
+  return [...releases.values()]
+    .sort((a, b) => compareVersions(b.version, a.version))
+    .map(({ version, changes }) => ({
+      version,
+      changes: sortChanges(mergeDependencyUpdates([...changes.values()])),
+    }));
 }
 
 /** Compares two `x.y.z` versions numerically. */
@@ -536,32 +506,6 @@ async function checkPackages() {
   }
 }
 
-/**
- * Adds the dates that are missing: the release date (see changelog-dates.js), and the date the
- * Figma file was published. The Figma file is published by hand after the release, so that date
- * is taken from the Figma changelogs on every run. They are where it is written (see
- * figma/README.md), so a date that is corrected there is corrected here. A date that is only in
- * changelog.json is kept.
- * @param {Release[]} releases newest first
- * @param {Map<string, string>} figmaPublished version → date, from the Figma changelogs
- * @param {{ required?: boolean }} options see addReleaseDates
- * @returns {Release[]}
- */
-function addDates(releases, figmaPublished, options) {
-  return addReleaseDates(releases, options).map((release) => {
-    const published = figmaPublished.get(release.version);
-    if (!published || published === release.figmaPublished) return release;
-    // After the version and its date in changelog.json
-    const { version, date, figmaPublished: _, ...rest } = release;
-    return {
-      version,
-      ...(date && { date }),
-      figmaPublished: published,
-      ...rest,
-    };
-  });
-}
-
 async function main() {
   const { values } = parseArgs({
     options: {
@@ -593,28 +537,36 @@ async function main() {
     return;
   }
 
+  // Fails on invalid JSON, since rebuilding the versions would lose the edits made by hand
+  const stored = (await readChangelog(CHANGELOG_JSON)).releases;
   /** @type {Map<string, Release>} */
   const releases = new Map();
   if (!values.all) {
-    // Keep the versions that are already there as they are, with any edits made by hand. Fails
-    // on invalid JSON, since rebuilding them would lose those edits.
-    for (const entry of (await readChangelog(CHANGELOG_JSON)).releases)
-      releases.set(entry.version, entry);
+    // Keep the versions that are already there as they are, with any edits made by hand
+    for (const entry of stored) releases.set(entry.version, entry);
   }
   const existing = releases.size;
 
-  const grouped = await groupChangelogs(await findPackages());
-  for (const entry of grouped.releases) {
-    if (!releases.has(entry.version)) releases.set(entry.version, entry);
+  for (const entry of await groupChangelogs(await findPackages())) {
+    if (releases.has(entry.version)) continue;
+    // Only with `--all`: the date the Figma file was published is only written in
+    // changelog.json, so it is kept when the version is built again
+    const figmaPublished = stored.find(
+      ({ version }) => version === entry.version,
+    )?.figmaPublished;
+    releases.set(entry.version, {
+      version: entry.version,
+      ...(figmaPublished && { figmaPublished }),
+      changes: entry.changes,
+    });
   }
 
   // Checked before it is written, like when it is read
   const changelog = checkChangelog({
-    releases: addDates(
+    releases: addReleaseDates(
       [...releases.values()].sort((a, b) =>
         compareVersions(b.version, a.version),
       ),
-      grouped.figmaPublished,
       // Every version is rebuilt without its date, so they must all be found again
       { required: Boolean(values.all) },
     ),
