@@ -21,8 +21,12 @@ git show "FETCH_HEAD:${CHANGELOG_JSON}" > release-changelog.json 2> /dev/null ||
 version=$(git show FETCH_HEAD:packages/cli/package.json | node -p "JSON.parse(require('fs').readFileSync(0, 'utf8')).version") ||
   keep_pr "Could not read the version on ${BRANCH}"
 
-node scripts/group-changelogs.js --release "$version" --file release-changelog.json > release-notes.md ||
-  keep_pr "No ${version} in changelog.json on ${BRANCH}"
+# Exits with 2 when the version is not there. Anything else, like a changelog.json that can't be
+# read, fails this step, so it is seen.
+status=0
+node scripts/group-changelogs.js --release "$version" --file release-changelog.json > release-notes.md || status=$?
+[ "$status" -eq 2 ] && keep_pr "No ${version} in changelog.json on ${BRANCH}"
+[ "$status" -eq 0 ] || exit "$status"
 
 # A PR body can be at most 65536 characters
 if [ "$(wc -c < release-notes.md)" -gt 60000 ]; then

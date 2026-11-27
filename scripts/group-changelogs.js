@@ -424,7 +424,8 @@ async function main() {
     );
     if (!found) {
       console.error(`No version ${values.release} in ${file}`);
-      process.exit(1);
+      // Told apart from other failures by update-release-pr-body.sh
+      process.exit(2);
     }
     process.stdout.write(`${formatRelease(found)}\n`);
     return;
