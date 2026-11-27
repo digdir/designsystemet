@@ -8,12 +8,12 @@
 import { execFileSync } from 'node:child_process';
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
-import { findPackages, NO_CHANGES } from './aggregate-changelogs.js';
 import { releaseDateMarkup } from './changelog-date.js';
 import {
   CHANGE_HEADINGS,
   CHANGE_TYPES,
   changeList,
+  NO_CHANGES,
   readChangelog,
   toMarkdown,
 } from './group-changelogs.js';
@@ -133,10 +133,10 @@ async function readChanges(packages) {
 
 async function writeComponentsChangelog() {
   await fs.mkdir(WWW, { recursive: true });
-  const pkgs = [...(await findPackages()).values()];
+  const releases = await readChanges(CODE_PACKAGES);
 
   let consolidatedContent = '';
-  for (const { version, changes } of await readChanges(CODE_PACKAGES)) {
+  for (const { version, changes } of releases) {
     consolidatedContent += formatVersion(
       version,
       changes,
@@ -144,7 +144,7 @@ async function writeComponentsChangelog() {
     );
   }
 
-  const latestVersion = pkgs[0]?.version;
+  const latestVersion = releases[0]?.version;
 
   const content = `---
 title: "Changelog"

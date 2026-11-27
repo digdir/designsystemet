@@ -35,12 +35,12 @@
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { parseArgs } from 'node:util';
 import { toString as textOf } from 'mdast-util-to-string';
 import remarkGfm from 'remark-gfm';
 import remarkParse from 'remark-parse';
 import remarkStringify from 'remark-stringify';
 import { unified } from 'unified';
-import { findPackages, NO_CHANGES } from './aggregate-changelogs.js';
 
 const ROOT = process.cwd();
 export const CHANGELOG_JSON = path.join(
@@ -50,6 +50,9 @@ export const CHANGELOG_JSON = path.join(
 
 // Stop at "## 0.101.0" - this is the first entry before version 1
 const CUTOFF_VERSION = '0.101.0';
+
+// What a package's changelog says for a version that only bumped it with the others
+export const NO_CHANGES = 'No changes in this release.';
 
 /** The order packages are listed in under each change. Other packages come last. */
 const PACKAGE_ORDER = [
@@ -93,9 +96,9 @@ export const toMarkdown = (nodes) =>
 const plainText = (markdown) => textOf(parseMarkdown(markdown)).trim();
 
 // The line the changeset generator adds before the change of a first-time contributor
-const THANKS = /^🎉 Thanks /;
+const isThanks = (text) => text.startsWith('🎉 Thanks ');
 // The packages are versioned together, so these only say that the others were bumped as well
-const DEPENDENCY_BUMP = /^Updated dependencies/;
+const isDependencyBump = (text) => text.startsWith('Updated dependencies');
 
 /**
  * The stable versions in a package's CHANGELOG.md, in file order, down to CUTOFF_VERSION.
@@ -130,8 +133,8 @@ export function parsePackageChangelog(md) {
       for (const item of node.children) {
         const markdown = toMarkdown(item.children);
         const text = plainText(markdown);
-        if (DEPENDENCY_BUMP.test(text)) continue;
-        if (THANKS.test(text)) {
+        if (isDependencyBump(text)) continue;
+        if (isThanks(text)) {
           // One line for each first-time contributor
           thanks = thanks ? `${thanks}\n\n${markdown}` : markdown;
           continue;
@@ -153,11 +156,12 @@ export function parsePackageChangelog(md) {
 // Renovate's grouped updates, written in a few ways over time, e.g. "Update npm non-major
 // dependencies" or "fix(deps): update npm non-major dependencies". They say nothing more
 // than their links, so each version lists them as one change.
-const DEPENDENCY_UPDATES =
-  /^(?:fix\(deps\): )?updated? (?:npm )?non-major dependencie?s?\b/i;
 const DEPENDENCY_UPDATES_TEXT = 'Update npm non-major dependencies';
 const isDependencyUpdates = (change) =>
-  DEPENDENCY_UPDATES.test(plainText(change.markdown));
+  plainText(change.markdown).toLowerCase().includes('non-major dependenc');
+
+/** The number of the pull request a link goes to, e.g. 5613 for …/pull/5613 */
+const pullNumber = (link) => Number(link.url.split('/pull/')[1]);
 
 /**
  * The links to pull requests, e.g. [#5613](…), and to commits, e.g. [`cc33a61`](…), in a change.
@@ -169,7 +173,7 @@ function changeLinks(markdown) {
   const visit = (node) => {
     if (
       node.type === 'link' &&
-      /^(?:#\d+|[0-9a-f]{7,40})$/.test(textOf(node))
+      (node.url.includes('/pull/') || node.url.includes('/commit/'))
     ) {
       links.push(node);
     }
@@ -194,8 +198,7 @@ function mergeDependencyUpdates(changes) {
     for (const link of changeLinks(update.markdown)) links.set(link.url, link);
   }
   // Pull requests in number order, then commits
-  const linkOrder = (link) =>
-    Number(/^#(\d+)$/.exec(textOf(link))?.[1] ?? Infinity);
+  const linkOrder = (link) => pullNumber(link) || Infinity;
   const sortedLinks = [...links.values()].sort(
     (a, b) => linkOrder(a) - linkOrder(b),
   );
@@ -234,29 +237,44 @@ function mergeDependencyUpdates(changes) {
 }
 
 /**
- * The key a change is sorted by: its text without markup and case, so `**Dialog:** …` sorts as
- * `dialog: …`. Dependency updates come last.
- * @param {Change} change
- */
-const sortKey = (change) => {
-  const key = plainText(change.markdown).toLowerCase();
-  return isDependencyUpdates(change) ? `￿${key}` : key;
-};
-
-/**
- * Sorts changes by type, biggest first, then alphabetically, see sortKey.
+ * Sorts changes by type, biggest first, then alphabetically by their text without markup, so
+ * `**Dialog:** …` sorts as `Dialog: …`. Dependency updates come last.
  * @param {Change[]} changes
  */
 export const sortChanges = (changes) =>
   changes
-    .map((change) => ({ change, key: sortKey(change) }))
+    .map((change) => ({
+      change,
+      text: plainText(change.markdown),
+      last: isDependencyUpdates(change),
+    }))
     .sort(
       (a, b) =>
         CHANGE_TYPES.indexOf(a.change.type) -
           CHANGE_TYPES.indexOf(b.change.type) ||
-        a.key.localeCompare(b.key, 'en', { sensitivity: 'base' }),
+        Number(a.last) - Number(b.last) ||
+        a.text.localeCompare(b.text, 'en', { sensitivity: 'base' }),
     )
     .map(({ change }) => change);
+
+/**
+ * The packages with a changelog: the published ones in packages/, and the private ones that are
+ * versioned with them, in figma/ and apps/.
+ * @returns {Promise<{ name: string, dir: string }[]>}
+ */
+async function findPackages() {
+  const pkgs = [];
+  for await (const file of fs.glob('{packages,figma,apps}/*/CHANGELOG.md', {
+    cwd: ROOT,
+  })) {
+    const dir = path.join(ROOT, path.dirname(file));
+    const { name } = JSON.parse(
+      await fs.readFile(path.join(dir, 'package.json'), 'utf8'),
+    );
+    pkgs.push({ name, dir });
+  }
+  return pkgs;
+}
 
 /**
  * Merges the package changelogs into one list of changes per version.
@@ -270,12 +288,7 @@ export async function groupChangelogs(pkgs) {
     (a, b) => packageOrder(a.name) - packageOrder(b.name),
   );
   for (const pkg of sorted) {
-    let md;
-    try {
-      md = await fs.readFile(path.join(pkg.dir, 'CHANGELOG.md'), 'utf8');
-    } catch {
-      continue;
-    }
+    const md = await fs.readFile(path.join(pkg.dir, 'CHANGELOG.md'), 'utf8');
     for (const { version, published, items } of parsePackageChangelog(md)) {
       if (!releases.has(version))
         releases.set(version, { version, changes: new Map() });
@@ -395,17 +408,21 @@ export async function readChangelog(file = CHANGELOG_JSON) {
 }
 
 async function main() {
-  const release = process.argv.indexOf('--release');
-  if (release !== -1) {
-    const version = process.argv[release + 1]?.replace(/^v/, '');
-    const fileArg = process.argv.indexOf('--file');
-    const file =
-      fileArg === -1 ? CHANGELOG_JSON : path.resolve(process.argv[fileArg + 1]);
+  const { values } = parseArgs({
+    options: {
+      all: { type: 'boolean' },
+      release: { type: 'string' },
+      file: { type: 'string' },
+    },
+  });
+
+  if (values.release) {
+    const file = values.file ? path.resolve(values.file) : CHANGELOG_JSON;
     const found = (await readChangelog(file)).releases.find(
-      (entry) => entry.version === version,
+      (entry) => entry.version === values.release,
     );
     if (!found) {
-      console.error(`No version ${version} in ${file}`);
+      console.error(`No version ${values.release} in ${file}`);
       process.exit(1);
     }
     process.stdout.write(`${formatRelease(found)}\n`);
@@ -414,17 +431,15 @@ async function main() {
 
   /** @type {Map<string, Release>} */
   const releases = new Map();
-  if (!process.argv.includes('--all')) {
-    try {
-      // Keep the versions that are already there as they are, with any edits made by hand
-      for (const entry of (await readChangelog()).releases)
-        releases.set(entry.version, entry);
-    } catch {}
+  if (!values.all) {
+    // Keep the versions that are already there as they are, with any edits made by hand. Fails
+    // on invalid JSON, since rebuilding them would lose those edits.
+    for (const entry of (await readChangelog()).releases)
+      releases.set(entry.version, entry);
   }
   const existing = releases.size;
 
-  const pkgs = (await findPackages(['packages', 'figma', 'apps'])).values();
-  for (const entry of await groupChangelogs(pkgs)) {
+  for (const entry of await groupChangelogs(await findPackages())) {
     if (!releases.has(entry.version)) releases.set(entry.version, entry);
   }
 
@@ -434,7 +449,6 @@ async function main() {
       compareVersions(b.version, a.version),
     ),
   };
-  await fs.mkdir(path.dirname(CHANGELOG_JSON), { recursive: true });
   await fs.writeFile(
     CHANGELOG_JSON,
     `${JSON.stringify(changelog, null, 2)}\n`,

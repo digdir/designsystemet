@@ -115,7 +115,6 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TAG: v${{ steps.release_version.outputs.value }}
-          PUBLISHED_PACKAGES: ${{ steps.changesets.outputs.published-packages }}
         run: bash ./.github/workflows/scripts/create-aggregated-release.sh
 
   deploy-www:
