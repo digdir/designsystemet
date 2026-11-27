@@ -4,7 +4,6 @@ on:
   pull_request:
     paths:
       - .github/workflows/test.yml
-      - .github/workflows/scripts/free-disk-space.sh
       - "packages/**"
       - "apps/storybook/**"
       - "figma/**"
@@ -18,7 +17,6 @@ on:
     branches: [main]
     paths:
       - .github/workflows/test.yml
-      - .github/workflows/scripts/free-disk-space.sh
       - "packages/**"
       - "apps/storybook/**"
       - "figma/**"
@@ -27,52 +25,60 @@ on:
       - "pnpm-lock.yaml"
       - "pnpm-workspace.yaml"
 
-permissions:
-  checks: write
-  pull-requests: write
+permissions: {}
 
 concurrency:
   group: test-${{ github.event.pull_request.number || github.run_id }}
   cancel-in-progress: true
 
 jobs:
+  playwright-version:
+    name: Playwright version
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          sparse-checkout: apps/storybook/package.json
+          sparse-checkout-cone-mode: false
+
+      # The test job's container image must match this version exactly, as it holds the browser builds for it
+      - name: Read Playwright version
+        id: version
+        run: |
+          version="$(jq -r '.devDependencies.playwright' apps/storybook/package.json)"
+          if [[ ! "$version" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "::error::Expected an exact Playwright version in apps/storybook/package.json, got '$version'"
+            exit 1
+          fi
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+
   test:
     name: Build & test
-    # TODO: update to latest once playwright supports ubuntu 26
-    runs-on: ubuntu-24.04
+    needs: playwright-version
+    permissions:
+      contents: read
+    # The container below decides the OS, so the runner can be any Linux
+    runs-on: ubuntu-latest
+    # A stuck run fails instead of blocking the PR. A normal run takes about 5-10 minutes.
+    timeout-minutes: 30
+    # Playwright's image has the browsers and their system dependencies installed, so no slow apt install is needed.
+    # https://playwright.dev/docs/ci#via-containers
+    container:
+      image: mcr.microsoft.com/playwright:v${{ needs.playwright-version.outputs.version }}-noble
+      # --user 1001: Firefox refuses to run as root in GitHub's home directory.
+      # --ipc=host: Chromium can run out of shared memory with Docker's default /dev/shm.
+      options: --user 1001 --ipc=host
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
 
-      - name: Free up disk space
-        run: bash ./.github/workflows/scripts/free-disk-space.sh
-
       - uses: $/.github/actions/gh-setup
-
-      - name: Get Playwright version
-        id: playwright-version
-        run: |
-          echo "version=$(pnpm --filter @web/storybook list playwright --depth=0 --json | jq -r '.[0].devDependencies.playwright.version')" >> "$GITHUB_OUTPUT"
-          echo "image=$ImageOS" >> "$GITHUB_OUTPUT"
-
-      - name: Cache Playwright browsers
-        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
-        id: playwright-cache
-        with:
-          path: ~/.cache/ms-playwright
-          # Include the runner image (e.g. ubuntu24), as Playwright downloads browser builds per OS version
-          key: playwright-${{ runner.os }}-${{ steps.playwright-version.outputs.image }}-${{ steps.playwright-version.outputs.version }}
-
-      - name: Install Playwright browsers
-        if: steps.playwright-cache.outputs.cache-hit != 'true'
-        run: pnpm exec playwright install --with-deps chromium firefox webkit
-        working-directory: apps/storybook
-
-      - name: Install Playwright system dependencies (if cached)
-        if: steps.playwright-cache.outputs.cache-hit == 'true'
-        run: pnpm exec playwright install-deps chromium firefox webkit
-        working-directory: apps/storybook
 
       - name: Build
         run: pnpm build
