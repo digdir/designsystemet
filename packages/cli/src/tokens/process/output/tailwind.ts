@@ -1,3 +1,4 @@
+import { semanticColorNames } from '../../../colors/specs.ts';
 import type { OutputFile } from '../../types.ts';
 
 /** Tailwind CSS major versions a theme file can be generated for. */
@@ -96,24 +97,10 @@ const toThemeVariables = (tokens: TailwindToken[]): string =>
 const generateTailwindV4 = (tokens: TailwindToken[]): string => `@theme inline {${toThemeVariables(tokens)}\n}\n`;
 
 const generateTailwindV3 = (tokens: TailwindToken[]): string => {
-  // Make [data-colors] dynamically change also Tailwind colors
+  // Make [data-colors] dynamically change also Tailwind colors. Every step of the color scale,
+  // so steps added later, like the muted ones, follow `data-color` too.
   const dynamicColors = `[data-color] {
-      --color-background-default: var(--ds-color-background-default);
-      --color-background-tinted: var(--ds-color-background-tinted);
-      --color-surface-default: var(--ds-color-surface-default);
-      --color-surface-tinted: var(--ds-color-surface-tinted);
-      --color-surface-hover: var(--ds-color-surface-hover);
-      --color-surface-active: var(--ds-color-surface-active);
-      --color-border-subtle: var(--ds-color-border-subtle);
-      --color-border-default: var(--ds-color-border-default);
-      --color-border-strong: var(--ds-color-border-strong);
-      --color-text-subtle: var(--ds-color-text-subtle);
-      --color-text-default: var(--ds-color-text-default);
-      --color-base-default: var(--ds-color-base-default);
-      --color-base-hover: var(--ds-color-base-hover);
-      --color-base-active: var(--ds-color-base-active);
-      --color-base-contrast-subtle: var(--ds-color-base-contrast-subtle);
-      --color-base-contrast-default: var(--ds-color-base-contrast-default);
+${semanticColorNames.map((name) => `      --color-${name}: var(--ds-color-${name});`).join('\n')}
     }`;
 
   return `@theme {${toThemeVariables(tokens)}\n}\n${dynamicColors}`;

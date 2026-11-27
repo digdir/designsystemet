@@ -67,7 +67,7 @@ export const TableCard = () => {
           overflowX: 'auto',
         }}
       >
-        <Table data-size='sm' border data-color='neutral'>
+        <Table data-size='sm' border>
           <Table.Head>
             <Table.Row>
               <Table.HeaderCell sort='none'>

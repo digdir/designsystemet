@@ -47,11 +47,6 @@
     }
   }
 
-  .ds-error-summary {
-    /** Change from neutral to color */
-    --dsc-errorsummary-link-color: var(--ds-color-text-default);
-  }
-
   .ds-field[data-variant='outline'] {
     /** Change from neutral to color */
     --dsc-field-border-color: var(--ds-color-border-default);

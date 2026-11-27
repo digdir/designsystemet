@@ -1,7 +1,7 @@
 .ds-divider {
   --dsc-divider-border-width: var(--ds-border-width-default);
   --dsc-divider-border-style: solid;
-  --dsc-divider-border-color: var(--ds-color-neutral-border-subtle);
+  --dsc-divider-border-color: var(--ds-color-border-muted);
 
   border-width: 0; /* Unset default <hr> border */
   border-top-width: var(--dsc-divider-border-width);

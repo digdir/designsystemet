@@ -246,8 +246,8 @@ describe('theme builder URL', () => {
       'colors=accent:red+neutral:%23444444',
       // not a valid color name
       'colors=Accent:%230062BA+neutral:%23444444',
-      // no neutral color
-      'colors=accent:%230062BA',
+      // only severity colors
+      'colors=danger:%23C01B1B',
     ]) {
       expect(() => readLegacyUrl(new URLSearchParams(search))).toThrow(
         'Invalid theme builder URL',

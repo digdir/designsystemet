@@ -14,6 +14,15 @@ export const severityColors: Record<SeverityColorNames, CssColor> = {
 
 export const severityColorNames = Object.keys(severityColors) as Array<keyof typeof severityColors>;
 
+/** Whether a color is a severity color. Own properties only, so names every object has, like `constructor`, aren't. */
+export const isSeverityColor = (name: string): name is SeverityColorNames => Object.hasOwn(severityColors, name);
+
+/**
+ * Whether there's a color that isn't a severity color. The severity colors are added by default, so a theme needs
+ * at least one color of its own. The config schema, `generate-config` and the theme builder all check this.
+ */
+export const hasOwnColor = (names: string[]): boolean => names.some((name) => !isSeverityColor(name));
+
 /** Non-severity colors first (in user order), then all severity colors at the end in severityColors order.
  * User-defined severity colors keep their value but are moved to the end.
  *

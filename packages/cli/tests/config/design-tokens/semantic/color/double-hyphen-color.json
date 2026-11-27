@@ -62,5 +62,17 @@
   "base-contrast-default": {
     "$type": "color",
     "$value": "{color.double-hyphen-color.base-contrast-default}"
+  },
+  "surface-muted": {
+    "$type": "color",
+    "$value": "{color.double-hyphen-color.surface-muted}"
+  },
+  "border-muted": {
+    "$type": "color",
+    "$value": "{color.double-hyphen-color.border-muted}"
+  },
+  "text-muted": {
+    "$type": "color",
+    "$value": "{color.double-hyphen-color.text-muted}"
   }
 }

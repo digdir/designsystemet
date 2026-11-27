@@ -116,8 +116,11 @@ export const generateColorScheme = (
   const defaultLinkVisitedToken = generateColorScale(visitedLinkColor, colorScheme)['base-default'].hex;
   const linkOverride = overrides?.linkVisited?.[colorScheme];
 
-  const defaultFocusInner = colorScales.neutral['background-default'].hex;
-  const defaultFocusOuter = colorScales.neutral['text-default'].hex;
+  // The default focus colors are the surface and text of the theme's first color. The config schema puts the
+  // severity colors last, so the first color is one of the theme's own.
+  const firstColorScale = Object.values(colorScales)[0];
+  const defaultFocusInner = firstColorScale['surface-default'].hex;
+  const defaultFocusOuter = firstColorScale['text-default'].hex;
 
   const focusInnerOverride = overrides?.focus?.inner?.[colorScheme];
   const focusOuterOverride = overrides?.focus?.outer?.[colorScheme];

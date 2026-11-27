@@ -39,18 +39,23 @@ describe('generateColorScheme', () => {
     const theme = result.theme as Record<string, Record<number, { $type: string; $value: string }>>;
 
     expect(Object.keys(result)).toEqual(['theme']);
-    expect(Object.keys(theme.accent).map(Number)).toEqual(Array.from({ length: 16 }, (_, i) => i + 1));
+    expect(Object.keys(theme.accent).map(Number)).toEqual(Array.from({ length: 19 }, (_, i) => i + 1));
     expect(theme.accent[12]).toEqual({ $type: 'color', $value: ACCENT });
   });
 
-  it('defaults focus tokens to neutral positions 1 and 11', () => {
-    const result = generateColorScheme('theme', 'light', baseColors);
-    const theme = result.theme as Record<string, Record<string, { $value: string }>>;
-    const neutralScale = generateColorScale(NEUTRAL, 'light');
+  it.each(['light', 'dark'] as const)(
+    'defaults focus tokens in %s to the surface and text of the first color',
+    (scheme) => {
+      const colors = colorsSchema.parse({ info: '#0A71C0', accent: ACCENT, neutral: NEUTRAL });
+      const result = generateColorScheme('theme', scheme, colors);
+      const theme = result.theme as Record<string, Record<string, { $value: string }>>;
+      // accent is the first color: the severity color listed before it is moved last
+      const accentScale = generateColorScale(ACCENT, scheme);
 
-    expect(theme.focus.inner.$value).toBe(neutralScale['background-default'].hex);
-    expect(theme.focus.outer.$value).toBe(neutralScale['text-default'].hex);
-  });
+      expect(theme.focus.inner.$value).toBe(accentScale['surface-default'].hex);
+      expect(theme.focus.outer.$value).toBe(accentScale['text-default'].hex);
+    },
+  );
 
   it('defaults link.visited to the visited-link scale position 12', () => {
     const result = generateColorScheme('theme', 'light', baseColors);
