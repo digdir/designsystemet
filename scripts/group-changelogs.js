@@ -153,12 +153,16 @@ export function parsePackageChangelog(md) {
   return versions;
 }
 
-// Renovate's grouped updates, written in a few ways over time, e.g. "Update npm non-major
-// dependencies" or "fix(deps): update npm non-major dependencies". They say nothing more
-// than their links, so each version lists them as one change.
+// Renovate's grouped updates, written in a few ways over time: "Update npm non-major
+// dependencies", "Updated non-major dependencies" or "fix(deps): update npm non-major
+// dependencies", some with the last letters left out. They say nothing more than their links,
+// so each version lists them as one change. Only the start of the text is matched, so a change
+// that mentions non-major dependencies is kept.
 const DEPENDENCY_UPDATES_TEXT = 'Update npm non-major dependencies';
+const DEPENDENCY_UPDATES =
+  /^(?:fix\(deps\): )?(?:update npm|updated) non-major dependenc/i;
 const isDependencyUpdates = (change) =>
-  plainText(change.markdown).toLowerCase().includes('non-major dependenc');
+  DEPENDENCY_UPDATES.test(plainText(change.markdown));
 
 /** The number of the pull request a link goes to, e.g. 5613 for …/pull/5613 */
 const pullNumber = (link) => Number(link.url.split('/pull/')[1]);
