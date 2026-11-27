@@ -424,11 +424,12 @@ const CHANGE_KEYS = ['type', 'packages', 'markdown', 'thanks'];
  * changelog page on www, which show the versions as they are.
  *
  * The version is typed as it should be, but can be anything, so every part of it is checked.
+ * `file` is named in the message, since `--file` reads another file than changelog.json.
  */
-function checkRelease(release: Release) {
+function checkRelease(release: Release, file: string) {
   const { version, date, figmaPublished, notes, changes } = release;
   const fail: (problem: string) => never = (problem) => {
-    throw new Error(`changelog.json, version ${version}: ${problem}`);
+    throw new Error(`${file}, version ${version}: ${problem}`);
   };
   const isText = (value: unknown) =>
     typeof value === 'string' && value.trim() !== '';
@@ -471,24 +472,30 @@ function checkRelease(release: Release) {
  * through here, so the file can't be written in a way it is not read back. Returns it as it was
  * given.
  */
-function checkChangelog(changelog: Changelog): Changelog {
+function checkChangelog(changelog: Changelog, file: string): Changelog {
   if (!Array.isArray(changelog?.releases))
-    throw new Error('changelog.json has no list of releases');
+    throw new Error(`${file} has no list of releases`);
   const versions = new Set<string>();
   for (const release of changelog.releases) {
     if (!release || typeof release !== 'object')
-      throw new Error('changelog.json has a release that is not an object');
-    checkRelease(release);
+      throw new Error(`${file} has a release that is not an object`);
+    checkRelease(release, file);
     if (versions.has(release.version))
-      throw new Error(`changelog.json has version ${release.version} twice`);
+      throw new Error(`${file} has version ${release.version} twice`);
     versions.add(release.version);
   }
   return changelog;
 }
 
+/** The name of a file in messages: its path from the root of the repo, when it is in the repo */
+const fileName = (file: string) => {
+  const fromRoot = path.relative(ROOT, file);
+  return fromRoot.startsWith('..') ? file : fromRoot;
+};
+
 /** The changelog in this file, checked */
 const readChangelog = async (file: string): Promise<Changelog> =>
-  checkChangelog(JSON.parse(await fs.readFile(file, 'utf8')));
+  checkChangelog(JSON.parse(await fs.readFile(file, 'utf8')), fileName(file));
 
 /**
  * Fails when a package that is versioned with the others is not in CHANGELOG_PACKAGES. It gets a
@@ -529,7 +536,7 @@ async function main() {
   if (values.check) {
     const { releases } = await readChangelog(file);
     await checkPackages();
-    console.log(`changelog.json: ${releases.length} version(s) checked.`);
+    console.log(`${fileName(file)}: ${releases.length} version(s) checked.`);
     return;
   }
 
@@ -570,15 +577,18 @@ async function main() {
   }
 
   // Checked before it is written, like when it is read
-  const changelog = checkChangelog({
-    releases: addReleaseDates(
-      [...releases.values()].sort((a, b) =>
-        compareVersions(b.version, a.version),
+  const changelog = checkChangelog(
+    {
+      releases: addReleaseDates(
+        [...releases.values()].sort((a, b) =>
+          compareVersions(b.version, a.version),
+        ),
+        // Every version is rebuilt without its date, so they must all be found again
+        { required: Boolean(values.all) },
       ),
-      // Every version is rebuilt without its date, so they must all be found again
-      { required: Boolean(values.all) },
-    ),
-  });
+    },
+    fileName(CHANGELOG_JSON),
+  );
   await fs.writeFile(
     CHANGELOG_JSON,
     `${JSON.stringify(changelog, null, 2)}\n`,
