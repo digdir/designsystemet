@@ -2,7 +2,7 @@ import type { DSErrorSummaryElement } from '@digdir/designsystemet-web';
 import { useEffect, useRef, useState } from 'react';
 import { expect, userEvent, within } from 'storybook/test';
 import preview from '../../../../../apps/storybook/.storybook/preview';
-import { Button, Textfield } from '../';
+import { Button, Heading, Link, List, Textfield } from '../';
 import { ErrorSummary } from './';
 
 const meta = preview.meta({
@@ -11,6 +11,25 @@ const meta = preview.meta({
 });
 
 export const Preview = meta.story({
+  render: (args) => (
+    <ErrorSummary {...args}>
+      <Heading>For å gå videre må du rette opp følgende feil:</Heading>
+      <List.Unordered>
+        <List.Item>
+          <Link href='#'>Fødselsdato kan ikke være etter år 2005</Link>
+        </List.Item>
+        <List.Item>
+          <Link href='#'>Telefonnummer kan kun inneholde siffer</Link>
+        </List.Item>
+        <List.Item>
+          <Link href='#'>E-post må være gyldig</Link>
+        </List.Item>
+      </List.Unordered>
+    </ErrorSummary>
+  ),
+});
+
+export const WithSubComponents = meta.story({
   render: (args) => (
     <ErrorSummary {...args}>
       <ErrorSummary.Heading>
@@ -52,21 +71,15 @@ export const WithForm = meta.story({
       />
 
       <ErrorSummary>
-        <ErrorSummary.Heading>
-          For å gå videre må du rette opp følgende feil:
-        </ErrorSummary.Heading>
-        <ErrorSummary.List>
-          <ErrorSummary.Item>
-            <ErrorSummary.Link href='#fornavn'>
-              Fornavn må være minst 2 tegn
-            </ErrorSummary.Link>
-          </ErrorSummary.Item>
-          <ErrorSummary.Item>
-            <ErrorSummary.Link href='#telefon'>
-              Telefonnummer kan kun inneholde siffer
-            </ErrorSummary.Link>
-          </ErrorSummary.Item>
-        </ErrorSummary.List>
+        <Heading>For å gå videre må du rette opp følgende feil:</Heading>
+        <List.Unordered>
+          <List.Item>
+            <Link href='#fornavn'>Fornavn må være minst 2 tegn</Link>
+          </List.Item>
+          <List.Item>
+            <Link href='#telefon'>Telefonnummer kan kun inneholde siffer</Link>
+          </List.Item>
+        </List.Unordered>
       </ErrorSummary>
     </>
   ),
@@ -111,21 +124,17 @@ export const ShowHideReact = meta.story({
         </div>
         {show && (
           <ErrorSummary data-testid='show-hide' ref={summaryRef}>
-            <ErrorSummary.Heading>
-              For å gå videre må du rette opp følgende feil:
-            </ErrorSummary.Heading>
-            <ErrorSummary.List>
-              <ErrorSummary.Item>
-                <ErrorSummary.Link href='#fornavn'>
-                  Fornavn må være minst 2 tegn
-                </ErrorSummary.Link>
-              </ErrorSummary.Item>
-              <ErrorSummary.Item>
-                <ErrorSummary.Link href='#telefon'>
+            <Heading>For å gå videre må du rette opp følgende feil:</Heading>
+            <List.Unordered>
+              <List.Item>
+                <Link href='#fornavn'>Fornavn må være minst 2 tegn</Link>
+              </List.Item>
+              <List.Item>
+                <Link href='#telefon'>
                   Telefonnummer kan kun inneholde siffer
-                </ErrorSummary.Link>
-              </ErrorSummary.Item>
-            </ErrorSummary.List>
+                </Link>
+              </List.Item>
+            </List.Unordered>
           </ErrorSummary>
         )}
       </>

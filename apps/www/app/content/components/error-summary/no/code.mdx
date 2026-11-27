@@ -5,6 +5,7 @@
 Klassenavnet `ds-error-summary` brukes på `<ds-error-summary>`-elementet.
 Webkomponenten håndterer fokus når den blir synlig og `aria-labelledby` automatisk.
 
+Start med en overskrift (`h2`–`h6`) med klassen `ds-heading`, som blir det tilgjengelige navnet til error summary.
 Vi legger en `<ul class="ds-list">` etter heading som inneholder en liste med feil.
 Hver feil er en `<li>` med en lenke (`<a>`) som har klassen `ds-link` og et `href` til det aktuelle feltet med feil.
 
@@ -12,7 +13,7 @@ For at lenkene skal navigere til feltene med feil, må feltene ha en unik `id` s
 
 ## CSS variabler og data-attributter
 
-Størrelser styres med [data-size](/no/fundamentals/code/sizes) og farger med [data-color](/no/fundamentals/code/colors). Komponenten vil arve nærmeste forelder med disse satt.
+Fargene kommer alltid fra `danger`-fargen, og følger ikke [data-color](/no/fundamentals/code/colors).
 
 <CssVariables />
 
@@ -28,23 +29,24 @@ Under er et eksempel som viser hvordan fokus automatisk flyttes til error summar
 
 ## React
 
-Error summary består av flere delkomponenter:
-- `ErrorSummary.Heading` definerer overskriften.
-- `ErrorSummary.List` definerer listen med feil.
-- Hver feil representeres som en `ErrorSummary.Item` som inneholder en `ErrorSummary.Link`.
-- Hver `ErrorSummary.Link` må ha en `href` til den unike identifikatoren for et skjemafelt, slik at brukeren kan navigere til riktig sted i skjemaet.
+Bruk `Heading`, `List` og `Link` inne i `ErrorSummary`:
+- `Heading` definerer overskriften. Bruk nivå 2–6, siden `ErrorSummary` bruker første `h2`–`h6` som tilgjengelig navn.
+- `List.Unordered` inneholder listen med feil, med én `List.Item` per feil.
+- Hver feil har en `Link` med `href` til den unike identifikatoren for et skjemafelt, slik at brukeren kan navigere til riktig sted i skjemaet.
 
 ```tsx
-import { ErrorSummary } from '@digdir/designsystemet-react';
+import { ErrorSummary, Heading, Link, List } from '@digdir/designsystemet-react';
 
 <ErrorSummary>
-  <ErrorSummary.Heading>Heading</ErrorSummary.Heading>
-  <ErrorSummary.List>
-    <ErrorSummary.Item>
-      <ErrorSummary.Link href='#some-field-id'>Item</ErrorSummary.Link>
-    </ErrorSummary.Item>
-  </ErrorSummary.List>
+  <Heading>Heading</Heading>
+  <List.Unordered>
+    <List.Item>
+      <Link href='#some-field-id'>Item</Link>
+    </List.Item>
+  </List.Unordered>
 </ErrorSummary>
 ```
+
+Delkomponentene `ErrorSummary.Heading`, `ErrorSummary.List`, `ErrorSummary.Item` og `ErrorSummary.Link` er fortsatt tilgjengelige, og rendrer de samme komponentene.
 
 <ReactComponentDocs />

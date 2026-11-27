@@ -1,6 +1,6 @@
 import { generateColorScale } from '../colors/scale.ts';
 import type { ColorScheme, CssColor, SemanticColorNames, SeverityColorNames } from '../colors/types.ts';
-import { severityColors, visitedLinkColor } from '../schemas/defaults.ts';
+import { isSeverityColor, severityColors, visitedLinkColor } from '../schemas/defaults.ts';
 import type { ExternalConfigSchemaInput } from '../schemas/schema.ts';
 import { colorNameSchema } from '../schemas/schema-color.ts';
 
@@ -119,11 +119,14 @@ export function configColorsFromValues({
     overrides.linkVisited = linkVisitedOverride;
   }
 
-  // The focus colors default to neutral's background and text colors, after any overrides,
-  // which are the values already in the scales.
-  const neutral = scales.get('neutral');
-  const focusInnerOverride = diffFromDefaults(focusInner, (scheme) => neutral?.get('background-default')?.[scheme]);
-  const focusOuterOverride = diffFromDefaults(focusOuter, (scheme) => neutral?.get('text-default')?.[scheme]);
+  // The default focus colors are the surface and text of the theme's first color, as they are in the source.
+  const [firstColorName] = colors.keys();
+  const firstColorSteps = firstColorName === undefined ? undefined : scales.get(firstColorName);
+  const focusInnerOverride = diffFromDefaults(
+    focusInner,
+    (scheme) => firstColorSteps?.get('surface-default')?.[scheme],
+  );
+  const focusOuterOverride = diffFromDefaults(focusOuter, (scheme) => firstColorSteps?.get('text-default')?.[scheme]);
   if (focusInnerOverride || focusOuterOverride) {
     overrides.focus = {
       ...(focusInnerOverride && { inner: focusInnerOverride }),
@@ -168,11 +171,6 @@ function diffFromDefaults(
     }
   }
   return Object.keys(diff).length > 0 ? diff : undefined;
-}
-
-function isSeverityColor(name: string): name is SeverityColorNames {
-  // Own properties only, so names every object has, like `constructor`, aren't severity colors.
-  return Object.hasOwn(severityColors, name);
 }
 
 function isSameColor(a: string, b: string): boolean {

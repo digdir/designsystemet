@@ -7,6 +7,7 @@ import { ErrorSummaryList } from './error-summary-list';
 type ErrorSummary = typeof ErrorSummaryParent & {
   /**
    * ErrorSummary heading component, used to display a heading for the error summary.
+   * Renders a `Heading`, which you can also use directly.
    *
    * @example
    * <ErrorSummary>
@@ -16,6 +17,7 @@ type ErrorSummary = typeof ErrorSummaryParent & {
   Heading: typeof ErrorSummaryHeading;
   /**
    * ErrorSummary.Item component, used to display an error link in the ErrorSummary.
+   * Renders a `List.Item`, which you can also use directly.
    *
    * @example
    * <ErrorSummary.Item>
@@ -27,6 +29,7 @@ type ErrorSummary = typeof ErrorSummaryParent & {
   Item: typeof ErrorSummaryItem;
   /**
    * ErrorSummary link component, used to link to a specific error. Used within an ErrorSummary.Item.
+   * Renders a `Link`, which you can also use directly.
    *
    * @example
    * <ErrorSummary>
@@ -38,6 +41,7 @@ type ErrorSummary = typeof ErrorSummaryParent & {
   Link: typeof ErrorSummaryLink;
   /**
    * ErrorSummary list component, used to display a list of errors.
+   * Renders a `List.Unordered`, which you can also use directly.
    *
    * @example
    * <ErrorSummary>
@@ -59,15 +63,15 @@ type ErrorSummary = typeof ErrorSummaryParent & {
  *
  * @example
  * <ErrorSummary>
- *   <ErrorSummary.Heading>Heading</ErrorSummary.Heading>
- *   <ErrorSummary.List>
- *     <ErrorSummary.Item>
- *       <ErrorSummary.Link href='#'>Error 1</ErrorSummary.Link>
- *     </ErrorSummary.Item>
- *     <ErrorSummary.Item>
- *       <ErrorSummary.Link href='#'>Error 2</ErrorSummary.Link>
- *     </ErrorSummary.Item>
- *   </ErrorSummary.List>
+ *   <Heading>Heading</Heading>
+ *   <List.Unordered>
+ *     <List.Item>
+ *       <Link href='#'>Error 1</Link>
+ *     </List.Item>
+ *     <List.Item>
+ *       <Link href='#'>Error 2</Link>
+ *     </List.Item>
+ *   </List.Unordered>
  * </ErrorSummary>
  */
 const ErrorSummaryComponent: ErrorSummary = Object.assign(ErrorSummaryParent, {
