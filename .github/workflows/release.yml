@@ -77,8 +77,6 @@ jobs:
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          # Full history and tags so scripts/sync-changelogs.js can date each release
-          fetch-depth: 0
           persist-credentials: false
       - uses: $/.github/actions/gh-setup
       - name: Build Designsystemet CLI
@@ -93,6 +91,9 @@ jobs:
       - name: Create Release Pull Request or Publish to npm
         id: changesets
         uses: changesets/action@ae32849d5ba541f9ae29e40e22a623bc13562f51 # v2.1.2
+        env:
+          # For `gh` in scripts/group-changelogs.ts, which dates the versions from their releases
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           publish-script: pnpm publish-packages
@@ -103,12 +104,18 @@ jobs:
           # instead of one release/tag per package.
           create-github-releases: false
           push-git-tags: false
+      - name: Show the grouped changelog in the release PR
+        if: ${{ steps.changesets.outputs.pr-number != '' }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ steps.changesets.outputs.pr-number }}
+          BRANCH: changeset-release/${{ github.ref_name }}
+        run: bash ./.github/workflows/scripts/update-release-pr-body.sh
       - name: Create aggregated GitHub release
         if: ${{ steps.changesets.outputs.published == 'true' }}
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TAG: v${{ steps.release_version.outputs.value }}
-          PUBLISHED_PACKAGES: ${{ steps.changesets.outputs.published-packages }}
         run: bash ./.github/workflows/scripts/create-aggregated-release.sh
 
   deploy-www:

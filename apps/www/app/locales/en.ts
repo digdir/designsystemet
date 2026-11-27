@@ -83,6 +83,32 @@ export default {
       email: 'email',
     },
   },
+  changelog: {
+    title: 'Changelog',
+    description:
+      'What has changed in each version of the code packages, the Figma file and the documentation.',
+    search: 'Search the changelog',
+    packages: 'Show changes in',
+    documentation: 'Documentation',
+    version: 'Version',
+    matches_one: '{{count}} matching change',
+    matches_other: '{{count}} matching changes',
+    results_one: '{{count}} version',
+    results_other: '{{count}} versions',
+    reset: 'Reset filters',
+    empty:
+      'No changes match the filters. Try other words or packages, or reset the filters.',
+    released: 'Released',
+    'figma-published': 'Published in Figma',
+    'no-changes': 'No changes in this version.',
+    'no-changes-in-packages': 'No changes in the selected packages.',
+    'packages-label': 'Packages:',
+    pagination: 'Changelog pages',
+    'previous-page': 'Previous page',
+    'next-page': 'Next page',
+    page: 'Page {{page}}',
+    'page-of': 'page {{page}} of {{total}}',
+  },
   sidebar: {
     Components: 'Components',
     Blogg: 'Blog',
@@ -159,9 +185,6 @@ export default {
     title: 'Components',
     description:
       'Designsystemet contains basic components that can be used independently of framework, and combined in many different ways and in various patterns.',
-    changelog: {
-      title: 'Changelog',
-    },
     accessibility: {
       title: 'Accessibility',
     },

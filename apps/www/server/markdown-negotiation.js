@@ -142,6 +142,7 @@ function extractMainContent(html, pageUrl) {
   // ── Remove UI chrome ──────────────────────────────────────────────
   const removeSelectors = [
     'nav',
+    'search', // e.g. the filters on the changelog
     'button',
     'dialog',
     '[popover]',
@@ -241,6 +242,50 @@ function markdownLocation(location, req) {
   return location.startsWith('/')
     ? `${target.pathname}${target.search}${target.hash}`
     : target.href;
+}
+
+/**
+ * The pages that are rendered on every request instead of being read from a prerendered file, and
+ * that are the same until the next deploy: the changelog without filters, which has every version
+ * on one page as Markdown. Their Markdown is made once and kept, since it is linked to from
+ * llms.txt. Not in development, where the page changes.
+ */
+const cache = new Map();
+const isCached = (url) =>
+  process.env.NODE_ENV !== 'development' &&
+  /^\/(?:no|en)\/changelog$/.test(url);
+
+/**
+ * Express middleware that answers with the Markdown that was kept, instead of rendering the page
+ * again. Used right before React Router, after markdownNegotiation and the middleware that logs
+ * and sets headers, so the answer is like the first one.
+ */
+export function cachedMarkdown(req, res, next) {
+  const cached =
+    (req.method === 'GET' || req.method === 'HEAD') &&
+    req.headers.accept === 'text/markdown'
+      ? cache.get(req.url)
+      : undefined;
+  if (cached === undefined) return next();
+  setMarkdownHeaders(req, res, cached);
+  res.end(req.method === 'HEAD' ? undefined : cached, 'utf-8');
+}
+
+/** The headers of a Markdown response, in place of the ones of the HTML it was made from */
+function setMarkdownHeaders(req, res, markdown) {
+  res.removeHeader('content-length');
+  res.removeHeader('etag');
+  res.removeHeader('last-modified');
+  res.setHeader('Content-Type', 'text/markdown; charset=utf-8');
+  if (req.method !== 'HEAD') {
+    res.setHeader('x-markdown-tokens', String(estimateTokens(markdown)));
+  }
+  res.setHeader(
+    'Content-Signal',
+    `ai-train=${process.env.APP_ENV === 'production' ? 'yes' : 'no'}, search=yes, ai-input=yes`,
+  );
+  // Set by markdownNegotiation before this, but the response can have replaced it
+  res.vary('Accept');
 }
 
 /**
@@ -353,33 +398,17 @@ export function markdownNegotiation(req, res, next) {
         .join('\n');
 
       const fullMarkdown = `${frontmatter}\n\n${markdown}`;
-      const tokens = estimateTokens(fullMarkdown);
-
-      res.removeHeader('content-length');
-      res.removeHeader('etag');
-      res.removeHeader('last-modified');
-      res.setHeader('Content-Type', 'text/markdown; charset=utf-8');
-      if (req.method !== 'HEAD') {
-        res.setHeader('x-markdown-tokens', String(tokens));
-      }
-      res.setHeader(
-        'Content-Signal',
-        `ai-train=${process.env.APP_ENV === 'production' ? 'yes' : 'no'}, search=yes, ai-input=yes`,
-      );
-
-      const existingVary = res.getHeader('vary');
-      if (existingVary) {
-        const varies = existingVary
-          .toString()
-          .split(',')
-          .map((v) => v.trim().toLowerCase());
-        if (!varies.includes('accept')) {
-          res.setHeader('Vary', `${existingVary}, Accept`);
-        }
-      } else {
-        res.setHeader('Vary', 'Accept');
+      // Not the answer to a HEAD request, which has no HTML to make the Markdown from
+      if (
+        isCached(canonicalUrl) &&
+        req.method === 'GET' &&
+        res.statusCode === 200 &&
+        chunks.length > 0
+      ) {
+        cache.set(canonicalUrl, fullMarkdown);
       }
 
+      setMarkdownHeaders(req, res, fullMarkdown);
       return originalEnd.call(
         res,
         req.method === 'HEAD' ? undefined : fullMarkdown,

@@ -20,6 +20,18 @@ type Redirect = {
 };
 
 const redirects: Redirect[] = [
+  /* The changelogs of the code packages and of Figma are now one page, filtered by package */
+  { from: '/changelog', to: '/no/changelog' },
+  { from: '/no/components/changelog', to: '/no/changelog' },
+  { from: '/en/components/changelog', to: '/en/changelog' },
+  {
+    from: '/no/fundamentals/figma/changelog',
+    to: '/no/changelog?package=figma-ui-kit&package=figma-plugin',
+  },
+  {
+    from: '/en/fundamentals/figma/changelog',
+    to: '/en/changelog?package=figma-ui-kit&package=figma-plugin',
+  },
   {
     from: '/komponenter',
     to: '/no/components',

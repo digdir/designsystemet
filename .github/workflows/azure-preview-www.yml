@@ -6,6 +6,12 @@ on:
     paths:
       - "apps/www/**"
       - "internal/components/**"
+      # The changelog page reads it, and the deploy dates its newest version
+      - "changelog.json"
+      - "scripts/date-changelog.ts"
+      - "scripts/changelog-dates.ts"
+      - "scripts/changelog-packages.ts"
+      - "scripts/changelog-types.ts"
       - ".github/workflows/azure-preview-www.yml"
       - ".github/workflows/azure-deploy-www.yml"
       - ".github/workflows/preview-comment.yml"

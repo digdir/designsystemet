@@ -6,6 +6,10 @@ on:
       - "packages/**"
       - "apps/**"
       - "figma/**"
+      - "changelog.json"
+      # The changelog check reads which packages are not versioned from it
+      - ".changeset/config.json"
+      - "scripts/**"
       - "biome.jsonc"
       # Dependency updates can break the build and types without touching any package files
       - "package.json"
@@ -23,10 +27,23 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
+      # The www deploy runs this script without installing packages, so it is run like that here,
+      # before they are installed. It fails if the script starts to import a package. As a dry
+      # run, so changelog.json is left as it is and a failing GitHub API does not fail the checks.
+      - name: Date script runs without packages
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node scripts/date-changelog.ts --dry-run
       - uses: $/.github/actions/gh-setup
       - name: Build
         run: pnpm build
       - name: Types
         run: pnpm types
+      # The root is not one of the packages `pnpm types` goes through
+      - name: Types in scripts
+        run: pnpm types:scripts
+      # It can be edited by hand, e.g. in the release PR
+      - name: Check changelog.json
+        run: pnpm node scripts/group-changelogs.ts --check
       - name: Biome CI
         run: pnpm biome ci .

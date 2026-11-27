@@ -9,9 +9,15 @@ Otherwise you will get an `Error: Validation Failed: {"resource":"PullRequest","
 
 1. Once a changeset is in `main`, the [Release workflow](https://github.com/digdir/designsystemet/actions/workflows/release.yml) picks up the changesets (inside `.changeset/`) and opens a PR with bumped versions and changelogs.
 
+   The PR also adds the new version to [`changelog.json`](changelog.json), where each change is listed once with the packages it affects. The GitHub release and the changelog page on www (`/en/changelog`) are built from it, so edit the version there:
+   - If two entries describe the same change, for example one for code and one for Figma, merge them into one, with the packages of both.
+   - To introduce the release, write notes in markdown in the version's `notes` field, without headings.
+
+   Make the edits in the release PR right before you merge it. The Release workflow makes the PR again each time something is merged to `main`, and that removes edits made to it. The description of the PR is not updated when you edit the file, so it keeps showing the changes as they were. The GitHub release and www use the file. Versions already in `changelog.json` on `main` are not rebuilt, so edits there are kept. The page on www reads `changelog.json`, so edits reach it the next time www is deployed, but the GitHub release is only made once, when the version is published.
+
 2. Approve and merge the PR.
 
-3. The Release workflow will now publish the new package versions to npm and create a [GitHub release](https://github.com/digdir/designsystemet/releases). After the packages have been published, new versions of `www`, `themebuilder` and `storybook` will be published.
+3. The Release workflow will now publish the new package versions to npm and create a [GitHub release](https://github.com/digdir/designsystemet/releases), with the version's changes from `changelog.json` as its notes. After the packages have been published, new versions of `www`, `themebuilder` and `storybook` will be published.
 
 4. Verify that the new version is available on [npm](https://www.npmjs.com/package/@digdir/designsystemet) (under the `latest` tag) and on [GitHub releases](https://github.com/digdir/designsystemet/releases).
 

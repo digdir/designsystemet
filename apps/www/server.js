@@ -4,7 +4,10 @@ import compression from 'compression';
 import express from 'express';
 //import rateLimit from 'express-rate-limit';
 import morgan from 'morgan';
-import { markdownNegotiation } from './server/markdown-negotiation.js';
+import {
+  cachedMarkdown,
+  markdownNegotiation,
+} from './server/markdown-negotiation.js';
 import { securityHeaders, ssrCacheControl } from './server/security-headers.js';
 
 // Short-circuit the type-checking of the built output.
@@ -76,9 +79,22 @@ if (DEVELOPMENT) {
     max: 100, // limit each IP to 100 requests per windowMs for prerendered HTML
   }); */
 
+  /* The changelog is filtered by its search params in its loader (app/routes/changelog). Only the
+   * page without them is prerendered, so with them, its HTML and data come from React Router.
+   * Also with a trailing slash, which React Router redirects away from, keeping the params. So
+   * does the markdown version, which has every version on one page (Accept is set by
+   * markdownNegotiation). */
+  const isDynamicChangelog = (req) =>
+    /^\/(?:no|en)\/changelog(?:\/|\.data)?$/.test(req.path) &&
+    (req.url.includes('?') || req.headers.accept === 'text/markdown');
+
   /* Serve prerendered HTML files for clean URLs (e.g., /no/intro -> /no/intro/index.html) */
   app.use((req, res, next) => {
-    if (req.path.includes('.') || req.path.startsWith('/assets')) {
+    if (
+      req.path.includes('.') ||
+      req.path.startsWith('/assets') ||
+      isDynamicChangelog(req)
+    ) {
       return next();
     }
 
@@ -90,11 +106,15 @@ if (DEVELOPMENT) {
     });
   });
 
-  app.use(express.static('dist/client', { redirect: false }));
+  const serveClient = express.static('dist/client', { redirect: false });
+  app.use((req, res, next) =>
+    isDynamicChangelog(req) ? next() : serveClient(req, res, next),
+  );
 
   // RR v8 emits the server build (not the bundled `server/app.ts`) at
   // BUILD_PATH, so drive the request handler from it directly.
   app.use(ssrCacheControl);
+  app.use(cachedMarkdown);
   app.use(
     createRequestHandler({
       build: () => import(BUILD_PATH),

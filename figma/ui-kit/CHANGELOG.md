@@ -33,8 +33,6 @@
 
 ## 1.24.0
 
-_Published 2026-11-09_
-
 ### Patch Changes
 
 - **Link:** The icon on visited links now uses `text/subtle`, the same color as the link text. It used to use `link/color/visited`, an old variable that is no longer in use. If you have your own copy of the UI kit, see [how to fix it in Figma](https://github.com/digdir/designsystemet/issues/4969#issuecomment-6472970682). ([#4969](https://github.com/digdir/designsystemet/issues/4969)) ([#5574](https://github.com/digdir/designsystemet/pull/5574))
@@ -42,8 +40,6 @@ _Published 2026-11-09_
 - **Search** Deprecated in Figma and will be removed in the next major version. [Read more about what you should do in Figma here](https://github.com/digdir/designsystemet/issues/5578) ([#5578](https://github.com/digdir/designsystemet/issues/5578)) ([#5596](https://github.com/digdir/designsystemet/pull/5596)) by [@Thunear](https://github.com/Thunear)
 
 ## 1.23.0
-
-_Published 2026-10-02_
 
 ### Minor Changes
 
@@ -77,8 +73,6 @@ _Published 2026-10-02_
 
 ## 1.19.0
 
-_Published 2026-08-18_
-
 ### Minor Changes
 
 - **FileUpload:** New component ([#1236](https://github.com/digdir/designsystemet/issues/1236))
@@ -91,8 +85,6 @@ _Published 2026-08-18_
 
 ## 1.17.0
 
-_Published 2026-06-26_
-
 ### Minor Changes
 
 - **Color:** The **Main color** and **Support color** collections are merged into one **Color** collection, and colors are chosen with color modes, as in code. The `main`, `support` and `neutral` component variants are removed ([#4545](https://github.com/digdir/designsystemet/issues/4545))
@@ -102,8 +94,6 @@ _Published 2026-06-26_
 - **ChipGroup:** Removed, as it isn't a component in code. Spacing between chips is a layout decision for each team ([#5025](https://github.com/digdir/designsystemet/issues/5025))
 
 ## 1.14.0
-
-_Published 2026-05-08_
 
 ### Minor Changes
 
@@ -157,8 +147,6 @@ _Published 2026-05-08_
 
 ## 1.8.0
 
-_Published 2025-12-12_
-
 ### Minor Changes
 
 - **Tag:** New `outline` variant, for tags on `surface-tinted` components and surfaces ([#3478](https://github.com/digdir/designsystemet/issues/3478))
@@ -196,8 +184,6 @@ _Published 2025-12-12_
 - Fixed missing components, mostly in examples ([#4305](https://github.com/digdir/designsystemet/issues/4305))
 
 ## 1.6.0
-
-_Published 2025-10-01_
 
 ### Minor Changes
 
@@ -249,8 +235,6 @@ _Published 2025-10-01_
 
 ## 1.0.8
 
-_Published 2025-06-04_
-
 ### Minor Changes
 
 - Variables now have Designsystemet's CSS syntax, so Dev Mode shows CSS variables that exist ([#3690](https://github.com/digdir/designsystemet/issues/3690))
@@ -291,8 +275,6 @@ _Published 2025-06-04_
 
 ## 1.0.3
 
-_Published 2025-04-07_
-
 ### Minor Changes
 
 - **Multisuggestion:** Renamed from Multiselect, as in code
@@ -326,8 +308,6 @@ _Published 2025-04-07_
 - Fixed ghost variables in examples
 
 ## 1.0.0
-
-_Published 2025-02-28_
 
 ### Minor Changes
 

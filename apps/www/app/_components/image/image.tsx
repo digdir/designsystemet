@@ -5,7 +5,8 @@ import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import classes from './image.module.css';
 
-interface ImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
+// Exported since `defaultComponents` in mdx-components.tsx is, and its type names this one
+export interface ImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   boxShadow?: boolean;
   caption?: string;
 }

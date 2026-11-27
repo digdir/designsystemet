@@ -1,0 +1,186 @@
+/* Below the sticky site header and the sticky version of the release being read, so links and
+   other focused elements in the changes are not hidden behind them. Room for the version with its
+   dates wrapped to their own lines, as on small screens */
+:global(html):has(.page) {
+  scroll-padding-top: calc(var(--header-height) + var(--ds-size-26));
+}
+
+.page {
+  width: 100%;
+  max-width: 52rem;
+  margin: var(--page-spacing-top) auto var(--ds-size-18);
+}
+
+.header {
+  display: grid;
+  gap: var(--ds-size-4);
+  margin-bottom: var(--ds-size-8);
+}
+
+.filters {
+  display: grid;
+  gap: var(--ds-size-5);
+  margin-bottom: var(--ds-size-10);
+  padding-bottom: var(--ds-size-4);
+  border-bottom: 1px solid var(--ds-color-neutral-border-subtle);
+}
+.search {
+  max-width: 28rem;
+}
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ds-size-3);
+}
+.status {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-size-3);
+  min-height: var(--ds-size-10);
+  color: var(--ds-color-neutral-text-subtle);
+}
+.release {
+  /* Instead of the margins u-rich-text gives sections */
+  margin-block: 0 var(--ds-size-14);
+  overflow-wrap: anywhere;
+
+  /* Everything under the version hangs on a line, tying the changes to their version */
+  > :not(header) {
+    border-left: 1px solid var(--ds-color-neutral-border-default);
+    margin: 0 0 0 var(--ds-size-1);
+    padding: var(--ds-size-1) 0 var(--ds-size-4) var(--ds-size-6);
+  }
+
+  /* Tables keep whole words in their cells, and scroll sideways in their wrapper when too wide */
+  table {
+    overflow-wrap: break-word;
+
+    code {
+      white-space: nowrap;
+    }
+  }
+}
+
+/* The version stays in view while its changes are read, as a version can be several screens long */
+.releaseHeader {
+  position: sticky;
+  top: var(--header-height);
+  z-index: 1;
+  container: release-header / scroll-state;
+  /* Also without scroll-state queries: the changes scroll under it, so it needs a background */
+  background: var(--ds-color-neutral-background-default);
+
+  > div {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    column-gap: var(--ds-size-2);
+    padding-block: var(--ds-size-3);
+  }
+
+  /* Instead of the margins u-rich-text gives headings */
+  h2 {
+    margin: 0;
+  }
+
+  /* On short screens, such as when zoomed in, a sticky version would take too much of the screen */
+  @media (max-height: 40rem) {
+    position: static;
+  }
+}
+/* While stuck, a line separates the version from the changes scrolling under it */
+@container release-header scroll-state(stuck: top) {
+  .releaseHeader > div {
+    box-shadow: 0 1px 0 var(--ds-color-neutral-border-subtle);
+  }
+}
+
+.releaseDates {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 var(--ds-size-2);
+  margin: 0;
+  color: var(--ds-color-neutral-text-subtle);
+  font-size: var(--ds-font-size-3);
+
+  /* A dot before each date separates it from the version and the date before it */
+  > span::before {
+    content: '•' / '';
+    margin-right: var(--ds-size-2);
+  }
+
+  /* On small screens the dates go under the version, one per line, so no dots start the lines */
+  @media (max-width: 40rem) {
+    flex-basis: 100%;
+    flex-direction: column;
+    align-items: start;
+
+    > span::before {
+      content: none;
+    }
+  }
+}
+
+.changes {
+  ul:not(.tags) {
+    margin: 0;
+    padding-left: var(--ds-size-5);
+  }
+}
+.changesHeading {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-size-3);
+  margin: var(--ds-size-2) 0 var(--ds-size-4);
+
+  svg {
+    box-sizing: content-box;
+    flex-shrink: 0;
+    font-size: var(--ds-size-6);
+    padding: var(--ds-size-2);
+    border-radius: var(--ds-border-radius-full);
+    /* Dark with a light icon: enough contrast, and it stands out from the light surfaces around it */
+    background: var(--ds-color-neutral-base-default);
+    color: var(--ds-color-neutral-base-contrast-default);
+  }
+}
+/* Major changes can break things for the reader, so they stand out from the rest */
+.changes[data-change-type='major'] .changesHeading svg {
+  background: var(--ds-color-warning-base-default);
+  color: var(--ds-color-warning-base-contrast-default);
+}
+
+/* The words searched for, highlighted by an effect in changelog.tsx. The same colors as the
+   highlight in the search dialog, see search-dialog.module.css. */
+.releases ::highlight(changelog-search) {
+  background-color: var(--ds-color-success-base-default);
+  color: var(--ds-color-success-base-contrast-default);
+}
+
+/* Space between the paragraphs, tables, code and nested lists of a change or of the notes */
+.change,
+.releaseNotes {
+  > * {
+    margin-block: 0;
+  }
+  > * + * {
+    margin-top: var(--ds-size-2);
+  }
+}
+.change {
+  /* Room between the changes, so each change and its tags read as one */
+  margin-block: 0 var(--ds-size-7);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ds-size-2);
+  list-style: none;
+  padding: 0;
+}
+
+.pagination {
+  margin-block: var(--ds-size-4);
+}

@@ -82,6 +82,32 @@ export default {
       email: 'e-post',
     },
   },
+  changelog: {
+    title: 'Endringslogg',
+    description:
+      'Hva som er endret i hver versjon av kodepakkene, Figma-filen og dokumentasjonen.',
+    search: 'Søk i endringsloggen',
+    packages: 'Vis endringer i',
+    documentation: 'Dokumentasjon',
+    version: 'Versjon',
+    matches_one: '{{count}} endring passer søket',
+    matches_other: '{{count}} endringer passer søket',
+    results_one: '{{count}} versjon',
+    results_other: '{{count}} versjoner',
+    reset: 'Nullstill filter',
+    empty:
+      'Ingen endringer passer filteret. Prøv andre ord eller pakker, eller nullstill filteret.',
+    released: 'Utgitt',
+    'figma-published': 'Publisert i Figma',
+    'no-changes': 'Ingen endringer i denne versjonen.',
+    'no-changes-in-packages': 'Ingen endringer i de valgte pakkene.',
+    'packages-label': 'Pakker:',
+    pagination: 'Sider i endringsloggen',
+    'previous-page': 'Forrige side',
+    'next-page': 'Neste side',
+    page: 'Side {{page}}',
+    'page-of': 'side {{page}} av {{total}}',
+  },
   sidebar: {
     Components: 'Komponenter',
     Blogg: 'Blogg',
@@ -157,9 +183,6 @@ export default {
     title: 'Komponenter',
     description:
       'Designsystemet inneholder grunnleggende komponenter som kan brukes uavhengig av rammeverk, og settes sammen på mange ulike måter og i forskjellige mønstre.',
-    changelog: {
-      title: 'Endringslogg',
-    },
     accessibility: {
       title: 'Universell utforming',
     },

@@ -75,12 +75,14 @@ jobs:
         with:
           persist-credentials: false
 
-      # The newest changelog version is left undated by the release PR (its release does not exist
-      # yet); date it from the GitHub release before the content is copied into the image.
-      - name: Date the latest changelog entry
+      # The newest version in changelog.json is left undated by the release PR (its release does not
+      # exist yet); date it from the GitHub release before the content is copied into the image.
+      # The script is TypeScript, which Node runs as it is from 22.18. The runner has a newer one.
+      # Not `pnpm node`, which installs every package first.
+      - name: Date the undated changelog versions
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: node scripts/date-latest-changelog.js
+        run: node scripts/date-changelog.ts
 
       - name: az login (oidc)
         uses: azure/login@a641126d1b8aa4d1fa005f4f92df94a3a4c4c906 # v3.1.0
