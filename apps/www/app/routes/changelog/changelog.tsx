@@ -62,7 +62,7 @@ const CHANGE_TYPE_ICONS = {
 } satisfies Record<ChangeType, unknown>;
 
 /**
- * The changelog is read from app/content/changelog/changelog.json, and filtered here by the search
+ * The changelog is read from changelog.json at the root of the repo, and filtered here by the search
  * params, see getChangelogPage. Only the page without search params is prerendered; with them,
  * server.js leaves the request to React Router. So it does for the markdown version of the page,
  * e.g. /en/changelog.md, which has every version on one page, as it has no pagination.

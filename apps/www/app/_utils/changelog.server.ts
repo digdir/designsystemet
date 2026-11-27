@@ -5,7 +5,8 @@ import remarkGfm from 'remark-gfm';
 import remarkParse from 'remark-parse';
 import remarkRehype from 'remark-rehype';
 import { unified } from 'unified';
-import changelogJson from '~/content/changelog/changelog.json';
+// At the root of the repo, since the GitHub releases are made from it as well
+import changelogJson from '../../../../changelog.json';
 import {
   CHANGE_TYPES,
   CHANGELOG_PACKAGES,

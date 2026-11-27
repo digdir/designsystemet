@@ -1,7 +1,7 @@
 /**
  * The packages in the changelog, in the order they are shown: by color, see below. The ids are
  * used in the URL of the changelog page, e.g. `/en/changelog?package=css&package=react`.
- * `packageName` is the name of the package in app/content/changelog/changelog.json.
+ * `packageName` is the name of the package in changelog.json at the root of the repo.
  * scripts/group-changelogs.js lists the packages of each change in this order, and fails on a
  * package with a changelog that is not here.
  *

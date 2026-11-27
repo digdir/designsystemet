@@ -17,7 +17,7 @@ import { execFileSync } from 'node:child_process';
 import { promises as fs } from 'node:fs';
 
 // The same file as CHANGELOG_JSON in scripts/group-changelogs.js
-const file = 'apps/www/app/content/changelog/changelog.json';
+const file = 'changelog.json';
 
 /** The date the `v<version>` GitHub release was published, as `YYYY-MM-DD`, or '' */
 function getReleaseDate(version) {

@@ -51,4 +51,4 @@ The UI kit and the plugin are published to Figma Community by hand, and always t
    node scripts/group-changelogs.js
    ```
 
-   It adds the date to `apps/www/app/content/changelog/changelog.json`. Commit that file with the changelogs.
+   It adds the date to `changelog.json`. Commit that file with the changelogs.
