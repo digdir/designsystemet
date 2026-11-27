@@ -13,10 +13,11 @@
  *   node scripts/group-changelogs.js --release <version> prints the version as markdown, for its
  *                                                        GitHub release (see create-aggregated-release.sh)
  *                                                        and the release PR (see update-release-pr-body.sh)
- *     --file <path>                                      reads that changelog.json instead, e.g. from the
- *                                                        release PR's branch
  *   node scripts/group-changelogs.js --check             only checks changelog.json, e.g. after it was
  *                                                        edited by hand, and that every package is listed
+ *     --file <path>                                      with --release or --check: reads that
+ *                                                        changelog.json instead, e.g. from the release
+ *                                                        PR's branch
  *
  * Versions already in changelog.json are kept as they are, so they can be edited by hand, e.g. to
  * merge two entries that describe the same change for different readers, or to write notes about
@@ -88,8 +89,11 @@ const plainText = (markdown) => textOf(parseMarkdown(markdown)).trim();
 
 // The line the changeset generator adds before the change of a first-time contributor
 const isThanks = (text) => text.startsWith('🎉 Thanks ');
-// The packages are versioned together, so these only say that the others were bumped as well
-const isDependencyBump = (text) => text.startsWith('Updated dependencies');
+// The packages are versioned together, so these only say that the others were bumped as well.
+// Only the line changesets wrote, `Updated dependencies [<commits>]:`, so a change that someone
+// wrote with the same first words is kept.
+const isDependencyBump = (text) =>
+  /^Updated dependencies \[[^\]]*\]:/.test(text);
 
 /**
  * The stable versions in a package's CHANGELOG.md, in file order, down to CUTOFF_VERSION.
@@ -514,15 +518,17 @@ async function main() {
     },
   });
 
+  // For `--check` and `--release`. The versions are always written to changelog.json.
+  const file = values.file ? path.resolve(values.file) : CHANGELOG_JSON;
+
   if (values.check) {
-    const { releases } = await readChangelog(CHANGELOG_JSON);
+    const { releases } = await readChangelog(file);
     await checkPackages();
     console.log(`changelog.json: ${releases.length} version(s) checked.`);
     return;
   }
 
   if (values.release) {
-    const file = values.file ? path.resolve(values.file) : CHANGELOG_JSON;
     const found = (await readChangelog(file)).releases.find(
       (entry) => entry.version === values.release,
     );
