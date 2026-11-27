@@ -16,14 +16,14 @@
     "@digdir/designsystemet-types": "workspace:^",
     "@internal/components": "workspace:^",
     "@internal/digdir": "workspace:^",
-    "@navikt/aksel-icons": "8.22.1",
+    "@navikt/aksel-icons": "8.23.0",
     "@react-router/express": "8.5.2",
     "@react-router/node": "8.5.2",
     "clsx": "2.1.1",
     "compression": "1.8.2",
     "cross-env": "10.1.0",
     "express": "5.3.0",
-    "express-rate-limit": "8.7.4",
+    "express-rate-limit": "8.7.5",
     "gray-matter": "^4.0.3",
     "htmlfy": "1.1.0",
     "i18next": "26.7.2",
@@ -36,7 +36,7 @@
     "react": "19.3.1",
     "react-docgen-typescript": "2.4.0",
     "react-dom": "19.3.1",
-    "react-dropzone": "20.2.0",
+    "react-dropzone": "20.2.1",
     "react-i18next": "17.1.13",
     "react-live": "4.1.8",
     "react-router": "8.5.2",
@@ -56,6 +56,6 @@
     "satori": "^0.63.2",
     "sharp": "^0.35.5",
     "typescript": "6.0.3",
-    "vite": "8.3.7"
+    "vite": "8.3.8"
   }
 }
