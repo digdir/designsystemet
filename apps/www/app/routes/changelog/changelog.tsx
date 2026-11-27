@@ -82,7 +82,11 @@ export async function loader({ params: { lang }, request }: Route.LoaderArgs) {
     ...changelog,
     lang,
     metadata: {
-      title: t('changelog.title'),
+      // A link to one version is told apart from the changelog, e.g. in a tab or where it is shared
+      title:
+        changelog.filters.version && changelog.total > 0
+          ? `${t('changelog.title')} ${changelog.filters.version}`
+          : t('changelog.title'),
       description: t('changelog.description'),
     },
   };
@@ -313,8 +317,8 @@ function useFilterParams() {
   useEffect(() => {
     setPending((value) => (value && value.from !== current ? null : value));
   }, [current]);
-  // usePagination keeps its callback until the page or number of pages change, so updateParams
-  // can be called from an earlier render. It reads the latest filters from here.
+  // updateParams can be called from an earlier render, e.g. when typing in the search field
+  // stops. It reads the latest filters from here.
   const latest = useRef({ params, current });
   latest.current = { params, current };
 
@@ -360,14 +364,24 @@ export default function Changelog({ loaderData }: Route.ComponentProps) {
     currentPage: filters.page,
     totalPages,
     showPages: 5,
-    setCurrentPage: (page) => {
-      updateParams((next) => {
-        next.delete('page');
-        if (page > 1) next.set('page', String(page));
-      });
-      statusRef.current?.focus();
-    },
+    // The pages are links, see pageLink, so only the focus is moved here
+    setCurrentPage: () => statusRef.current?.focus(),
   });
+
+  /**
+   * The link to a page with the filters kept. The pages are links, so they also work before the
+   * page has loaded and for crawlers, which only get the newest versions in the prerendered page.
+   */
+  const pageLink = (page: number, children?: ReactNode) => {
+    const search = new URLSearchParams(params);
+    search.delete('page');
+    if (page > 1) search.set('page', String(page));
+    return (
+      <RRLink to={{ search: search.toString() }} preventScrollReset>
+        {children}
+      </RRLink>
+    );
+  };
 
   // The old changelog pages linked to versions as e.g. `#1240` for 1.24.0. Hashes are not sent to
   // the server, so this is checked once the page has hydrated.
@@ -559,10 +573,12 @@ export default function Changelog({ loaderData }: Route.ComponentProps) {
               <Pagination.Item>
                 <Pagination.Button
                   {...prevButtonProps}
-                  disabled={!isHydrated}
+                  asChild
                   data-icon
                   aria-label={t('changelog.previous-page')}
-                />
+                >
+                  {pageLink(filters.page - 1)}
+                </Pagination.Button>
               </Pagination.Item>
               {pages.map(({ page, itemKey, buttonProps }) => (
                 // TODO update with new pagination() from #5581 after v2 release
@@ -570,10 +586,10 @@ export default function Changelog({ loaderData }: Route.ComponentProps) {
                   {typeof page === 'number' && (
                     <Pagination.Button
                       {...buttonProps}
-                      disabled={!isHydrated}
+                      asChild
                       aria-label={t('changelog.page', { page })}
                     >
-                      {page}
+                      {pageLink(page, page)}
                     </Pagination.Button>
                   )}
                 </Pagination.Item>
@@ -581,10 +597,12 @@ export default function Changelog({ loaderData }: Route.ComponentProps) {
               <Pagination.Item>
                 <Pagination.Button
                   {...nextButtonProps}
-                  disabled={!isHydrated}
+                  asChild
                   data-icon
                   aria-label={t('changelog.next-page')}
-                />
+                >
+                  {pageLink(filters.page + 1)}
+                </Pagination.Button>
               </Pagination.Item>
             </Pagination.List>
           </Pagination>
