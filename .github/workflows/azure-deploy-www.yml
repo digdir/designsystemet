@@ -80,7 +80,7 @@ jobs:
       - name: Date the undated changelog versions
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: node scripts/date-changelog.js
+        run: node scripts/date-changelog.ts
 
       - name: az login (oidc)
         uses: azure/login@a641126d1b8aa4d1fa005f4f92df94a3a4c4c906 # v3.1.0

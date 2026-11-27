@@ -1,4 +1,4 @@
-// The packages are listed in scripts/, since scripts/group-changelogs.js uses the list as well
+// The packages are listed in scripts/, since scripts/group-changelogs.ts uses the list as well
 export {
   CHANGELOG_PACKAGES,
   type ChangelogPackage,

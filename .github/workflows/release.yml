@@ -92,7 +92,7 @@ jobs:
         id: changesets
         uses: changesets/action@ae32849d5ba541f9ae29e40e22a623bc13562f51 # v2.1.2
         env:
-          # For `gh` in scripts/group-changelogs.js, which dates the versions from their releases
+          # For `gh` in scripts/group-changelogs.ts, which dates the versions from their releases
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}

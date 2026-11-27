@@ -8,12 +8,12 @@
  * list items, not lines.
  *
  * Usage:
- *   node scripts/group-changelogs.js                     adds the versions that are missing from changelog.json
- *   node scripts/group-changelogs.js --all               rebuilds every version
- *   node scripts/group-changelogs.js --release <version> prints the version as markdown, for its
+ *   node scripts/group-changelogs.ts                     adds the versions that are missing from changelog.json
+ *   node scripts/group-changelogs.ts --all               rebuilds every version
+ *   node scripts/group-changelogs.ts --release <version> prints the version as markdown, for its
  *                                                        GitHub release (see create-aggregated-release.sh)
  *                                                        and the release PR (see update-release-pr-body.sh)
- *   node scripts/group-changelogs.js --check             only checks changelog.json, e.g. after it was
+ *   node scripts/group-changelogs.ts --check             only checks changelog.json, e.g. after it was
  *                                                        edited by hand, and that every package is listed
  *     --file <path>                                      with --release or --check: reads that
  *                                                        changelog.json instead, e.g. from the release
@@ -23,30 +23,41 @@
  * merge two entries that describe the same change for different readers, or to write notes about
  * the release in its `notes` field, or to add the date the Figma file was published (see
  * figma/README.md). The notes are shown in the GitHub release and on www. Only their release
- * date is added when it is missing, see changelog-dates.js. The versions are checked when they
+ * date is added when it is missing, see changelog-dates.ts. The versions are checked when they
  * are read, see checkRelease.
  *
  * `--all` loses those edits, except for the dates the Figma file was published.
  *
  * The changelog page on www reads changelog.json, see apps/www/app/_utils/changelog.server.ts.
  *
- * The shape of changelog.json is in changelog-types.ts.
- * @typedef {import('./changelog-types.ts').ChangeType} ChangeType
- * @typedef {import('./changelog-types.ts').Change} Change
- * @typedef {import('./changelog-types.ts').Release} Release
- * @typedef {import('./changelog-types.ts').Changelog} Changelog
+ * The shape of changelog.json is in changelog-types.ts. Node strips the types when it runs this.
  */
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
 import { parseArgs } from 'node:util';
+import type {
+  Link,
+  List,
+  ListItem,
+  Nodes,
+  Paragraph,
+  PhrasingContent,
+  RootContent,
+} from 'mdast';
 import { toString as textOf } from 'mdast-util-to-string';
 import remarkGfm from 'remark-gfm';
 import remarkParse from 'remark-parse';
 import remarkStringify from 'remark-stringify';
 import { unified } from 'unified';
-import { addReleaseDates } from './changelog-dates.js';
+import { addReleaseDates } from './changelog-dates.ts';
 import { CHANGELOG_PACKAGES } from './changelog-packages.ts';
-import { CHANGE_HEADINGS } from './changelog-types.ts';
+import {
+  CHANGE_HEADINGS,
+  type Change,
+  type Changelog,
+  type ChangeType,
+  type Release,
+} from './changelog-types.ts';
 
 const ROOT = process.cwd();
 const CHANGELOG_JSON = path.join(ROOT, 'changelog.json');
@@ -58,8 +69,10 @@ const CUTOFF_VERSION = '0.101.0';
 const NO_CHANGES = 'No changes in this release.';
 
 /** The order packages are listed in under each change, see changelog-packages.ts */
-const PACKAGE_ORDER = CHANGELOG_PACKAGES.map(({ packageName }) => packageName);
-const packageOrder = (name) => {
+const PACKAGE_ORDER: string[] = CHANGELOG_PACKAGES.map(
+  ({ packageName }) => packageName,
+);
+const packageOrder = (name: string) => {
   const index = PACKAGE_ORDER.indexOf(name);
   if (index === -1)
     throw new Error(
@@ -68,8 +81,8 @@ const packageOrder = (name) => {
   return index;
 };
 
-/** @type {ChangeType[]} biggest first */
-const CHANGE_TYPES = Object.keys(CHANGE_HEADINGS);
+/** Biggest first */
+const CHANGE_TYPES = Object.keys(CHANGE_HEADINGS) as ChangeType[];
 
 const processor = unified()
   .use(remarkParse)
@@ -77,33 +90,33 @@ const processor = unified()
   .use(remarkStringify, { bullet: '-', emphasis: '_', listItemIndent: 'one' })
   .freeze();
 
-/** @param {string} markdown */
-const parseMarkdown = (markdown) => processor.parse(markdown);
+const parseMarkdown = (markdown: string) => processor.parse(markdown);
 
-/** @param {import('mdast').RootContent[]} nodes */
-const toMarkdown = (nodes) =>
+const toMarkdown = (nodes: RootContent[]) =>
   processor.stringify({ type: 'root', children: nodes }).trim();
 
 /** The text of a change without its markup, e.g. `**Dialog:** …` reads `Dialog: …`. */
-const plainText = (markdown) => textOf(parseMarkdown(markdown)).trim();
+const plainText = (markdown: string) => textOf(parseMarkdown(markdown)).trim();
 
 // The line the changeset generator adds before the change of a first-time contributor
-const isThanks = (text) => text.startsWith('🎉 Thanks ');
+const isThanks = (text: string) => text.startsWith('🎉 Thanks ');
 // The packages are versioned together, so these only say that the others were bumped as well.
 // Only the line changesets wrote, `Updated dependencies [<commits>]:`, so a change that someone
 // wrote with the same first words is kept.
-const isDependencyBump = (text) =>
+const isDependencyBump = (text: string) =>
   /^Updated dependencies \[[^\]]*\]:/.test(text);
 
-/**
- * The stable versions in a package's CHANGELOG.md, in file order, down to CUTOFF_VERSION.
- * @param {string} md
- * @returns {{ version: string, items: { type: ChangeType, markdown: string, thanks?: string }[] }[]}
- */
-function parsePackageChangelog(md) {
-  const versions = [];
-  let version = null;
-  let type = 'patch';
+/** A version in a package's CHANGELOG.md, with its changes as they are written there */
+type PackageVersion = {
+  version: string;
+  items: { type: ChangeType; markdown: string; thanks?: string }[];
+};
+
+/** The stable versions in a package's CHANGELOG.md, in file order, down to CUTOFF_VERSION. */
+function parsePackageChangelog(md: string): PackageVersion[] {
+  const versions: PackageVersion[] = [];
+  let version: PackageVersion | null = null;
+  let type: ChangeType = 'patch';
 
   for (const node of parseMarkdown(md).children) {
     if (node.type === 'heading' && node.depth === 2) {
@@ -126,7 +139,7 @@ function parsePackageChangelog(md) {
     } else if (node.type === 'list') {
       // Belongs to the change after it in the same list. Dropped with the list, so the thanks for
       // a change that is left out does not end up on a change in another list or version.
-      let thanks;
+      let thanks: string | undefined;
       for (const item of node.children) {
         const markdown = toMarkdown(item.children);
         const text = plainText(markdown);
@@ -155,27 +168,23 @@ function parsePackageChangelog(md) {
 const DEPENDENCY_UPDATES_TEXT = 'Update npm non-major dependencies';
 const DEPENDENCY_UPDATES =
   /^(?:fix\(deps\): )?(?:update npm|updated) non-major dependenc/i;
-const isDependencyUpdates = (change) =>
+const isDependencyUpdates = (change: Change) =>
   DEPENDENCY_UPDATES.test(plainText(change.markdown));
 
 /** The number of the pull request a link goes to, e.g. 5613 for …/pull/5613 */
-const pullNumber = (link) => Number(link.url.split('/pull/')[1]);
+const pullNumber = (link: Link) => Number(link.url.split('/pull/')[1]);
 
-/**
- * The links to pull requests, e.g. [#5613](…), and to commits, e.g. [`cc33a61`](…), in a change.
- * @param {string} markdown
- * @returns {import('mdast').Link[]}
- */
-function changeLinks(markdown) {
-  const links = [];
-  const visit = (node) => {
+/** The links to pull requests, e.g. [#5613](…), and to commits, e.g. [`cc33a61`](…), in a change. */
+function changeLinks(markdown: string): Link[] {
+  const links: Link[] = [];
+  const visit = (node: Nodes) => {
     if (
       node.type === 'link' &&
       (node.url.includes('/pull/') || node.url.includes('/commit/'))
     ) {
       links.push(node);
     }
-    for (const child of node.children ?? []) visit(child);
+    if ('children' in node) node.children.forEach(visit);
   };
   visit(parseMarkdown(markdown));
   return links;
@@ -184,19 +193,17 @@ function changeLinks(markdown) {
 /**
  * Merges the dependency updates of a version into one change, with the links of all of them, in
  * the place of the first of them.
- * @param {Change[]} changes
- * @returns {Change[]}
  */
-function mergeDependencyUpdates(changes) {
+function mergeDependencyUpdates(changes: Change[]): Change[] {
   const updates = changes.filter(isDependencyUpdates);
   if (updates.length === 0) return changes;
 
-  const links = new Map();
+  const links = new Map<string, Link>();
   for (const update of updates) {
     for (const link of changeLinks(update.markdown)) links.set(link.url, link);
   }
   // Pull requests in number order, then commits
-  const linkOrder = (link) => pullNumber(link) || Infinity;
+  const linkOrder = (link: Link) => pullNumber(link) || Infinity;
   const sortedLinks = [...links.values()].sort(
     (a, b) => linkOrder(a) - linkOrder(b),
   );
@@ -205,8 +212,8 @@ function mergeDependencyUpdates(changes) {
     ...new Set(updates.flatMap((update) => update.thanks ?? [])),
   ].join('\n\n');
 
-  /** @type {Change} */
-  const merged = {
+  const text = (value: string): PhrasingContent => ({ type: 'text', value });
+  const merged: Change = {
     type: updates
       .map((update) => update.type)
       .reduce((a, b) =>
@@ -219,11 +226,11 @@ function mergeDependencyUpdates(changes) {
       {
         type: 'paragraph',
         children: [
-          { type: 'text', value: `${DEPENDENCY_UPDATES_TEXT} (` },
+          text(`${DEPENDENCY_UPDATES_TEXT} (`),
           ...sortedLinks.flatMap((link, index) =>
-            index === 0 ? [link] : [{ type: 'text', value: ', ' }, link],
+            index === 0 ? [link] : [text(', '), link],
           ),
-          { type: 'text', value: ')' },
+          text(')'),
         ],
       },
     ]),
@@ -242,9 +249,8 @@ function mergeDependencyUpdates(changes) {
 /**
  * Sorts changes by type, biggest first, then alphabetically by their text without markup, so
  * `**Dialog:** …` sorts as `Dialog: …`. Dependency updates come last.
- * @param {Change[]} changes
  */
-const sortChanges = (changes) =>
+const sortChanges = (changes: Change[]) =>
   changes
     .map((change) => ({
       change,
@@ -263,10 +269,9 @@ const sortChanges = (changes) =>
 /**
  * The packages with a changelog: the published ones in packages/, and the private ones that are
  * versioned with them, in figma/ and apps/.
- * @returns {Promise<{ name: string, dir: string }[]>}
  */
 async function findPackages() {
-  const pkgs = [];
+  const pkgs: { name: string; dir: string }[] = [];
   for await (const file of fs.glob('{packages,figma,apps}/*/CHANGELOG.md', {
     cwd: ROOT,
   })) {
@@ -280,26 +285,28 @@ async function findPackages() {
 }
 
 /**
- * Merges the package changelogs into one list of changes per version.
- * @param {Iterable<{ name: string, dir: string }>} pkgs
- * @returns {Promise<Release[]>} newest first, without dates
+ * Merges the package changelogs into one list of changes per version. Newest first, without
+ * dates.
  */
-async function groupChangelogs(pkgs) {
-  /** @type {Map<string, { version: string, changes: Map<string, Change> }>} */
-  const releases = new Map();
+async function groupChangelogs(
+  pkgs: Iterable<{ name: string; dir: string }>,
+): Promise<Release[]> {
+  const releases = new Map<
+    string,
+    { version: string; changes: Map<string, Change> }
+  >();
   const sorted = [...pkgs].sort(
     (a, b) => packageOrder(a.name) - packageOrder(b.name),
   );
   for (const pkg of sorted) {
     const md = await fs.readFile(path.join(pkg.dir, 'CHANGELOG.md'), 'utf8');
     for (const { version, items } of parsePackageChangelog(md)) {
-      if (!releases.has(version))
-        releases.set(version, { version, changes: new Map() });
-      const release = releases.get(version);
+      const release = releases.get(version) ?? { version, changes: new Map() };
+      releases.set(version, release);
 
       // The same text in several package changelogs is one change
       for (const { type, markdown, thanks } of items) {
-        const change = release.changes.get(markdown) ?? {
+        const change: Change = release.changes.get(markdown) ?? {
           type,
           packages: [],
           markdown,
@@ -323,7 +330,7 @@ async function groupChangelogs(pkgs) {
 }
 
 /** Compares two `x.y.z` versions numerically. */
-function compareVersions(a, b) {
+function compareVersions(a: string, b: string) {
   const [x, y] = [a, b].map((v) => v.split('.').map(Number));
   for (let i = 0; i < 3; i++) if (x[i] !== y[i]) return x[i] - y[i];
   return 0;
@@ -331,29 +338,28 @@ function compareVersions(a, b) {
 
 /**
  * The packages a change affects, as a line under it, e.g. `` _`figma-plugin` · `figma-ui-kit`_ ``.
- * @param {Change} change
- * @returns {import('mdast').Paragraph}
  */
-const packagesLine = (change) => ({
+const packagesLine = (change: Change): Paragraph => ({
   type: 'paragraph',
   children: [
     {
       type: 'emphasis',
-      children: change.packages.flatMap((name, index) => [
-        ...(index === 0 ? [] : [{ type: 'text', value: ' · ' }]),
+      children: change.packages.flatMap((name, index): PhrasingContent[] => [
+        ...(index === 0 ? [] : [{ type: 'text' as const, value: ' · ' }]),
         { type: 'inlineCode', value: name },
       ]),
     },
   ],
 });
 
-/**
- * The changes of one type as a markdown list, as mdast, each with the packages it affects.
- * @param {Change[]} changes
- * @returns {import('mdast').List}
- */
-function changeList(changes) {
-  const item = (children) => ({ type: 'listItem', spread: true, children });
+/** The changes of one type as a markdown list, as mdast, each with the packages it affects. */
+function changeList(changes: Change[]): List {
+  // What is at the top of a change, e.g. paragraphs, tables and code, can be in a list item
+  const item = (children: RootContent[]): ListItem => ({
+    type: 'listItem',
+    spread: true,
+    children: children as ListItem['children'],
+  });
   return {
     type: 'list',
     ordered: false,
@@ -371,11 +377,9 @@ function changeList(changes) {
 /**
  * A version as markdown, with its notes, and the packages each change affects in the line under
  * it. Used for the GitHub release and the release PR.
- * @param {Release} release
  */
-function formatRelease(release) {
-  /** @type {import('mdast').RootContent[]} */
-  const nodes = [
+function formatRelease(release: Release) {
+  const nodes: RootContent[] = [
     {
       type: 'heading',
       depth: 2,
@@ -405,7 +409,7 @@ function formatRelease(release) {
 }
 
 /** A `YYYY-MM-DD` date that exists, so not e.g. 2026-13-40 */
-const isDate = (day) =>
+const isDate = (day: unknown) =>
   typeof day === 'string' &&
   /^\d{4}-\d{2}-\d{2}$/.test(day) &&
   !Number.isNaN(Date.parse(day)) &&
@@ -418,16 +422,18 @@ const CHANGE_KEYS = ['type', 'packages', 'markdown', 'thanks'];
  * changelog.json can be edited by hand, so each version is checked when it is read. A mistake
  * fails here, before the release, instead of leaving something out of the GitHub release or the
  * changelog page on www, which show the versions as they are.
- * @param {Release} release
+ *
+ * The version is typed as it should be, but can be anything, so every part of it is checked.
  */
-function checkRelease(release) {
+function checkRelease(release: Release) {
   const { version, date, figmaPublished, notes, changes } = release;
-  const fail = (problem) => {
+  const fail: (problem: string) => never = (problem) => {
     throw new Error(`changelog.json, version ${version}: ${problem}`);
   };
-  const isText = (value) => typeof value === 'string' && value.trim() !== '';
+  const isText = (value: unknown) =>
+    typeof value === 'string' && value.trim() !== '';
   // e.g. `note` for `notes`, which would be left out without a word
-  const checkKeys = (object, keys) => {
+  const checkKeys = (object: object, keys: string[]) => {
     for (const key of Object.keys(object))
       if (!keys.includes(key)) fail(`${key} is not one of ${keys.join(', ')}`);
   };
@@ -462,14 +468,13 @@ function checkRelease(release) {
 
 /**
  * Checks every version, and that each is there once. Both what is read and what is written go
- * through here, so the file can't be written in a way it is not read back.
- * @param {Changelog} changelog
- * @returns {Changelog} as it was given
+ * through here, so the file can't be written in a way it is not read back. Returns it as it was
+ * given.
  */
-function checkChangelog(changelog) {
+function checkChangelog(changelog: Changelog): Changelog {
   if (!Array.isArray(changelog?.releases))
     throw new Error('changelog.json has no list of releases');
-  const versions = new Set();
+  const versions = new Set<string>();
   for (const release of changelog.releases) {
     if (!release || typeof release !== 'object')
       throw new Error('changelog.json has a release that is not an object');
@@ -481,11 +486,8 @@ function checkChangelog(changelog) {
   return changelog;
 }
 
-/**
- * @param {string} file
- * @returns {Promise<Changelog>} checked
- */
-const readChangelog = async (file) =>
+/** The changelog in this file, checked */
+const readChangelog = async (file: string): Promise<Changelog> =>
   checkChangelog(JSON.parse(await fs.readFile(file, 'utf8')));
 
 /**
@@ -543,8 +545,7 @@ async function main() {
 
   // Fails on invalid JSON, since rebuilding the versions would lose the edits made by hand
   const stored = (await readChangelog(CHANGELOG_JSON)).releases;
-  /** @type {Map<string, Release>} */
-  const releases = new Map();
+  const releases = new Map<string, Release>();
   if (!values.all) {
     // Keep the versions that are already there as they are, with any edits made by hand
     for (const entry of stored) releases.set(entry.version, entry);

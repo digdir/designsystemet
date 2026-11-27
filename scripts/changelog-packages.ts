@@ -3,7 +3,7 @@
  * used in the URL of the changelog page, e.g. `/en/changelog?package=css&package=react`.
  * `packageName` is the name of the package in changelog.json at the root of the repo.
  *
- * The one list of them: scripts/group-changelogs.js lists the packages of each change in this
+ * The one list of them: scripts/group-changelogs.ts lists the packages of each change in this
  * order and fails on a package with a changelog that is not here, and the changelog page on www
  * shows them with these labels and colors. Node strips the types when the script imports it.
  *

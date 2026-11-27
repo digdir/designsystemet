@@ -1,27 +1,28 @@
 /**
  * Dates the versions in changelog.json that have no release date, from their GitHub releases.
  *
- * scripts/group-changelogs.js runs while the release pull request is being prepared, when the
+ * scripts/group-changelogs.ts runs while the release pull request is being prepared, when the
  * newest version has no release yet, so it leaves that version undated. This script runs in the
  * www deploy right before the image is built, when the release exists, and adds the date. It
  * does nothing when every version is dated or when the release does not exist yet (e.g. a
  * preview deploy of an open release pull request).
  *
- * The dates come from scripts/changelog-dates.js, as in scripts/group-changelogs.js. The deploy
- * runs this without installing packages, so both files only import from Node itself.
+ * The dates come from scripts/changelog-dates.ts, as in scripts/group-changelogs.ts. The deploy
+ * runs this without installing packages, so both files only import from Node itself. Node
+ * strips their types.
  *
- * Usage: node scripts/date-changelog.js
+ * Usage: node scripts/date-changelog.ts
  * Needs `gh` and a GH_TOKEN with read access to the repository's releases.
  */
 import { promises as fs } from 'node:fs';
-import { addReleaseDates } from './changelog-dates.js';
+import { addReleaseDates } from './changelog-dates.ts';
+import type { Changelog } from './changelog-types.ts';
 
-// The same file as CHANGELOG_JSON in scripts/group-changelogs.js
+// The same file as CHANGELOG_JSON in scripts/group-changelogs.ts
 const file = 'changelog.json';
 
 async function main() {
-  /** @type {import('./changelog-types.ts').Changelog} */
-  const changelog = JSON.parse(await fs.readFile(file, 'utf8'));
+  const changelog: Changelog = JSON.parse(await fs.readFile(file, 'utf8'));
   // Fails when the releases can't be read, so a deploy does not show a version without its date
   const releases = addReleaseDates(changelog.releases, { required: true });
   const dated = releases.filter(

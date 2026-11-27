@@ -1,5 +1,5 @@
 /**
- * The shape of changelog.json at the root of the repo. scripts/group-changelogs.js writes and
+ * The shape of changelog.json at the root of the repo. scripts/group-changelogs.ts writes and
  * checks it, and the changelog page on www shows it. Node strips the types when the script
  * imports this file.
  */
@@ -30,7 +30,7 @@ export type Change = {
 
 export type Release = {
   version: string;
-  /** The release date as `YYYY-MM-DD`, see changelog-dates.js */
+  /** The release date as `YYYY-MM-DD`, see changelog-dates.ts */
   date?: string;
   /** The date the Figma file was published as `YYYY-MM-DD`, written by hand, see figma/README.md */
   figmaPublished?: string;

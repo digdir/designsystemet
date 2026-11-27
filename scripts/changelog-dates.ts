@@ -1,9 +1,9 @@
 /**
  * The release dates of the versions in changelog.json: the day the GitHub release of a version was
  * published, in Norway. This is the one place they come from, for both scripts that add them:
- * - scripts/group-changelogs.js, when the release pull request is prepared. The version being
+ * - scripts/group-changelogs.ts, when the release pull request is prepared. The version being
  *   prepared has no release yet, so it is left undated.
- * - scripts/date-changelog.js, in the www deploy, when that release exists.
+ * - scripts/date-changelog.ts, in the www deploy, when that release exists.
  *
  * Only imports from Node itself, since the www deploy runs without installing packages.
  * Needs `gh`, and in a workflow a GH_TOKEN that can read the releases.
@@ -17,8 +17,8 @@ import { execFileSync } from 'node:child_process';
  */
 const osloDay = new Intl.DateTimeFormat('sv-SE', { timeZone: 'Europe/Oslo' });
 
-/** @type {Map<string, string> | undefined} tag → `YYYY-MM-DD`, read once */
-let published;
+/** tag → `YYYY-MM-DD`, read once */
+let published: Map<string, string> | undefined;
 
 /**
  * Throws when the releases can't be read, e.g. without `gh` or a token. That is not the same as
@@ -26,7 +26,7 @@ let published;
  */
 function publishedDates() {
   if (published) return published;
-  let releases;
+  let releases: { tagName: string; publishedAt: string | null }[];
   try {
     releases = JSON.parse(
       execFileSync(
@@ -36,8 +36,9 @@ function publishedDates() {
       ),
     );
   } catch (error) {
+    const { stderr, message } = error as { stderr?: string; message?: string };
     throw new Error(
-      `Could not read the GitHub releases with gh, so the versions can't be dated: ${error.stderr?.trim() || error.message}`,
+      `Could not read the GitHub releases with gh, so the versions can't be dated: ${stderr?.trim() || message}`,
     );
   }
   published = new Map();
@@ -52,10 +53,8 @@ function publishedDates() {
 /**
  * The release date of a version as `YYYY-MM-DD`, from its aggregated `v<version>` release, or for
  * the versions before those (up to 1.0.3), from the release of the CLI package.
- * @param {string} version
- * @returns {string | undefined}
  */
-export const getReleaseDate = (version) =>
+export const getReleaseDate = (version: string): string | undefined =>
   publishedDates().get(`v${version}`) ??
   publishedDates().get(`@digdir/designsystemet@${version}`);
 
@@ -64,23 +63,22 @@ export const getReleaseDate = (version) =>
  *
  * When the releases can't be read, it fails if `required`, and else warns and leaves the versions
  * undated, to be dated on a later run.
- * @template {{ version: string, date?: string }} T
- * @param {T[]} releases
- * @param {{ required?: boolean }} [options]
- * @returns {T[]}
  */
-export function addReleaseDates(releases, { required = false } = {}) {
+export function addReleaseDates<T extends { version: string; date?: string }>(
+  releases: T[],
+  { required = false }: { required?: boolean } = {},
+): T[] {
   try {
     return releases.map((release) => {
       const date = release.date ?? getReleaseDate(release.version);
       if (!date || release.date) return release;
       // After the version in changelog.json
       const { version, ...rest } = release;
-      return { version, date, ...rest };
+      return { version, date, ...rest } as T;
     });
   } catch (error) {
     if (required) throw error;
-    console.warn(`Warning: ${error.message}`);
+    console.warn(`Warning: ${(error as Error).message}`);
     return releases;
   }
 }

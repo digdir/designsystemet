@@ -32,8 +32,11 @@ jobs:
         run: pnpm build
       - name: Types
         run: pnpm types
+      # The root is not one of the packages `pnpm types` goes through
+      - name: Types in scripts
+        run: pnpm types:scripts
       # It can be edited by hand, e.g. in the release PR
       - name: Check changelog.json
-        run: node scripts/group-changelogs.js --check
+        run: node scripts/group-changelogs.ts --check
       - name: Biome CI
         run: pnpm biome ci .
