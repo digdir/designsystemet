@@ -75,14 +75,10 @@ jobs:
         with:
           persist-credentials: false
 
-      # The script is TypeScript, which Node runs as it is from 22.18. `pnpm node` would use the
-      # version in package.json too, but installs every package first, which this job does not need.
-      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
-        with:
-          node-version-file: "package.json"
-
       # The newest version in changelog.json is left undated by the release PR (its release does not
       # exist yet); date it from the GitHub release before the content is copied into the image.
+      # The script is TypeScript, which Node runs as it is from 22.18. The runner has a newer one.
+      # Not `pnpm node`, which installs every package first.
       - name: Date the undated changelog versions
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
