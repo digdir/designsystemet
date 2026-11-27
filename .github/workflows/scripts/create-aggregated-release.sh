@@ -5,7 +5,12 @@
 # Required env: GH_TOKEN, TAG
 set -euo pipefail
 
-node scripts/group-changelogs.js --release "${TAG#v}" > release-notes.md
+# The packages are already published here, so the release and its tag are made also when the
+# notes can't be: without them, the deploys are skipped and the version can't be dated.
+if ! node scripts/group-changelogs.js --release "${TAG#v}" > release-notes.md; then
+  echo "::warning::Could not read ${TAG#v} from changelog.json, so the release has no notes. Edit them in afterwards."
+  printf '_No changelog entry found. See the changelog of each package._\n' > release-notes.md
+fi
 gh release create "$TAG" \
   --title "$TAG" \
   --notes-file release-notes.md \

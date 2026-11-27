@@ -106,7 +106,6 @@ export function parsePackageChangelog(md) {
   const versions = [];
   let version = null;
   let type = 'patch';
-  let thanks;
 
   for (const node of parseMarkdown(md).children) {
     if (node.type === 'heading' && node.depth === 2) {
@@ -127,10 +126,16 @@ export function parsePackageChangelog(md) {
       type =
         CHANGE_TYPES.find((key) => CHANGE_HEADINGS[key] === heading) ?? type;
     } else if (node.type === 'list') {
+      // Belongs to the change after it in the same list. Dropped with the list, so the thanks for
+      // a change that is left out does not end up on a change in another list or version.
+      let thanks;
       for (const item of node.children) {
         const markdown = toMarkdown(item.children);
         const text = plainText(markdown);
-        if (isDependencyBump(text)) continue;
+        if (isDependencyBump(text)) {
+          thanks = undefined;
+          continue;
+        }
         if (isThanks(text)) {
           // One line for each first-time contributor
           thanks = thanks ? `${thanks}\n\n${markdown}` : markdown;
@@ -204,6 +209,10 @@ function mergeDependencyUpdates(changes) {
     (a, b) => linkOrder(a) - linkOrder(b),
   );
 
+  const thanks = [
+    ...new Set(updates.flatMap((update) => update.thanks ?? [])),
+  ].join('\n\n');
+
   /** @type {Change} */
   const merged = {
     type: updates
@@ -226,6 +235,7 @@ function mergeDependencyUpdates(changes) {
         ],
       },
     ]),
+    ...(thanks && { thanks }),
   };
 
   return changes.flatMap((change) =>
