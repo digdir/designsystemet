@@ -18,7 +18,7 @@ keep_pr() {
 # The new version and its changelog are only on the release PR's branch
 git fetch --quiet origin "$BRANCH" || keep_pr "Could not fetch ${BRANCH}"
 git show "FETCH_HEAD:${CHANGELOG_JSON}" > release-changelog.json 2> /dev/null || keep_pr "No changelog.json on ${BRANCH}"
-version=$(git show FETCH_HEAD:packages/cli/package.json | node -p "JSON.parse(require('fs').readFileSync(0, 'utf8')).version") ||
+version=$(git show FETCH_HEAD:packages/cli/package.json | jq -r .version) ||
   keep_pr "Could not read the version on ${BRANCH}"
 
 # Exits with 2 when the version is not there. Anything else, like a changelog.json that can't be

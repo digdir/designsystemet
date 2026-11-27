@@ -38,7 +38,6 @@
 import { execFileSync } from 'node:child_process';
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
 import { parseArgs } from 'node:util';
 import { toString as textOf } from 'mdast-util-to-string';
 import remarkGfm from 'remark-gfm';
@@ -47,13 +46,13 @@ import remarkStringify from 'remark-stringify';
 import { unified } from 'unified';
 
 const ROOT = process.cwd();
-export const CHANGELOG_JSON = path.join(ROOT, 'changelog.json');
+const CHANGELOG_JSON = path.join(ROOT, 'changelog.json');
 
 // Stop at "## 0.101.0" - this is the first entry before version 1
 const CUTOFF_VERSION = '0.101.0';
 
 // What a package's changelog says for a version that only bumped it with the others
-export const NO_CHANGES = 'No changes in this release.';
+const NO_CHANGES = 'No changes in this release.';
 
 /** The order packages are listed in under each change. Other packages come last. */
 const PACKAGE_ORDER = [
@@ -72,9 +71,9 @@ const packageOrder = (name) => {
 };
 
 /** @type {ChangeType[]} biggest first */
-export const CHANGE_TYPES = ['major', 'minor', 'patch'];
+const CHANGE_TYPES = ['major', 'minor', 'patch'];
 /** The headings changesets writes in the package changelogs */
-export const CHANGE_HEADINGS = {
+const CHANGE_HEADINGS = {
   major: 'Major Changes',
   minor: 'Minor Changes',
   patch: 'Patch Changes',
@@ -87,10 +86,10 @@ const processor = unified()
   .freeze();
 
 /** @param {string} markdown */
-export const parseMarkdown = (markdown) => processor.parse(markdown);
+const parseMarkdown = (markdown) => processor.parse(markdown);
 
 /** @param {import('mdast').RootContent[]} nodes */
-export const toMarkdown = (nodes) =>
+const toMarkdown = (nodes) =>
   processor.stringify({ type: 'root', children: nodes }).trim();
 
 /** The text of a change without its markup, e.g. `**Dialog:** …` reads `Dialog: …`. */
@@ -106,7 +105,7 @@ const isDependencyBump = (text) => text.startsWith('Updated dependencies');
  * @param {string} md
  * @returns {{ version: string, published?: string, items: { type: ChangeType, markdown: string, thanks?: string }[] }[]}
  */
-export function parsePackageChangelog(md) {
+function parsePackageChangelog(md) {
   const versions = [];
   let version = null;
   let type = 'patch';
@@ -256,7 +255,7 @@ function mergeDependencyUpdates(changes) {
  * `**Dialog:** …` sorts as `Dialog: …`. Dependency updates come last.
  * @param {Change[]} changes
  */
-export const sortChanges = (changes) =>
+const sortChanges = (changes) =>
   changes
     .map((change) => ({
       change,
@@ -296,7 +295,7 @@ async function findPackages() {
  * @param {Iterable<{ name: string, dir: string }>} pkgs
  * @returns {Promise<Release[]>} newest first
  */
-export async function groupChangelogs(pkgs) {
+async function groupChangelogs(pkgs) {
   /** @type {Map<string, { version: string, figmaPublished?: string, changes: Map<string, Change> }>} */
   const releases = new Map();
   const sorted = [...pkgs].sort(
@@ -337,20 +336,36 @@ export async function groupChangelogs(pkgs) {
 }
 
 /** Compares two `x.y.z` versions numerically. */
-export function compareVersions(a, b) {
+function compareVersions(a, b) {
   const [x, y] = [a, b].map((v) => v.split('.').map(Number));
   for (let i = 0; i < 3; i++) if (x[i] !== y[i]) return x[i] - y[i];
   return 0;
 }
 
 /**
- * The changes of one type as a markdown list, as mdast. Each change can end with more nodes, e.g.
- * the packages it affects.
+ * The packages a change affects, as a line under it, e.g. `` _`figma-plugin` · `figma-ui-kit`_ ``.
+ * @param {Change} change
+ * @returns {import('mdast').Paragraph}
+ */
+const packagesLine = (change) => ({
+  type: 'paragraph',
+  children: [
+    {
+      type: 'emphasis',
+      children: change.packages.flatMap((name, index) => [
+        ...(index === 0 ? [] : [{ type: 'text', value: ' · ' }]),
+        { type: 'inlineCode', value: name },
+      ]),
+    },
+  ],
+});
+
+/**
+ * The changes of one type as a markdown list, as mdast, each with the packages it affects.
  * @param {Change[]} changes
- * @param {(change: Change) => import('mdast').BlockContent[]} [after]
  * @returns {import('mdast').List}
  */
-export function changeList(changes, after = () => []) {
+function changeList(changes) {
   const item = (children) => ({ type: 'listItem', spread: true, children });
   return {
     type: 'list',
@@ -361,42 +376,17 @@ export function changeList(changes, after = () => []) {
       ...(change.thanks
         ? parseMarkdown(change.thanks).children.map((node) => item([node]))
         : []),
-      item([...parseMarkdown(change.markdown).children, ...after(change)]),
+      item([...parseMarkdown(change.markdown).children, packagesLine(change)]),
     ]),
   };
 }
 
 /**
- * Leaves out HTML comments. They are notes to the editors: hidden on GitHub, and not valid MDX on
- * www. They are left out as nodes, so leaving one out can never join the text around it into a
- * new comment.
- * @template {import('mdast').Nodes} T
- * @param {T[]} nodes
- * @returns {T[]}
- */
-const withoutComments = (nodes) =>
-  nodes
-    .filter((node) => !(node.type === 'html' && /^\s*<!--/.test(node.value)))
-    .map((node) =>
-      'children' in node
-        ? { ...node, children: withoutComments(node.children) }
-        : node,
-    );
-
-/**
- * The notes about a release, see Release, as mdast.
- * @param {Release} release
- * @returns {import('mdast').RootContent[]}
- */
-export const releaseNotes = (release) =>
-  release.notes ? withoutComments(parseMarkdown(release.notes).children) : [];
-
-/**
  * A version as markdown, with its notes, and the packages each change affects in the line under
- * it, e.g. `` _`figma-plugin` · `figma-ui-kit`_ ``. Used for the GitHub release and the release PR.
+ * it. Used for the GitHub release and the release PR.
  * @param {Release} release
  */
-export function formatRelease(release) {
+function formatRelease(release) {
   /** @type {import('mdast').RootContent[]} */
   const nodes = [
     {
@@ -404,7 +394,7 @@ export function formatRelease(release) {
       depth: 2,
       children: [{ type: 'text', value: `designsystemet ${release.version}` }],
     },
-    ...releaseNotes(release),
+    ...(release.notes ? parseMarkdown(release.notes).children : []),
   ];
   for (const type of CHANGE_TYPES) {
     const changes = release.changes.filter((change) => change.type === type);
@@ -415,20 +405,7 @@ export function formatRelease(release) {
         depth: 3,
         children: [{ type: 'text', value: CHANGE_HEADINGS[type] }],
       },
-      changeList(changes, (change) => [
-        {
-          type: 'paragraph',
-          children: [
-            {
-              type: 'emphasis',
-              children: change.packages.flatMap((name, index) => [
-                ...(index === 0 ? [] : [{ type: 'text', value: ' · ' }]),
-                { type: 'inlineCode', value: name },
-              ]),
-            },
-          ],
-        },
-      ]),
+      changeList(changes),
     );
   }
   if (release.changes.length === 0) {
@@ -441,12 +418,11 @@ export function formatRelease(release) {
 }
 
 /**
- * @param {string} [file]
+ * @param {string} file
  * @returns {Promise<Changelog>}
  */
-export async function readChangelog(file = CHANGELOG_JSON) {
-  return JSON.parse(await fs.readFile(file, 'utf8'));
-}
+const readChangelog = async (file) =>
+  JSON.parse(await fs.readFile(file, 'utf8'));
 
 function git(args) {
   try {
@@ -461,33 +437,21 @@ function git(args) {
 }
 
 /**
- * The release date of a version as `YYYY-MM-DD`: the commit date of the aggregated `v<version>`
- * tag, or of the first commit that added the `## <version>` heading to a package changelog.
- * Returns null for the version being prepared, which has neither yet: its release commit is the
- * pull request this runs in, and that can stay open for weeks. It is dated at deploy time instead,
- * see scripts/date-latest-changelog.js. Needs the full git history and tags, see `fetch-depth`
- * in release.yml.
- *
- * With `tagOnly`, only the tag is used. The newest version is dated that way: in the release pull
- * request, its heading is already committed, so it would be dated before it is released.
+ * The release date of a version as `YYYY-MM-DD`: the commit date of its aggregated `v<version>`
+ * tag, or for the versions before those tags (up to 1.0.3), of the CLI package's tag. Returns null
+ * for the version being prepared, which has no tag yet. It is dated at deploy time instead, see
+ * scripts/date-latest-changelog.js. Needs the tags, see `fetch-depth` in release.yml.
  * @param {string} version
  */
-function getReleaseDate(version, { tagOnly = false } = {}) {
-  const fromTag = git(['log', '-1', '--format=%cs', `refs/tags/v${version}`]);
-  if (fromTag || tagOnly) return fromTag || null;
-
-  // Anchored, so `## 1.0.0` does not also match the `## 1.0.0-next.1` pre-release headings.
-  const heading = `^## ${version.replaceAll('.', '\\.')}$`;
-  const fromChangelog = git([
+const getReleaseDate = (version) =>
+  git(['log', '-1', '--format=%cs', `refs/tags/v${version}`]) ||
+  git([
     'log',
-    '--reverse',
+    '-1',
     '--format=%cs',
-    `-G${heading}`,
-    '--',
-    'packages/*/CHANGELOG.md',
-  ]).split('\n')[0];
-  return fromChangelog || null;
-}
+    `refs/tags/@digdir/designsystemet@${version}`,
+  ]) ||
+  null;
 
 /**
  * Adds the dates that are missing: the release date, and the date the Figma file was published.
@@ -498,20 +462,17 @@ function getReleaseDate(version, { tagOnly = false } = {}) {
  * @returns {Release[]}
  */
 function addDates(releases, figmaPublished) {
-  return releases.map(
-    ({ version, date, figmaPublished: _, ...rest }, index) => {
-      const released =
-        date ?? getReleaseDate(version, { tagOnly: index === 0 }) ?? undefined;
-      const published = figmaPublished.get(version);
-      // In this order in changelog.json
-      return {
-        version,
-        ...(released && { date: released }),
-        ...(published && { figmaPublished: published }),
-        ...rest,
-      };
-    },
-  );
+  return releases.map(({ version, date, figmaPublished: _, ...rest }) => {
+    const released = date ?? getReleaseDate(version) ?? undefined;
+    const published = figmaPublished.get(version);
+    // In this order in changelog.json
+    return {
+      version,
+      ...(released && { date: released }),
+      ...(published && { figmaPublished: published }),
+      ...rest,
+    };
+  });
 }
 
 async function main() {
@@ -542,7 +503,7 @@ async function main() {
   if (!values.all) {
     // Keep the versions that are already there as they are, with any edits made by hand. Fails
     // on invalid JSON, since rebuilding them would lose those edits.
-    for (const entry of (await readChangelog()).releases)
+    for (const entry of (await readChangelog(CHANGELOG_JSON)).releases)
       releases.set(entry.version, entry);
   }
   const existing = releases.size;
@@ -573,12 +534,7 @@ async function main() {
   );
 }
 
-if (
-  process.argv[1] &&
-  path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)
-) {
-  main().catch((error) => {
-    console.error(error);
-    process.exit(1);
-  });
-}
+main().catch((error) => {
+  console.error(error);
+  process.exit(1);
+});

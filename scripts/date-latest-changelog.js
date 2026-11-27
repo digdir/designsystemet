@@ -10,21 +10,19 @@
  * The deploy runs it without installing packages, so it only imports from Node itself. That is
  * also why it does not use the helpers in scripts/group-changelogs.js, which imports remark.
  *
- * Usage: node scripts/date-latest-changelog.js [path/to/changelog.json]
+ * Usage: node scripts/date-latest-changelog.js
  * Needs `gh` and a GH_TOKEN with read access to the repository's releases.
  */
 import { execFileSync } from 'node:child_process';
 import { promises as fs } from 'node:fs';
-import path from 'node:path';
 
 // The same file as CHANGELOG_JSON in scripts/group-changelogs.js
-const file = path.resolve(
-  process.argv[2] ?? 'apps/www/app/content/changelog/changelog.json',
-);
+const file = 'apps/www/app/content/changelog/changelog.json';
 
+/** The date the `v<version>` GitHub release was published, as `YYYY-MM-DD`, or '' */
 function getReleaseDate(version) {
   try {
-    const publishedAt = execFileSync(
+    return execFileSync(
       'gh',
       [
         'release',
@@ -33,13 +31,12 @@ function getReleaseDate(version) {
         '--json',
         'publishedAt',
         '--jq',
-        '.publishedAt',
+        '.publishedAt[:10]',
       ],
       { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] },
     ).trim();
-    return publishedAt ? publishedAt.slice(0, 10) : null;
   } catch {
-    return null;
+    return '';
   }
 }
 
@@ -47,10 +44,6 @@ async function main() {
   /** @type {import('./group-changelogs.js').Changelog} */
   const changelog = JSON.parse(await fs.readFile(file, 'utf8'));
   const [latest] = changelog.releases;
-  if (!latest) {
-    console.log('No versions in changelog.json; nothing to date.');
-    return;
-  }
   if (latest.date) {
     console.log(`${latest.version} is already dated.`);
     return;

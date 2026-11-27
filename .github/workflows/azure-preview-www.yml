@@ -6,9 +6,7 @@ on:
     paths:
       - "apps/www/**"
       - "internal/components/**"
-      # The deploy dates the newest version in the changelog with these
-      - "scripts/aggregate-changelogs.js"
-      - "scripts/group-changelogs.js"
+      # The deploy dates the newest version in the changelog with this
       - "scripts/date-latest-changelog.js"
       - ".github/workflows/azure-preview-www.yml"
       - ".github/workflows/azure-deploy-www.yml"
