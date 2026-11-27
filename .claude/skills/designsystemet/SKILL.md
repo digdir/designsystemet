@@ -19,7 +19,7 @@ description: Repo-wide conventions for designsystemet.no — the project name in
 
 ## Changesets
 
-- Start the text with the component in bold, with the colon inside the bold: `**Button:** What changed`. For several: `**Checkbox, Radio:**`.
+- Start the text with the component in bold, with the colon outside the bold: `**Button**: What changed`. For several: `**Checkbox, Radio**:`.
 - Never list an ignored package (`@web/themebuilder`, `@web/storybook`, `@internal/*`); it breaks the release.
 - Don't add a link to the pull request; the changelog generator adds it.
 - Write the summary as one line, without line breaks in it. The link to the pull request is added to the end of the first line, so a sentence that continues on the next line ends up after the link. Details such as a table or a longer explanation go below it, after a blank line.
