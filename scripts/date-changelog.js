@@ -10,7 +10,7 @@
  * The dates come from scripts/changelog-dates.js, as in scripts/group-changelogs.js. The deploy
  * runs this without installing packages, so both files only import from Node itself.
  *
- * Usage: node scripts/date-latest-changelog.js
+ * Usage: node scripts/date-changelog.js
  * Needs `gh` and a GH_TOKEN with read access to the repository's releases.
  */
 import { promises as fs } from 'node:fs';

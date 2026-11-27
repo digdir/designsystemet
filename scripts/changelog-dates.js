@@ -3,7 +3,7 @@
  * published, in Norway. This is the one place they come from, for both scripts that add them:
  * - scripts/group-changelogs.js, when the release pull request is prepared. The version being
  *   prepared has no release yet, so it is left undated.
- * - scripts/date-latest-changelog.js, in the www deploy, when that release exists.
+ * - scripts/date-changelog.js, in the www deploy, when that release exists.
  *
  * Only imports from Node itself, since the www deploy runs without installing packages.
  * Needs `gh`, and in a workflow a GH_TOKEN that can read the releases.

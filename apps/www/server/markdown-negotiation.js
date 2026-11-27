@@ -262,7 +262,10 @@ const isCached = (url) =>
  */
 export function cachedMarkdown(req, res, next) {
   const cached =
-    req.headers.accept === 'text/markdown' ? cache.get(req.url) : undefined;
+    (req.method === 'GET' || req.method === 'HEAD') &&
+    req.headers.accept === 'text/markdown'
+      ? cache.get(req.url)
+      : undefined;
   if (cached === undefined) return next();
   setMarkdownHeaders(req, res, cached);
   res.end(req.method === 'HEAD' ? undefined : cached, 'utf-8');
