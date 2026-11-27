@@ -24,8 +24,9 @@
  *
  * @typedef {'major' | 'minor' | 'patch'} ChangeType
  * @typedef {{ type: ChangeType, packages: string[], markdown: string, thanks?: string }} Change
- *   `packages` are package names, e.g. `@digdir/designsystemet-css`. `thanks` is the line the
- *   changeset generator writes before the change of a first-time contributor.
+ *   `packages` are package names, e.g. `@digdir/designsystemet-css`. `thanks` is the lines the
+ *   changeset generator writes before the change, one for each first-time contributor, as
+ *   paragraphs.
  * @typedef {{ version: string, figmaPublished?: string, changes: Change[] }} Release
  *   `figmaPublished` is the date the Figma file was published, from the `_Published YYYY-MM-DD_`
  *   line in the Figma packages' changelogs, see figma/README.md.
@@ -131,7 +132,8 @@ export function parsePackageChangelog(md) {
         const text = plainText(markdown);
         if (DEPENDENCY_BUMP.test(text)) continue;
         if (THANKS.test(text)) {
-          thanks = markdown;
+          // One line for each first-time contributor
+          thanks = thanks ? `${thanks}\n\n${markdown}` : markdown;
           continue;
         }
         version.items.push({ type, markdown, ...(thanks && { thanks }) });
@@ -327,7 +329,10 @@ export function changeList(changes, after = () => []) {
     ordered: false,
     spread: true,
     children: changes.flatMap((change) => [
-      ...(change.thanks ? [item(parseMarkdown(change.thanks).children)] : []),
+      // One list item for each first-time contributor, as in the package changelogs
+      ...(change.thanks
+        ? parseMarkdown(change.thanks).children.map((node) => item([node]))
+        : []),
       item([...parseMarkdown(change.markdown).children, ...after(change)]),
     ]),
   };
