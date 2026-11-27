@@ -1,5 +1,9 @@
 # figma-plugin
 
+## 1.24.2
+
+No changes in this release.
+
 ## 1.24.1
 
 ### Patch Changes
