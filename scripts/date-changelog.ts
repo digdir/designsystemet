@@ -27,8 +27,16 @@ const file = 'changelog.json';
 async function main() {
   const changelog: Changelog = JSON.parse(await fs.readFile(file, 'utf8'));
   const dryRun = process.argv.includes('--dry-run');
-  // Fails when the releases can't be read, so a deploy does not show a version without its date
-  const releases = addReleaseDates(changelog.releases, { required: !dryRun });
+  let releases: Changelog['releases'];
+  try {
+    releases = addReleaseDates(changelog.releases, { required: true });
+  } catch (error) {
+    // Fails when the releases can't be read, so a deploy does not show a version without its
+    // date. A dry run only says so.
+    if (!dryRun) throw error;
+    console.warn(`Warning: ${(error as Error).message}`);
+    return;
+  }
   const dated = releases.filter(
     (release, i) => release !== changelog.releases[i],
   );

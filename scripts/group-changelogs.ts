@@ -494,8 +494,19 @@ const fileName = (file: string) => {
 };
 
 /** The changelog in this file, checked */
-const readChangelog = async (file: string): Promise<Changelog> =>
-  checkChangelog(JSON.parse(await fs.readFile(file, 'utf8')), fileName(file));
+async function readChangelog(file: string): Promise<Changelog> {
+  const text = await fs.readFile(file, 'utf8');
+  let changelog: Changelog;
+  try {
+    changelog = JSON.parse(text);
+  } catch (error) {
+    // e.g. a comma left after an edit by hand. The error only says where in the text.
+    throw new Error(
+      `${fileName(file)} is not valid JSON: ${(error as Error).message}`,
+    );
+  }
+  return checkChangelog(changelog, fileName(file));
+}
 
 /**
  * Fails when a package that is versioned with the others is not in CHANGELOG_PACKAGES. It gets a
@@ -545,7 +556,7 @@ async function main() {
       (entry) => entry.version === values.release,
     );
     if (!found) {
-      console.error(`No version ${values.release} in ${file}`);
+      console.error(`No version ${values.release} in ${fileName(file)}`);
       // Told apart from other failures by update-release-pr-body.sh
       process.exit(2);
     }

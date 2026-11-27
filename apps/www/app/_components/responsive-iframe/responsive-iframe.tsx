@@ -2,6 +2,7 @@ import cl from 'clsx/lite';
 
 import classes from './responsive-iframe.module.css';
 
+// Exported since `defaultComponents` in mdx-components.tsx is, and its type names this one
 export interface ResponsiveIframeProps {
   aspectRatio: '16-9' | '4-3';
   title: string;
