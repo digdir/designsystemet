@@ -2,7 +2,7 @@ import cl from 'clsx/lite';
 
 import classes from './responsive-iframe.module.css';
 
-interface ResponsiveIframeProps {
+export interface ResponsiveIframeProps {
   aspectRatio: '16-9' | '4-3';
   title: string;
   src: string;
