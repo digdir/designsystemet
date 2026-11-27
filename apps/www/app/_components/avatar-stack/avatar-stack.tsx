@@ -17,6 +17,7 @@ const avatarMap = {
   designsystemet: 'designsystemet.svg',
   entur: 'entur.svg',
   helsedirektoratet: 'helsedirektoratet.svg',
+  'innovasjon norge': 'innovasjonnorge.svg',
   'ks digital': 'ksdigital.svg',
   ks: 'ks.png',
   kystverket: 'kystverket.svg',
@@ -34,6 +35,7 @@ const avatarMap = {
   'city of oslo': 'oslokommune.svg',
   'the design system': 'designsystemet.svg',
   'norwegian food safety authority': 'mattilsynet.svg',
+  'innovation norway': 'innovasjonnorge.svg',
   husbanken: 'husbanken.svg',
   'housing bank': 'husbanken.svg',
 } as const;
