@@ -1,0 +1,57 @@
+---
+title: Fra Material UI til Designsystemet i Tolletaten
+description: Tolletaten har byttet ut sitt gamle komponentbibliotek basert på Material UI med et eget designsystem bygget på Designsystemet.
+date: 2026-11-24
+author: Tolletaten, Digdir
+categories: [case]
+imageSrc: /img/blog/tolletaten/tolletaten-front.webp
+imageAlt: Tolletatens logo ved siden av et skjermbilde av Tollkalkulatoren på toll.no, med skjema for vare, pris og valuta, og en tabell med resultatet.
+search_terms: material ui, toll.no, tollkalkulator
+---
+
+Vi har stilt Tolletaten noen spørsmål om hvorfor de valgte å bygge på Designsystemet, hvordan de bruker det i dag, og hva de har lært underveis.
+
+## Hva var bakgrunnen for at Tolletaten begynte å bruke Designsystemet?
+
+Vi hadde tidligere et komponentbibliotek bygget på Material UI som var modent for utskiftning. Samtidig vokste designmiljøet vårt, og vi fikk større behov for et komplett designsystem, ikke bare et komponentbibliotek.
+
+Da begynte arbeidet med å se på hvordan vi kunne få på plass et nytt designsystem. Vi undersøkte flere muligheter, og opplevde at arbeidet med det felles Designsystemet var kommet så langt og holdt så god kvalitet at vi ønsket å ta det i bruk.
+
+Det som gjorde at vi valgte å satse på Designsystemet allerede i en tidlig fase, var muligheten til å være med i et større nettverk av teknologer med lignende behov, og samtidig kunne være med på å påvirke.
+
+## Hvor og hvordan bruker dere Designsystemet i dag?
+
+Vi har bygget vårt eget designsystem på toppen av Designsystemet, med React-komponentene fra Designsystemet som byggeklosser, men med vår egen visuelle profil. I tillegg har vi som hovedregel at vi følger mønstrene fra Designsystemet, og vi viser til dem i vår egen dokumentasjon.
+
+Alle nye applikasjoner i Tolletaten skal bruke Designsystemet, og vi har også lagt ned en innsats for å migrere eksisterende applikasjoner. Det har ført til at nesten alle applikasjonene nå har et likt uttrykk, og at vi har blitt mer bevisste på at også de store linjene bør være likere på tvers.
+
+De aller fleste tjenestene vi leverer, er for interne brukere. Av eksterne tjenester bruker vi Designsystemet blant annet på [toll.no](https://www.toll.no).
+
+## Hvordan har dere tilpasset Designsystemet til Tolletatens egen visuelle profil og behov?
+
+Tolletaten har en egen visuell profil, så vi har tatt utgangspunkt i fargene derfra og brukt [temabyggeren](https://theme.designsystemet.no/no) til å generere design-tokens. For interne tjenester har vi redusert størrelsen på komponentene med ett nivå, men ellers synes vi at standardoppsettet i Designsystemet fungerer fint for oss.
+
+Selv om vi får dekket de aller fleste behov med komponentene fra Designsystemet, har vi noen domenespesifikke tilfeller der vi har laget egne komponenter. Da bruker vi eksisterende komponenter som utgangspunkt, og passer på at de nye komponentene følger samme mønster for farge og størrelse som de andre komponentene.
+
+## Hva opplever dere som de største gevinstene ved å bruke et felles designsystem i bunn?
+
+Vi ser at vi sparer veldig mye tid, både på utviklings- og designsiden. Vi har stort sett alle byggeklossene vi trenger for å lage en løsning, med grundig og god dokumentasjon, uten at vi selv må bruke tid på utvikling og vedlikehold. Fordi komponentene ligger så tett på standard HTML-elementer, er de veldig enkle å ta i bruk, samtidig som de er fleksible.
+
+I tillegg bruker vi ofte dokumentasjonen om mønstre og god praksis, og det sparer oss for lange diskusjoner internt.
+
+Nettverket rundt Designsystemet er også gull verdt. De gangene vi har utfordringer, er hjelpen aldri langt unna.
+
+## Hva har vært mest utfordrende, eller hva har dere måttet løse selv?
+
+I starten hadde vi noen utfordringer med å få etablerte team til å ta i bruk de nye komponentene. Men det gikk over så fort de så hvor mye enklere det er å lage ny kode med komponentene fra Designsystemet.
+
+## Hva ønsker dere fra Designsystemet fremover?
+
+Vi er egentlig ganske fornøyde med komponentene som finnes i dag. Derfor ønsker vi oss heller enda flere mønstre og mer dokumentasjon av god praksis for hvordan ulike typer skjermbilder bør settes opp, og hvordan komponentene kan brukes sammen.
+
+<Contributors
+  authors={[
+    'Marit Gjøstøl Ytterland (Tolletaten)',
+    'Marianne Røsvik (Digdir)',
+  ]}
+/>
