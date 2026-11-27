@@ -304,6 +304,11 @@ function useFilterParams() {
     from: string;
   } | null>(null);
   const params = pending?.from === current ? pending.params : searchParams;
+  // Dropped once the URL has changed, so they are not used again when the URL goes back to the
+  // one they were changed from, e.g. with the back button
+  useEffect(() => {
+    setPending((value) => (value && value.from !== current ? null : value));
+  }, [current]);
   // usePagination keeps its callback until the page or number of pages change, so updateParams
   // can be called from an earlier render. It reads the latest filters from here.
   const latest = useRef({ params, current });
@@ -338,13 +343,11 @@ export default function Changelog({ loaderData }: Route.ComponentProps) {
   ).filter((id) => params.getAll('package').includes(id));
   const words = filters.query.toLowerCase().split(/\s+/).filter(Boolean);
 
-  function updateFilters(nextVersion: string, nextPackages: string[]) {
+  /** Changes only the packages, so the version and the search are kept */
+  function setPackages(nextPackages: string[]) {
     updateParams((next) => {
-      next.delete('version');
       next.delete('package');
       next.delete('page');
-      if (!nextVersion && !nextPackages.length) next.delete('q');
-      if (nextVersion) next.set('version', nextVersion);
       for (const id of nextPackages) next.append('package', id);
     });
   }
@@ -463,8 +466,7 @@ export default function Changelog({ loaderData }: Route.ComponentProps) {
                   disabled={!isHydrated}
                   checked={selectedPackages.includes(id)}
                   onChange={(event) =>
-                    updateFilters(
-                      filters.version,
+                    setPackages(
                       event.target.checked
                         ? [...selectedPackages, id]
                         : selectedPackages.filter((item) => item !== id),
@@ -494,7 +496,12 @@ export default function Changelog({ loaderData }: Route.ComponentProps) {
                 data-size='sm'
                 aria-disabled={!isHydrated}
                 onClick={() => {
-                  updateFilters('', []);
+                  updateParams((next) => {
+                    for (const key of ['version', 'package', 'q', 'page'])
+                      next.delete(key);
+                  });
+                  // Already cleared in the URL, so typing stops is not waited for
+                  sentQuery.current = '';
                   setSearchInput('');
                   statusRef.current?.focus();
                 }}

@@ -7,15 +7,20 @@
  * adds the date. It is idempotent and a no-op when the version is already dated or when no
  * release exists yet (e.g. a preview deploy of an open release pull request).
  *
+ * The deploy runs it without installing packages, so it only imports from Node itself. That is
+ * also why it does not use the helpers in scripts/group-changelogs.js, which imports remark.
+ *
  * Usage: node scripts/date-latest-changelog.js [path/to/changelog.json]
  * Needs `gh` and a GH_TOKEN with read access to the repository's releases.
  */
 import { execFileSync } from 'node:child_process';
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
-import { CHANGELOG_JSON, readChangelog } from './group-changelogs.js';
 
-const file = path.resolve(process.argv[2] ?? CHANGELOG_JSON);
+// The same file as CHANGELOG_JSON in scripts/group-changelogs.js
+const file = path.resolve(
+  process.argv[2] ?? 'apps/www/app/content/changelog/changelog.json',
+);
 
 function getReleaseDate(version) {
   try {
@@ -39,7 +44,8 @@ function getReleaseDate(version) {
 }
 
 async function main() {
-  const changelog = await readChangelog(file);
+  /** @type {import('./group-changelogs.js').Changelog} */
+  const changelog = JSON.parse(await fs.readFile(file, 'utf8'));
   const [latest] = changelog.releases;
   if (!latest) {
     console.log('No versions in changelog.json; nothing to date.');

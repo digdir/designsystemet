@@ -77,9 +77,10 @@ if (DEVELOPMENT) {
   }); */
 
   /* The changelog is filtered by its search params in its loader (app/routes/changelog). Only the
-   * page without them is prerendered, so with them, its HTML and data come from React Router. */
+   * page without them is prerendered, so with them, its HTML and data come from React Router.
+   * Also with a trailing slash, which React Router redirects away from, keeping the params. */
   const isFilteredChangelog = (req) =>
-    /^\/(?:no|en)\/changelog(?:\.data)?$/.test(req.path) &&
+    /^\/(?:no|en)\/changelog(?:\/|\.data)?$/.test(req.path) &&
     req.url.includes('?');
 
   /* Serve prerendered HTML files for clean URLs (e.g., /no/intro -> /no/intro/index.html) */
