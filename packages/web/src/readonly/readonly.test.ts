@@ -99,13 +99,14 @@ describe('readonly behavior', () => {
     const input = document.getElementById('input') as HTMLInputElement;
     const select = document.getElementById('select') as HTMLSelectElement;
 
-    const inputDrop = new DragEvent('drop', {
+    // JSDOM does not implement DragEvent, and the handler only needs the event target
+    const inputDrop = new Event('drop', {
       bubbles: true,
       cancelable: true,
     });
     input.dispatchEvent(inputDrop);
 
-    const selectDrop = new DragEvent('drop', {
+    const selectDrop = new Event('drop', {
       bubbles: true,
       cancelable: true,
     });
