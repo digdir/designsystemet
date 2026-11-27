@@ -28,8 +28,17 @@ const handleClick = (e: Event) => {
   }
 };
 
+const handleDrop = (e: Event) => {
+  const el = getComposedTarget(e) as
+    | HTMLInputElement
+    | HTMLSelectElement
+    | null;
+  if (el && isReadOnly(el)) e.preventDefault();
+};
+
 onHotReload('readonly', () => [
   on(document, 'keydown', handleKeydown),
   on(document, 'click', handleClick, true), // click needed for <label> and <input type="checkbox|radio">, using capture to ensure we run before React
   on(document, 'mousedown', handleSelect, true), // needed for <select> on desktop
+  on(document, 'drop', handleDrop, true), // prevent dropping into readonly inputs/selects
 ]);
