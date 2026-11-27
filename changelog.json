@@ -35,10 +35,10 @@
         {
           "type": "patch",
           "packages": [
-            "@digdir/designsystemet",
             "@digdir/designsystemet-css",
             "figma-plugin",
-            "figma-ui-kit"
+            "figma-ui-kit",
+            "@digdir/designsystemet"
           ],
           "markdown": "**Size:** Some sizes in the Large size mode are 1px larger, as intended. A rounding error made them 1px too small. Small and Medium do not change. ([#5648](https://github.com/digdir/designsystemet/pull/5648))\n\n| Variable  | Large     |\n| --------- | --------- |\n| `size/3`  | 13 → 14   |\n| `size/6`  | 27 → 28   |\n| `size/9`  | 41 → 42   |\n| `size/12` | 55 → 56   |\n| `size/15` | 69 → 70   |\n| `size/18` | 83 → 84   |\n| `size/30` | 139 → 140 |"
         },
@@ -52,19 +52,19 @@
         {
           "type": "patch",
           "packages": [
-            "@digdir/designsystemet",
             "figma-plugin",
-            "figma-ui-kit"
+            "figma-ui-kit",
+            "@digdir/designsystemet"
           ],
           "markdown": "**Typography:** Font sizes in the Small and Large size modes now match code. Headings change the most: they get bigger in Small and smaller in Large. Medium does not change. ([#5609](https://github.com/digdir/designsystemet/issues/5609)) (thanks @ssb-cgn) ([#5647](https://github.com/digdir/designsystemet/pull/5647))\n\n| Variable       | Small   | Large   |\n| -------------- | ------- | ------- |\n| `font-size/1`  | 11 → 11 | 13 → 14 |\n| `font-size/2`  | 13 → 12 | 16 → 16 |\n| `font-size/3`  | 14 → 14 | 18 → 19 |\n| `font-size/4`  | 16 → 16 | 21 → 21 |\n| `font-size/5`  | 18 → 19 | 24 → 25 |\n| `font-size/6`  | 21 → 21 | 30 → 28 |\n| `font-size/7`  | 24 → 27 | 36 → 35 |\n| `font-size/8`  | 30 → 32 | 48 → 42 |\n| `font-size/9`  | 36 → 43 | 60 → 56 |\n| `font-size/10` | 48 → 53 | 72 → 70 |"
         },
         {
           "type": "patch",
           "packages": [
-            "@digdir/designsystemet",
             "@digdir/designsystemet-css",
+            "@digdir/designsystemet-web",
             "@digdir/designsystemet-react",
-            "@digdir/designsystemet-web"
+            "@digdir/designsystemet"
           ],
           "markdown": "Update npm non-major dependencies ([#5613](https://github.com/digdir/designsystemet/pull/5613))"
         }
@@ -183,8 +183,8 @@
         {
           "type": "patch",
           "packages": [
-            "@digdir/designsystemet",
-            "@digdir/designsystemet-css"
+            "@digdir/designsystemet-css",
+            "@digdir/designsystemet"
           ],
           "markdown": "Deprecated unused design token `link.color.visited`, CSS custom property `--ds-link-color-visited` and config option `overrides.linkVisited`. To style visited links, style `.ds-link:visited` instead. ([#5574](https://github.com/digdir/designsystemet/pull/5574))"
         },
@@ -212,8 +212,8 @@
         {
           "type": "patch",
           "packages": [
-            "@digdir/designsystemet-react",
-            "@digdir/designsystemet-web"
+            "@digdir/designsystemet-web",
+            "@digdir/designsystemet-react"
           ],
           "markdown": "**Dialog:** Automatically uses the first heading as its accessible name if one is missing, and warns when neither is provided. ([#5447](https://github.com/digdir/designsystemet/pull/5447))"
         },
@@ -227,8 +227,8 @@
         {
           "type": "patch",
           "packages": [
-            "@digdir/designsystemet-react",
-            "@digdir/designsystemet-web"
+            "@digdir/designsystemet-web",
+            "@digdir/designsystemet-react"
           ],
           "markdown": "**Dialog:** Fixed accessible name warning when heading is present ([#5473](https://github.com/digdir/designsystemet/pull/5473))"
         },
@@ -242,8 +242,8 @@
         {
           "type": "patch",
           "packages": [
-            "@digdir/designsystemet",
-            "@digdir/designsystemet-css"
+            "@digdir/designsystemet-css",
+            "@digdir/designsystemet"
           ],
           "markdown": "Fix `<theme>.tailwind.css` missing variables `--text-sm`, `--text-md` and `--text-lg`, mapped to the body font sizes. Generate a new theme file to get the updated fixed file. ([#5451](https://github.com/digdir/designsystemet/pull/5451))"
         },
@@ -342,10 +342,10 @@
         {
           "type": "patch",
           "packages": [
-            "@digdir/designsystemet",
             "@digdir/designsystemet-css",
+            "@digdir/designsystemet-web",
             "@digdir/designsystemet-react",
-            "@digdir/designsystemet-web"
+            "@digdir/designsystemet"
           ],
           "markdown": "Update npm non-major dependencies ([#5479](https://github.com/digdir/designsystemet/pull/5479), [#5506](https://github.com/digdir/designsystemet/pull/5506), [#5521](https://github.com/digdir/designsystemet/pull/5521), [#5553](https://github.com/digdir/designsystemet/pull/5553), [#5588](https://github.com/digdir/designsystemet/pull/5588))"
         }
@@ -506,8 +506,8 @@
         {
           "type": "patch",
           "packages": [
-            "@digdir/designsystemet-react",
-            "@digdir/designsystemet-web"
+            "@digdir/designsystemet-web",
+            "@digdir/designsystemet-react"
           ],
           "markdown": "**Pagination:** Previous and next buttons now respect existing `aria-label` attributes. ([#5401](https://github.com/digdir/designsystemet/pull/5401)) by [@stianmorsund](https://github.com/stianmorsund)"
         },
@@ -542,8 +542,8 @@
         {
           "type": "patch",
           "packages": [
-            "@digdir/designsystemet-react",
-            "@digdir/designsystemet-web"
+            "@digdir/designsystemet-web",
+            "@digdir/designsystemet-react"
           ],
           "markdown": "**Suggestion:** Hide the \"Create\" option on initial render when input is empty ([#5411](https://github.com/digdir/designsystemet/pull/5411))"
         },
@@ -585,10 +585,10 @@
         {
           "type": "patch",
           "packages": [
-            "@digdir/designsystemet",
             "@digdir/designsystemet-css",
+            "@digdir/designsystemet-web",
             "@digdir/designsystemet-react",
-            "@digdir/designsystemet-web"
+            "@digdir/designsystemet"
           ],
           "markdown": "Update npm non-major dependencies ([#5373](https://github.com/digdir/designsystemet/pull/5373))"
         }
@@ -609,8 +609,8 @@
           "type": "minor",
           "packages": [
             "@digdir/designsystemet-css",
-            "@digdir/designsystemet-react",
-            "@digdir/designsystemet-web"
+            "@digdir/designsystemet-web",
+            "@digdir/designsystemet-react"
           ],
           "markdown": "**Suggestion:** Now supports setting localization through [CSS Custom Properties](https://designsystemet.no/no/components/docs/suggestion/code#css-variabler-og-data-attributter) (thanks @unekinn) ([#5321](https://github.com/digdir/designsystemet/pull/5321))"
         },
@@ -716,40 +716,40 @@
         {
           "type": "patch",
           "packages": [
-            "@digdir/designsystemet-react",
-            "@digdir/designsystemet-web"
+            "@digdir/designsystemet-web",
+            "@digdir/designsystemet-react"
           ],
           "markdown": "**Search:** Now correctly sets state of clear button also when programmatically changing `value` (thanks @unekinn) ([#5321](https://github.com/digdir/designsystemet/pull/5321))"
         },
         {
           "type": "patch",
           "packages": [
-            "@digdir/designsystemet-react",
-            "@digdir/designsystemet-web"
+            "@digdir/designsystemet-web",
+            "@digdir/designsystemet-react"
           ],
           "markdown": "**Suggestion:** Now correctly handles internal state when preventing a selection (thanks @olemartinorg) ([#5321](https://github.com/digdir/designsystemet/pull/5321))"
         },
         {
           "type": "patch",
           "packages": [
-            "@digdir/designsystemet-react",
-            "@digdir/designsystemet-web"
+            "@digdir/designsystemet-web",
+            "@digdir/designsystemet-react"
           ],
           "markdown": "**Suggestion:** Now correctly renders clear button state when rendered asynchronously (thanks @stianmorsund) ([#5321](https://github.com/digdir/designsystemet/pull/5321))"
         },
         {
           "type": "patch",
           "packages": [
-            "@digdir/designsystemet-react",
-            "@digdir/designsystemet-web"
+            "@digdir/designsystemet-web",
+            "@digdir/designsystemet-react"
           ],
           "markdown": "**Suggestion:** Now correctly renders `data-empty` option when not creatable (thanks @lassopicasso) ([#5321](https://github.com/digdir/designsystemet/pull/5321))"
         },
         {
           "type": "patch",
           "packages": [
-            "@digdir/designsystemet-react",
-            "@digdir/designsystemet-web"
+            "@digdir/designsystemet-web",
+            "@digdir/designsystemet-react"
           ],
           "markdown": "**Suggestion:** Now correctly renders focus ring in Safari (thanks @ssb-cgn) ([#5321](https://github.com/digdir/designsystemet/pull/5321))"
         },
@@ -777,8 +777,8 @@
         {
           "type": "patch",
           "packages": [
-            "@digdir/designsystemet-react",
-            "@digdir/designsystemet-web"
+            "@digdir/designsystemet-web",
+            "@digdir/designsystemet-react"
           ],
           "markdown": "**Utils:** Correctly unescapes quotes in localized CSS custom property texts (thanks @unekinn) ([#5321](https://github.com/digdir/designsystemet/pull/5321))"
         }
@@ -819,10 +819,10 @@
         {
           "type": "patch",
           "packages": [
-            "@digdir/designsystemet",
             "@digdir/designsystemet-css",
+            "@digdir/designsystemet-web",
             "@digdir/designsystemet-react",
-            "@digdir/designsystemet-web"
+            "@digdir/designsystemet"
           ],
           "markdown": "Update npm non-major dependencies ([#5302](https://github.com/digdir/designsystemet/pull/5302), [#5334](https://github.com/digdir/designsystemet/pull/5334))"
         }
@@ -908,10 +908,10 @@
         {
           "type": "patch",
           "packages": [
-            "@digdir/designsystemet",
             "@digdir/designsystemet-css",
+            "@digdir/designsystemet-web",
             "@digdir/designsystemet-react",
-            "@digdir/designsystemet-web"
+            "@digdir/designsystemet"
           ],
           "markdown": "Update npm non-major dependencies ([#5276](https://github.com/digdir/designsystemet/pull/5276))"
         }
@@ -959,8 +959,8 @@
         {
           "type": "patch",
           "packages": [
-            "@digdir/designsystemet-react",
-            "@digdir/designsystemet-web"
+            "@digdir/designsystemet-web",
+            "@digdir/designsystemet-react"
           ],
           "markdown": "**Suggestion:** no longer moves focus to chip when clicking inside datalist ([#5216](https://github.com/digdir/designsystemet/pull/5216))"
         },
@@ -968,8 +968,8 @@
           "type": "patch",
           "packages": [
             "@digdir/designsystemet-css",
-            "@digdir/designsystemet-react",
-            "@digdir/designsystemet-web"
+            "@digdir/designsystemet-web",
+            "@digdir/designsystemet-react"
           ],
           "markdown": "Update npm non-major dependencies ([#5242](https://github.com/digdir/designsystemet/pull/5242))"
         }
@@ -983,8 +983,8 @@
           "type": "minor",
           "packages": [
             "@digdir/designsystemet-css",
-            "@digdir/designsystemet-react",
-            "@digdir/designsystemet-web"
+            "@digdir/designsystemet-web",
+            "@digdir/designsystemet-react"
           ],
           "markdown": "**Search:** `Search` is now built on top of `<ds-suggestion>` supporting clear button also without React ([#5126](https://github.com/digdir/designsystemet/pull/5126))"
         },
@@ -1068,26 +1068,26 @@
         {
           "type": "patch",
           "packages": [
-            "@digdir/designsystemet-react",
-            "@digdir/designsystemet-web"
+            "@digdir/designsystemet-web",
+            "@digdir/designsystemet-react"
           ],
           "markdown": "**Suggestion:** Skip unnecessary matching after clicking option in single mode ([#5207](https://github.com/digdir/designsystemet/pull/5207))"
         },
         {
           "type": "patch",
           "packages": [
-            "@digdir/designsystemet-react",
-            "@digdir/designsystemet-web"
+            "@digdir/designsystemet-web",
+            "@digdir/designsystemet-react"
           ],
           "markdown": "**ValidationMessage:** Now correctly sets `aria-invalid=\"true\"` only if `danger` color ([#5149](https://github.com/digdir/designsystemet/pull/5149))"
         },
         {
           "type": "patch",
           "packages": [
-            "@digdir/designsystemet",
             "@digdir/designsystemet-css",
+            "@digdir/designsystemet-web",
             "@digdir/designsystemet-react",
-            "@digdir/designsystemet-web"
+            "@digdir/designsystemet"
           ],
           "markdown": "Update npm non-major dependencies ([#5174](https://github.com/digdir/designsystemet/pull/5174))"
         }
@@ -1150,16 +1150,16 @@
           "type": "minor",
           "packages": [
             "@digdir/designsystemet-css",
-            "@digdir/designsystemet-react",
-            "@digdir/designsystemet-web"
+            "@digdir/designsystemet-web",
+            "@digdir/designsystemet-react"
           ],
           "markdown": "**Suggestion:** added toggle list button ([#5039](https://github.com/digdir/designsystemet/pull/5039))"
         },
         {
           "type": "minor",
           "packages": [
-            "@digdir/designsystemet-react",
-            "@digdir/designsystemet-web"
+            "@digdir/designsystemet-web",
+            "@digdir/designsystemet-react"
           ],
           "markdown": "**ToggleGroup:** Deprecates `data-toggle-group` in favor of `focusgroup=\"radiogroup\"` with `aria-label`. ([#5095](https://github.com/digdir/designsystemet/pull/5095))"
         },
@@ -1222,8 +1222,8 @@
         {
           "type": "patch",
           "packages": [
-            "@digdir/designsystemet-react",
-            "@digdir/designsystemet-web"
+            "@digdir/designsystemet-web",
+            "@digdir/designsystemet-react"
           ],
           "markdown": "**Dialog:** now adds `aria-haspopup` on focus event to enhance performance and support Shadow DOM rendering ([#5095](https://github.com/digdir/designsystemet/pull/5095))"
         },
@@ -1302,8 +1302,8 @@
           "type": "patch",
           "packages": [
             "@digdir/designsystemet-css",
-            "@digdir/designsystemet-react",
-            "@digdir/designsystemet-web"
+            "@digdir/designsystemet-web",
+            "@digdir/designsystemet-react"
           ],
           "markdown": "**Suggestion:** Now support `data-empty` on option, showing empty-state text in normal mode or a create button in `data-creatable` mode. ([#5097](https://github.com/digdir/designsystemet/pull/5097))"
         },
@@ -1366,18 +1366,18 @@
         {
           "type": "patch",
           "packages": [
-            "@digdir/designsystemet",
-            "@digdir/designsystemet-web"
+            "@digdir/designsystemet-web",
+            "@digdir/designsystemet"
           ],
           "markdown": "Update dependency tsdown to v0.22.14 ([#5102](https://github.com/digdir/designsystemet/pull/5102))"
         },
         {
           "type": "patch",
           "packages": [
-            "@digdir/designsystemet",
             "@digdir/designsystemet-css",
+            "@digdir/designsystemet-web",
             "@digdir/designsystemet-react",
-            "@digdir/designsystemet-web"
+            "@digdir/designsystemet"
           ],
           "markdown": "Update npm non-major dependencies ([#5057](https://github.com/digdir/designsystemet/pull/5057), [#5072](https://github.com/digdir/designsystemet/pull/5072), [#5103](https://github.com/digdir/designsystemet/pull/5103), [#5122](https://github.com/digdir/designsystemet/pull/5122), [#5136](https://github.com/digdir/designsystemet/pull/5136))"
         }
@@ -1524,10 +1524,10 @@
         {
           "type": "patch",
           "packages": [
-            "@digdir/designsystemet",
             "@digdir/designsystemet-css",
+            "@digdir/designsystemet-web",
             "@digdir/designsystemet-react",
-            "@digdir/designsystemet-web"
+            "@digdir/designsystemet"
           ],
           "markdown": "Update npm non-major dependencies ([#4945](https://github.com/digdir/designsystemet/pull/4945))"
         }
@@ -1610,8 +1610,8 @@
         {
           "type": "patch",
           "packages": [
-            "@digdir/designsystemet-react",
-            "@digdir/designsystemet-web"
+            "@digdir/designsystemet-web",
+            "@digdir/designsystemet-react"
           ],
           "markdown": "**Suggestion:** Updated VoiceOver compatibility - both with and without QuickNav ([#4970](https://github.com/digdir/designsystemet/pull/4970))"
         }
@@ -1708,8 +1708,8 @@
         {
           "type": "patch",
           "packages": [
-            "@digdir/designsystemet-react",
-            "@digdir/designsystemet-web"
+            "@digdir/designsystemet-web",
+            "@digdir/designsystemet-react"
           ],
           "markdown": "**Popover:** now correctly calculates width of source element also in Firefox ([#4921](https://github.com/digdir/designsystemet/pull/4921))"
         },
@@ -1744,10 +1744,10 @@
         {
           "type": "patch",
           "packages": [
-            "@digdir/designsystemet",
             "@digdir/designsystemet-css",
+            "@digdir/designsystemet-web",
             "@digdir/designsystemet-react",
-            "@digdir/designsystemet-web"
+            "@digdir/designsystemet"
           ],
           "markdown": "Update npm non-major dependencies ([#4889](https://github.com/digdir/designsystemet/pull/4889), [#4910](https://github.com/digdir/designsystemet/pull/4910))"
         }
@@ -1936,8 +1936,8 @@
         {
           "type": "patch",
           "packages": [
-            "@digdir/designsystemet-react",
-            "@digdir/designsystemet-web"
+            "@digdir/designsystemet-web",
+            "@digdir/designsystemet-react"
           ],
           "markdown": "**Suggestion:** fixed an issue where value did not properly clear when moving focus between multiple instances ([#4816](https://github.com/digdir/designsystemet/pull/4816))"
         },
@@ -1945,8 +1945,8 @@
           "type": "patch",
           "packages": [
             "@digdir/designsystemet-css",
-            "@digdir/designsystemet-react",
-            "@digdir/designsystemet-web"
+            "@digdir/designsystemet-web",
+            "@digdir/designsystemet-react"
           ],
           "markdown": "**Suggestion**: fixed dropdown so it no longer has a brief flash in wrong position ([#4731](https://github.com/digdir/designsystemet/pull/4731))"
         },
@@ -1967,8 +1967,8 @@
         {
           "type": "patch",
           "packages": [
-            "@digdir/designsystemet-react",
-            "@digdir/designsystemet-web"
+            "@digdir/designsystemet-web",
+            "@digdir/designsystemet-react"
           ],
           "markdown": "**Tabs:** fix issue where `aria-controls` combined with `aria-selected` was not respected on initial render ([#4821](https://github.com/digdir/designsystemet/pull/4821))"
         },
@@ -2024,10 +2024,10 @@
         {
           "type": "patch",
           "packages": [
-            "@digdir/designsystemet",
             "@digdir/designsystemet-css",
+            "@digdir/designsystemet-web",
             "@digdir/designsystemet-react",
-            "@digdir/designsystemet-web"
+            "@digdir/designsystemet"
           ],
           "markdown": "Update npm non-major dependencies ([#4783](https://github.com/digdir/designsystemet/pull/4783), [#4809](https://github.com/digdir/designsystemet/pull/4809), [#4859](https://github.com/digdir/designsystemet/pull/4859))"
         }
@@ -2047,8 +2047,8 @@
         {
           "type": "patch",
           "packages": [
-            "@digdir/designsystemet-react",
-            "@digdir/designsystemet-web"
+            "@digdir/designsystemet-web",
+            "@digdir/designsystemet-react"
           ],
           "markdown": "**Field:** Now respects manually set `aria-invalid` attribute ([#4765](https://github.com/digdir/designsystemet/pull/4765))"
         },
@@ -2062,8 +2062,8 @@
         {
           "type": "patch",
           "packages": [
-            "@digdir/designsystemet-react",
-            "@digdir/designsystemet-web"
+            "@digdir/designsystemet-web",
+            "@digdir/designsystemet-react"
           ],
           "markdown": "**Tabs:** Has improved synchronous rendering for easier snapshot testing ([#4745](https://github.com/digdir/designsystemet/pull/4745))"
         },
@@ -2125,16 +2125,16 @@
         {
           "type": "patch",
           "packages": [
-            "@digdir/designsystemet-react",
-            "@digdir/designsystemet-web"
+            "@digdir/designsystemet-web",
+            "@digdir/designsystemet-react"
           ],
           "markdown": "**Field Counter:** Now includes fallback texts to support test environments without CSS ([#4727](https://github.com/digdir/designsystemet/pull/4727))"
         },
         {
           "type": "patch",
           "packages": [
-            "@digdir/designsystemet-react",
-            "@digdir/designsystemet-web"
+            "@digdir/designsystemet-web",
+            "@digdir/designsystemet-react"
           ],
           "markdown": "**Field**: `<ds-field>` should now respect existing `aria-describedby` and `aria-invalid` ([#4672](https://github.com/digdir/designsystemet/pull/4672))"
         },
@@ -2184,10 +2184,10 @@
         {
           "type": "patch",
           "packages": [
-            "@digdir/designsystemet",
             "@digdir/designsystemet-css",
+            "@digdir/designsystemet-web",
             "@digdir/designsystemet-react",
-            "@digdir/designsystemet-web"
+            "@digdir/designsystemet"
           ],
           "markdown": "Pin `@digdir` dependencies ([#4725](https://github.com/digdir/designsystemet/pull/4725))"
         },
@@ -2236,10 +2236,10 @@
         {
           "type": "patch",
           "packages": [
-            "@digdir/designsystemet",
             "@digdir/designsystemet-css",
+            "@digdir/designsystemet-web",
             "@digdir/designsystemet-react",
-            "@digdir/designsystemet-web"
+            "@digdir/designsystemet"
           ],
           "markdown": "Update npm non-major dependencies ([#4668](https://github.com/digdir/designsystemet/pull/4668), [#4677](https://github.com/digdir/designsystemet/pull/4677), [#4694](https://github.com/digdir/designsystemet/pull/4694))"
         }
@@ -2274,8 +2274,8 @@
           "type": "patch",
           "packages": [
             "@digdir/designsystemet-css",
-            "@digdir/designsystemet-react",
-            "@digdir/designsystemet-web"
+            "@digdir/designsystemet-web",
+            "@digdir/designsystemet-react"
           ],
           "markdown": "**dropdown:** selector only targeting direct children ([#4656](https://github.com/digdir/designsystemet/pull/4656))"
         },
@@ -2338,8 +2338,8 @@
         {
           "type": "patch",
           "packages": [
-            "@digdir/designsystemet-react",
-            "@digdir/designsystemet-web"
+            "@digdir/designsystemet-web",
+            "@digdir/designsystemet-react"
           ],
           "markdown": "Update npm non-major dependencies ([`cc33a61`](https://github.com/digdir/designsystemet/commit/cc33a615610dfd3c5ca43070e0247924828244ee))"
         }
@@ -2416,8 +2416,8 @@
         {
           "type": "patch",
           "packages": [
-            "@digdir/designsystemet-react",
-            "@digdir/designsystemet-web"
+            "@digdir/designsystemet-web",
+            "@digdir/designsystemet-react"
           ],
           "markdown": "**toggle-group**: re-introduce support for disabled items ([#4618](https://github.com/digdir/designsystemet/pull/4618))"
         },
@@ -2445,10 +2445,10 @@
         {
           "type": "patch",
           "packages": [
-            "@digdir/designsystemet",
             "@digdir/designsystemet-css",
+            "@digdir/designsystemet-web",
             "@digdir/designsystemet-react",
-            "@digdir/designsystemet-web"
+            "@digdir/designsystemet"
           ],
           "markdown": "Update npm non-major dependencies ([#4548](https://github.com/digdir/designsystemet/pull/4548), [#4573](https://github.com/digdir/designsystemet/pull/4573), [#4607](https://github.com/digdir/designsystemet/pull/4607))"
         }
@@ -2735,10 +2735,10 @@
         {
           "type": "patch",
           "packages": [
-            "@digdir/designsystemet",
             "@digdir/designsystemet-css",
+            "@digdir/designsystemet-web",
             "@digdir/designsystemet-react",
-            "@digdir/designsystemet-web"
+            "@digdir/designsystemet"
           ],
           "markdown": "Update npm non-major dependencies ([#4497](https://github.com/digdir/designsystemet/pull/4497), [#4517](https://github.com/digdir/designsystemet/pull/4517))"
         }
@@ -2793,9 +2793,9 @@
         {
           "type": "patch",
           "packages": [
-            "@digdir/designsystemet",
             "@digdir/designsystemet-css",
-            "@digdir/designsystemet-react"
+            "@digdir/designsystemet-react",
+            "@digdir/designsystemet"
           ],
           "markdown": "Update npm non-major dependencies ([#4423](https://github.com/digdir/designsystemet/pull/4423), [#4445](https://github.com/digdir/designsystemet/pull/4445), [#4469](https://github.com/digdir/designsystemet/pull/4469))"
         }
@@ -2836,9 +2836,9 @@
         {
           "type": "minor",
           "packages": [
-            "@digdir/designsystemet",
             "@digdir/designsystemet-css",
             "@digdir/designsystemet-react",
+            "@digdir/designsystemet",
             "@digdir/designsystemet-types"
           ],
           "markdown": "**Version `1.10.0` was released by accident, and we are skipping to `1.11.0`** ([#4392](https://github.com/digdir/designsystemet/pull/4392))\n\n- Version `1.10.0` is deprecated on npm, and not accessible on Github. Use `1.11.0` or newer."
@@ -2923,9 +2923,9 @@
         {
           "type": "patch",
           "packages": [
-            "@digdir/designsystemet",
             "@digdir/designsystemet-css",
-            "@digdir/designsystemet-react"
+            "@digdir/designsystemet-react",
+            "@digdir/designsystemet"
           ],
           "markdown": "Update npm non-major dependencies ([#4336](https://github.com/digdir/designsystemet/pull/4336), [#4347](https://github.com/digdir/designsystemet/pull/4347), [#4373](https://github.com/digdir/designsystemet/pull/4373), [#4398](https://github.com/digdir/designsystemet/pull/4398))"
         }
@@ -3015,8 +3015,8 @@
         {
           "type": "minor",
           "packages": [
-            "@digdir/designsystemet",
             "@digdir/designsystemet-react",
+            "@digdir/designsystemet",
             "@digdir/designsystemet-types"
           ],
           "markdown": "Move submodule `@digdir/designsystemet/types` to a new package `@digdir/designsystemet-types` and change all references. ([#4241](https://github.com/digdir/designsystemet/pull/4241))\n\nAfter re-running `tokens build` downstream, this removes transitive dependencies on runtime dependencies on CLI tools like `commander` and `style-dictionary` which are never used in runtime, but are required for the CLI to function. It also makes code which doesn't use the CLI unaffected by our node version limitations (currently >= 22 due to `style-dictionary`).\n\n`@digdir/designsystemet/types` is preserved for now as a deprecated re-export of `@digdir/designsystemet-types` to avoid breaking people's builds."
@@ -3171,9 +3171,9 @@
         {
           "type": "patch",
           "packages": [
-            "@digdir/designsystemet",
             "@digdir/designsystemet-css",
-            "@digdir/designsystemet-react"
+            "@digdir/designsystemet-react",
+            "@digdir/designsystemet"
           ],
           "markdown": "Update npm non-major dependencies ([#4242](https://github.com/digdir/designsystemet/pull/4242), [#4262](https://github.com/digdir/designsystemet/pull/4262), [#4275](https://github.com/digdir/designsystemet/pull/4275))"
         }
@@ -3290,9 +3290,9 @@
         {
           "type": "patch",
           "packages": [
-            "@digdir/designsystemet",
             "@digdir/designsystemet-css",
-            "@digdir/designsystemet-react"
+            "@digdir/designsystemet-react",
+            "@digdir/designsystemet"
           ],
           "markdown": "Update npm non-major dependencies ([#4193](https://github.com/digdir/designsystemet/pull/4193), [#4214](https://github.com/digdir/designsystemet/pull/4214))"
         }
@@ -3409,8 +3409,8 @@
         {
           "type": "patch",
           "packages": [
-            "@digdir/designsystemet",
-            "@digdir/designsystemet-react"
+            "@digdir/designsystemet-react",
+            "@digdir/designsystemet"
           ],
           "markdown": "Update npm non-major dependencies ([#4147](https://github.com/digdir/designsystemet/pull/4147), [#4167](https://github.com/digdir/designsystemet/pull/4167))"
         }
@@ -3472,8 +3472,8 @@
         {
           "type": "patch",
           "packages": [
-            "@digdir/designsystemet",
-            "@digdir/designsystemet-react"
+            "@digdir/designsystemet-react",
+            "@digdir/designsystemet"
           ],
           "markdown": "Update npm non-major dependencies ([#4110](https://github.com/digdir/designsystemet/pull/4110), [#4129](https://github.com/digdir/designsystemet/pull/4129))"
         }
@@ -3718,8 +3718,8 @@
         {
           "type": "patch",
           "packages": [
-            "@digdir/designsystemet",
-            "@digdir/designsystemet-react"
+            "@digdir/designsystemet-react",
+            "@digdir/designsystemet"
           ],
           "markdown": "Update npm non-major dependencies ([#4093](https://github.com/digdir/designsystemet/pull/4093))"
         }
@@ -3766,9 +3766,9 @@
         {
           "type": "minor",
           "packages": [
-            "@digdir/designsystemet",
             "@digdir/designsystemet-css",
-            "@digdir/designsystemet-react"
+            "@digdir/designsystemet-react",
+            "@digdir/designsystemet"
           ],
           "markdown": "Sizing and size modes have been reimplemented align code and Figma implementations, and to support setting size mode in css queries. ([#3866](https://github.com/digdir/designsystemet/pull/3866))\n\n`--ds-size-*` variables are now independent of the element's font size, and only depend on the size mode, which aligns the code implementation with how the modes already worked in Figma. **Important**: This will have a large visual impact on existing code where size variables have been used to style Heading elements (e.g. margin).\n\nRead [Sizes in code](https://www.designsystemet.no/en/fundamentals/code/sizes) for info on how size modes work after these changes."
         },
@@ -3782,8 +3782,8 @@
         {
           "type": "patch",
           "packages": [
-            "@digdir/designsystemet",
-            "@digdir/designsystemet-react"
+            "@digdir/designsystemet-react",
+            "@digdir/designsystemet"
           ],
           "markdown": "Update npm non-major dependencies ([#4039](https://github.com/digdir/designsystemet/pull/4039))"
         }
@@ -3824,9 +3824,9 @@
         {
           "type": "patch",
           "packages": [
-            "@digdir/designsystemet",
             "@digdir/designsystemet-css",
-            "@digdir/designsystemet-react"
+            "@digdir/designsystemet-react",
+            "@digdir/designsystemet"
           ],
           "markdown": "Update npm non-major dependencies ([#3989](https://github.com/digdir/designsystemet/pull/3989), [#4014](https://github.com/digdir/designsystemet/pull/4014))"
         }
@@ -3895,8 +3895,8 @@
         {
           "type": "patch",
           "packages": [
-            "@digdir/designsystemet",
-            "@digdir/designsystemet-react"
+            "@digdir/designsystemet-react",
+            "@digdir/designsystemet"
           ],
           "markdown": "Update npm non-major dependencies ([#3973](https://github.com/digdir/designsystemet/pull/3973))"
         }
@@ -3993,8 +3993,8 @@
         {
           "type": "patch",
           "packages": [
-            "@digdir/designsystemet",
-            "@digdir/designsystemet-react"
+            "@digdir/designsystemet-react",
+            "@digdir/designsystemet"
           ],
           "markdown": "Update npm non-major dependencies ([#3923](https://github.com/digdir/designsystemet/pull/3923))"
         }
@@ -4063,9 +4063,9 @@
         {
           "type": "patch",
           "packages": [
-            "@digdir/designsystemet",
             "@digdir/designsystemet-css",
-            "@digdir/designsystemet-react"
+            "@digdir/designsystemet-react",
+            "@digdir/designsystemet"
           ],
           "markdown": "Update npm non-major dependencies ([#3890](https://github.com/digdir/designsystemet/pull/3890), [#3894](https://github.com/digdir/designsystemet/pull/3894))"
         }
@@ -4166,8 +4166,8 @@
         {
           "type": "patch",
           "packages": [
-            "@digdir/designsystemet",
-            "@digdir/designsystemet-react"
+            "@digdir/designsystemet-react",
+            "@digdir/designsystemet"
           ],
           "markdown": "Update npm non-major dependencies ([#3868](https://github.com/digdir/designsystemet/pull/3868))"
         }
@@ -4320,9 +4320,9 @@
         {
           "type": "patch",
           "packages": [
-            "@digdir/designsystemet",
             "@digdir/designsystemet-css",
-            "@digdir/designsystemet-react"
+            "@digdir/designsystemet-react",
+            "@digdir/designsystemet"
           ],
           "markdown": "Update npm non-major dependencies ([#3803](https://github.com/digdir/designsystemet/pull/3803), [#3838](https://github.com/digdir/designsystemet/pull/3838))"
         }
@@ -4438,9 +4438,9 @@
         {
           "type": "patch",
           "packages": [
-            "@digdir/designsystemet",
             "@digdir/designsystemet-css",
-            "@digdir/designsystemet-react"
+            "@digdir/designsystemet-react",
+            "@digdir/designsystemet"
           ],
           "markdown": "Update npm non-major dependencies ([#3774](https://github.com/digdir/designsystemet/pull/3774))"
         }
@@ -4509,9 +4509,9 @@
         {
           "type": "patch",
           "packages": [
-            "@digdir/designsystemet",
             "@digdir/designsystemet-css",
-            "@digdir/designsystemet-react"
+            "@digdir/designsystemet-react",
+            "@digdir/designsystemet"
           ],
           "markdown": "Update npm non-major dependencies ([#3696](https://github.com/digdir/designsystemet/pull/3696), [#3732](https://github.com/digdir/designsystemet/pull/3732))"
         }
@@ -4699,9 +4699,9 @@
         {
           "type": "patch",
           "packages": [
-            "@digdir/designsystemet",
             "@digdir/designsystemet-css",
-            "@digdir/designsystemet-react"
+            "@digdir/designsystemet-react",
+            "@digdir/designsystemet"
           ],
           "markdown": "Update npm non-major dependencies ([#3594](https://github.com/digdir/designsystemet/pull/3594), [#3630](https://github.com/digdir/designsystemet/pull/3630), [#3656](https://github.com/digdir/designsystemet/pull/3656))"
         }
@@ -4756,8 +4756,8 @@
         {
           "type": "patch",
           "packages": [
-            "@digdir/designsystemet",
-            "@digdir/designsystemet-react"
+            "@digdir/designsystemet-react",
+            "@digdir/designsystemet"
           ],
           "markdown": "Update npm non-major dependencies ([#3514](https://github.com/digdir/designsystemet/pull/3514))"
         }
@@ -4895,8 +4895,8 @@
         {
           "type": "patch",
           "packages": [
-            "@digdir/designsystemet",
-            "@digdir/designsystemet-react"
+            "@digdir/designsystemet-react",
+            "@digdir/designsystemet"
           ],
           "markdown": "Update npm non-major dependencies ([#3351](https://github.com/digdir/designsystemet/pull/3351))"
         }
@@ -5146,9 +5146,9 @@
         {
           "type": "major",
           "packages": [
-            "@digdir/designsystemet",
             "@digdir/designsystemet-css",
-            "@digdir/designsystemet-react"
+            "@digdir/designsystemet-react",
+            "@digdir/designsystemet"
           ],
           "markdown": "🎉 Version 1.0 of Designsystemet! 🎉 ([#3290](https://github.com/digdir/designsystemet/pull/3290))\n\nWe are excited to announce the release of Version 1.0 of Designsystemet! This marks a significant milestone as we establish a solid foundation for future development. 🚀"
         },

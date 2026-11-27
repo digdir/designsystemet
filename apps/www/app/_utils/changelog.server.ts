@@ -5,42 +5,27 @@ import remarkGfm from 'remark-gfm';
 import remarkParse from 'remark-parse';
 import remarkRehype from 'remark-rehype';
 import { unified } from 'unified';
+import changelogJson from '~/content/changelog/changelog.json';
 import {
   CHANGE_TYPES,
   CHANGELOG_PACKAGES,
   type ChangelogPackageId,
   type ChangeType,
 } from './changelog';
-import { getFileFromContentDir } from './files.server';
 import { prettifyCodeBlocks } from './prettify-code-blocks';
 
 /** changelog.json, see scripts/group-changelogs.js */
-type ChangelogJson = {
-  releases: {
-    version: string;
-    date?: string;
-    figmaPublished?: string;
-    notes?: string;
-    changes: {
-      type: ChangeType;
-      packages: string[];
-      markdown: string;
-      thanks?: string;
-    }[];
+type Release = {
+  version: string;
+  date?: string;
+  figmaPublished?: string;
+  notes?: string;
+  changes: {
+    type: ChangeType;
+    packages: string[];
+    markdown: string;
+    thanks?: string;
   }[];
-};
-
-type IndexedChange = {
-  type: ChangeType;
-  packages: ChangelogPackageId[];
-  /** Markdown, with the thanks to a first-time contributor before it */
-  markdown: string;
-  /** The text without markup, in lower case, to search in */
-  text: string;
-};
-
-type IndexedRelease = Omit<ChangelogJson['releases'][number], 'changes'> & {
-  changes: IndexedChange[];
 };
 
 const RELEASES_PER_PAGE = 10;
@@ -49,7 +34,26 @@ const PACKAGE_IDS = new Map<string, ChangelogPackageId>(
   CHANGELOG_PACKAGES.map(({ packageName, id }) => [packageName, id]),
 );
 
-const isDate = (date?: string) => /^\d{4}-\d{2}-\d{2}$/.test(date ?? '');
+/**
+ * changelog.json can be edited by hand, so it is checked when it is read. The build renders the
+ * page, so it fails on a mistake instead of leaving something out.
+ */
+function check({ version, date, figmaPublished, changes }: Release) {
+  const fail = (problem: string) => {
+    throw new Error(`changelog.json, version ${version}: ${problem}`);
+  };
+  if (!/^\d+\.\d+\.\d+$/.test(version)) fail('not an x.y.z version');
+  for (const day of [date, figmaPublished]) {
+    if (day !== undefined && !/^\d{4}-\d{2}-\d{2}$/.test(day))
+      fail(`${day} is not a YYYY-MM-DD date`);
+  }
+  for (const { type, packages } of changes) {
+    if (!(type in CHANGE_TYPES)) fail(`${type} is not a change type`);
+    for (const name of packages) {
+      if (!PACKAGE_IDS.has(name)) fail(`${name} is not in CHANGELOG_PACKAGES`);
+    }
+  }
+}
 
 /**
  * Markdown to hast. Raw HTML in the markdown is left out (remark-rehype does not keep it), so are
@@ -63,9 +67,6 @@ const processor = unified()
   .use(rehypeSanitize)
   .use(prettifyCodeBlocks);
 
-const plainText = (markdown: string) =>
-  textOf(processor.parse(markdown)).replace(/\s+/g, ' ').trim().toLowerCase();
-
 /** Without the positions in the markdown, which only make the loader data larger */
 const withoutPositions = <T extends HastNodes>(node: T): T => {
   const { position: _, ...rest } = node;
@@ -76,54 +77,39 @@ const withoutPositions = <T extends HastNodes>(node: T): T => {
   ) as T;
 };
 
-const rendered = new Map<string, Promise<HastRoot>>();
+const render = async (markdown: string) =>
+  withoutPositions(
+    (await processor.run(processor.parse(markdown))) as HastRoot,
+  );
 
-/** The markdown as hast, made once for each text */
-function render(markdown: string) {
-  let tree = rendered.get(markdown);
-  if (!tree) {
-    tree = processor
-      .run(processor.parse(markdown))
-      .then((root) => withoutPositions(root as HastRoot));
-    rendered.set(markdown, tree);
-  }
-  return tree;
+/** The text without markup, in lower case, to search in */
+const plainText = (markdown: string) =>
+  textOf(processor.parse(markdown)).replace(/\s+/g, ' ').trim().toLowerCase();
+
+/** A release with its markdown rendered, and the text of its changes to search in */
+async function index(release: Release) {
+  check(release);
+  const { notes, changes, ...rest } = release;
+  return {
+    ...rest,
+    notes: notes ? await render(notes) : null,
+    changes: await Promise.all(
+      changes.map(async ({ type, packages, markdown, thanks }) => ({
+        type,
+        packages: packages.map(
+          (name) => PACKAGE_IDS.get(name) as ChangelogPackageId,
+        ),
+        // The thanks to a first-time contributor comes first
+        body: await render(thanks ? `${thanks}\n\n${markdown}` : markdown),
+        text: plainText(markdown),
+      })),
+    ),
+  };
 }
 
-let cache: { source: string; releases: IndexedRelease[] } | undefined;
-
-/** The releases in changelog.json, newest first, read again when the file changes */
-function readChangelog(): IndexedRelease[] | null {
-  const source = getFileFromContentDir('changelog/changelog.json');
-  if (!source) return null;
-  if (cache?.source === source) return cache.releases;
-
-  const { releases } = JSON.parse(source) as ChangelogJson;
-  const indexed = releases
-    // Edited by hand, so only what can be shown
-    .filter(({ version }) => /^\d+\.\d+\.\d+$/.test(version))
-    .map(({ changes, ...release }) => ({
-      ...release,
-      changes: changes
-        .filter(({ type }) => type in CHANGE_TYPES)
-        .map(({ type, packages, markdown, thanks }) => ({
-          type,
-          packages: CHANGELOG_PACKAGES.filter(({ packageName }) =>
-            packages.includes(packageName),
-          ).map(({ id }) => id),
-          markdown: thanks ? `${thanks}\n\n${markdown}` : markdown,
-          text: plainText(markdown),
-        })),
-    }));
-  for (const name of new Set(
-    releases.flatMap(({ changes }) => changes.flatMap((c) => c.packages)),
-  )) {
-    if (!PACKAGE_IDS.has(name))
-      console.warn(`changelog.json: ${name} is not in CHANGELOG_PACKAGES`);
-  }
-  cache = { source, releases: indexed };
-  return indexed;
-}
+const { releases } = changelogJson as { releases: Release[] };
+/** Rendered once, on the first request */
+let indexed: Promise<Awaited<ReturnType<typeof index>>[]> | undefined;
 
 /**
  * One page of the changelog, filtered by the search params of the page:
@@ -132,11 +118,14 @@ function readChangelog(): IndexedRelease[] | null {
  * - `q`: only the changes with all these words
  * - `page`: the page, of 10 versions each
  *
- * Returns null when there is no changelog.
+ * With `allPages`, every version is on one page, e.g. for the markdown version of the page.
  */
-export async function getChangelogPage(searchParams: URLSearchParams) {
-  const all = readChangelog();
-  if (!all) return null;
+export async function getChangelogPage(
+  searchParams: URLSearchParams,
+  { allPages = false } = {},
+) {
+  indexed ??= Promise.all(releases.map(index));
+  const all = await indexed;
 
   const requestedVersion = searchParams.get('version') ?? '';
   const version = all.some((release) => release.version === requestedVersion)
@@ -150,75 +139,60 @@ export async function getChangelogPage(searchParams: URLSearchParams) {
   const words = query.toLowerCase().split(/\s+/).filter(Boolean);
   const isFiltered = packages.length > 0 || words.length > 0;
 
-  const matches = (change: IndexedChange) =>
-    (!packages.length || change.packages.some((id) => packages.includes(id))) &&
-    words.every((word) => change.text.includes(word));
-
-  const releases = all
+  const matching = all
     .filter((release) => !version || release.version === version)
     .map((release) => ({
       release,
-      changes: isFiltered ? release.changes.filter(matches) : release.changes,
+      changes: release.changes.filter(
+        (change) =>
+          (!packages.length ||
+            change.packages.some((id) => packages.includes(id))) &&
+          words.every((word) => change.text.includes(word)),
+      ),
     }))
     .filter(({ changes }) => !isFiltered || changes.length > 0);
 
-  const totalPages = Math.ceil(releases.length / RELEASES_PER_PAGE);
+  const perPage = allPages ? Math.max(1, all.length) : RELEASES_PER_PAGE;
+  const totalPages = Math.max(1, Math.ceil(matching.length / perPage));
   const requestedPage = Number(searchParams.get('page') ?? 1);
   const page =
     Number.isInteger(requestedPage) && requestedPage > 0
-      ? Math.min(requestedPage, Math.max(1, totalPages))
+      ? Math.min(requestedPage, totalPages)
       : 1;
 
-  const pageReleases = await Promise.all(
-    releases
-      .slice((page - 1) * RELEASES_PER_PAGE, page * RELEASES_PER_PAGE)
-      .map(async ({ release, changes }) => ({
+  return {
+    releases: matching
+      .slice((page - 1) * perPage, page * perPage)
+      .map(({ release, changes }) => ({
         version: release.version,
-        date: isDate(release.date) ? release.date : undefined,
-        figmaPublished: isDate(release.figmaPublished)
-          ? release.figmaPublished
-          : undefined,
+        date: release.date,
+        figmaPublished: release.figmaPublished,
         /* Notes are about the whole release, not one package, and are not searched, so they are
          * left out while filtering */
-        notes:
-          release.notes && !isFiltered ? await render(release.notes) : null,
+        notes: isFiltered ? null : release.notes,
         hasChanges: release.changes.length > 0,
-        groups: await Promise.all(
-          (Object.keys(CHANGE_TYPES) as ChangeType[])
-            .map((type) => ({
-              type,
-              changes: changes.filter((change) => change.type === type),
-            }))
-            .filter((group) => group.changes.length > 0)
-            .map(async ({ type, changes }) => ({
-              type,
-              changes: await Promise.all(
-                changes.map(async (change) => ({
-                  packages: change.packages,
-                  body: await render(change.markdown),
-                })),
-              ),
-            })),
-        ),
+        groups: (Object.keys(CHANGE_TYPES) as ChangeType[])
+          .map((type) => ({
+            type,
+            changes: changes
+              .filter((change) => change.type === type)
+              .map(({ packages, body }) => ({ packages, body })),
+          }))
+          .filter((group) => group.changes.length > 0),
       })),
-  );
-
-  return {
-    releases: pageReleases,
     /** Every version, for links to the old changelog pages, e.g. `#1240` */
     versions: all.map((release) => release.version),
     filters: { version, packages, query, page },
     /** The number of versions that match the filters */
-    total: releases.length,
+    total: matching.length,
     /** The number of changes with the words searched for, when searching */
     matchCount: words.length
-      ? releases.reduce((sum, { changes }) => sum + changes.length, 0)
+      ? matching.reduce((sum, { changes }) => sum + changes.length, 0)
       : null,
+    /** At least 1 */
     totalPages,
   };
 }
 
-export type ChangelogPage = NonNullable<
-  Awaited<ReturnType<typeof getChangelogPage>>
->;
+export type ChangelogPage = Awaited<ReturnType<typeof getChangelogPage>>;
 export type ChangelogPageRelease = ChangelogPage['releases'][number];

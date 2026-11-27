@@ -142,6 +142,7 @@ function extractMainContent(html, pageUrl) {
   // ── Remove UI chrome ──────────────────────────────────────────────
   const removeSelectors = [
     'nav',
+    'search', // e.g. the filters on the changelog
     'button',
     'dialog',
     '[popover]',

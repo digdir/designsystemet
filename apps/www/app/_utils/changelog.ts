@@ -1,11 +1,12 @@
 /**
  * The packages in the changelog, in the order they are shown: by color, see below. The ids are
  * used in the URL of the changelog page, e.g. `/en/changelog?package=css&package=react`.
- * `packageName` is the name of the package in app/content/changelog/changelog.json (written by
- * scripts/group-changelogs.js).
+ * `packageName` is the name of the package in app/content/changelog/changelog.json.
+ * scripts/group-changelogs.js lists the packages of each change in this order, and fails on a
+ * package with a changelog that is not here.
  *
- * The colors group the packages, on the tags under each change and on the filter chips: the
- * styles (CSS and Web, success), React (brand3), Figma (brand1), and the rest (neutral).
+ * The colors group the packages on the tags under each change: the styles (CSS and Web,
+ * success), React (brand3), Figma (brand1), and the rest (neutral).
  */
 export const CHANGELOG_PACKAGES = [
   {
@@ -71,7 +72,3 @@ export type ChangeType = keyof typeof CHANGE_TYPES;
 /** The packages with these ids, in their order. */
 export const changelogPackages = (ids: readonly string[]): ChangelogPackage[] =>
   CHANGELOG_PACKAGES.filter(({ id }) => ids.includes(id));
-
-/** The URL of the changelog filtered to the Figma packages, e.g. for links from the Figma docs. */
-export const FIGMA_CHANGELOG_SEARCH =
-  '?package=figma-ui-kit&package=figma-plugin';

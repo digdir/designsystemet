@@ -78,17 +78,19 @@ if (DEVELOPMENT) {
 
   /* The changelog is filtered by its search params in its loader (app/routes/changelog). Only the
    * page without them is prerendered, so with them, its HTML and data come from React Router.
-   * Also with a trailing slash, which React Router redirects away from, keeping the params. */
-  const isFilteredChangelog = (req) =>
+   * Also with a trailing slash, which React Router redirects away from, keeping the params. So
+   * does the markdown version, which has every version on one page (Accept is set by
+   * markdownNegotiation). */
+  const isDynamicChangelog = (req) =>
     /^\/(?:no|en)\/changelog(?:\/|\.data)?$/.test(req.path) &&
-    req.url.includes('?');
+    (req.url.includes('?') || req.headers.accept === 'text/markdown');
 
   /* Serve prerendered HTML files for clean URLs (e.g., /no/intro -> /no/intro/index.html) */
   app.use((req, res, next) => {
     if (
       req.path.includes('.') ||
       req.path.startsWith('/assets') ||
-      isFilteredChangelog(req)
+      isDynamicChangelog(req)
     ) {
       return next();
     }
@@ -103,7 +105,7 @@ if (DEVELOPMENT) {
 
   const serveClient = express.static('dist/client', { redirect: false });
   app.use((req, res, next) =>
-    isFilteredChangelog(req) ? next() : serveClient(req, res, next),
+    isDynamicChangelog(req) ? next() : serveClient(req, res, next),
   );
 
   // RR v8 emits the server build (not the bundled `server/app.ts`) at

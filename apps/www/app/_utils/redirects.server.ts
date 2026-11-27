@@ -1,5 +1,4 @@
 import { redirect } from 'react-router';
-import { FIGMA_CHANGELOG_SEARCH } from './changelog';
 
 export const designsystemetRedirects = (pathname: string) => {
   const redirectUrl = redirects.find(
@@ -27,11 +26,11 @@ const redirects: Redirect[] = [
   { from: '/en/components/changelog', to: '/en/changelog' },
   {
     from: '/no/fundamentals/figma/changelog',
-    to: `/no/changelog${FIGMA_CHANGELOG_SEARCH}`,
+    to: '/no/changelog?package=figma-ui-kit&package=figma-plugin',
   },
   {
     from: '/en/fundamentals/figma/changelog',
-    to: `/en/changelog${FIGMA_CHANGELOG_SEARCH}`,
+    to: '/en/changelog?package=figma-ui-kit&package=figma-plugin',
   },
   {
     from: '/komponenter',

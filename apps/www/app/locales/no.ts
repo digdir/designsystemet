@@ -182,9 +182,6 @@ export default {
     title: 'Komponenter',
     description:
       'Designsystemet inneholder grunnleggende komponenter som kan brukes uavhengig av rammeverk, og settes sammen på mange ulike måter og i forskjellige mønstre.',
-    changelog: {
-      title: 'Endringslogg',
-    },
     accessibility: {
       title: 'Universell utforming',
     },

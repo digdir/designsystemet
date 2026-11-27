@@ -184,9 +184,6 @@ export default {
     title: 'Components',
     description:
       'Designsystemet contains basic components that can be used independently of framework, and combined in many different ways and in various patterns.',
-    changelog: {
-      title: 'Changelog',
-    },
     accessibility: {
       title: 'Accessibility',
     },

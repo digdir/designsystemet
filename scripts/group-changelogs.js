@@ -44,6 +44,7 @@ import remarkGfm from 'remark-gfm';
 import remarkParse from 'remark-parse';
 import remarkStringify from 'remark-stringify';
 import { unified } from 'unified';
+import { CHANGELOG_PACKAGES } from '../apps/www/app/_utils/changelog.ts';
 
 const ROOT = process.cwd();
 const CHANGELOG_JSON = path.join(ROOT, 'changelog.json');
@@ -54,20 +55,18 @@ const CUTOFF_VERSION = '0.101.0';
 // What a package's changelog says for a version that only bumped it with the others
 const NO_CHANGES = 'No changes in this release.';
 
-/** The order packages are listed in under each change. Other packages come last. */
-const PACKAGE_ORDER = [
-  '@digdir/designsystemet',
-  '@digdir/designsystemet-css',
-  '@digdir/designsystemet-react',
-  '@digdir/designsystemet-web',
-  '@digdir/designsystemet-types',
-  'figma-plugin',
-  'figma-ui-kit',
-  '@web/www',
-];
+/**
+ * The order packages are listed in under each change: as on the changelog page on www, which
+ * also has their labels and colors. Node strips the types from changelog.ts.
+ */
+const PACKAGE_ORDER = CHANGELOG_PACKAGES.map(({ packageName }) => packageName);
 const packageOrder = (name) => {
   const index = PACKAGE_ORDER.indexOf(name);
-  return index === -1 ? Number.POSITIVE_INFINITY : index;
+  if (index === -1)
+    throw new Error(
+      `${name} has a changelog, but is not in CHANGELOG_PACKAGES in apps/www/app/_utils/changelog.ts`,
+    );
+  return index;
 };
 
 /** @type {ChangeType[]} biggest first */

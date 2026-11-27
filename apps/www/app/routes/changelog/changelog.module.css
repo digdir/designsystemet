@@ -18,16 +18,13 @@
 }
 
 .filters {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: end;
-  gap: var(--ds-size-5) var(--ds-size-8);
+  display: grid;
+  gap: var(--ds-size-5);
   margin-bottom: var(--ds-size-10);
   padding-bottom: var(--ds-size-4);
   border-bottom: 1px solid var(--ds-color-neutral-border-subtle);
 }
 .search {
-  flex-basis: 100%;
   max-width: 28rem;
 }
 .chips {
@@ -39,21 +36,9 @@
   display: flex;
   align-items: center;
   gap: var(--ds-size-3);
-  flex-basis: 100%;
   min-height: var(--ds-size-10);
   color: var(--ds-color-neutral-text-subtle);
 }
-/* Focused after changing page or resetting the filters */
-.statusText {
-  border-radius: var(--ds-border-radius-sm);
-  scroll-margin-top: calc(var(--header-height) + var(--ds-size-4));
-}
-
-.releases {
-  /* A grid item: without this, a wide table or code block widens the page instead of scrolling */
-  min-width: 0;
-}
-
 .release {
   /* Instead of the margins u-rich-text gives sections */
   margin-block: 0 var(--ds-size-14);
@@ -93,21 +78,9 @@
     padding-block: var(--ds-size-3);
   }
 
+  /* Instead of the margins u-rich-text gives headings */
   h2 {
     margin: 0;
-
-    /* A link to only this version, underlined so it can be told apart from plain text */
-    a {
-      color: inherit;
-      text-decoration-line: underline;
-      text-decoration-color: var(--ds-color-neutral-border-default);
-      text-decoration-thickness: 1px;
-      text-underline-offset: 0.2em;
-      border-radius: var(--ds-border-radius-sm);
-    }
-    a:hover {
-      text-decoration-color: currentColor;
-    }
   }
 
   /* On short screens, such as when zoomed in, a sticky version would take too much of the screen */
@@ -149,17 +122,6 @@
   }
 }
 
-/* Notes about the release, before its changes */
-.releaseNotes {
-  > :first-child {
-    margin-top: 0;
-  }
-
-  > :last-child {
-    margin-bottom: 0;
-  }
-}
-
 .changes {
   ul:not(.tags) {
     margin: 0;
@@ -196,17 +158,19 @@
   color: var(--ds-color-success-base-contrast-default);
 }
 
-.change {
-  /* Room between the changes, so each change and its tags read as one */
-  margin-block: 0 var(--ds-size-7);
-
-  /* Space between the paragraphs, tables, code and nested lists of a change */
+/* Space between the paragraphs, tables, code and nested lists of a change or of the notes */
+.change,
+.releaseNotes {
   > * {
     margin-block: 0;
   }
   > * + * {
     margin-top: var(--ds-size-2);
   }
+}
+.change {
+  /* Room between the changes, so each change and its tags read as one */
+  margin-block: 0 var(--ds-size-7);
 }
 
 .tags {
@@ -215,20 +179,8 @@
   gap: var(--ds-size-2);
   list-style: none;
   padding: 0;
-
-  li {
-    margin: 0;
-  }
-  /* Small text, so a heavier weight keeps it readable */
-  li > * {
-    font-weight: 500;
-  }
 }
 
 .pagination {
   margin-block: var(--ds-size-4);
-
-  ul {
-    flex-wrap: wrap;
-  }
 }

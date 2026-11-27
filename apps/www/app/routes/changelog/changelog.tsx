@@ -23,7 +23,6 @@ import type { Root as HastRoot } from 'hast';
 import { type Components, toJsxRuntime } from 'hast-util-to-jsx-runtime';
 import {
   type ReactNode,
-  type RefObject,
   useEffect,
   useRef,
   useState,
@@ -33,14 +32,15 @@ import { Fragment, jsx, jsxs } from 'react/jsx-runtime';
 import { useTranslation } from 'react-i18next';
 import {
   isRouteErrorResponse,
-  Link as RRLink,
   useNavigation,
   useSearchParams,
 } from 'react-router';
+import { RRLink } from '~/_components/link';
 import { defaultComponents } from '~/_components/mdx-components/mdx-components';
 import {
   CHANGE_TYPES,
   CHANGELOG_PACKAGES,
+  type ChangelogPackage,
   type ChangeType,
   changelogPackages,
 } from '~/_utils/changelog';
@@ -64,17 +64,18 @@ const CHANGE_TYPE_ICONS = {
 /**
  * The changelog is read from app/content/changelog/changelog.json, and filtered here by the search
  * params, see getChangelogPage. Only the page without search params is prerendered; with them,
- * server.js leaves the request to React Router.
+ * server.js leaves the request to React Router. So it does for the markdown version of the page,
+ * e.g. /en/changelog.md, which has every version on one page, as it has no pagination.
  */
 export async function loader({ params: { lang }, request }: Route.LoaderArgs) {
   if (!lang || !i18nConf.supportedLngs.includes(lang)) {
     throw new Response('Not Found', { status: 404, statusText: 'Not Found' });
   }
 
-  const changelog = await getChangelogPage(new URL(request.url).searchParams);
-  if (!changelog) {
-    throw new Response('Not Found', { status: 404, statusText: 'Not Found' });
-  }
+  const changelog = await getChangelogPage(new URL(request.url).searchParams, {
+    // Set by server/markdown-negotiation.js
+    allPages: request.headers.get('accept') === 'text/markdown',
+  });
   const t = await i18n.getFixedT(lang);
 
   return {
@@ -159,6 +160,7 @@ function Release({
               <RRLink
                 to={{ search: new URLSearchParams({ version }).toString() }}
                 preventScrollReset
+                data-color='neutral'
               >
                 {name}
               </RRLink>
@@ -205,6 +207,13 @@ function Release({
   );
 }
 
+/** The label of a package, in the language of the page */
+function usePackageLabel() {
+  const { t } = useTranslation();
+  return ({ id, label }: ChangelogPackage) =>
+    id === 'www' ? t('changelog.documentation') : label;
+}
+
 /** The changes of one type in a version */
 function Changes({
   type,
@@ -235,16 +244,17 @@ function Change({
   children?: ReactNode;
 }) {
   const { t } = useTranslation();
+  const packageLabel = usePackageLabel();
 
   return (
     <li className={classes.change}>
       {children}
       {/* A list, so screen readers read the packages separately */}
       <ul className={classes.tags} aria-label={t('changelog.packages-label')}>
-        {changelogPackages(packages).map(({ id, label, color }) => (
-          <li key={id}>
-            <Tag data-color={color} data-size='sm'>
-              {label}
+        {changelogPackages(packages).map((pkg) => (
+          <li key={pkg.id}>
+            <Tag data-color={pkg.color} data-size='sm'>
+              {packageLabel(pkg)}
             </Tag>
           </li>
         ))}
@@ -255,31 +265,6 @@ function Change({
 
 /** The name of the search highlight, styled with `::highlight(changelog-search)` */
 const SEARCH_HIGHLIGHT = 'changelog-search';
-
-/**
- * Highlights the words in the changes in `container`, see highlightText. Only the text of the
- * changes, not the version, the change types or the package tags.
- */
-function useSearchHighlight(
-  container: RefObject<HTMLElement | null>,
-  words: string[],
-  /** Changes whenever the shown changes do, so the highlights are made again */
-  shown: unknown,
-) {
-  const wordsKey = words.join(' ');
-  useEffect(() => {
-    if (!container.current) return;
-    highlightText(wordsKey.split(' '), container.current, {
-      name: SEARCH_HIGHLIGHT,
-      accept: ({ parentElement }) =>
-        Boolean(
-          parentElement?.closest(`.${classes.change}`) &&
-            !parentElement.closest(`.${classes.tags}`),
-        ),
-    });
-    return () => clearHighlight(SEARCH_HIGHLIGHT);
-  }, [wordsKey, shown]);
-}
 
 const subscribeToNothing = () => () => {};
 
@@ -336,25 +321,25 @@ export default function Changelog({ loaderData }: Route.ComponentProps) {
   // Focused after changing page or resetting the filters, so the reader continues from the results
   const statusRef = useRef<HTMLParagraphElement>(null);
   const releasesRef = useRef<HTMLDivElement>(null);
+  const packageLabel = usePackageLabel();
 
   // The chips follow the URL being navigated to, the rest follows what the loader returned
-  const selectedPackages: string[] = CHANGELOG_PACKAGES.map(
-    ({ id }) => id,
-  ).filter((id) => params.getAll('package').includes(id));
-  const words = filters.query.toLowerCase().split(/\s+/).filter(Boolean);
+  const selectedPackages = params.getAll('package');
 
-  /** Changes only the packages, so the version and the search are kept */
-  function setPackages(nextPackages: string[]) {
+  /** Changes only this package, so the version, the search and the other packages are kept */
+  function setPackage(id: string, checked: boolean) {
     updateParams((next) => {
+      const others = next.getAll('package').filter((item) => item !== id);
       next.delete('package');
       next.delete('page');
-      for (const id of nextPackages) next.append('package', id);
+      for (const item of checked ? [...others, id] : others)
+        next.append('package', item);
     });
   }
 
   const { pages, prevButtonProps, nextButtonProps } = usePagination({
     currentPage: filters.page,
-    totalPages: Math.max(1, totalPages),
+    totalPages,
     showPages: 5,
     setCurrentPage: (page) => {
       updateParams((next) => {
@@ -368,7 +353,6 @@ export default function Changelog({ loaderData }: Route.ComponentProps) {
   // The old changelog pages linked to versions as e.g. `#1240` for 1.24.0. Hashes are not sent to
   // the server, so this is checked once the page has hydrated.
   useEffect(() => {
-    if (!isHydrated) return;
     const hash = /^#(\d+)$/.exec(window.location.hash)?.[1];
     if (!hash) return;
     const matches = versions.filter(
@@ -380,7 +364,7 @@ export default function Changelog({ loaderData }: Route.ComponentProps) {
         next.set('version', matches[0]);
       });
     }
-  }, [isHydrated]);
+  }, []);
 
   // What is typed in the search field. The URL is updated when typing stops, so the list and the
   // count of results (which screen readers announce) do not change on every key.
@@ -410,7 +394,20 @@ export default function Changelog({ loaderData }: Route.ComponentProps) {
     return () => clearTimeout(timer);
   }, [searchInput]);
 
-  useSearchHighlight(releasesRef, words, releases);
+  // Highlights the words searched for in the text of the changes, not in the versions, the change
+  // types or the package tags. Made again whenever the shown changes do.
+  useEffect(() => {
+    if (!releasesRef.current) return;
+    highlightText(filters.query.split(/\s+/), releasesRef.current, {
+      name: SEARCH_HIGHLIGHT,
+      accept: ({ parentElement }) =>
+        Boolean(
+          parentElement?.closest(`.${classes.change}`) &&
+            !parentElement.closest(`.${classes.tags}`),
+        ),
+    });
+    return () => clearHighlight(SEARCH_HIGHLIGHT);
+  }, [releases, filters.query]);
 
   // From the URL being navigated to and what is typed, like the chips, so the reset button shows
   // and hides at once
@@ -451,29 +448,23 @@ export default function Changelog({ loaderData }: Route.ComponentProps) {
                 disabled={!isHydrated}
                 onChange={(event) => setSearchInput(event.target.value)}
               />
-              <Suggestion.Clear></Suggestion.Clear>
+              <Suggestion.Clear />
             </Suggestion>
           </Field>
 
           <Fieldset>
             <Fieldset.Legend>{t('changelog.packages')}</Fieldset.Legend>
             <div className={classes.chips}>
-              {CHANGELOG_PACKAGES.map(({ id, label }) => (
+              {CHANGELOG_PACKAGES.map((pkg) => (
                 <Chip.Checkbox
-                  key={id}
+                  key={pkg.id}
                   name='package'
-                  value={id}
+                  value={pkg.id}
                   disabled={!isHydrated}
-                  checked={selectedPackages.includes(id)}
-                  onChange={(event) =>
-                    setPackages(
-                      event.target.checked
-                        ? [...selectedPackages, id]
-                        : selectedPackages.filter((item) => item !== id),
-                    )
-                  }
+                  checked={selectedPackages.includes(pkg.id)}
+                  onChange={(event) => setPackage(pkg.id, event.target.checked)}
                 >
-                  {id === 'www' ? t('changelog.documentation') : label}
+                  {packageLabel(pkg)}
                 </Chip.Checkbox>
               ))}
             </div>
@@ -484,7 +475,6 @@ export default function Changelog({ loaderData }: Route.ComponentProps) {
               role='status'
               tabIndex={-1}
               data-size='sm'
-              className={classes.statusText}
             >
               {status}
             </Paragraph>

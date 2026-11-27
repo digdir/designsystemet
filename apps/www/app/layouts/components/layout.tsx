@@ -38,7 +38,7 @@ export const loader = async ({
   };
 
   const changelogItem = {
-    title: t('components.changelog.title'),
+    title: t('changelog.title'),
     url: `/${lang}/changelog`,
     order: 1,
   };
