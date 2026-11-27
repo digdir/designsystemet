@@ -1,5 +1,13 @@
 # @digdir/designsystemet-web
 
+## 1.24.2
+
+### Patch Changes
+
+- Update npm non-major dependencies ([#5680](https://github.com/digdir/designsystemet/pull/5680))
+
+- **tooltip**: now repositions when text changes ([#5679](https://github.com/digdir/designsystemet/pull/5679))
+
 ## 1.24.1
 
 ### Patch Changes
