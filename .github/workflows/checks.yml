@@ -28,11 +28,12 @@ jobs:
         with:
           persist-credentials: false
       # The www deploy runs this script without installing packages, so it is run like that here,
-      # before they are installed. It fails if the script starts to import a package.
+      # before they are installed. It fails if the script starts to import a package. As a dry
+      # run, so changelog.json is left as it is and a failing GitHub API does not fail the checks.
       - name: Date script runs without packages
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: node scripts/date-changelog.ts
+        run: node scripts/date-changelog.ts --dry-run
       - uses: $/.github/actions/gh-setup
       - name: Build
         run: pnpm build

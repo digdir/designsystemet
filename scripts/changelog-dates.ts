@@ -26,12 +26,19 @@ let published: Map<string, string> | undefined;
  */
 function publishedDates() {
   if (published) return published;
-  let releases: { tagName: string; publishedAt: string | null }[];
+  let releases: { tagName: string; publishedAt: string; isDraft: boolean }[];
   try {
     releases = JSON.parse(
       execFileSync(
         'gh',
-        ['release', 'list', '--limit', '1000', '--json', 'tagName,publishedAt'],
+        [
+          'release',
+          'list',
+          '--limit',
+          '1000',
+          '--json',
+          'tagName,publishedAt,isDraft',
+        ],
         { encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] },
       ),
     );
@@ -42,10 +49,9 @@ function publishedDates() {
     );
   }
   published = new Map();
-  for (const { tagName, publishedAt } of releases) {
-    // A draft is not published
-    if (publishedAt)
-      published.set(tagName, osloDay.format(new Date(publishedAt)));
+  for (const { tagName, publishedAt, isDraft } of releases) {
+    // A draft is not published. `gh` gives it the date 0001-01-01, not an empty one.
+    if (!isDraft) published.set(tagName, osloDay.format(new Date(publishedAt)));
   }
   return published;
 }

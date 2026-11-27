@@ -13,6 +13,8 @@
  *
  * Usage: node scripts/date-changelog.ts (in the deploy, without installed packages), or with
  * `pnpm node` to use the version of Node in package.json
+ *   --dry-run   only says what would be dated. Used in the Checks workflow to see that the script
+ *               runs without installed packages. It does not fail when the releases can't be read.
  * Needs `gh` and a GH_TOKEN with read access to the repository's releases.
  */
 import { promises as fs } from 'node:fs';
@@ -24,8 +26,9 @@ const file = 'changelog.json';
 
 async function main() {
   const changelog: Changelog = JSON.parse(await fs.readFile(file, 'utf8'));
+  const dryRun = process.argv.includes('--dry-run');
   // Fails when the releases can't be read, so a deploy does not show a version without its date
-  const releases = addReleaseDates(changelog.releases, { required: true });
+  const releases = addReleaseDates(changelog.releases, { required: !dryRun });
   const dated = releases.filter(
     (release, i) => release !== changelog.releases[i],
   );
@@ -34,13 +37,15 @@ async function main() {
     return;
   }
 
-  await fs.writeFile(
-    file,
-    `${JSON.stringify({ ...changelog, releases }, null, 2)}\n`,
-    'utf8',
-  );
+  if (!dryRun) {
+    await fs.writeFile(
+      file,
+      `${JSON.stringify({ ...changelog, releases }, null, 2)}\n`,
+      'utf8',
+    );
+  }
   for (const { version, date } of dated)
-    console.log(`Dated ${version} as ${date}.`);
+    console.log(`${dryRun ? 'Would date' : 'Dated'} ${version} as ${date}.`);
 }
 
 main().catch((error) => {
