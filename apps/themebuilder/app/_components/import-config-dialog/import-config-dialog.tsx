@@ -24,6 +24,21 @@ export function ImportConfigDialog() {
   /* The result of the last validation, until the text is changed */
   const [result, setResult] = useState<ImportedConfig | null>(null);
 
+  const addFiles = (files: FileList) => {
+    setResult(null);
+    const file = files.item(0);
+    if (file) {
+      file.text().then((t) => setConfigText(t));
+    }
+  };
+
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files) {
+      addFiles(event.target.files);
+      event.target.value = '';
+    }
+  };
+
   const config = result && 'config' in result ? result.config : null;
   const errors =
     !result || 'config' in result
@@ -67,6 +82,17 @@ export function ImportConfigDialog() {
         <Dialog.Block>
           <div className={classes.container}>
             <div className={classes.textareaWrapper}>
+              <Button asChild>
+                <label className='ds-focus--within'>
+                  <input
+                    type='file'
+                    accept='.json,.jsonc,application/json'
+                    onChange={handleFileChange}
+                    className='ds-sr-only'
+                  />
+                  {t('importConfig.upload')}
+                </label>
+              </Button>
               <Field>
                 <Label>{t('importConfig.title')}</Label>
                 <Field.Description>

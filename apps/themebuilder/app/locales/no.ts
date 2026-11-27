@@ -66,6 +66,7 @@ export default {
     'no-themes': 'Ingen temaer funnet i konfigurasjonen',
     'edit-theme': 'Rediger tema',
     'import-config': 'Importer config',
+    upload: 'Velg fil',
   },
   viewTabs: {
     label: 'Visning',
