@@ -360,9 +360,13 @@ export default function Changelog({ loaderData }: Route.ComponentProps) {
     );
     // e.g. `#1110` is either 1.1.10 or 1.11.0
     if (matches.length === 1) {
-      updateParams((next) => {
-        next.set('version', matches[0]);
-      });
+      // Replaced, so going back leaves the page instead of showing every version
+      updateParams(
+        (next) => {
+          next.set('version', matches[0]);
+        },
+        { replace: true },
+      );
     }
   }, []);
 
@@ -447,6 +451,8 @@ export default function Changelog({ loaderData }: Route.ComponentProps) {
                 value={searchInput}
                 disabled={!isHydrated}
                 onChange={(event) => setSearchInput(event.target.value)}
+                // <ds-suggestion> adds attributes to the input before React hydrates
+                suppressHydrationWarning
               />
               <Suggestion.Clear />
             </Suggestion>

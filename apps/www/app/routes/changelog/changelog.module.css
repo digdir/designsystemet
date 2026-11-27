@@ -151,8 +151,8 @@
   color: var(--ds-color-warning-base-contrast-default);
 }
 
-/* The words searched for, see useSearchHighlight. The underline also marks them where the
-   background is hard to tell apart, e.g. in forced colors or for color blind readers. */
+/* The words searched for, highlighted by an effect in changelog.tsx. The same colors as the
+   highlight in the search dialog, see search-dialog.module.css. */
 .releases ::highlight(changelog-search) {
   background-color: var(--ds-color-success-base-default);
   color: var(--ds-color-success-base-contrast-default);

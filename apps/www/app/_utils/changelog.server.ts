@@ -138,6 +138,12 @@ export async function getChangelogPage(
   const query = searchParams.get('q')?.trim() ?? '';
   const words = query.toLowerCase().split(/\s+/).filter(Boolean);
   const isFiltered = packages.length > 0 || words.length > 0;
+  /* A version can be published in Figma without changes in the Figma packages, see
+   * figma/README.md. It is kept when filtering on them, so the publish date is shown, but not when
+   * searching. */
+  const keepFigmaPublished =
+    !words.length &&
+    packages.some((id) => id === 'figma-plugin' || id === 'figma-ui-kit');
 
   const matching = all
     .filter((release) => !version || release.version === version)
@@ -150,7 +156,12 @@ export async function getChangelogPage(
           words.every((word) => change.text.includes(word)),
       ),
     }))
-    .filter(({ changes }) => !isFiltered || changes.length > 0);
+    .filter(
+      ({ release, changes }) =>
+        !isFiltered ||
+        changes.length > 0 ||
+        (keepFigmaPublished && release.figmaPublished),
+    );
 
   const perPage = allPages ? Math.max(1, all.length) : RELEASES_PER_PAGE;
   const totalPages = Math.max(1, Math.ceil(matching.length / perPage));
@@ -170,7 +181,9 @@ export async function getChangelogPage(
         /* Notes are about the whole release, not one package, and are not searched, so they are
          * left out while filtering */
         notes: isFiltered ? null : release.notes,
-        hasChanges: release.changes.length > 0,
+        /* Of the changes that are shown, so a version kept for its Figma publish date says it has
+         * no changes in the selected packages */
+        hasChanges: changes.length > 0,
         groups: (Object.keys(CHANGE_TYPES) as ChangeType[])
           .map((type) => ({
             type,
