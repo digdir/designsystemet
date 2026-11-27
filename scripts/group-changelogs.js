@@ -1,5 +1,5 @@
 /**
- * Builds changelog.json for www: one entry per version for all packages together, where each change
+ * Builds changelog.json: one entry per version for all packages together, where each change
  * is listed once with the packages it affects, instead of once per package.
  *
  * A changeset that lists several packages writes the same text into each package's CHANGELOG.md.
@@ -43,10 +43,7 @@ import remarkStringify from 'remark-stringify';
 import { unified } from 'unified';
 
 const ROOT = process.cwd();
-export const CHANGELOG_JSON = path.join(
-  ROOT,
-  'apps/www/app/content/changelog/changelog.json',
-);
+export const CHANGELOG_JSON = path.join(ROOT, 'changelog.json');
 
 // Stop at "## 0.101.0" - this is the first entry before version 1
 const CUTOFF_VERSION = '0.101.0';

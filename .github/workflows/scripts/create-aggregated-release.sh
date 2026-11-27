@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Creates one aggregated GitHub release (vX.Y.Z), with the version's changes from
-# apps/www/app/content/changelog/changelog.json as its notes. There, each change is listed once with
-# the packages it affects. The release PR adds the version, see scripts/group-changelogs.js.
+# changelog.json as its notes. There, each change is listed once with the packages it affects.
+# The release PR adds the version, see scripts/group-changelogs.js.
 # Required env: GH_TOKEN, TAG
 set -euo pipefail
 

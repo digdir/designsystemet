@@ -29,7 +29,7 @@
       "!pnpm-workspace.yaml",
       "!**/README.md",
       "!**/CHANGELOG.md",
-      "!apps/www/app/content/changelog/changelog.json", // written by scripts/group-changelogs.js
+      "!changelog.json", // written by scripts/group-changelogs.js
       "!.claude/skills/**/SKILL.md" // biome adds a blank line after the opening --- of the frontmatter
     ]
   },

@@ -8,7 +8,7 @@
 # Required env: GH_TOKEN, PR_NUMBER, BRANCH (the release PR's branch)
 set -euo pipefail
 
-CHANGELOG_JSON=apps/www/app/content/changelog/changelog.json
+CHANGELOG_JSON=changelog.json
 
 keep_pr() {
   echo "::warning::$1, so the release PR keeps the changelogs per package"
