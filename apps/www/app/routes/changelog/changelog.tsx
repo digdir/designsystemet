@@ -463,8 +463,6 @@ export default function Changelog({ loaderData }: Route.ComponentProps) {
                 value={searchInput}
                 disabled={!isHydrated}
                 onChange={(event) => setSearchInput(event.target.value)}
-                // <ds-suggestion> adds attributes to the input before React hydrates
-                suppressHydrationWarning
               />
               <Suggestion.Clear />
             </Suggestion>
@@ -558,6 +556,7 @@ export default function Changelog({ loaderData }: Route.ComponentProps) {
                 />
               </Pagination.Item>
               {pages.map(({ page, itemKey, buttonProps }) => (
+                // TODO update with new pagination() from #5581 after v2 release
                 <Pagination.Item key={itemKey}>
                   {typeof page === 'number' && (
                     <Pagination.Button
