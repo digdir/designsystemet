@@ -279,6 +279,7 @@ export default {
     placeholder: 'Search components, guidelines, and more...',
     label: 'Search the documentation',
     'no-results': 'No results found for',
+    error: 'Search is unavailable right now. Please try again later.',
     'suggestions-title': 'Try searching for…',
     close: 'Close search',
     results: 'Search results',

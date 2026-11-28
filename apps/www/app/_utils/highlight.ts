@@ -1,57 +1,45 @@
-export const highlightText = (query: string, scope: HTMLElement) => {
-  if (!query || !scope) return;
-  // Find all text nodes in the article. We'll search within
-  // these text nodes.
-  const treeWalker = document.createTreeWalker(scope, NodeFilter.SHOW_TEXT);
-  const allTextNodes = [];
-  let currentNode = treeWalker.nextNode();
-  while (currentNode) {
-    allTextNodes.push(currentNode);
-    currentNode = treeWalker.nextNode();
-  }
+const HIGHLIGHT_NAME = 'custom-highlight';
 
-  //not supported in older browsers
-  if (!CSS.highlights) {
-    return;
-  }
+/**
+ * Highlight every word of `query` inside the given elements, using the CSS
+ * Custom Highlight API. Pass an empty query or no elements to clear.
+ */
+export const highlightText = (query: string, scopes: Iterable<Element>) => {
+  // Not supported in older browsers
+  if (typeof CSS === 'undefined' || !CSS.highlights) return;
 
   // Remove only search results, preserving syntax highlights.
-  CSS.highlights.delete('custom-highlight');
+  CSS.highlights.delete(HIGHLIGHT_NAME);
 
-  // Clean-up the search query and bail-out if
-  // if it's empty.
-  const str = query.trim().toLowerCase();
-  if (!str) {
-    return;
+  // Same word splitting as the search index, so "data-size" highlights both words
+  const terms = query
+    .toLowerCase()
+    .split(/[^\p{L}\p{N}]+/u)
+    .filter((term) => term.length > 1);
+  if (!terms.length) return;
+
+  const ranges: Range[] = [];
+
+  for (const scope of scopes) {
+    const treeWalker = document.createTreeWalker(scope, NodeFilter.SHOW_TEXT);
+
+    for (let node = treeWalker.nextNode(); node; node = treeWalker.nextNode()) {
+      const text = node.textContent?.toLowerCase();
+      if (!text) continue;
+
+      for (const term of terms) {
+        let index = text.indexOf(term);
+        while (index !== -1) {
+          const range = new Range();
+          range.setStart(node, index);
+          range.setEnd(node, index + term.length);
+          ranges.push(range);
+          index = text.indexOf(term, index + term.length);
+        }
+      }
+    }
   }
 
-  // Iterate over all text nodes and find matches.
-  const ranges = allTextNodes
-    .map((el) => ({ el, text: el.textContent?.toLowerCase() }))
-    .map(({ text, el }) => {
-      if (!text) return [];
-      const indices = [];
-      let startPos = 0;
-      while (startPos < text.length) {
-        const index = text.indexOf(str, startPos);
-        if (index === -1) break;
-        indices.push(index);
-        startPos = index + str.length;
-      }
-
-      // Create a range object for each instance of
-      // str we found in the text node.
-      return indices.map((index) => {
-        const range = new Range();
-        range.setStart(el, index);
-        range.setEnd(el, index + str.length);
-        return range;
-      });
-    });
-
-  // Create a Highlight object for the ranges.
-  const searchResultsHighlight = new Highlight(...ranges.flat());
-
-  // Register the Highlight object in the registry.
-  CSS.highlights.set('custom-highlight', searchResultsHighlight);
+  if (ranges.length)
+    CSS.highlights.set(HIGHLIGHT_NAME, new Highlight(...ranges));
 };

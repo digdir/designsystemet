@@ -278,6 +278,7 @@ export default {
     placeholder: 'Søk etter komponenter, retningslinjer og mer…',
     label: 'Søk i dokumentasjonen',
     'no-results': 'Ingen resultater funnet for',
+    error: 'Søket er ikke tilgjengelig akkurat nå. Prøv igjen senere.',
     'suggestions-title': 'Prøv å søke etter…',
     close: 'Lukk søk',
     results: 'Søkeresultater',

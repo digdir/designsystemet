@@ -1,566 +1,524 @@
-import { readdirSync, readFileSync, statSync } from 'node:fs';
+/** This file is largely AI-generated, but checked and modified by humans when needed */
+import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { cwd } from 'node:process';
+import matter from 'gray-matter';
+import i18n from '../i18n';
+import { getFilesFromContentDir, getFoldersInContentDir } from './files.server';
+
+export type SearchLang = 'en' | 'no';
+
+export type SearchType =
+  | 'intro'
+  | 'component'
+  | 'blog'
+  | 'fundamentals'
+  | 'best-practices'
+  | 'patterns';
 
 export type SearchIndexItem = {
   id: string;
+  /** Title as shown in results, e.g. "Button – Code" */
   title: string;
+  /** Kind of page for pages that share a title with others, e.g. "Code" */
+  pageLabel: string;
   description: string;
+  /** Full plain text of the page, used for matching and excerpts */
   content: string;
   url: string;
-  type:
-    | 'intro'
-    | 'component'
-    | 'blog'
-    | 'fundamentals'
-    | 'best-practices'
-    | 'patterns';
-  lang: 'en' | 'no';
-  keywords: string;
+  type: SearchType;
+  lang: SearchLang;
+  keywords: string[];
+  headings: string[];
+  /** Ranking multiplier, e.g. to rank component sub-pages below the overview */
+  boost: number;
 };
 
-export type SearchIndex = SearchIndexItem[];
+export type SearchResult = Pick<
+  SearchIndexItem,
+  'id' | 'title' | 'description' | 'url' | 'type'
+> & {
+  /** Text surrounding the match, set when the description doesn't show why the page matched */
+  excerpt?: string;
+};
 
-const dirname = cwd();
-const basePath = join(dirname, './app/content');
+/** Index item with precomputed, normalized fields so each search is cheap */
+type SearchDocument = SearchIndexItem & {
+  norm: { title: string; description: string; content: string };
+  fields: { tokens: string[]; weight: number; fuzzy: boolean }[];
+  keywordPhrases: string[];
+};
+
+export type SearchIndex = SearchDocument[];
+
+const LANGS = i18n.supportedLngs as SearchLang[];
+const CONTENT_PATH = join(cwd(), './app/content');
+
+const FIELD_WEIGHTS = {
+  title: 200,
+  keywords: 60,
+  pageLabel: 20,
+  headings: 30,
+  description: 20,
+  content: 5,
+};
+
+/* Blog posts are news, so they are always listed after documentation */
+const isBlog = (document: SearchIndexItem) => document.type === 'blog';
+
+const TITLE_SEPARATOR = ' – ';
+
+const COMPONENT_PAGES = ['overview', 'code', 'accessibility'] as const;
 
 /**
- * Extract frontmatter from MDX content
+ * Lowercase and fold the accents we use in nynorsk/loanwords (lèt, idé), so
+ * users don't need to type them. Every replacement is one character for one
+ * character, which keeps offsets aligned with the original text for excerpts.
  */
-function extractFrontmatter(content: string): Record<string, string> {
-  // Normalize line endings to LF
-  const normalizedContent = content.replace(/\r\n/g, '\n');
-  const frontmatterMatch = normalizedContent.match(/^---\n([\s\S]*?)\n---/);
-  if (!frontmatterMatch) return {};
-
-  const frontmatterContent = frontmatterMatch[1];
-  const frontmatter: Record<string, string> = {};
-
-  for (const line of frontmatterContent.split('\n')) {
-    const colonIndex = line.indexOf(':');
-    if (colonIndex > 0) {
-      const key = line.slice(0, colonIndex).trim();
-      let value = line.slice(colonIndex + 1).trim();
-      // Remove surrounding quotes if present
-      if (
-        (value.startsWith('"') && value.endsWith('"')) ||
-        (value.startsWith("'") && value.endsWith("'"))
-      ) {
-        value = value.slice(1, -1);
-      }
-      frontmatter[key] = value;
-    }
-  }
-
-  return frontmatter;
+export function normalize(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/[éèêë]/g, 'e')
+    .replace(/[óòô]/g, 'o')
+    .replace(/[àáâ]/g, 'a')
+    .replace(/[üú]/g, 'u');
 }
 
+/** Split normalized text into words. `data-size` becomes `data` and `size` */
+export function tokenize(normalized: string): string[] {
+  return normalized.split(/[^\p{L}\p{N}]+/u).filter(Boolean);
+}
+
+const uniqueTokens = (text: string) => [...new Set(tokenize(normalize(text)))];
+
+/** Normalized words separated by single spaces, for comparing phrases */
+const toPhrase = (text: string) => tokenize(normalize(text)).join(' ');
+
+const stripInlineMarkdown = (text: string) =>
+  text
+    .replace(/!\[([^\]]*)\]\([^)]*\)/g, '$1') // images, keep alt text
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1') // links, keep text
+    .replace(/\*\*|__|~~|\*|`/g, '');
+
 /**
- * Strip MDX/Markdown syntax to get plain text
+ * Convert an MDX body (without frontmatter) to plain text and a list of its
+ * headings. Text inside JSX elements and inline code is kept, since that is
+ * often what users search for (`data-size`, `aria-label` and so on).
  */
-function stripMdxSyntax(content: string): string {
-  // Normalize line endings
-  let text = content.replace(/\r\n/g, '\n');
+function mdxToText(body: string): { text: string; headings: string[] } {
+  let text = body.replace(/\r\n/g, '\n');
 
-  // Remove frontmatter
-  text = text.replace(/^---\n[\s\S]*?\n---\n?/, '');
+  text = text.replace(/```[\s\S]*?```/g, ' '); // fenced code blocks
+  text = text.replace(/^(import|export)\s.*$/gm, ' '); // ESM
+  text = text.replace(/\{\/\*[\s\S]*?\*\/\}/g, ' '); // MDX comments
 
-  // Remove JSX/MDX components
-  text = text.replace(/<[A-Z][^>]*>[\s\S]*?<\/[A-Z][^>]*>/g, '');
-  text = text.replace(/<[A-Z][^>]*\/>/g, '');
-
-  // Remove HTML comments (repeat until fully removed to avoid incomplete multi-character sanitization)
-  let prevText: string;
+  // Repeat until fully removed, to also handle nested/overlapping comments
+  let previous: string;
   do {
-    prevText = text;
-    text = text.replace(/<!--[\s\S]*?-->/g, '');
-  } while (text !== prevText);
+    previous = text;
+    text = text.replace(/<!--[\s\S]*?-->/g, ' ');
+  } while (text !== previous);
 
-  // Remove code blocks
-  text = text.replace(/```[\s\S]*?```/g, '');
-  text = text.replace(/`[^`]+`/g, '');
+  // Protect tags in inline code (`<button>`), which are text and not markup
+  text = text.replace(/`[^`\n]+`/g, (code) => code.replace(/</g, '\uE000'));
+  text = text.replace(/<\/?[A-Za-z][^>]*>/g, ' '); // JSX/HTML tags, keep children
+  text = text.replace(/\uE000/g, '<');
 
-  // Remove markdown links but keep text
-  text = text.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
+  const headings = [...text.matchAll(/^#{1,6}\s+(.+)$/gm)].map(([, heading]) =>
+    stripInlineMarkdown(heading).trim(),
+  );
 
-  // Remove markdown formatting
-  text = text.replace(/[*_~]+([^*_~]+)[*_~]+/g, '$1');
+  text = stripInlineMarkdown(text)
+    .replace(/^#{1,6}\s+/gm, '') // heading markers
+    .replace(/^\s*(?:[-*+]|>)\s+/gm, '') // list and blockquote markers
+    .replace(/\|/g, ' ') // table cells
+    .replace(/\s+/g, ' ')
+    .trim();
 
-  // Remove headings markers
-  text = text.replace(/^#{1,6}\s+/gm, '');
-
-  // Remove extra whitespace
-  text = text.replace(/\s+/g, ' ').trim();
-
-  // Truncate for index size
-  return text.slice(0, 500);
+  return { text, headings };
 }
 
-/**
- * Recursively find all MDX files in a directory
- */
-function findMdxFiles(
-  dir: string,
-  files: { path: string; relativePath: string }[] = [],
-  relativeBase = '',
-): { path: string; relativePath: string }[] {
+const toKeywords = (searchTerms: unknown): string[] => {
+  const terms = Array.isArray(searchTerms)
+    ? searchTerms
+    : typeof searchTerms === 'string'
+      ? searchTerms.split(',')
+      : [];
+  return terms.map((term) => String(term).trim()).filter(Boolean);
+};
+
+function createDocument(item: SearchIndexItem): SearchDocument {
+  // Without the page label, so that searching for "code" doesn't rank the
+  // code page of every component as a title match
+  const baseTitle = item.pageLabel
+    ? item.title.slice(0, item.title.lastIndexOf(TITLE_SEPARATOR))
+    : item.title;
+
+  return {
+    ...item,
+    norm: {
+      title: toPhrase(item.title),
+      description: toPhrase(item.description),
+      content: normalize(item.content),
+    },
+    keywordPhrases: item.keywords.map(toPhrase),
+    fields: [
+      { weight: FIELD_WEIGHTS.title, fuzzy: true, text: baseTitle },
+      { weight: FIELD_WEIGHTS.pageLabel, fuzzy: false, text: item.pageLabel },
+      {
+        weight: FIELD_WEIGHTS.keywords,
+        fuzzy: true,
+        text: item.keywords.join(' '),
+      },
+      {
+        weight: FIELD_WEIGHTS.headings,
+        fuzzy: true,
+        text: item.headings.join(' '),
+      },
+      {
+        weight: FIELD_WEIGHTS.description,
+        fuzzy: false,
+        text: item.description,
+      },
+      { weight: FIELD_WEIGHTS.content, fuzzy: false, text: item.content },
+    ].map(({ text, ...field }) => ({ ...field, tokens: uniqueTokens(text) })),
+  };
+}
+
+type PageOptions = {
+  fileContent: string;
+  url: string;
+  type: SearchType;
+  lang: SearchLang;
+  fallbackTitle: string;
+  fallbackDescription?: string;
+  pageLabel?: string;
+  boost?: number;
+};
+
+function indexPage({
+  fileContent,
+  url,
+  type,
+  lang,
+  fallbackTitle,
+  fallbackDescription = '',
+  pageLabel = '',
+  boost = 1,
+}: PageOptions): SearchDocument | null {
+  const { data: frontmatter, content: body } = matter(fileContent);
+
+  // Unpublished pages are hidden from navigation, so keep them out of search too
+  if (frontmatter.published === false) return null;
+
+  const { text, headings } = mdxToText(body);
+  const description = String(frontmatter.description || fallbackDescription);
+
+  return createDocument({
+    id: url,
+    title: `${frontmatter.title || fallbackTitle}${pageLabel && TITLE_SEPARATOR}${pageLabel}`,
+    pageLabel,
+    description: description.replace(/`/g, ''),
+    content: text,
+    url,
+    type,
+    lang,
+    keywords: toKeywords(frontmatter.search_terms),
+    headings,
+    boost,
+  });
+}
+
+/** Index every MDX file in `content/<folder>/<lang>` */
+function indexSection(
+  folder: string,
+  type: SearchType,
+  urlPrefix = folder,
+): SearchDocument[] {
+  return LANGS.flatMap((lang) =>
+    getFilesFromContentDir(join(folder, lang)).flatMap((file) => {
+      const slug = file.relativePath.replace(/\.mdx$/, '').replace(/\\/g, '/');
+
+      return (
+        indexPage({
+          fileContent: readFileSync(file.path, 'utf-8'),
+          url: `/${lang}/${urlPrefix}/${slug}`,
+          type,
+          lang,
+          fallbackTitle: slug.split('/').pop() || slug,
+        }) ?? []
+      );
+    }),
+  );
+}
+
+type ComponentMetadata = Partial<
+  Record<SearchLang, { title?: string; subtitle?: string }>
+>;
+
+function loadComponentMetadata(component: string): ComponentMetadata {
+  const path = join(CONTENT_PATH, 'components', component, 'metadata.json');
+  if (!existsSync(path)) return {};
   try {
-    const entries = readdirSync(dir);
-
-    for (const entry of entries) {
-      const fullPath = join(dir, entry);
-      const relativePath = relativeBase ? join(relativeBase, entry) : entry;
-
-      try {
-        const stats = statSync(fullPath);
-        if (stats.isDirectory()) {
-          findMdxFiles(fullPath, files, relativePath);
-        } else if (entry.endsWith('.mdx')) {
-          files.push({ path: fullPath, relativePath });
-        }
-      } catch {
-        // Skip files we can't read
-      }
-    }
+    return JSON.parse(readFileSync(path, 'utf-8'));
   } catch {
-    // Skip directories we can't read
-  }
-
-  return files;
-}
-
-/**
- * Load metadata.json for a component if it exists
- */
-function loadComponentMetadata(
-  componentPath: string,
-): Record<string, { title?: string; subtitle?: string }> | null {
-  try {
-    const metadataPath = join(componentPath, 'metadata.json');
-    const content = readFileSync(metadataPath, 'utf-8');
-    return JSON.parse(content);
-  } catch {
-    return null;
+    console.warn(`Could not parse ${path}`);
+    return {};
   }
 }
 
-/**
- * Build search index for components
- */
-function indexComponents(): SearchIndexItem[] {
-  const items: SearchIndexItem[] = [];
-  const componentsPath = join(basePath, 'components');
+/** Index the overview, code and accessibility page of every component */
+function indexComponents(): SearchDocument[] {
+  return getFoldersInContentDir('components').flatMap((component) => {
+    const metadata = loadComponentMetadata(component);
 
-  try {
-    const componentDirs = readdirSync(componentsPath);
+    return LANGS.flatMap((lang) => {
+      const pageLabels = i18n.resources[lang].component;
 
-    for (const componentDir of componentDirs) {
-      const componentPath = join(componentsPath, componentDir);
-
-      if (!statSync(componentPath).isDirectory()) continue;
-
-      const metadata = loadComponentMetadata(componentPath);
-
-      for (const lang of ['en', 'no'] as const) {
-        const langPath = join(componentPath, lang);
-
-        try {
-          const files = readdirSync(langPath);
-
-          for (const file of files) {
-            if (!file.endsWith('.mdx')) continue;
-
-            const filePath = join(langPath, file);
-            const content = readFileSync(filePath, 'utf-8');
-            const frontmatter = extractFrontmatter(content);
-            const pageType = file.replace('.mdx', '');
-
-            const title =
-              frontmatter.title ||
-              metadata?.[lang]?.title ||
-              componentDir.charAt(0).toUpperCase() + componentDir.slice(1);
-
-            const description =
-              frontmatter.description || metadata?.[lang]?.subtitle || '';
-
-            items.push({
-              id: `component-${componentDir}-${lang}-${pageType}`,
-              title: `${title}${pageType !== 'overview' ? ` - ${pageType}` : ''}`,
-              description: description.replace(/`/g, ''),
-              content: stripMdxSyntax(content),
-              url: `/${lang}/components/docs/${componentDir}/${pageType}`,
-              type: 'component',
-              lang,
-              keywords: frontmatter.search_terms || '',
-            });
-          }
-        } catch {
-          // Language folder doesn't exist
-        }
-      }
-    }
-  } catch (error) {
-    console.error('Error indexing components:', error);
-  }
-
-  return items;
-}
-
-/**
- * Build search index for blog posts
- */
-function indexBlog(): SearchIndexItem[] {
-  const items: SearchIndexItem[] = [];
-  const blogPath = join(basePath, 'blog');
-
-  for (const lang of ['en', 'no'] as const) {
-    const langPath = join(blogPath, lang);
-    const mdxFiles = findMdxFiles(langPath);
-
-    for (const { path, relativePath } of mdxFiles) {
-      try {
-        const content = readFileSync(path, 'utf-8');
-        const frontmatter = extractFrontmatter(content);
-
-        const slug = relativePath.replace('.mdx', '');
-
-        items.push({
-          id: `blog-${lang}-${slug}`,
-          title: frontmatter.title || slug,
-          description: frontmatter.description || '',
-          content: stripMdxSyntax(content),
-          url: `/${lang}/blog/${slug}`,
-          type: 'blog',
+      return COMPONENT_PAGES.flatMap((page) => {
+        const filePath = join(
+          CONTENT_PATH,
+          'components',
+          component,
           lang,
-          keywords: frontmatter.search_terms || '',
-        });
-      } catch {
-        // Skip files we can't read
-      }
-    }
-  }
+          `${page}.mdx`,
+        );
+        if (!existsSync(filePath)) return [];
+        const isOverview = page === 'overview';
 
-  return items;
+        return (
+          indexPage({
+            fileContent: readFileSync(filePath, 'utf-8'),
+            url: `/${lang}/components/docs/${component}/${page}`,
+            type: 'component',
+            lang,
+            fallbackTitle:
+              metadata[lang]?.title ||
+              component.charAt(0).toUpperCase() + component.slice(1),
+            fallbackDescription: metadata[lang]?.subtitle,
+            pageLabel: isOverview ? '' : pageLabels[page],
+            // Rank the overview above the code and accessibility pages
+            boost: isOverview ? 1 : 0.6,
+          }) ?? []
+        );
+      });
+    });
+  });
 }
 
-/**
- * Build search index for fundamentals
- */
-function indexIntro(): SearchIndexItem[] {
-  const items: SearchIndexItem[] = [];
-  const introPath = join(basePath, 'intro');
-
-  for (const lang of ['en', 'no'] as const) {
-    const langPath = join(introPath, lang);
-    const mdxFiles = findMdxFiles(langPath);
-
-    for (const { path, relativePath } of mdxFiles) {
-      try {
-        const content = readFileSync(path, 'utf-8');
-        const frontmatter = extractFrontmatter(content);
-
-        // Convert file path to URL path
-        const slug = relativePath.replace('.mdx', '').replace(/\\/g, '/');
-
-        items.push({
-          id: `intro-${lang}-${slug}`,
-          title: frontmatter.title || slug.split('/').pop() || slug,
-          description: frontmatter.description || '',
-          content: stripMdxSyntax(content),
-          url: `/${lang}/intro/${slug}`,
-          type: 'intro',
-          lang,
-          keywords: frontmatter.search_terms || '',
-        });
-      } catch {
-        // Skip files we can't read
-      }
-    }
-  }
-
-  return items;
-}
-
-/**
- * Build search index for fundamentals
- */
-function indexFundamentals(): SearchIndexItem[] {
-  const items: SearchIndexItem[] = [];
-  const fundamentalsPath = join(basePath, 'fundamentals');
-
-  for (const lang of ['en', 'no'] as const) {
-    const langPath = join(fundamentalsPath, lang);
-    const mdxFiles = findMdxFiles(langPath);
-
-    for (const { path, relativePath } of mdxFiles) {
-      try {
-        const content = readFileSync(path, 'utf-8');
-        const frontmatter = extractFrontmatter(content);
-
-        // Convert file path to URL path
-        const slug = relativePath.replace('.mdx', '').replace(/\\/g, '/');
-
-        items.push({
-          id: `fundamentals-${lang}-${slug}`,
-          title: frontmatter.title || slug.split('/').pop() || slug,
-          description: frontmatter.description || '',
-          content: stripMdxSyntax(content),
-          url: `/${lang}/fundamentals/${slug}`,
-          type: 'fundamentals',
-          lang,
-          keywords: frontmatter.search_terms || '',
-        });
-      } catch {
-        // Skip files we can't read
-      }
-    }
-  }
-
-  return items;
-}
-
-/**
- * Build search index for best practices
- */
-function indexBestPractices(): SearchIndexItem[] {
-  const items: SearchIndexItem[] = [];
-  const bestPracticesPath = join(basePath, 'best-practices');
-
-  for (const lang of ['en', 'no'] as const) {
-    const langPath = join(bestPracticesPath, lang);
-    const mdxFiles = findMdxFiles(langPath);
-
-    for (const { path, relativePath } of mdxFiles) {
-      try {
-        const content = readFileSync(path, 'utf-8');
-        const frontmatter = extractFrontmatter(content);
-
-        const slug = relativePath.replace('.mdx', '').replace(/\\/g, '/');
-
-        items.push({
-          id: `best-practices-${lang}-${slug}`,
-          title: frontmatter.title || slug.split('/').pop() || slug,
-          description: frontmatter.description || '',
-          content: stripMdxSyntax(content),
-          url: `/${lang}/best-practices/${slug}`,
-          type: 'best-practices',
-          lang,
-          keywords: frontmatter.search_terms || '',
-        });
-      } catch {
-        // Skip files we can't read
-      }
-    }
-  }
-
-  return items;
-}
-
-/**
- * Build search index for patterns
- */
-function indexPatterns(): SearchIndexItem[] {
-  const items: SearchIndexItem[] = [];
-  const patternsPath = join(basePath, 'patterns');
-
-  for (const lang of ['en', 'no'] as const) {
-    const langPath = join(patternsPath, lang);
-    const mdxFiles = findMdxFiles(langPath);
-
-    for (const { path, relativePath } of mdxFiles) {
-      try {
-        const content = readFileSync(path, 'utf-8');
-        const frontmatter = extractFrontmatter(content);
-
-        const slug = relativePath.replace('.mdx', '').replace(/\\/g, '/');
-
-        items.push({
-          id: `patterns-${lang}-${slug}`,
-          title: frontmatter.title || slug.split('/').pop() || slug,
-          description: frontmatter.description || '',
-          content: stripMdxSyntax(content),
-          url: `/${lang}/patterns/${slug}`,
-          type: 'patterns',
-          lang,
-          keywords: frontmatter.search_terms || '',
-        });
-      } catch {
-        // Skip files we can't read
-      }
-    }
-  }
-
-  return items;
-}
-
-/**
- * Build the complete search index
- */
 export function buildSearchIndex(): SearchIndex {
   return [
     ...indexComponents(),
-    ...indexIntro(),
-    ...indexBlog(),
-    ...indexFundamentals(),
-    ...indexBestPractices(),
-    ...indexPatterns(),
+    // Shared component docs: general accessibility, hooks and utilities
+    ...indexSection('components-docs', 'component', 'components'),
+    ...indexSection('intro', 'intro'),
+    ...indexSection('fundamentals', 'fundamentals'),
+    ...indexSection('best-practices', 'best-practices'),
+    ...indexSection('patterns', 'patterns'),
+    ...indexSection('blog', 'blog'),
   ];
 }
 
+/** Levenshtein distance, bailing out when it exceeds `max` */
+function editDistance(a: string, b: string, max: number): number {
+  if (Math.abs(a.length - b.length) > max) return max + 1;
+  let previous = Array.from({ length: b.length + 1 }, (_, i) => i);
+
+  for (let i = 1; i <= a.length; i++) {
+    const current = [i];
+    let rowMin = i;
+    for (let j = 1; j <= b.length; j++) {
+      current[j] = Math.min(
+        previous[j] + 1,
+        current[j - 1] + 1,
+        previous[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1),
+      );
+      rowMin = Math.min(rowMin, current[j]);
+    }
+    if (rowMin > max) return max + 1;
+    previous = current;
+  }
+
+  return previous[b.length];
+}
+
 /**
- * Simple search function that scores results by relevance
+ * How well a search term matches the best token in a field, from 0 to 1.
+ * Substring matches are needed for Norwegian compounds ("knapp" in
+ * "radioknapp"), and prefix matches for search-as-you-type.
+ */
+function matchQuality(term: string, tokens: string[]): number {
+  let best = 0;
+  for (const token of tokens) {
+    if (token === term) return 1;
+    if (token.startsWith(term)) best = Math.max(best, 0.75);
+    else if (term.length >= 4 && token.includes(term))
+      best = Math.max(best, 0.5);
+  }
+  return best;
+}
+
+function fuzzyQuality(term: string, tokens: string[]): number {
+  if (term.length < 4) return 0;
+  const maxDistance = term.length < 8 ? 1 : 2;
+  return tokens.some(
+    (token) => editDistance(term, token, maxDistance) <= maxDistance,
+  )
+    ? 0.4
+    : 0;
+}
+
+/** Score every document for a single search term. Documents without a match are left out */
+function scoreTerm(
+  documents: SearchDocument[],
+  term: string,
+): Map<SearchDocument, number> {
+  const scores = new Map<SearchDocument, number>();
+  const run = (
+    quality: (tokens: string[]) => number,
+    includeField: (field: SearchDocument['fields'][number]) => boolean,
+  ) => {
+    for (const document of documents) {
+      let score = 0;
+      for (const field of document.fields) {
+        if (includeField(field)) score += field.weight * quality(field.tokens);
+      }
+      if (score > 0) scores.set(document, score);
+    }
+  };
+
+  run(
+    (tokens) => matchQuality(term, tokens),
+    () => true,
+  );
+
+  // Only assume a typo when the term doesn't match anything as written.
+  // Otherwise "card" would also give results for "hard".
+  if (scores.size === 0) {
+    run(
+      (tokens) => fuzzyQuality(term, tokens),
+      (field) => field.fuzzy,
+    );
+  }
+
+  return scores;
+}
+
+function getExcerpt(
+  document: SearchDocument,
+  query: string,
+  terms: string[],
+): string | undefined {
+  const { title, description, content } = document.norm;
+  // Terms the user can't already see in the result
+  const hiddenTerms = terms.filter(
+    (term) =>
+      !title.includes(term) &&
+      !description.includes(term) &&
+      !document.keywordPhrases.some((keyword) => keyword.includes(term)),
+  );
+  if (!hiddenTerms.length) return undefined;
+  // Offsets are only valid when normalizing didn't change the length
+  if (content.length !== document.content.length) return undefined;
+
+  const start = [query, ...hiddenTerms]
+    .map((needle) => content.indexOf(needle))
+    .find((index) => index !== -1);
+  if (start === undefined) return undefined;
+
+  const text = document.content;
+  let from = Math.max(0, start - 60);
+  let to = Math.min(text.length, start + 140);
+  // Snap to whole words
+  if (from > 0) from = text.indexOf(' ', from) + 1;
+  if (to < text.length) to = Math.max(text.lastIndexOf(' ', to), start);
+
+  return `${from > 0 ? '… ' : ''}${text.slice(from, to)}${to < text.length ? ' …' : ''}`;
+}
+
+/**
+ * Search the index. All terms must match a document. If no document matches
+ * all terms, documents matching most of the terms are returned instead.
  */
 export function searchIndex(
   index: SearchIndex,
-  query: string,
-  lang: 'en' | 'no',
+  rawQuery: string,
+  lang: SearchLang,
   limit = 20,
-): SearchIndexItem[] {
-  if (!query.trim()) return [];
+): SearchResult[] {
+  const query = toPhrase(rawQuery);
+  const terms = [...new Set(query.split(' ').filter(Boolean))];
+  if (!terms.length) return [];
 
-  const queryLower = query.toLowerCase();
-  const searchTerms = queryLower.split(/\s+/).filter(Boolean);
+  const documents = index.filter((document) => document.lang === lang);
+  const termScores = terms.map((term) => scoreTerm(documents, term));
 
-  // Type priority multipliers (blog is deprioritized)
-  const typePriority: Record<string, number> = {
-    component: 1.0,
-    intro: 1.0,
-    fundamentals: 1.0,
-    patterns: 1.0,
-    'best-practices': 1.0,
-    blog: 0.3,
-  };
-
-  const scored = index
-    .filter((item) => item.lang === lang)
-    .map((item) => {
+  const rank = (requireAll: boolean) =>
+    documents.flatMap((document) => {
       let score = 0;
-      const titleLower = item.title.toLowerCase();
-      const descLower = item.description.toLowerCase();
-      const contentLower = item.content.toLowerCase();
-      const keywordsLower = item.keywords.toLowerCase();
+      let matched = 0;
+      termScores.forEach((scores, i) => {
+        const termScore = scores.get(document);
+        if (!termScore) return;
+        // Very short words ("i", "of") say little when not all terms match
+        if (requireAll || terms[i].length > 2) matched++;
+        score += termScore;
+      });
 
-      // Exact match search when query has more than 2 words
-      if (searchTerms.length > 2) {
-        if (descLower.includes(queryLower)) score += 1000;
-        if (contentLower.includes(queryLower)) score += 1000;
+      if (requireAll ? matched < terms.length : matched === 0) return [];
+      if (!requireAll) score *= (matched / terms.length) ** 2;
+
+      const { title, description, content } = document.norm;
+      if (title === query) score += 300;
+      else if (title.startsWith(query)) score += 150;
+      if (document.keywordPhrases.includes(query)) score += 100;
+      if (terms.length > 1) {
+        if (title.includes(query)) score += 100;
+        if (description.includes(query) || content.includes(query)) score += 40;
       }
 
-      for (const term of searchTerms) {
-        // Keyword matches (highly prioritized)
-        if (keywordsLower.includes(term)) score += 300;
-        // Title matches (heavily prioritized)
-        if (titleLower === term) {
-          // Exact title match
-          score += 1000;
-        } else if (titleLower.startsWith(term)) {
-          // Title starts with term
-          score += 500;
-        } else if (titleLower.includes(term)) {
-          // Title contains term as a word
-          const wordBoundaryMatch = new RegExp(`\\b${term}\\b`).test(
-            titleLower,
-          );
-          score += wordBoundaryMatch ? 200 : 100;
-        }
+      score *= document.boost;
+      return { document, score };
+    });
 
-        // Description matches
-        if (descLower.includes(term)) {
-          const wordBoundaryMatch = new RegExp(`\\b${term}\\b`).test(descLower);
-          score += wordBoundaryMatch ? 20 : 10;
-        }
+  let ranked = rank(true);
+  if (!ranked.length && terms.length > 1) ranked = rank(false);
 
-        // Content matches (lowest priority)
-        if (contentLower.includes(term)) score += 5;
-      }
-
-      // Apply type priority multiplier
-      score *= typePriority[item.type] ?? 1.0;
-
-      return { item, score };
-    })
-    .filter(({ score }) => score > 0)
-    .sort((a, b) => b.score - a.score)
+  return ranked
+    .sort(
+      (a, b) =>
+        Number(isBlog(a.document)) - Number(isBlog(b.document)) ||
+        b.score - a.score ||
+        a.document.title.localeCompare(b.document.title),
+    )
     .slice(0, limit)
-    .map(({ item }) => item);
-
-  return scored;
+    .map(({ document }) => ({
+      id: document.id,
+      title: document.title,
+      description: document.description,
+      url: document.url,
+      type: document.type,
+      excerpt: getExcerpt(document, query, terms),
+    }));
 }
 
-// Cache for the search index
-let cachedIndex: SearchIndex | null = null;
+const DEVELOPMENT = process.env.NODE_ENV === 'development';
+/* Content only changes on deploy in production, but is edited live in development */
+const DEVELOPMENT_MAX_AGE = 5000;
+
+let cachedIndex: { index: SearchIndex; builtAt: number } | null = null;
 
 /**
  * Get or build the search index (with caching)
  */
 export function getSearchIndex(): SearchIndex {
-  if (!cachedIndex) {
-    cachedIndex = buildSearchIndex();
+  const isStale =
+    DEVELOPMENT &&
+    cachedIndex &&
+    Date.now() - cachedIndex.builtAt > DEVELOPMENT_MAX_AGE;
+
+  if (!cachedIndex || isStale) {
+    cachedIndex = { index: buildSearchIndex(), builtAt: Date.now() };
   }
-  return cachedIndex;
+  return cachedIndex.index;
 }
-
-/**
- * Clear the search index cache
- */
-export function clearSearchIndexCache(): void {
-  cachedIndex = null;
-}
-
-//Meili synonym setup from ai-search branch
-// Convert grouped synonyms to Meilisearch "mutual association format":
-// https://www.meilisearch.com/docs/learn/relevancy/synonyms#mutual-association
-/* function createMutualAssociations(groups) {
-  const synonyms = {};
-  Object.values(groups).forEach((group) => {
-    group.forEach((term) => {
-      synonyms[term] = group.filter((synonym) => synonym !== term);
-    });
-  });
-  return synonyms;
-}
-
-const synonymGroups = {
-  alert: ['alert', 'notification', 'message', 'toast', 'banner'],
-  avatar: ['avatar', 'profile picture', 'user image'],
-  badge: ['badge', 'label', 'status indicator'],
-  breadcrumbs: ['breadcrumbs', 'breadcrumb', 'navigation path'],
-  button: ['button', 'cta', 'call-to-action', 'call to action', 'action'],
-  card: ['card', 'tile', 'panel'],
-  checkbox: ['checkbox', 'check', 'checkmark'],
-  chip: ['chip', 'tag', 'pill'],
-  details: ['details', 'accordion', 'collapsible', 'expandable'],
-  dialog: ['dialog', 'modal', 'overlay'],
-  divider: ['divider', 'separator', 'line'],
-  dropdown: ['dropdown', 'menu'],
-  errorsummary: ['errorsummary', 'error summary', 'validation errors'],
-  field: ['field', 'form field'],
-  fieldset: ['fieldset', 'form group', 'field group'],
-  input: ['input', 'textfield', 'text field', 'inputfield'],
-  link: ['link', 'anchor', 'hyperlink'],
-  list: ['list', 'menu', 'items'],
-  loaders: ['loaders', 'spinner', 'loading', 'progress'],
-  pagination: ['pagination', 'pager', 'page navigation'],
-  popover: ['popover', 'popup'],
-  radio: ['radio', 'radio button', 'option'],
-  search: ['search', 'search box', 'filter'],
-  select: ['select', 'dropdown', 'picker'],
-  skiplink: ['skiplink', 'skip link', 'accessibility link'],
-  suggestion: [
-    'suggestion',
-    'autocomplete',
-    'combobox',
-    'typeahead',
-    'multiselect',
-    'multi select',
-  ],
-  switch: ['switch', 'toggle'],
-  table: ['table', 'datagrid', 'data table'],
-  tabs: ['tabs', 'tab', 'tabpanel'],
-  textarea: ['textarea', 'text area', 'multiline input'],
-  togglegroup: ['togglegroup', 'toggle group', 'button group'],
-  tooltip: ['tooltip', 'hint', 'help text'],
-};
-
-// Generate proper Meilisearch synonym format
-const synonyms = createMutualAssociations(synonymGroups); */

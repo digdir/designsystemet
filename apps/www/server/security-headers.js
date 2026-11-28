@@ -59,6 +59,7 @@ export function securityHeaders(req, res, next) {
   );
   res.setHeader('X-Frame-Options', 'SAMEORIGIN');
   res.setHeader('Content-Security-Policy', contentSecurityPolicy);
+  res.setHeader('Referrer-Policy', 'same-origin');
 
   /* Add Link headers for agent discovery (RFC 8288 / RFC 9727) on the homepage */
   if (req.path === '/') {

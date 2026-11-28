@@ -13,7 +13,7 @@
   top: 5vh;
   ::highlight(custom-highlight) {
     background-color: var(--ds-color-success-base-default, #ff0066);
-    color: white;
+    color: var(--ds-color-success-base-contrast-default, white);
   }
   &::backdrop {
     opacity: 0.8;
@@ -73,6 +73,11 @@
   &:empty {
     display: none;
   }
+}
+
+.resultsList {
+  list-style: none;
+  margin: 0;
 }
 
 .resultHeader {

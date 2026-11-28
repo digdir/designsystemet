@@ -24,16 +24,12 @@ import type { CSSProperties, InputEvent, ReactNode } from 'react';
 import { useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { highlightText } from '~/_utils/highlight';
+import type { SearchResult } from '~/_utils/search-index.server';
 import { RRLink as Link } from '../link';
 import classes from './search-dialog.module.css';
 
-type SearchResult = {
-  id: string;
-  title: string;
-  description: string;
-  url: string;
-  type: string;
-};
+/* Long enough to not search on every keystroke, short enough to feel instant */
+const SEARCH_DEBOUNCE_MS = 150;
 
 type SearchDialogProps = {
   open: boolean;
@@ -47,6 +43,7 @@ export const SearchDialog = ({ open, onClose, lang }: SearchDialogProps) => {
   const [quickResults, setQuickResults] = useState<SearchResult[]>([]);
   const [isQuickLoading, setIsQuickLoading] = useState(false);
   const [isTyping, setIsTyping] = useState(false);
+  const [hasError, setHasError] = useState(false);
   const [resultAnnounce, setresultAnnounce] = useState('');
   const searchRef = useRef<AbortController | null>(null);
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -58,6 +55,7 @@ export const SearchDialog = ({ open, onClose, lang }: SearchDialogProps) => {
     if (!searchQuery.trim()) {
       setQuickResults([]);
       setIsQuickLoading(false);
+      setHasError(false);
       debouncedAnnounce('');
       return;
     }
@@ -74,7 +72,7 @@ export const SearchDialog = ({ open, onClose, lang }: SearchDialogProps) => {
   const debouncedCallback = useDebounceCallback((value: string) => {
     performSearch(value);
     setIsTyping(false);
-  }, 1);
+  }, SEARCH_DEBOUNCE_MS);
 
   /*delay screen reader announce text so it is not interrupted by input (apple voiceover)*/
   const debouncedAnnounce = useDebounceCallback((value: string) => {
@@ -93,6 +91,7 @@ export const SearchDialog = ({ open, onClose, lang }: SearchDialogProps) => {
     setQuery('');
     setQuickResults([]);
     setIsQuickLoading(false);
+    setHasError(false);
     debouncedAnnounce('');
   };
 
@@ -123,6 +122,7 @@ export const SearchDialog = ({ open, onClose, lang }: SearchDialogProps) => {
       const { results = [] } = await response.json();
       if (controller.signal.aborted) return;
       setQuickResults(results);
+      setHasError(false);
       debouncedAnnounce(
         `${t('search.srA')} ${results.length} ${t('search.srB')} ${query}`,
       );
@@ -130,6 +130,8 @@ export const SearchDialog = ({ open, onClose, lang }: SearchDialogProps) => {
       if (controller.signal.aborted) return;
       console.error('Search error:', error);
       setQuickResults([]);
+      setHasError(true);
+      debouncedAnnounce(t('search.error'));
     } finally {
       if (!controller.signal.aborted) setIsQuickLoading(false);
     }
@@ -221,9 +223,9 @@ export const SearchDialog = ({ open, onClose, lang }: SearchDialogProps) => {
           </Suggestion>
           <div
             className='ds-sr-only'
-            aria-live='assertive'
+            role='status'
+            aria-live='polite'
             aria-atomic='true'
-            aria-relevant='text'
           >
             {resultAnnounce}
           </div>
@@ -250,14 +252,18 @@ export const SearchDialog = ({ open, onClose, lang }: SearchDialogProps) => {
                 <Heading className={classes.iconHeading} data-size='sm'>
                   <FileSearchIcon aria-hidden='true' /> {t('search.results')}
                 </Heading>
-                <section
-                  className={classes.resultsBlock}
+                <ul
+                  className={cl(classes.resultsBlock, classes.resultsList)}
                   ref={(el) => {
-                    query.length > 1 && el && highlightText(query, el);
+                    el &&
+                      highlightText(
+                        query,
+                        el.querySelectorAll('[data-highlight]'),
+                      );
                   }}
                 >
                   {quickResults.map((result, index) => (
-                    <div
+                    <li
                       key={result.id}
                       style={{ '--i': `${index}` } as CSSProperties}
                       className={classes.quickResult}
@@ -268,6 +274,7 @@ export const SearchDialog = ({ open, onClose, lang }: SearchDialogProps) => {
                             to={result.url}
                             className={classes.quickResultLink}
                             onClick={handleClose}
+                            data-highlight
                           >
                             {result.title}
                           </Link>
@@ -280,8 +287,11 @@ export const SearchDialog = ({ open, onClose, lang }: SearchDialogProps) => {
                           {getTypeLabel(result.type)}
                         </Tag>
                       </div>
-                      <Paragraph className={classes.quickResultContent}>
-                        {result.description}
+                      <Paragraph
+                        className={classes.quickResultContent}
+                        data-highlight
+                      >
+                        {result.excerpt || result.description}
                       </Paragraph>
                       <Paragraph
                         className={classes.quickResultUrl}
@@ -289,9 +299,9 @@ export const SearchDialog = ({ open, onClose, lang }: SearchDialogProps) => {
                       >
                         https://designsystemet.no{result.url}
                       </Paragraph>
-                    </div>
+                    </li>
                   ))}
-                </section>
+                </ul>
               </>
             )}
           </>
@@ -323,7 +333,9 @@ export const SearchDialog = ({ open, onClose, lang }: SearchDialogProps) => {
 
         {query && !isTyping && !isQuickLoading && quickResults.length === 0 && (
           <div className={classes.noResults}>
-            {t('search.no-results')} "{query}"
+            {hasError
+              ? t('search.error')
+              : `${t('search.no-results')} "${query}"`}
           </div>
         )}
       </div>

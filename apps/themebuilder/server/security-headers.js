@@ -47,6 +47,7 @@ export function securityHeaders(req, res, next) {
   );
   res.setHeader('X-Frame-Options', 'SAMEORIGIN');
   res.setHeader('Content-Security-Policy', contentSecurityPolicy);
+  res.setHeader('Referrer-Policy', 'same-origin');
   res.setHeader('Cache-Control', 'max-age');
 
   /* Stop TRACE request */
